@@ -69,6 +69,7 @@ CREATE TABLE `conteudodisciplina` (
 
 LOCK TABLES `conteudodisciplina` WRITE;
 /*!40000 ALTER TABLE `conteudodisciplina` DISABLE KEYS */;
+INSERT INTO `conteudodisciplina` VALUES (14,1),(18,2),(1,3),(20,4),(20,5),(8,6),(5,7),(3,8),(7,9),(9,10);
 /*!40000 ALTER TABLE `conteudodisciplina` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,4 +298,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-28 15:47:26
+-- Dump completed on 2019-06-07 14:34:06

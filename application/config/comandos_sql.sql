@@ -101,6 +101,24 @@
 
 
 
+    /* Pesquisa de Conteudo/Usuarios/Disciplinas/Tags */
+
+        -- conteudo 
+            select idConteudo, titulo,fotoCapa from conteudo,conteudodisciplina,disciplina,conteudotag,tag where (idConteudo = fk_cd_idConteudo and idDisciplina = fk_cd_idDisciplina and fk_ct_idConteudo = idConteudo and fk_ct_idTag = idTag) and (disciplina like "% $pesquisa %" or titulo like "% $pesquisa %" or tag like "% $pesquisa %");
+        -- '%' no inicio e fim serve para procurar algo semelhante em qualquer lugar do texto
+        
+        -- usuarios
+            select idUsuario,nome,tipo,fotoPerfil from usuario, tipousuario where nome like "% $pesquisa %";
+
+        -- disciplinas
+            select idDisciplina, disciplina from disciplina where disciplina like "% $pesquisa %";
+                --professores que ministram tais disciplinas
+                
+        -- tag
+            select idTag, tag from tag where tag like "% $pesquisa %";
+            -- conteudos dentro daquela tag pesquisada
+                select idConteudo,titulo,fotoCapa from conteudo,conteudotag,tag where fk_ct_idConteudo = idConteudo and fk_ct_idTag = idTag and idTag = "$idTag da pagina da tag q o user esta";
+
 
 
 
@@ -117,3 +135,30 @@
     - pesquisa de conteudo
     - cadastro conteudo -OK
 */
+
+
+/*
+    Outras Consultas que podem ser uteis
+
+select titulo,disciplina,tag from conteudo,tag,disciplina,conteudodisciplina,conteudotag where idconteudo=fk_cd_idConteudo and idConteudo = fk_ct_idConteudo and idDisciplina = fk_cd_idDisciplina and idTag = fk_ct_idTag;
+
+
+
+select idConteudo,titulo from conteudo where titulo like "%Socio%" or (select idConteudo,idDisciplina,fk_cd_idConteudo,fk_cd_idDisciplina from conteudo,disciplina,conteudodisciplina where idConteudo = fk_cd_idConteudo and idDisciplina = fk_cd_idDisciplina and disciplina like "%Socio%");
+-- OK
+select idDisciplina,disciplina from disciplina where disciplina like "%Socio%";
+-- OK
+select idConteudo, titulo, disciplina from conteudo,conteudodisciplina,disciplina where idConteudo = fk_cd_idConteudo and idDisciplina = fk_cd_idDisciplina and disciplina like "%Socio%";
+
+
+
+-- funcionando
+select idConteudo, titulo, disciplina, tag from conteudo,conteudodisciplina,disciplina,conteudotag,tag where (idConteudo = fk_cd_idConteudo and idDisciplina = fk_cd_idDisciplina and fk_ct_idConteudo = idConteudo and fk_ct_idTag = idTag) and (disciplina like "%Socio%" or titulo like "%Socio%" or tag like "%Socio%");
+
+*/
+
+-- OK
+insert into conteudodisciplina (fk_cd_idConteudo,fk_cd_idDisciplina) values (1,14),(2,18),(3,1),(4,20),(5,20),(6,8),(7,5),(8,3),(9,7),(10,9);
+
+
+select idConteudo, titulo,fotoCapa from conteudo,conteudodisciplina,disciplina,conteudotag,tag where (idConteudo = fk_cd_idConteudo and idDisciplina = fk_cd_idDisciplina and fk_ct_idConteudo = idConteudo and fk_ct_idTag = idTag) and (disciplina like "%prog%" or titulo like "%pro%" or tag like "%geo%");
