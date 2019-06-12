@@ -54,10 +54,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <!-- First Tier Drop Down -->
                             <label for="drop-2" class="toggle">Entrar <span class="fa fa-angle-down" aria-hidden="true"></span></span>
                             </label>
-                            <a href="#">Entrar <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                            <h6 class="linkEntrarMenu">Entrar <span class="fa fa-angle-down" aria-hidden="true"></span></h6>
                             <input type="checkbox" id="drop-2" />
                             <ul>
-                                <li><a href="#team" class="drop-text">Login</a></li>
+                                <li><a href="" class="drop-text">Login</a></li>
                                 <li><a href="" class="drop-text">Registrar-se</a></li>
                             </ul>
                         </li>
@@ -92,8 +92,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <img class="group list-group-image img-fluid" src="assets/images/g1.jpg" alt="">
                         </div>
                         <div class="caption card-body">
-                            <h4 class="group card-title inner list-group-item-heading">
+                            <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
                                 Programming</h4>
+                            </a>
                             <p class="group inner list-group-item-text">
                                 Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
                         </div>
@@ -105,8 +106,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <img class="group list-group-image img-fluid" src="assets/images/g2.jpg" alt="">
                         </div>
                         <div class="caption card-body">
-                            <h4 class="group card-title inner list-group-item-heading">
+                            <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
                                 Art &amp; Design</h4>
+                            </a>
                             <p class="group inner list-group-item-text">
                                 Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
                         </div>
@@ -118,8 +120,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <img class="group list-group-image img-fluid" src="assets/images/g3.jpg" alt="">
                         </div>
                         <div class="caption card-body">
-                            <h4 class="group card-title inner list-group-item-heading">
+                            <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
                                 Languages</h4>
+                            </a>
                             <p class="group inner list-group-item-text">
                                 Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
                         </div>
@@ -154,13 +157,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <section class="last-content text py-5">
         <div class="container py-md-3 text-center">
             <div class="last-w3pvt-inner-content px-lg-5">
-                <h3 class="mb-4 tittle-w3layouts">Get started with <span>Online </span> Education !</h3>
-                <p class="px-lg-5">Sed ut perspiciatis unde omnis natus error dolor volup tatem ed accus antium dolor emque
-                    laudantium, totam rem aperiam, eaqu ipsa quae ab illo quasi architi ecto beatae vitae dicta
-                    sunt dolor ipsum.</p>
+                <h3 class="mb-4 tittle-w3layouts">Participe Dessa <span>Comunidade</span>!</h3>
+                <p class="px-lg-5">Se inscrevendo você pode comentar suas dúvidas e salvar conteúdos para ler depois.</p>
                 <div class="buttons mt-md-4 mt-3">
-                    <a href="apply.html" class="btn btn-default">Get Started</a>
-                    <a href="apply.html" class="btn btn1"> Join Event </a>
+                    <a href="apply.html" class="btn btn-default btnIndex">Participar</a>
+                    <a href="apply.html" class="btn btn1 btnIndex"> Entrar </a>
                 </div>
             </div>
         </div>
