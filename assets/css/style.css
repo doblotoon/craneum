@@ -145,22 +145,6 @@ nav ul li {
     float: left;
 }
 
-.linkEntrarMenu {
-    font-weight: 400;
-    margin: 0em 0.7em;
-    font-size: 0.9em;
-    font-weight: normal;
-    color: #fff;
-    padding: 0 6px;
-    letter-spacing: 2px;
-    display: inline-block;
-    transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    -ms-transition: 0.5s all;
-}
-
 /* Styling the links */
 nav a {
     font-weight: 400;
@@ -209,7 +193,7 @@ nav ul li ul li:hover {
 nav ul ul {
     display: none;
     position: absolute;
-    top: 28px;
+    top: 26px;
     background: #fff;
     padding: 12px 10px;
     border-radius: 4px;
@@ -551,7 +535,7 @@ p.w3pvt-phone {
 /* //header */
 /*--/ banner --*/
 .main-content {
-    background: url(../images/bannerteste.png) center no-repeat;
+    background: url(../images/banner.png) center no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -723,10 +707,6 @@ a.btn.btn-course:hover {
     -o- border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
-}
-
-.linkItemRecemPostado:hover {
-    color: #f75225;
 }
 
 /*-- /last-content --*/
