@@ -40,7 +40,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="row">
                             <div class="col-lg-6 form-group">
                                 <label>Foto de perfil</label>
-                                <input class="" type="file" name="Foto de perfil" placeholder="" required="">
+                                <input class="" type="file" name="Foto de perfil" placeholder="" >
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label>N° de matrícula / SIAPE</label>
