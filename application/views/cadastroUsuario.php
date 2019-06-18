@@ -9,10 +9,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html lang="zxx">
 
 <?php
-    require_once('segmentos/head.php');
+    require_once('segmentos/header.php');
 ?>
 
-<body>
     <!-- main -->
     
     <!-- //main -->
@@ -69,9 +68,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- //banner-bottom -->
     <!-- footer -->
     
+<?php
+    require_once('segmentos/footer.php');
+?>   
+
     <!-- //footer -->
-
-
 
 
 </body>

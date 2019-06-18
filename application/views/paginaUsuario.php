@@ -1,0 +1,140 @@
+<!--
+Author: w3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<?php
+    require_once('segmentos/header.php');
+?>
+
+<div class="espacoInferiorUsuario">.</div>
+
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar espacoSuperiorSidebarUser card">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic" align='center'>
+					<img src="../assets/images/t1.jpg" class="img-responsive" alt="">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						Marcus Doe
+					</div>
+					<div class="profile-usertitle-job">
+						Estudante
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm">Editar</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="navUser">
+						<li class="active">
+							<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+							Overview </a>
+						</li>
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Account Settings </a>
+						</li>
+						<li>
+							<a href="#" target="_blank">
+							<i class="glyphicon glyphicon-ok"></i>
+							Tasks </a>
+						</li>
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-flag"></i>
+							Help </a>
+						</li>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9">
+        <div class="profile-content">
+            <h4 class="tittle-w3layouts two text-center" id="espacoInferiorLogin">Conteúdos Salvos</h4> 
+            <div id="products" class="row view-group my-lg-5 my-4">
+                <div class="item col-lg-6 mt-3">
+                    <div class="thumbnail card">
+                        <div class="img-event">
+                            <img class="group list-group-image img-fluid" src="../assets/images/g1.jpg" alt="">
+                        </div>
+                        <div class="caption card-body">
+                            <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
+                                Programming</h4>
+                            </a>
+                            <p class="group inner list-group-item-text">
+                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item col-lg-6 mt-3">
+                    <div class="thumbnail card">
+                        <div class="img-event">
+                            <img class="group list-group-image img-fluid" src="../assets/images/g2.jpg" alt="">
+                        </div>
+                        <div class="caption card-body">
+                            <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
+                                Art &amp; Design</h4>
+                            </a>
+                            <p class="group inner list-group-item-text">
+                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item col-lg-6 mt-3 espacoAcima">
+                    <div class="thumbnail card">
+                        <div class="img-event">
+                            <img class="group list-group-image img-fluid" src="../assets/images/g1.jpg" alt="">
+                        </div>
+                        <div class="caption card-body">
+                            <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
+                                Programming</h4>
+                            </a>
+                            <p class="group inner list-group-item-text">
+                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item col-lg-6 mt-3 espacoAcima">
+                    <div class="thumbnail card">
+                        <div class="img-event">
+                            <img class="group list-group-image img-fluid" src="../assets/images/g2.jpg" alt="">
+                        </div>
+                        <div class="caption card-body">
+                            <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
+                                Art &amp; Design</h4>
+                            </a>
+                            <p class="group inner list-group-item-text">
+                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>     
+        </div>
+		</div>
+	</div>
+</div>
+
+    
+<?php
+    require_once('segmentos/footer.php');
+?>   
