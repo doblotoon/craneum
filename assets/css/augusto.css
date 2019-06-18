@@ -140,3 +140,19 @@
   .espacoSuperiorSidebarUser {
       margin-top: 18%;
   }
+
+  .espacoIcon{
+    margin-left: 5%;
+  }
+
+  .tituloPagUser{
+    font-size: 2em !important;
+  }
+
+  .espacoInferiorFotoPerfilEditar{
+    margin-bottom: 2%;
+  }
+
+  .espacoInferiorEditarUsuario{
+    margin-bottom: 5%;
+  }

@@ -5,18 +5,12 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
-<!DOCTYPE html>
-<html lang="zxx">
-
 <?php
     require_once('segmentos/header.php');
 ?>
 
     <!-- main -->
     
-    <!-- //main -->
-
-    <!-- banner-bottom -->
     <section class="banner-bottom py-5">
         <div class="container py-md-4">
             <h3 class="tittle-w3layouts two text-center">Cadastro</h3>
@@ -65,7 +59,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
     </section>
-    <!-- //banner-bottom -->
+    <!-- //main -->
+
     <!-- footer -->
     
 <?php

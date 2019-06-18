@@ -5,9 +5,6 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
-<!DOCTYPE html>
-<html lang="zxx">
-
 <?php
     require_once('segmentos/header.php');
 ?>
@@ -35,7 +32,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!-- END SIDEBAR USER TITLE -->
 				<!-- SIDEBAR BUTTONS -->
 				<div class="profile-userbuttons">
-					<button type="button" class="btn btn-success btn-sm">Editar</button>
+					<button type="button" class="btn btn-warning btn-sm"><span class="fa fa-edit"></span> Editar</button>
 				</div>
 				<!-- END SIDEBAR BUTTONS -->
 				<!-- SIDEBAR MENU -->
@@ -43,23 +40,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<ul class="navUser">
 						<li class="active">
 							<a href="#">
-							<i class="glyphicon glyphicon-home"></i>
-							Overview </a>
+                            <span class="fa fa-bookmark espacoIcon"></span>
+							Conteúdo Salvo </a>
 						</li>
 						<li>
 							<a href="#">
-							<i class="glyphicon glyphicon-user"></i>
-							Account Settings </a>
-						</li>
-						<li>
-							<a href="#" target="_blank">
-							<i class="glyphicon glyphicon-ok"></i>
-							Tasks </a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="glyphicon glyphicon-flag"></i>
-							Help </a>
+							<span class="fa fa-bell espacoIcon"></span>
+							Painel de Controle </a>
 						</li>
 					</ul>
 				</div>
@@ -68,7 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 		<div class="col-md-9">
         <div class="profile-content">
-            <h4 class="tittle-w3layouts two text-center" id="espacoInferiorLogin">Conteúdos Salvos</h4> 
+            <h4 class="tittle-w3layouts two text-center tituloPagUser">Conteúdos Salvos</h4> 
             <div id="products" class="row view-group my-lg-5 my-4">
                 <div class="item col-lg-6 mt-3">
                     <div class="thumbnail card">
