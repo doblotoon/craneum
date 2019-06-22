@@ -16,6 +16,7 @@
         }
 
         abstract public function cadastrar($nome, $email, $fotoPerfil, $id, $senha, $confirmarSenha);
+        abstract public function logar($email, $senha);
 
     }
 
