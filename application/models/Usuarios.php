@@ -1,13 +1,22 @@
 <?php
-abstract class Usuarios{
+    require_once "Conexao.php";
+    abstract class Usuarios{
 
-    protected $nome;
-    private $id;
-    protected $email;
-    protected $fotoPerfil;
-    private $senha;
+        protected $nome;
+        private $id;
+        protected $email;
+        protected $fotoPerfil;
+        private $senha;
+        public $conexao;
 
-    abstract public function cadastrar();
 
-}
+        public function __construct(){
+            $conexao_objeto = new Conexao();
+            $this->conexao = $conexao_objeto->getConexao();
+        }
+
+        abstract public function cadastrar($nome, $email, $fotoPerfil, $id, $senha, $confirmarSenha);
+        abstract public function logar($email, $senha);
+
+    }
 
