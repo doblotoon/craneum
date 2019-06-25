@@ -16,19 +16,8 @@ class Aluno extends Usuarios{
         }
     }
 
-    public function logar($email, $senha){
-
-        $emailQ;//aqui tem que vir a query do email
-        $senhaQ; //aqui tem que vir a query da senha
-
-        if($email == $emailQ && $senha == $senhaQ){
-            //oqq acontece se o cara logar?
-        }else{
-            header('Location: Login?err=2');
-        }
-    }
+   
     
 }
 $aluno = new Aluno;
-
-print_r($aluno->conexao);
+print_r($aluno->logar("pgabiattiguardini@gmail.com",0));
