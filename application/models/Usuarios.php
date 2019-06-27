@@ -55,17 +55,22 @@
             }*/
         }
 
-        public function ExcluirUsuario($username){
+       
+
+        public function ExcluirUsuario($idUser){
 
             try {
-                $query = "delete from usuario where idUsuario = {$username}";
-                $linhas = $this->conexao->query($query);
-
-                echo "caiu no try\n";
+                $query = "delete from usuario where idUsuario = {$idUser}";
+                $linhas = $this->conexao->exec($query);
 
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
         }
 
+        /*public function mostrarUsuarios($id){
+            $query = "select * from usuario where idUsuario = {$id};";
+            $consulta = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);
+            return $consulta;
+        }*/
     }
