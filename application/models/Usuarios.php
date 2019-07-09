@@ -68,6 +68,36 @@
             }
         }
 
+        public function EditarUsuario($idUsuario,array $dados){
+            $queryDinamica = " ";
+            $queryWhere = "where idUsuario = {$idUsuario};";
+            $cont=1;
+            $ultPosicao = sizeof($dados);
+            foreach ($dados as $coluna => $valor) {
+                if(is_int($valor)){
+                    $queryDinamica = $queryDinamica."{$coluna} = {$valor}, ";
+                }else{
+                    $queryDinamica = $queryDinamica."{$coluna} = '{$valor}', ";
+                }
+                
+                if ($cont==$ultPosicao) {
+                    $queryDinamica = substr_replace($queryDinamica, "",-2,1);
+                    //echo $queryDinamica."\n";
+                }else{
+                    $cont++;
+                }
+            }
+            //echo $queryDinamica;
+            try{
+                //nome = '{$nomeNovo}', email = '{$emailNovo}', senha = '{$senhaNovaHash}', fotoPerfil = '{$fotoPerfilNovo}'
+                $query = "update usuario set ".$queryDinamica.$queryWhere;
+                //echo $query;
+                $linhas = $this->conexao->exec($query);
+            }catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
         /*public function mostrarUsuarios($id){
             $query = "select * from usuario where idUsuario = {$id};";
             $consulta = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);
