@@ -97,7 +97,7 @@
                 echo $e->getMessage();
             }
         }
-
+        
         /*public function mostrarUsuarios($id){
             $query = "select * from usuario where idUsuario = {$id};";
             $consulta = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);

@@ -22,5 +22,5 @@
     <!-- online-fonts -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <!-- //online-fonts -->
-    <link rel="shortcut icon" href="../../craneum/assets/images/fav.png" />
+    <link rel="shortcut icon" href="../assets/images/fav.png" />
 </head>

@@ -1,5 +1,5 @@
 |<?php
-require_once "Usuarios.php";
+    require_once "Usuarios.php";
 
 class Aluno extends Usuarios{
     
@@ -32,9 +32,6 @@ class Aluno extends Usuarios{
     
 }
 $aluno = new Aluno;
-//$dados = array('nome' => "Paxiguera","senha"=>"beijar aquela boquinha comunista","email"=>"aaaa@gmail");
-//$aluno->EditarUsuario(4,$dados);
-
 /*$aluno->cadastrar("asdgjkg","abasasgasard@gmail.com","nada.jpeg",890,"senha","senha");
 print_r($aluno->mostraSoUmUsuario());*/
 //print_r($aluno->logar("pgabiattiguardini@gmail.com",0));

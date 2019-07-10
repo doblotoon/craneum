@@ -1,39 +1,6 @@
-<!--
-Author: w3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <title>Craneum</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8" />
-    <script>
-        addEventListener("load", function() {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-
-    </script>
-    <!-- Custom Theme files -->
-    <link href="assets/bootstrap-4.3.1-dist\css\bootstrap.css" type="text/css" rel="stylesheet" media="all">
-    <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="all">
-    <link href="assets/css/augusto.css" type="text/css" rel="stylesheet" media="all">
-    <!-- font-awesome icons -->
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <!-- //Custom Theme files -->
-    <!-- online-fonts -->
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-    <!-- //online-fonts -->
-    <link rel="shortcut icon" href="../../craneum/assets/images/fav.png" />
-</head>
+<?php
+    require_once('segmentos/head.php');
+?>
 
 <body>
     <!-- main -->
@@ -46,7 +13,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     require_once('segmentos/menu.php')
                 ?>
                 <!-- // Menu -->
-            </div>
         </header>
         <!-- // Cabeçalho -->
 
@@ -72,7 +38,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="item col-lg-4 mt-3">
                     <div class="thumbnail card">
                         <div class="img-event">
-                            <img class="group list-group-image img-fluid" src="assets/images/g1.jpg" alt="">
+                            <img class="group list-group-image img-fluid" src="../assets/images/g1.jpg" alt="">
                         </div>
                         <div class="caption card-body">
                             <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
@@ -86,7 +52,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="item col-lg-4 mt-3">
                     <div class="thumbnail card">
                         <div class="img-event">
-                            <img class="group list-group-image img-fluid" src="assets/images/g2.jpg" alt="">
+                            <img class="group list-group-image img-fluid" src="../assets/images/g2.jpg" alt="">
                         </div>
                         <div class="caption card-body">
                             <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
@@ -100,7 +66,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="item col-lg-4 mt-3">
                     <div class="thumbnail card">
                         <div class="img-event">
-                            <img class="group list-group-image img-fluid" src="assets/images/g3.jpg" alt="">
+                            <img class="group list-group-image img-fluid" src="../assets/images/g3.jpg" alt="">
                         </div>
                         <div class="caption card-body">
                             <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
