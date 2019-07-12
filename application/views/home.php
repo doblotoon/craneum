@@ -1,5 +1,8 @@
 <?php
-    require_once('segmentos/head.php');
+    require_once 'segmentos/head.php';
+    
+    $caminhos = explode("\\",__DIR__);
+    print_r($caminhos);
 ?>
 
 <body>
@@ -10,7 +13,7 @@
             <div class="container-fluid">
                 <!-- Menu -->
                 <?php
-                    require_once('segmentos/menu.php')
+                    require_once 'segmentos/menu.php';
                 ?>
                 <!-- // Menu -->
         </header>
@@ -38,7 +41,7 @@
                 <div class="item col-lg-4 mt-3">
                     <div class="thumbnail card">
                         <div class="img-event">
-                            <img class="group list-group-image img-fluid" src="../assets/images/g1.jpg" alt="">
+                            <img class="group list-group-image img-fluid" src="application/assets/images/g1.jpg" alt="">
                         </div>
                         <div class="caption card-body">
                             <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
@@ -52,7 +55,7 @@
                 <div class="item col-lg-4 mt-3">
                     <div class="thumbnail card">
                         <div class="img-event">
-                            <img class="group list-group-image img-fluid" src="../assets/images/g2.jpg" alt="">
+                            <img class="group list-group-image img-fluid" src="application/assets/images/g2.jpg" alt="">
                         </div>
                         <div class="caption card-body">
                             <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
@@ -66,7 +69,7 @@
                 <div class="item col-lg-4 mt-3">
                     <div class="thumbnail card">
                         <div class="img-event">
-                            <img class="group list-group-image img-fluid" src="../assets/images/g3.jpg" alt="">
+                            <img class="group list-group-image img-fluid" src="application/assets/images/g3.jpg" alt="">
                         </div>
                         <div class="caption card-body">
                             <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">

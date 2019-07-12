@@ -15,26 +15,34 @@
             $this->conexao = $conexao_objeto->getConexao();
         }
 
-        abstract public function cadastrar($nome, $email, $fotoPerfil, $id, $senha, $confirmarSenha);
+        abstract public function cadastrar($dadosRecebidos);
 
         public function logar($email, $senha){
-
-            $senha_hash = $senha;
-            
             try {
                 $query = "select idUsuario,email,senha from usuario where email = '{$email}';";
                 $linhas = $this->conexao->query($query);
     
-                echo "caiu no try\n";
+                //echo "caiu no try\n";
     
                 if ($linhas->rowCount()>0) {
                     $dadosUsuario = $linhas->fetch(PDO::FETCH_OBJ);
                     $senha_retornada = $dadosUsuario->senha;
-                    echo "contou\n";
-                    if ($senha_retornada == $senha_hash) {
-                        echo "senha é :  {$senha_retornada}\n";
-                        echo "LOGOU CARALHO\n";
+                    //echo "contou\n";
+                    //echo $dadosUsuario->email;
+                    //echo $senha_retornada."\n";
+                    if (password_verify($senha,$senha_retornada)) {
+                        //echo "senha é :  {$senha_retornada}\n";
+                        //echo "LOGOU CARALHO\n";
+                        //print_r($dadosUsuario);
+                        $id = $dadosUsuario->idUsuario;
+                        $this->setUsuario($id);         
+                        
+                        return "sucesso";
+                    }else{
+                        return "err2";
                     }
+                }else{
+                    return "err1";
                 }
             } catch (PDOException $e) {
                 echo $e->getMessage();
@@ -98,6 +106,30 @@
             }
         }
         
+        protected function setUsuario($id){
+            try {
+                $query = "select * from usuario where idUsuario={$id};";
+                $linhasRetornadas = $this->conexao->query($query);
+                if ($linhasRetornadas->rowCount()>0) {
+                    $dadosRetornados = $linhasRetornadas->fetch(PDO::FETCH_OBJ);
+                            
+                    $this->id = $dadosRetornados->idUsuario;
+                    $this->nome = $dadosRetornados->nome;
+                    $this->email = $dadosRetornados->email;
+                    $this->senha = $dadosRetornados->senha;
+                    $this->fotoPerfil = $dadosRetornados->fotoPerfil;    
+                }
+            } catch (PDOException $e) {
+                echo $e;
+            }   
+        }
+        public function getUsuario(){
+            $dados = array('id'=>$this->id,
+                            'nome'=>$this->nome,
+                            'email'=>$this->email,
+                            'fotoPerfil'=>$this->fotoPerfil);
+            return $dados;
+        }
         /*public function mostrarUsuarios($id){
             $query = "select * from usuario where idUsuario = {$id};";
             $consulta = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);

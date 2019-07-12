@@ -6,7 +6,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
 <?php
-    require_once('segmentos/header.php');
+    require_once 'segmentos/header.php';
+    if (isset($_GET['err'])) {
+        switch ($_GET['err']) {
+            case '1':
+                echo "erro o email";
+                //exibir um modal dizendo o que a pessoa errou
+                break;
+            case '2':
+                echo "erro a senha";
+                //exibir um modal dizendo o que a pessoa errou
+                break;
+        }
+    }
 ?>
 
 
@@ -20,7 +32,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <div class="col-lg-1 comment-bottom"></div>
                 <div class="col-lg-6 comment-bottom w3pvt_mail_grid_right">
-                    <form action="#" method="post">
+                    <form action="../controllers/Login.php" method="post">
                         <div class="row">
                             <div class="col-lg-7 form-group">
                                 <label>Email</label>
@@ -30,7 +42,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="row">
                             <div class="col-lg-7 form-group">
                                 <label>Senha</label>
-                                <input class="form-control" type="password" name="Senha" placeholder="" required="">
+                                <input class="form-control" type="password" name="senha" placeholder="" required="">
                             </div>
                         </div>
                         <button type="submit" class="btn submit mt-3">Entrar</button>
@@ -44,7 +56,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- footer -->
     
 <?php
-    require_once('segmentos/footer.php');
+    require_once 'segmentos/footer.php';
 ?>   
 
     <!-- //footer -->
