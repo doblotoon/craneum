@@ -12,7 +12,6 @@
                 session_start();
                 $_SESSION = $dadosUsuario;
                 $_SESSION['status'] = true;
-                //print_r($dadosUsuario);
                 //echo "FOI";
                 header('Location: ../../index.php');
                 break;

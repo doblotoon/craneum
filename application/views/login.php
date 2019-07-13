@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
 <?php
-    require_once 'segmentos/header.php';
+    require_once 'header.php';
     if (isset($_GET['err'])) {
         switch ($_GET['err']) {
             case '1':
@@ -56,7 +56,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- footer -->
     
 <?php
-    require_once 'segmentos/footer.php';
+    require_once 'footer.php';
 ?>   
 
     <!-- //footer -->

@@ -1,6 +1,7 @@
 <?php
     //$pasta = __DIR__;
     //echo $pasta;
+    // TODO: Alterar o formato dos links para eles funcionarem em todas as páginas da forma correta.
 ?>
                     <nav class="py-md-4 py-3 d-lg-flex nav_w3pvt">
                     <div id="logo">
@@ -9,7 +10,7 @@
                     <label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
                     <input type="checkbox" id="drop" />
                     <ul class="menu mt-lg-3 ml-auto">
-                        <li class="active"><a href="../../index.php">Home</a></li>
+                        <li class="active"><a href="index.php">Home</a></li>
                         <li>
                             <!-- First Tier Drop Down -->
                             <label for="drop-2" class="toggle">Entrar <span class="fa fa-angle-down" aria-hidden="true"></span></span>

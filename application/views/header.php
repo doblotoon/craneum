@@ -20,7 +20,7 @@
                 <!-- nav -->
                 
                 <?php
-                    require_once('menu.php');
+                    require_once 'menu.php';
                 ?>
                 <!-- //nav -->
             </div>

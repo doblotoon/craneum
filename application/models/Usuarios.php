@@ -76,25 +76,71 @@
             }
         }
 
-        public function EditarUsuario($idUsuario,array $dados){
+        public function EditarUsuario($idUsuario,array $dadosAtualizados, array $dadosOriginais){
+            //print_r($dados);
             $queryDinamica = " ";
             $queryWhere = "where idUsuario = {$idUsuario};";
             $cont=1;
-            $ultPosicao = sizeof($dados);
-            foreach ($dados as $coluna => $valor) {
-                if(is_int($valor)){
-                    $queryDinamica = $queryDinamica."{$coluna} = {$valor}, ";
-                }else{
-                    $queryDinamica = $queryDinamica."{$coluna} = '{$valor}', ";
-                }
-                
-                if ($cont==$ultPosicao) {
-                    $queryDinamica = substr_replace($queryDinamica, "",-2,1);
-                    //echo $queryDinamica."\n";
-                }else{
-                    $cont++;
+            $ultPosicao = sizeof($dadosAtualizados);
+            /*if (isset($dadosAtualizados['senha']) and isset($dadosAtualizados['confirmarSenha']) {
+                $senha = $dadosAtualizados['senha'];
+                $confirmarSenha = $dadosAtualizados['confirmarSenha'];
+            }*/
+            /*echo "dados originais</br>";
+            print_r($dadosOriginais);
+            
+            echo "</br>dados originais</br>";
+            print_r($dadosOriginais);
+            exit();
+            */
+            unset($dadosOriginais['id']);
+            unset($dadosOriginais['status']);
+            if ($dadosAtualizados['fotoPerfil']==null) {
+                unset($dadosAtualizados['fotoPerfil']);
+                unset($dadosOriginais['fotoPerfil']);
+            }
+            $dadosInsert = array();
+            foreach ($dadosOriginais as $colunas => $valores) {
+                if ($valores!=$dadosAtualizados[$colunas]) {
+                    //echo $valores."</br>";
+                    //if ($colunas=="fotoPerfil" and empty($dadosAtualizados[$colunas])) {
+                      //  $colunasQuery["fotoPerfil"] = $dadosOriginais[$colunas];
+                        //echo "</br>".$colunasQuery[$colunas]."</br>";
+                    //}else{
+                        $colunasQuery[$colunas]=$dadosAtualizados[$colunas];
+                    //}
+                //}else
+                    echo $valores;
                 }
             }
+            echo "colunasQuery </br>";
+            print_r($colunasQuery);
+            exit();
+            if (!empty($senha) and !empty($confirmarSenha)) {   
+                if($dadosAtualizados['senha']==$dadosAtualizados["confirmarSenha"]){
+                    unset($dadosAtualizados["confirmarSenha"]);
+                    foreach ($dadosAtualizados as $coluna => $valor) {
+                        if(is_int($valor)){
+                            $queryDinamica = $queryDinamica."{$coluna} = {$valor}, ";
+                        }else{
+                            $queryDinamica = $queryDinamica."{$coluna} = '{$valor}', ";
+                        }
+                        
+                        if ($cont==$ultPosicao) {
+                            $queryDinamica = substr_replace($queryDinamica, "",-2,1);
+                            //echo $queryDinamica."\n";
+                        }else{
+                            $cont++;
+                        }
+                    }        
+                }else{
+                    return 'errSenha';
+                }
+            }else{
+                return 'errSenhaVazia';
+            }
+            //unset($dadosAtualizados['confirmarSenha']);
+            
             //echo $queryDinamica;
             try{
                 //nome = '{$nomeNovo}', email = '{$emailNovo}', senha = '{$senhaNovaHash}', fotoPerfil = '{$fotoPerfilNovo}'
