@@ -1,4 +1,5 @@
 <?php
+/*
 require "../models/Aluno.php";
 require '../models/Professor.php';
     $usuario = new Aluno();
@@ -11,3 +12,6 @@ require '../models/Professor.php';
 
     $exclusao = new ExcluirUsuario();
     $exclusao->ExcluirUsuario($_SESSION['id']);
+
+    TODO: Integrar excluir usuário à WEB
+/*

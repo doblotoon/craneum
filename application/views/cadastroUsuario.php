@@ -64,7 +64,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- footer -->
     
 <?php
-    require_once('segmentos/footer.php');
+    require_once('footer.php');
 ?>   
 
     <!-- //footer -->

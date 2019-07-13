@@ -85,7 +85,7 @@
 <div class="espacoInferiorEditarUsuario">.</div>
 
 <?php
-    require_once('segmentos/footer.php');
+    require_once('footer.php');
 ?>   
 
     <!-- //footer -->

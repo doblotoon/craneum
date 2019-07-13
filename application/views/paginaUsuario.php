@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
 <?php
-    require_once('segmentos/header.php');
+    require_once('header.php');
 ?>
 
 <div class="espacoInferiorUsuario">.</div>
@@ -123,5 +123,5 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     
 <?php
-    require_once('segmentos/footer.php');
+    require_once('footer.php');
 ?>   
