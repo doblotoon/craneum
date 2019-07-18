@@ -16,6 +16,7 @@
 
 .linkEntrarMenu:hover {
     color: #f75225;
+    cursor: pointer;
 }
 
 .linkItemRecemPostado:hover {

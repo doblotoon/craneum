@@ -19,3 +19,5 @@
 			<!-- //move top icon -->
         </div>
 </footer>
+<script src="<?=$caminho?>assets/js/jquery.js"></script>
+<script src="<?=$caminho?>assets/js/menu.js"></script>

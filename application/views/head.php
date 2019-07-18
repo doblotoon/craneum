@@ -1,4 +1,15 @@
 <?php
+    if (!isset($_SESSION)) {
+        session_start();
+        if (!empty($_SESSION['status']) and $_SESSION['status']==true) {
+            echo 'ta logado';
+            $login = true;
+        }else{
+            $login = false;
+            echo 'nao ta logado';
+        }
+    }
+
     function reqURL(){
         $aux = explode("/", $_SERVER['REQUEST_URI']);
         $aux_two = explode(".", end($aux));
@@ -7,11 +18,12 @@
     }
 
     $URLAtual= reqURL();
-    if($URLAtual==""){
+    if($URLAtual=="" or $URLAtual=="index"){
         $caminho= "";
     } else {
         $caminho= "../";
     }
+    
 ?>
 
 <!DOCTYPE html>

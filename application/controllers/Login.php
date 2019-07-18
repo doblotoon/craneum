@@ -1,5 +1,8 @@
 <?php
+    require "../views/head.php";
     require_once "../models/Aluno.php";
+    $log = $_GET['log'];
+    $check = $_GET['check'];
     $dados_enviados = $_POST;
     function login($dados_enviados){
         $usuario = new Aluno;
@@ -13,7 +16,7 @@
                 $_SESSION = $dadosUsuario;
                 $_SESSION['status'] = true;
                 //echo "FOI";
-                header('Location: ../../index.php');
+                header('Location: ../index.php');
                 break;
             case 'err1':
                 header('Location: ../views/login.php?err=1');
@@ -27,4 +30,14 @@
                 break;
         }
     }
-    login($dados_enviados);
+
+    function logout(){
+        session_destroy();
+    }
+
+    if ($log=="in" and $check) {
+        login($dados_enviados);
+    }elseif ($log=="out" and $check==true) { 
+        logout();
+        header("Location: ../index.php");
+    }

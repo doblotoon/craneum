@@ -70,7 +70,7 @@ body a:focus {
 body img {
     border-radius: 4px;
     -webkit-border-radius: 4px;
-    -o- border-radius: 4px;
+    -o-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
 }
@@ -201,11 +201,11 @@ nav ul ul {
     /* has to be the same number as the "line-height" of "nav a" */
 }
 
-/* Display Dropdowns on Hover */
+/* Display Dropdowns on Hover 
 nav ul li:hover > ul {
     display: inherit;
 }
-
+*/
 /* Fisrt Tier Dropdown */
 nav ul ul li {
     width: 130px;
@@ -573,7 +573,7 @@ form.banner-form {
     padding: 0.5em;
     border-radius: 4px;
     -webkit-border-radius: 4px;
-    -o- border-radius: 4px;
+    -o-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     box-shadow: 0 12px 60px rgba(0, 0, 0, .2);
@@ -610,7 +610,7 @@ a.btn.btn-course {
     width: 37%;
     border-radius: 4px;
     -webkit-border-radius: 4px;
-    -o- border-radius: 4px;
+    -o-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     font-weight: 400;
@@ -704,7 +704,7 @@ a.btn.btn-course:hover {
 .content-w3pvt-img img {
     border-radius: 50%;
     -webkit-border-radius: 50%;
-    -o- border-radius: 50%;
+    -o-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
 }
@@ -739,7 +739,7 @@ a.btn.btn-course:hover {
     letter-spacing: 1px;
     border-radius: 4px;
     -webkit-border-radius: 4px;
-    -o- border-radius: 4px;
+    -o-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
 }
@@ -763,7 +763,7 @@ a.btn.btn-course:hover {
 .testi_grid img {
     border-radius: 50%;
     -webkit-border-radius: 50%;
-    -o- border-radius: 50%;
+    -o-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
 }
@@ -839,7 +839,7 @@ button.btn.submit {
     cursor: pointer;
     border-radius: 4px;
     -webkit-border-radius: 4px;
-    -o- border-radius: 4px;
+    -o-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     font-weight: 400;
@@ -1158,8 +1158,11 @@ a.move-top span {
 
 }
 
-@media(max-width:991px) {
-    .content-left-bottom.entry-w3layouts-info. {
+@media(max-width:992px) {
+    .linkEntrarMenu{
+        display: none !important;
+    }
+    .content-left-bottom.entry-w3layouts-info {
         margin-top: 1em;
     }
 

@@ -1,14 +1,5 @@
 <?php
-    
-    if (!isset($_SESSION)) {
-        session_start();
-        if (!empty($_SESSION['status']) and $_SESSION['status']==true) {
-            echo 'ta logado';
-        }else{
-            echo 'nao ta logado';
-        }
-    }
-    require_once 'head.php';
+        require_once 'head.php';
 ?>
 
 <body>

@@ -19,6 +19,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 break;
         }
     }
+    //session_destroy();
 ?>
 
 
@@ -32,7 +33,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <div class="col-lg-1 comment-bottom"></div>
                 <div class="col-lg-6 comment-bottom w3pvt_mail_grid_right">
-                    <form action="../controllers/Login.php" method="post">
+                    <form action="../controllers/Login.php?log=in&check=true" method="post">
                         <div class="row">
                             <div class="col-lg-7 form-group">
                                 <label>Email</label>

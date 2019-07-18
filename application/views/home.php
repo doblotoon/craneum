@@ -5,7 +5,6 @@
     //print_r($caminhos);
 ?>
 
-<body>
     <!-- main -->
     <div class="main-content" id="home">
         <!-- Cabeçalho -->
@@ -126,6 +125,3 @@
     require_once 'footer.php';
 ?>
     <!-- //footer -->
-</body>
-
-</html>
