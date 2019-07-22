@@ -86,28 +86,24 @@
                 unset($dadosOriginais['fotoPerfil']);
             }
             foreach ($dadosAtualizados as $colunas => $valores) {
-                if (empty($valores) or $colunas=="confirmarSenha") {
+                if (empty($valores) or $valores == $dadosOriginais[$colunas]) {
                     unset($dadosAtualizados[$colunas]);
                     unset($dadosOriginais[$colunas]);
                 }
             }
             $ultPosicao = sizeof($dadosAtualizados);
-            foreach ($dadosOriginais as $colunas => $valores) {
-                if ($valores!=$dadosAtualizados[$colunas]) {
-                    $valorAtual = $dadosAtualizados[$colunas];
-                    if ($colunas=="senha") {
-                        $valorAtual = password_hash($valorAtual, PASSWORD_DEFAULT);
-                    }
-                    if (is_int($valorAtual)) {
-                        $queryDinamica = $queryDinamica."{$colunas} = {$valorAtual}, ";
-                    }else{
-                        $queryDinamica = $queryDinamica."{$colunas} = '{$valorAtual}', ";
-                    }
-                    if ($cont==$ultPosicao) {
-                        $queryDinamica = substr_replace($queryDinamica, "",-2,1);
-                    }else{
-                        $cont++;
-                    }
+            foreach ($dadosOriginais as $colunas => $valores) {    
+                $valorAtual = $dadosAtualizados[$colunas];        
+                if (is_int($valorAtual)) {
+                    $queryDinamica = $queryDinamica."{$colunas} = {$valorAtual}, ";
+                }else{
+                    $queryDinamica = $queryDinamica."{$colunas} = '{$valorAtual}', ";
+                }
+        
+                if ($cont==$ultPosicao) {
+                    $queryDinamica = substr_replace($queryDinamica, "",-2,1);
+                }else{
+                    $cont++;    
                 }
             }
             try{

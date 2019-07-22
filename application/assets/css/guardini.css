@@ -1,0 +1,37 @@
+#fotoPerfilUpdate{
+    display: none;
+}
+#imgPerfilUpdate{
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    width:100%;
+    height: 60%;
+}
+#cover{
+    transition: .5s ease;
+    opacity: 1;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+#labelFotoUpdate:hover #imgPerfilUpdate{
+    opacity: 0.5;
+}
+#labelFotoUpdate:hover #cover{
+    opacity: 1;
+}
+#labelFotoUpdate:hover #textoCover{
+    background-color: #000000;
+}
+#textoCover{
+    background-color: #000000a1;
+    color: white;
+    font-size: 18px;
+    padding: 16px 8px;
+    cursor: pointer;
+}

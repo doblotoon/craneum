@@ -36,6 +36,8 @@
         <link href="<?=$caminho?>assets/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
         <link href="<?=$caminho?>assets/css/style.css" type="text/css" rel="stylesheet" media="all">
         <link href="<?=$caminho?>assets/css/augusto.css" type="text/css" rel="stylesheet" media="all">
+        <link href="<?=$caminho?>assets/css/guardini.css" type="text/css" rel="stylesheet" media="all">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- font-awesome icons -->
         <link href="<?=$caminho?>assets/css/font-awesome.min.css" rel="stylesheet">
         <!-- //Custom Theme files -->

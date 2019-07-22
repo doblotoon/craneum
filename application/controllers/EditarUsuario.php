@@ -17,8 +17,10 @@ require '../models/Professor.php';
             if (!empty($_FILES['fotoPerfil']['name'])) {
                 $dadosRecebidos['fotoPerfil'] = $this->salvarFoto();
             }
-            if (!empty($_POST['senha']) and !empty($_POST['confirmarSenha'])) {
-                if ($_POST['senha']==$_POST['confirmarSenha']) {
+            if (!empty($dadosRecebidos['senha']) and !empty($dadosRecebidos['confirmarSenha'])) {
+                if ($dadosRecebidos['senha']==$dadosRecebidos['confirmarSenha']) {
+                    unset($dadosRecebidos['confirmarSenha']);
+                    $dadosRecebidos['senha'] = password_hash($dadosRecebidos['senha'],PASSWORD_DEFAULT);
                     $this->usuario->editarUsuario($sessao, $dadosRecebidos, $todosDados);        
                 }else{
                     return "errSenha";
