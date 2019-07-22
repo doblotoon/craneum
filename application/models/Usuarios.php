@@ -77,81 +77,51 @@
         }
 
         public function EditarUsuario($idUsuario,array $dadosAtualizados, array $dadosOriginais){
-            //print_r($dados);
             $queryDinamica = " ";
             $queryWhere = "where idUsuario = {$idUsuario};";
             $cont=1;
-            $ultPosicao = sizeof($dadosAtualizados);
-            /*if (isset($dadosAtualizados['senha']) and isset($dadosAtualizados['confirmarSenha']) {
-                $senha = $dadosAtualizados['senha'];
-                $confirmarSenha = $dadosAtualizados['confirmarSenha'];
-            }*/
-            /*echo "dados originais</br>";
-            print_r($dadosOriginais);
-            
-            echo "</br>dados originais</br>";
-            print_r($dadosOriginais);
-            exit();
-            */
             unset($dadosOriginais['id']);
             unset($dadosOriginais['status']);
-            if ($dadosAtualizados['fotoPerfil']==null) {
-                unset($dadosAtualizados['fotoPerfil']);
+            if (!isset($dadosAtualizados['fotoPerfil'])) {
                 unset($dadosOriginais['fotoPerfil']);
             }
-            $dadosInsert = array();
+            foreach ($dadosAtualizados as $colunas => $valores) {
+                if (empty($valores) or $colunas=="confirmarSenha") {
+                    unset($dadosAtualizados[$colunas]);
+                    unset($dadosOriginais[$colunas]);
+                }
+            }
+            $ultPosicao = sizeof($dadosAtualizados);
             foreach ($dadosOriginais as $colunas => $valores) {
                 if ($valores!=$dadosAtualizados[$colunas]) {
-                    //echo $valores."</br>";
-                    //if ($colunas=="fotoPerfil" and empty($dadosAtualizados[$colunas])) {
-                      //  $colunasQuery["fotoPerfil"] = $dadosOriginais[$colunas];
-                        //echo "</br>".$colunasQuery[$colunas]."</br>";
-                    //}else{
-                        $colunasQuery[$colunas]=$dadosAtualizados[$colunas];
-                    //}
-                //}else
-                    echo $valores;
+                    $valorAtual = $dadosAtualizados[$colunas];
+                    if ($colunas=="senha") {
+                        $valorAtual = password_hash($valorAtual, PASSWORD_DEFAULT);
+                    }
+                    if (is_int($valorAtual)) {
+                        $queryDinamica = $queryDinamica."{$colunas} = {$valorAtual}, ";
+                    }else{
+                        $queryDinamica = $queryDinamica."{$colunas} = '{$valorAtual}', ";
+                    }
+                    if ($cont==$ultPosicao) {
+                        $queryDinamica = substr_replace($queryDinamica, "",-2,1);
+                    }else{
+                        $cont++;
+                    }
                 }
             }
-            echo "colunasQuery </br>";
-            print_r($colunasQuery);
-            exit();
-            if (!empty($senha) and !empty($confirmarSenha)) {   
-                if($dadosAtualizados['senha']==$dadosAtualizados["confirmarSenha"]){
-                    unset($dadosAtualizados["confirmarSenha"]);
-                    foreach ($dadosAtualizados as $coluna => $valor) {
-                        if(is_int($valor)){
-                            $queryDinamica = $queryDinamica."{$coluna} = {$valor}, ";
-                        }else{
-                            $queryDinamica = $queryDinamica."{$coluna} = '{$valor}', ";
-                        }
-                        
-                        if ($cont==$ultPosicao) {
-                            $queryDinamica = substr_replace($queryDinamica, "",-2,1);
-                            //echo $queryDinamica."\n";
-                        }else{
-                            $cont++;
-                        }
-                    }        
-                }else{
-                    return 'errSenha';
-                }
-            }else{
-                return 'errSenhaVazia';
-            }
-            //unset($dadosAtualizados['confirmarSenha']);
-            
-            //echo $queryDinamica;
             try{
-                //nome = '{$nomeNovo}', email = '{$emailNovo}', senha = '{$senhaNovaHash}', fotoPerfil = '{$fotoPerfilNovo}'
                 $query = "update usuario set ".$queryDinamica.$queryWhere;
-                //echo $query;
                 $linhas = $this->conexao->exec($query);
+                if ($linhas==1) {
+                    foreach ($dadosAtualizados as $colunas => $valores) {
+                        $_SESSION[$colunas] = $valores;
+                    }
+                }
             }catch (PDOException $e) {
                 echo $e->getMessage();
             }
         }
-        
         protected function setUsuario($id){
             try {
                 $query = "select * from usuario where idUsuario={$id};";
@@ -173,7 +143,8 @@
             $dados = array('id'=>$this->id,
                             'nome'=>$this->nome,
                             'email'=>$this->email,
-                            'fotoPerfil'=>$this->fotoPerfil);
+                            'fotoPerfil'=>$this->fotoPerfil,
+                            'senha'=>$this->senha);
             return $dados;
         }
         /*public function mostrarUsuarios($id){

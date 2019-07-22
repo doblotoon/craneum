@@ -15,7 +15,7 @@
                         <li>
                             <?php if($login):?>
                                 <label>
-                                    <a href="controllers/Login.php?log=out&check=true">
+                                    <a href="<?=$caminho?>controllers/Login.php?log=out&check=true">
                                         Sair
                                     </a>
                                 </label>
@@ -28,8 +28,8 @@
                                 <h6 class="linkEntrarMenu">Entrar <span class="fa fa-angle-down" aria-hidden="true"></span></h6>
                                 <input type="checkbox" id="drop-2" />
                                 <ul id="dropUL">
-                                    <li><a href="views/login.php" class="drop-text">Login</a></li>
-                                    <li><a href="views/cadastroUsuario.php" class="drop-text">Registrar-se</a></li>
+                                    <li><a href="<?=$caminho?>views/login.php" class="drop-text">Login</a></li>
+                                    <li><a href="<?=$caminho?>views/cadastroUsuario.php" class="drop-text">Registrar-se</a></li>
                                 </ul>
                             <?php endif;?>
                         </li>

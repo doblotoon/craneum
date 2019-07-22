@@ -14,16 +14,23 @@ require '../models/Professor.php';
         }
 
         public function editarUsuario($sessao, array $dadosRecebidos, $todosDados){
-            $dadosRecebidos['fotoPerfil'] = $this->salvarFoto();
-            //echo $dadosRecebidos['fotoPerfil'];
-            $this->usuario->editarUsuario($sessao, $dadosRecebidos, $todosDados);
-            //echo $sessao."</br>";
-            //print_r($dadosRecebidos);
+            if (!empty($_FILES['fotoPerfil']['name'])) {
+                $dadosRecebidos['fotoPerfil'] = $this->salvarFoto();
+            }
+            if (!empty($_POST['senha']) and !empty($_POST['confirmarSenha'])) {
+                if ($_POST['senha']==$_POST['confirmarSenha']) {
+                    $this->usuario->editarUsuario($sessao, $dadosRecebidos, $todosDados);        
+                }else{
+                    return "errSenha";
+                }
+            }else{
+                $this->usuario->editarUsuario($sessao, $dadosRecebidos, $todosDados);
+            }
         }
 
         public function salvarFoto(){ // TODO: Ajeitar caso o usuário queira alterar a foto.
 
-            if (!isset($_FILES)) {
+            if (isset($_FILES)) {
 
                 $foto = $_FILES['fotoPerfil'];
                 $destino_foto = "../assets/images/usuarios/";
@@ -36,14 +43,7 @@ require '../models/Professor.php';
                 $arquivoFinal = $destino_foto.$nomeFoto;
                 $origem= $foto['tmp_name'];
                 $enviada= move_uploaded_file($origem, $arquivoFinal);
-                //$caminho = $nomeFoto;
                 $caminho = $arquivoFinal;
-                echo "esse é o caminho: ".$caminho;
-                return $caminho;
-            }elseif(isset($_FILES)){
-                echo "COm imagem</br>";
-                $caminho = 'null';
-                echo "esse é o caminho fudido: ".$caminho;
                 return $caminho;
             }
         }
@@ -51,22 +51,4 @@ require '../models/Professor.php';
     }   
 
     $update = new EditarUsuario($usuario);
-/*
-    if (isset($_GET['acao'])) {
-        switch ($_GET['acao']) {
-            case 'dados':
-*/
     $update->editarUsuario($_SESSION['id'],$_POST,$_SESSION);
-/*
-                break;
-            case 'foto':
-                $update->salvarFoto($_SESSION['id'],$_FILES);
-                break;
-            default:
-                header("Location: ../views/editarUsuario.php");
-                break;
-        }
-    }
-*/
-    
-    //print_r($_SESSION);

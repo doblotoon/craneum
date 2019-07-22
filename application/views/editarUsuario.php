@@ -1,5 +1,6 @@
 <?php
     require_once('header.php');
+    $foto = $_SESSION['fotoPerfil'];
 ?>
 
 <div class="espacoInferiorUsuario">.</div>
@@ -31,7 +32,7 @@
     	<div class="col-sm-9">
 
           <div class="tab-content">
-                  <form class="form" action="../controllers/EditarUsuario.php" method="post" id="registrationForm">
+                  <form class="form" action="../controllers/EditarUsuario.php" method="post" enctype='multipart/form-data' id="registrationForm">
                       
                       <div class="form-group"> 
                           <div class="col-xs-6">
@@ -64,7 +65,7 @@
                       <div class="form-group">
                           <div class="col-xs-6">
                             <label for="password2"><h4>Foto de Perfil</h4></label>
-                              <input type="file" class="form-control" name="fotoPerfil" id="password2" placeholder="Repita a sua senha" title="enter your password2.">
+                              <input type="file" class="form-control" name="fotoPerfil" id="password2">
                           </div>
                       </div>
 
