@@ -20,7 +20,7 @@
                                     </a>
                                 </label>
                                 <label>
-                                    <?=$_SESSION['nome'];?>
+                                    <a href='views/editarUsuario.php'><?=$_SESSION['nome'];?></a>
                                 </label>
                             <?php else:?>
                                 <!-- First Tier Drop Down -->
