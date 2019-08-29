@@ -45,6 +45,7 @@
         <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
         <!-- //online-fonts -->
         <link rel="shortcut icon" href="<?=$caminho?>assets/images/fav.png" /> <!-- TODO: Buscar uma forma de fazer com que o favicon funcione nas demais páginas, não apenas na index --> 
+        <script src='../assets/js/jquery.js'></script>
         <script>
             addEventListener("load", function() {
                 setTimeout(hideURLbar, 0);
@@ -55,4 +56,6 @@
             }
 
         </script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
     </head>
