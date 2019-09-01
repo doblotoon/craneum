@@ -145,16 +145,7 @@
         }
     */
     -- caso a tag nao exista utilizar o insert de tag \/
-        -- OK
-        insert into conteudo (titulo,conteudo,dataPostagem,fotoCapa,fk_cont_idUsuario) where (/* titulo */,/* conteudo */,/* data da postagem */,/* capa do conteudo */,/* id do usuario q criou */);
-        -- OK
-        insert into conteudotag (fk_ct_idTag,fk_ct_idConteudo) values (/* id da tag do conteudo */,/* id do conteudo*/);
-        -- caso o conteudo tiver mais de uma tag devemos utilizar um for com a qtd de elementos do array das tags
-        /* foreach (com os elementos do array de tags){
-                executar o insert tantas vezes q tiver de tag e utilizar a mesma id de conteudo
-            }
-        */
-        -- caso a tag nao exista utilizar o insert de tag \/
+        
 
     /* Novas Tags  OK*/
 

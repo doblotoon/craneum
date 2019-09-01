@@ -1,11 +1,13 @@
 <?php
+    require_once "../models/Tag.php";
 
     class cadastroTag{
-        public function cadastrarTag($ultimaId){
-            echo $ultimaId;
-        }
-        public function tagConteudo($idConteudo,$idTag){
+        public $tagClasse;
 
-            
+        public function __construct(){
+            $this->tagClasse = new Tag();
+        }
+        public function cadastrarTag($ultimaId){
+            $this->tagClasse->cadastroTag($ultimaId);
         }
     }

@@ -31,7 +31,8 @@
     <head>
         <title>Craneum</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta charset="utf-8" />
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
         <!-- Custom Theme files -->
         <link href="<?=$caminho?>assets/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
         <link href="<?=$caminho?>assets/css/style.css" type="text/css" rel="stylesheet" media="all">

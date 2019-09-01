@@ -1,5 +1,10 @@
 <?php
 	require_once 'header.php';
+	require_once '../models/Tag.php';
+	$tagObj = new Tag();
+	$tags = $tagObj->getTags();
+	setlocale(LC_COLLATE, 'pt_BR.utf-8');
+	asort($tags, SORT_LOCALE_STRING);
 ?>
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
@@ -13,10 +18,16 @@
 				<input type="file" name="fotoCapa" id="">
 
 
-				<select class="form-control" id='teste' name='tags' multiple="multiple">
-					<option selected="selected">orange</option>
+				<select class="form-control" id='teste' name='tags' multiple="multiple" style='width:30%;'>
+					<?php
+						foreach ($tags as $key => $tag) {
+							echo "<option>{$tag}</option>";
+						}
+					?>
+					<!--<option selected="selected">orange</option>
 					<option>white</option>
 					<option selected="selected">purple</option>
+					-->
 				</select>
 				
 
