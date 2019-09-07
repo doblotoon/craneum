@@ -28,6 +28,12 @@
             return $ultimaId;
             //formato das datas para serem salvos == ano-mes-dia *espaço* hora:minuto:segundo
         }
+        public function getConteudo(int $id){
+            $query = "select * from conteudo where idConteudo = {$id};";
+            $conteudo = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);
+            //$conteudoSelecionado = $conteudo->fecth(PDO::FETCH_ASSOC);
+            return $conteudo;
+        }
     }
     //echo date("Y-m-d H:i:s");
     /*$dados = array('titulo' => "teste1",

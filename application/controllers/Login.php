@@ -1,22 +1,41 @@
 <?php
     require "../views/head.php";
     require_once "../models/Aluno.php";
+    //print_r($_GET);
+    
+    if (isset($_GET['conteudo']) and !empty($_GET['conteudo'])) {
+        $pagRedirect = 'Location: ../views/conteudo.php?idConteudo='.$_GET['conteudo'];
+        $conteudo = true;
+    }else{
+        $conteudo = false;
+        $pagRedirect = "Location: ../index.php";
+    }
+    $testes=['conteudo'=>$conteudo,'redirect'=>$pagRedirect];
     $log = $_GET['log'];
     $check = $_GET['check'];
     $dados_enviados = $_POST;
-    function login($dados_enviados){
+    function login($dados_enviados,$testes){
         $usuario = new Aluno;
         $email = $dados_enviados['email'];
         $senha = $dados_enviados['senha'];
         $login = $usuario->logar($email,$senha);
+        $conteudo = $testes['conteudo'];
+        $pagRedirect = $testes['redirect'];
         switch ($login) {
             case 'sucesso':
                 $dadosUsuario = $usuario->getUsuario();
-                session_start();
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
                 $_SESSION = $dadosUsuario;
                 $_SESSION['status'] = true;
                 //echo "FOI";
-                header('Location: ../index.php');
+                //echo "<script>alert($conteudo)/script>";
+                if ($conteudo) {
+                    header($pagRedirect);
+                }else{
+                    header($pagRedirect);
+                }
                 break;
             case 'err1':
                 header('Location: ../views/login.php?err=1');
@@ -36,8 +55,9 @@
     }
 
     if ($log=="in" and $check) {
-        login($dados_enviados);
+        login($dados_enviados,$testes);
     }elseif ($log=="out" and $check==true) { 
         logout();
         header("Location: ../index.php");
     }
+    exit;
