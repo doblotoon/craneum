@@ -12,27 +12,74 @@
 		
 			<script src="../assets/ckeditor/ckeditor.js" type="text/javascript" ></script>
 			<!-- Editor -->
-			<form id='form' action="../controllers/CadastroConteudo.php" method="post" enctype="multipart/form-data">
-				<input type="text" name="titulo" id="">
-				<textarea name='conteudo' id='editor'></textarea>
-				<input type="file" name="fotoCapa" id="">
 
+			<div class="container">
+				<div class="row">
+					<div class="col-2"></div>
+					<div class="col-8">
+						<h4 class="mb-3">Cadastrar Conteúdo</h4>
+						<form id='form' action="../controllers/CadastroConteudo.php" method="post" enctype="multipart/form-data">
+							
+							<div class="mb-3">
+								<label for="username">Título</label>
+								<div class="input-group">
+									<input type="text" name="titulo" id="" placeholder="Título" class="form-control" required>
+							</div>
 
-				<select class="form-control" id='teste' name='tags' multiple="multiple" style='width:30%;'>
-					<?php
-						foreach ($tags as $key => $tag) {
-							echo "<option>{$tag}</option>";
-						}
-					?>
-					<!--<option selected="selected">orange</option>
-					<option>white</option>
-					<option selected="selected">purple</option>
-					-->
-				</select>
-				
+							<div class="mb-9">
+								<label for="conteudo" class="espacoLabelsCadastroUsuario">Conteúdo</label>
+								<textarea name='conteudo' id='editor'></textarea>
+							</div>
 
-				<button type="submit">vai</button>
-			</form>
+							<label for="address" class="espacoLabelsCadastroUsuario">Foto de Capa do Conteúdo</label>
+							<div class="input-group mb-3">
+								<div class="custom-file">
+									<input type="file" name="fotoCapa"  class="custom-file-input" id="" required>
+									<label class="custom-file-label" for="inputGroupFile03">Escolha o arquivo</label>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<label for="country" class="espacoLabelsCadastroUsuario">Disciplina</label>
+									<select class="custom-select d-block w-100" id="country" required>
+										<option value="">Escolha...</option>
+										<option>Artes</option>
+									</select>
+								</div>
+
+								<div class="col-md-6 mb-3">
+									<label for="tags" class="espacoLabelsCadastroUsuario">Tags</label>
+									<select class="form-control" id='teste' name='tags' multiple="multiple">
+								<?php
+									foreach ($tags as $key => $tag) {
+										echo "<option>{$tag}</option>";
+									}
+								?>
+								<!--<option selected="selected">orange</option>
+								<option>white</option>
+								<option selected="selected">purple</option>
+								-->
+							</select>
+							</div>
+						</div>
+						
+						<hr class="mb-4">
+
+						<label for="termos">Termo</label>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" required>
+							<label class="custom-control-label" for="same-address">O conteúdo que estou prestes a publicar não é ofensivo</label>
+						</div>
+
+						<hr class="mb-4">
+						<button class="btn btn-primary btn-lg" type="submit">Publicar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
 			<!-- Script -->
 			<script>
 				$(document).ready(function() {

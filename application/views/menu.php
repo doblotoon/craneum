@@ -4,7 +4,7 @@
     //echo $pasta;
     // TODO: Alterar o formato dos links para eles funcionarem em todas as páginas da forma correta.
 ?>
-                    <nav class="py-md-4 py-3 d-lg-flex nav_w3pvt">
+                    <nav class="py-md-4 py-3 d-lg-flex nav_w3pvt fixed-top">
                     <div id="logo">
                         <h1><a href="<?=$caminho?>index.php">Craneum</a></h1>
                     </div>

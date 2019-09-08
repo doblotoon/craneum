@@ -19,43 +19,40 @@
         $displayNone = '';
     }
 ?>
-    <style>
-        .hide{
-            display:none;
-        }
-        .containerGrande{
-            width:60% !important;
-            margin-left:20% !important;
-        }
-        .containerPequeno{
-            width:20% !important;
-            margin:0 !important;
-        }
-    </style>
-    <div>
-        <div></div>
-        <div style='margin-left:10%;width:60%;float:left;' id='containerConteudo'>
-            <h1 style='text-align:center;'>
-                <?=$conteudoSelecionado['titulo']?>
-                <h4>
-                    Tags:
-                    <?php
+
+    <div class="container">
+  		<div class="row">
+    	    <div class="col-9">
+                <h3><?=$conteudoSelecionado['titulo']?></h3>
+                <hr class="mb-4">
+                <div>
+                    <div class="col-md-6 mb-3 aEsquerda">
+                        <h6 class="aEsquerda negrito">Data:</h6>
+                    </div>
+
+                    <div class="col-md-6 mb-3 aEsquerda">
+                        <h6 class="aEsquerda negrito">Autor(a):</h6>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-3 aEsquerda">
+                    <h6 class="aEsquerda negrito">Disciplina: </h6>
+                    <h6 class="aEsquerda"> Disciplina 1</h6>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <?=$conteudoSelecionado['conteudo']?>
+                </div>
+                <hr class="mb-4">
+                <div class='col-md-12 mb-3'>
+                <?php
                         //print_r($tags);
                         foreach ($tags as $key => $tag) {
                             $tagNome = $tag['tag'];
-                            echo "<a href='tag.php?tag={$tagNome}'>
-                                    <span style='background-color:lightblue !important;margin:5px;padding:2px; border-radius:5px;'>".$tagNome."</span>
-                                  </a>";
+                            print('<a href="tag.php?tag={$tagNome}"><span class="badge badge-secondary aEsquerda espacoDireita">'.$tagNome.'</span></h6></a>');
                         }
                     ?>
-                </h4>
-            </h1>
-            <hr>
-            <div>
-                <?=$conteudoSelecionado['conteudo']?>
+                </div>
             </div>
-        </div>
-        <div style='float:left;width:25%;margin-left:5%;' id='containerDuvida'>
+            <div class="col-3">
             <button id='someDuvida'>
                 <i class="material-icons">speaker_notes_off</i>
             </button>
@@ -82,6 +79,24 @@
                     <button class='<?=$displayNone?>'>Enviar duvida</button>
                 </div>
             </div>
+        </div>
+        </div>
+    <style>
+        .hide{
+            display:none;
+        }
+        .containerGrande{
+            width:60% !important;
+            margin-left:20% !important;
+        }
+        .containerPequeno{
+            width:20% !important;
+            margin:0 !important;
+        }
+    </style>
+    <div>
+        <div></div>
+
         </div>
     </div>
 
