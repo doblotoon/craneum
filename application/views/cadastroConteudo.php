@@ -34,7 +34,7 @@
 							<label for="address" class="espacoLabelsCadastroUsuario">Foto de Capa do Conteúdo</label>
 							<div class="input-group mb-3">
 								<div class="custom-file">
-									<input type="file" name="fotoCapa"  class="custom-file-input" id="" required>
+									<input type="file" name="fotoCapa"  class="custom-file-input" id="" required accept=".jpg, .jpeg, .png" file-maxsize="10240" required>
 									<label class="custom-file-label" for="inputGroupFile03">Escolha o arquivo</label>
 								</div>
 							</div>

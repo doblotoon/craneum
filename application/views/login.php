@@ -32,7 +32,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="comment-top mt-6 row">
                 <div class="col-lg-1 comment-bottom"></div>
                 <div class="col-lg-4 comment-bottom w3pvt_mail_grid-img">
-                    <img class="img-fluid" src="../assets/images/apply2.jpg" alt="">
+                    <img class="img-fluid" src="../assets/images/login.png" alt="">
                 </div>
                 <div class="col-lg-1 comment-bottom"></div>
                 <div class="col-lg-6 comment-bottom w3pvt_mail_grid_right">

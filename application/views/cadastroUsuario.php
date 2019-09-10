@@ -34,7 +34,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="row">
                             <div class="col-lg-6 form-group">
                                 <label>Foto de perfil</label>
-                                <input class="" type="file" name="fotoPerfil" accept=".jpg, .jpeg, .png" file-maxsize="10240">
+                                <div class="custom-file">
+									<input type="file" name="fotoPerfil"  class="custom-file-input" id="" required accept=".jpg, .jpeg, .png" file-maxsize="10240">
+									<label class="custom-file-label" for="inputGroupFile03">Escolha o arquivo</label>
+								</div>
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label>N° de matrícula / SIAPE</label>

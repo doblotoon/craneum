@@ -16,8 +16,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="col-md-3">
 			<div class="profile-sidebar espacoSuperiorSidebarUser card">
 				<!-- SIDEBAR USERPIC -->
-				<div class="profile-userpic" align='center'>
-					<img src="../assets/images/t1.jpg" class="img-responsive" alt="">
+				<div>
+					<img src="../assets/images/test.jpg" class="img-fluid" alt="">
 				</div>
 				<!-- END SIDEBAR USERPIC -->
 				<!-- SIDEBAR USER TITLE -->

@@ -18,7 +18,7 @@
                         window.onscroll = scroll;
                     </script>
 
-                    <nav class="py-md-4 py-3 d-lg-flex nav_w3pvt fixed-top" id='menuScroll'>
+                    <nav class="py-md-1 py-3 d-lg-flex nav_w3pvt fixed-top" id='menuScroll'>
                         <div id="logo">
                             <h1><a href="<?=$caminho?>index.php">Craneum</a></h1>
                         </div>
