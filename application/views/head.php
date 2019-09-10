@@ -9,7 +9,7 @@
             echo 'nao ta logado';
         }
     }
-
+    
     function reqURL(){
         $aux = explode("/", $_SERVER['REQUEST_URI']);
         $aux_two = explode(".", end($aux));

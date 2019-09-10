@@ -32,8 +32,8 @@
                 }
                 
             }
-            echo "<pre>";
-            print_r($tagsInsert);
+            //echo "<pre>";
+            //print_r($tagsInsert);
             $this->tagConteudo($ultimaId,$tagsInsert);
         }
 
@@ -51,7 +51,7 @@
                 }
             }
             $query = "insert into conteudotag(fk_ct_idTag,fk_ct_idConteudo)".$queryDin;
-            echo $query;
+            //echo $query;
             $this->conexao->exec($query);
         }
 

@@ -5,6 +5,7 @@
 	$tags = $tagObj->getTags();
 	setlocale(LC_COLLATE, 'pt_BR.utf-8');
 	asort($tags, SORT_LOCALE_STRING);
+	
 ?>
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
@@ -26,7 +27,7 @@
 									<input type="text" name="titulo" id="" placeholder="Título" class="form-control" required>
 							</div>
 
-							<div class="mb-9">
+							<div class="mb-9" style='height:500px;'>
 								<label for="conteudo" class="espacoLabelsCadastroUsuario">Conteúdo</label>
 								<textarea name='conteudo' id='editor'></textarea>
 							</div>
@@ -68,8 +69,8 @@
 
 						<label for="termos">Termo</label>
 						<div class="custom-control custom-checkbox">
-							<input type="checkbox" class="custom-control-input" required>
-							<label class="custom-control-label" for="same-address">O conteúdo que estou prestes a publicar não é ofensivo</label>
+							<input type="checkbox" name='' class="custom-control-input" required>
+							<label class="custom-control-label" for="termos-conteudo">O conteúdo que estou prestes a publicar não é ofensivo</label>
 						</div>
 
 						<hr class="mb-4">
@@ -115,8 +116,8 @@
 			</script>
 			<script type="text/javascript">
 				CKEDITOR.replace( 'editor', {
-					height: '30%',
-					width: '80%',
+					//height: '50%',
+					//width: '100%',
 					filebrowserUploadUrl: "../models/upload.php?type=file",
 					filebrowserImageUploadUrl: "../models/upload.php?type=image"
 				} );

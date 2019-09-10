@@ -14,7 +14,7 @@
             $ultimaId = $conteudo->cadastroConteudo($dadosEnviados);
             //pegar a id do conteudo salvo para passar pra tag
             $tag->cadastrarTag($ultimaId['idConteudo']);
-            
+            //$disciplina->cadastrarTag($ultimaId['idConteudo']);
         }
         public function salvarCapa(){
 			$foto = $_FILES['fotoCapa'];
