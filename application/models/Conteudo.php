@@ -17,15 +17,30 @@
         }
         public function cadastroConteudo($dadosRecebidos){
             $titulo = $dadosRecebidos['titulo'];
-            $conteudo = $dadosRecebidos['conteudo'];
+            $conteudo = str_replace("watch?v=","embed/",$dadosRecebidos['conteudo']);
+            
+            #colocar classes nos links de documentos \/
+            $regexDoc = "/\/assets\/files\/.*\.(pdf|doc|docx)\"/";
+            $regexLink2P="/<a href=\"\.\.\/assets\/files\/.*\.(pdf|doc|docx)\" class=\"modalDoc\">.*<\/a>/";
+            preg_match_all($regexDoc, $conteudo, $matches);
+            unset($matches[1]);
+            foreach ($matches[0] as $key => $match) {
+                $replaceDoc=$match." class=\"modalDoc\" onclick=\"return false;\"";
+                $pesquisa = "/".preg_replace('/\//','\/',$match)."/";
+                $conteudo = preg_replace($pesquisa,$replaceDoc,$conteudo);
+            }
             $dataPostagem = date("Y-m-d H:i:s");
             $fotoCapa = $dadosRecebidos['fotoCapa'];
             $idUsuario = 1;//$dadosRecebidos['idUsuario'];
-
-            $query = "insert into conteudo (titulo,conteudo,dataPostagem,fotoCapa,fk_cont_idUsuario) values ('{$titulo}','{$conteudo}','{$dataPostagem}','{$fotoCapa}',{$idUsuario});";
-            $this->conexao->exec($query);
-            $ultimaId = $this->conexao->query("select max(idConteudo) as idConteudo from conteudo limit 1;")->fetch(PDO::FETCH_ASSOC);
-            return $ultimaId;
+            
+            try {
+                $query = "insert into conteudo (titulo,conteudo,dataPostagem,fotoCapa,fk_cont_idUsuario) values ('{$titulo}','{$conteudo}','{$dataPostagem}','{$fotoCapa}',{$idUsuario});";
+                $this->conexao->exec($query);
+                $ultimaId = $this->conexao->query("select max(idConteudo) as idConteudo from conteudo limit 1;")->fetch(PDO::FETCH_ASSOC);
+                return $ultimaId;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
             //formato das datas para serem salvos == ano-mes-dia *espaço* hora:minuto:segundo
         }
         public function getConteudo(int $id){
@@ -35,6 +50,12 @@
             return $conteudo;
         }
     }
+
+    //LINK IMPORTANTE
+    #https://www.rexegg.com/regex-quickstart.html
+
+
+
     //echo date("Y-m-d H:i:s");
     /*$dados = array('titulo' => "teste1",
     "conteudo" =>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ornare tortor tortor, eu tristique sem lobortis placerat. Aenean porta diam vitae ipsum pellentesque, et porta enim pulvinar. Donec semper, est egestas ultricies egestas, risus diam sagittis mauris, pretium ullamcorper dui arcu in sem. Fusce viverra, ante ac maximus suscipit, quam nibh porttitor nisi, sit amet pharetra justo leo nec enim. Praesent tristique, turpis a consequat luctus, est dui maximus erat, eget placerat mi sapien vitae leo. Donec porttitor vitae urna non imperdiet. Cras vitae lectus quis elit iaculis tempus id non velit. Aliquam erat volutpat. Pellentesque egestas, risus a dictum egestas, neque nisl fringilla risus, non molestie nulla eros vitae mi.

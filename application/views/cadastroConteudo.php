@@ -21,7 +21,7 @@
 						<form id='form' action="../controllers/CadastroConteudo.php" method="post" enctype="multipart/form-data">
 							
 							<div class="mb-3">
-								<label for="username">Título</label>
+								<label for="titulo">Título</label>
 								<div class="input-group">
 									<input type="text" name="titulo" id="" placeholder="Título" class="form-control" required>
 							</div>

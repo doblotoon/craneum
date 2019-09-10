@@ -99,6 +99,20 @@
 
         </div>
     </div>
+    
+
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id='modalDocs'>
+    <div class="modal-dialog modal-lg">
+        <div>
+            <h3 id='tituloModal'></h3>
+        </div>
+        <div class="modal-content" style='height:80%;'>
+            <embed src="" id='embedDoc' name='embedDoc' style="height:100%;">
+        </div>
+    </div>
+    </div>
+
 
     <script>
         $(document).ready(function(){
@@ -115,5 +129,14 @@
                     chat = 0;
                 }
             })
+            $(".modalDoc").click(function(){
+                //console.log($(this).attr('href'));
+                var doc = $(this).attr('href');
+                var titulo = $(this).text();
+                //$("#embedDoc").attr("src",$(this).attr("href"));
+                $('#modalDocs').modal();
+                $("#embedDoc").attr("src",doc);
+                $("#tituloModal").text(titulo);
+			})
         })
     </script>

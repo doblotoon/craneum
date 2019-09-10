@@ -47,6 +47,7 @@
         <!-- //online-fonts -->
         <link rel="shortcut icon" href="<?=$caminho?>assets/images/fav.png" /> <!-- TODO: Buscar uma forma de fazer com que o favicon funcione nas demais páginas, não apenas na index --> 
         <script src='../assets/js/jquery.js'></script>
+        <script src='../assets/bootstrap/js/bootstrap.min.js'></script>
         <script>
             addEventListener("load", function() {
                 setTimeout(hideURLbar, 0);
