@@ -192,3 +192,13 @@
   .espacoDireita{
     margin-right: 3px;
   }
+
+  .botaoPesquisarMenu{
+    color: #acacac;
+    border-color: #ced4da;
+  }
+
+  .botaoPesquisarMenu:hover{
+    background: #f75225;
+    border-color: #f75225;
+  }

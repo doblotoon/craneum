@@ -41,7 +41,7 @@
                 <div class="item col-lg-4 mt-3">
                     <div class="thumbnail card">
                         <div class="img-event">
-                            <img class="group list-group-image img-fluid" src="assets/images/login.png" alt="">
+                            <img class="group list-group-image img-fluid" src="../assets/images/g1.jpg" alt="">
                         </div>
                         <div class="caption card-body">
                             <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
@@ -55,7 +55,7 @@
                 <div class="item col-lg-4 mt-3">
                     <div class="thumbnail card">
                         <div class="img-event">
-                            <img class="group list-group-image img-fluid" src="assets/images/g2.jpg" alt="">
+                            <img class="group list-group-image img-fluid" src="../assets/images/g2.jpg" alt="">
                         </div>
                         <div class="caption card-body">
                             <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
@@ -69,7 +69,7 @@
                 <div class="item col-lg-4 mt-3">
                     <div class="thumbnail card">
                         <div class="img-event">
-                            <img class="group list-group-image img-fluid" src="assets/images/g3.jpg" alt="">
+                            <img class="group list-group-image img-fluid" src="../assets/images/g3.jpg" alt="">
                         </div>
                         <div class="caption card-body">
                             <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
