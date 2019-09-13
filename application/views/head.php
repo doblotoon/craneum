@@ -45,9 +45,9 @@
         <!-- online-fonts -->
         <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
         <!-- //online-fonts -->
-        <link rel="shortcut icon" href="<?=$caminho?>assets/images/fav.png" /> <!-- TODO: Buscar uma forma de fazer com que o favicon funcione nas demais páginas, não apenas na index --> 
-        <script src='../assets/js/jquery.js'></script>
-        <script src='../assets/bootstrap/js/bootstrap.min.js'></script>
+        <link rel="shortcut icon" href="assets/images/au.png" /> <!-- TODO: Buscar uma forma de fazer com que o favicon funcione nas demais páginas, não apenas na index --> 
+        <script src='<?=$caminho?>assets/js/jquery.js'></script>
+        <script src='<?=$caminho?>assets/bootstrap/js/bootstrap.min.js'></script>
         <script>
             addEventListener("load", function() {
                 setTimeout(hideURLbar, 0);

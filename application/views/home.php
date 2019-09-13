@@ -4,7 +4,7 @@
     //$caminhos = explode("\\",__DIR__);
     //print_r($caminhos);
 ?>
-
+    <body>
     <!-- main -->
     <div class="main-content" id="home">
         <!-- Cabeçalho -->
@@ -15,6 +15,7 @@
                     require_once 'menu.php';
                 ?>
                 <!-- // Menu -->
+            </div>
         </header>
         <!-- // Cabeçalho -->
 
@@ -119,7 +120,7 @@
         </div>
     </section>
     <!--// Participe -->
-    
+
     <!-- footer -->
 <?php
     require_once 'footer.php';

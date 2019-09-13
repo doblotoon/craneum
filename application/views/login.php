@@ -26,9 +26,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     }
     //session_destroy();
 ?>
-
-
-<section class="banner-bottom py-5">
+<body>
+    <section class="banner-bottom py-5">
         <div class="container py-md-4">
             <h3 class="tittle-w3layouts two text-center" id="espacoInferiorLogin">Login</h3>
             <div class="comment-top mt-6 row">

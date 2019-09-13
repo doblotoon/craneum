@@ -7,6 +7,8 @@
 	asort($tags, SORT_LOCALE_STRING);
 	
 ?>
+
+	<body>
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->
@@ -16,8 +18,8 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-2"></div>
-					<div class="col-8">
+					<div class="col-1"></div>
+					<div class="col-10">
 						<h4 class="mb-3">Cadastrar Conteúdo</h4>
 						<form id='form' action="../controllers/CadastroConteudo.php" method="post" enctype="multipart/form-data">
 							
@@ -42,16 +44,15 @@
 
 							<div class="row">
 								<div class="col-md-6 mb-3">
-									<label for="country" class="espacoLabelsCadastroUsuario">Disciplina</label>
-									<select class="custom-select d-block w-100" id="country" required>
-										<option value="">Escolha...</option>
+									<label for="disciplina" class="espacoLabelsCadastroUsuario">Disciplinas</label>
+									<select class="form-control" id='selectDisciplinas' name='disciplinas' multiple="multiple">
 										<option>Artes</option>
 									</select>
 								</div>
 
 								<div class="col-md-6 mb-3">
 									<label for="tags" class="espacoLabelsCadastroUsuario">Tags</label>
-									<select class="form-control" id='teste' name='tags' multiple="multiple">
+									<select class="form-control" id='selectTags' name='tags' multiple="multiple">
 								<?php
 									foreach ($tags as $key => $tag) {
 										echo "<option>{$tag}</option>";
@@ -69,8 +70,8 @@
 
 						<label for="termos">Termo</label>
 						<div class="custom-control custom-checkbox">
-							<input type="checkbox" name='' class="custom-control-input" required>
-							<label class="custom-control-label" for="termos-conteudo">O conteúdo que estou prestes a publicar não é ofensivo</label>
+							<input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+							<label class="custom-control-label" for="defaultUnchecked">O conteúdo que estou prestes a publicar não é ofensivo</label>
 						</div>
 
 						<hr class="mb-4">
@@ -84,10 +85,16 @@
 			<!-- Script -->
 			<script>
 				$(document).ready(function() {
-					$("#teste").select2({
+					$("#selectDisciplinas").select2({
 						tags: true,
     					tokenSeparators: [',', '']
 					});
+
+					$("#selectTags").select2({
+						tags: true,
+    					tokenSeparators: [',', '']
+					});
+					
 					
 					//console.log(tags);
 
@@ -122,6 +129,7 @@
 					filebrowserImageUploadUrl: "../models/upload.php?type=image"
 				} );
 			</script>
-		</body>
 
-</html>
+<?php
+	require_once 'footer.php';
+?>

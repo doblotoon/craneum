@@ -4,48 +4,33 @@
     //echo $pasta;
     // TODO: Alterar o formato dos links para eles funcionarem em todas as páginas da forma correta.
 ?>
-                    <script>
-                        
-                        var scroll = function() {
-                            var top = window.pageYOffset;
-                            var menu = document.getElementById("menuScroll");
-                            if(top>100){
-                                menu.classList.add("fixado");
-                            }else if(top<100){
-                                menu.classList.remove("fixado");
-                            }
-                        };
-                        window.onscroll = scroll;
-                    </script>
+                            
 
-                    <nav class="py-md-1 py-1 d-lg-flex nav_w3pvt fixed-top" id='menuScroll'>
-                        <div id="logo">
-                            <h1><a href="<?=$caminho?>index.php">Craneum</a></h1>
-                        </div>
-                        <label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
-                        <input type="checkbox" id="drop" />
-                        <ul class="menu mt-lg-3 ml-auto">
-                            <li class="active"><a href="<?=$caminho?>index.php">Home</a></li>
-                            <li>
-                                <?php if($login):?>
-                                    <label>
-                                        <a href="<?=$caminho?>controllers/Login.php?log=out&check=true">
-                                            Sair
-                                        </a>
-                                    </label>
-                                    <label>
-                                        <a href='views/editarUsuario.php'><?=$_SESSION['nome'];?></a>
-                                    </label>
-                                <?php else:?>
-                                    <!-- First Tier Drop Down -->
-                                    <label for="drop-2" class="toggle">Entrar <span class="fa fa-angle-down" aria-hidden="true"></span></span></label>
-                                    <h6 class="linkEntrarMenu">Entrar <span class="fa fa-angle-down" aria-hidden="true"></span></h6>
-                                    <input type="checkbox" id="drop-2" />
-                                    <ul id="dropUL">
-                                        <li><a href="<?=$caminho?>views/login.php" class="drop-text">Login</a></li>
-                                        <li><a href="<?=$caminho?>views/cadastroUsuario.php" class="drop-text">Registrar-se</a></li>
-                                    </ul>
-                                <?php endif;?>
-                            </li>
-                        </ul>
-                    </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Entrar
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Login</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Registrar-se</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
