@@ -56,7 +56,7 @@
         }
 
         public function getTagsConteudo($idConteudo){
-            $query = "select tag from tag,conteudoTag where fk_ct_idTag = idTag and fk_ct_idConteudo = {$idConteudo};";
+            $query = "select tag from tag,conteudotag where fk_ct_idTag = idTag and fk_ct_idConteudo = {$idConteudo};";
             
             $tagsConteudo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
