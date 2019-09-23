@@ -202,3 +202,7 @@
     background: #f75225;
     border-color: #f75225;
   }
+
+  .nav-link:hover {
+    color: #f75225 !important;
+  }

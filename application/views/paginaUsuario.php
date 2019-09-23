@@ -40,7 +40,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <!-- END SIDEBAR USER TITLE -->
                     <!-- SIDEBAR BUTTONS -->
                     <div class="profile-userbuttons">
-                        <button type="button" class="btn btn-warning btn-sm"><span class="fa fa-edit"></span> Editar</button>
+                        <a href="<?=$caminho?>views/editarUsuario.php"><button type="button" class="btn btn-warning btn-sm"><span class="fa fa-edit"></span> Editar</button></a>
                     </div>
                     <!-- END SIDEBAR BUTTONS -->
                     <!-- SIDEBAR MENU -->
