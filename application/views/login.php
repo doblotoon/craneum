@@ -39,13 +39,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="col-lg-6 comment-bottom w3pvt_mail_grid_right">
                     <form action="../controllers/Login.php?log=in&check=true<?=$conteudoPagina?>" method="post">
                         <div class="row">
-                            <div class="col-lg-7 form-group">
+                            <div class="col-lg-9 form-group">
                                 <label>Email</label>
                                 <input class="form-control" type="email" name="email" placeholder="" required="">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-7 form-group">
+                            <div class="col-lg-9 form-group">
                                 <label>Senha</label>
                                 <input class="form-control" type="password" name="senha" placeholder="" required="">
                             </div>

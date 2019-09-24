@@ -102,15 +102,15 @@
  
  /* Giving a background-color to the nav container. */ 
  
- #logo a {
+ #logo {
      float: left;
      display: initial;
      font-weight: 300;
      font-size: 36px;
      letter-spacing: 1px;
-     color: #fff;
-     text-shadow: 2px 5px 3px rgba(0, 0, 0, 0.06);
-     padding-left: 10px;
+     color:#619eee;
+     padding-right: 15px;
+     padding-left: 5px;
      margin: 0;
  }
  
@@ -1196,4 +1196,6 @@
      color: #495057;
  }
  
- 
+ .linkCinza{
+    color:rgb(110, 110, 110) !important;
+ }

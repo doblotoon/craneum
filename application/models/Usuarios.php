@@ -145,8 +145,9 @@
         }
         public function getTipoUsuario($idUsuario){
             $query = "select tipo from usuario,tipousuario where fk_usu_idTipoUsuario = idTipoUsuario and idUsuario = {$idUsuario};";
-            $tipo = $this->conexao->query($query);
-            return $tipo;
+            $tipo = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);
+            $tipoUsuario = $tipo['tipo'];
+            return $tipoUsuario;
         }
         /*public function mostrarUsuarios($id){
             $query = "select * from usuario where idUsuario = {$id};";

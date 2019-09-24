@@ -29,6 +29,7 @@
                 }
                 $_SESSION = $dadosUsuario;
                 $_SESSION['status'] = true;
+                $_SESSION['tipo'] = $usuario->getTipoUsuario($_SESSION['id']);
                 //echo "FOI";
                 //echo "<script>alert($conteudo)/script>";
                 if ($conteudo) {
