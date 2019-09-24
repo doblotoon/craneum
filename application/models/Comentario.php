@@ -25,12 +25,32 @@ class Comentario {
         }
     }
 
-    public function editarComentario($comentario){
-        
+    public function editarComentario($duvidaPOST){// $_POST;
+        $query = "select * from duvida where idDuvida = {$duvidaPOST['id']}";;
+        $ex = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        $atual = $duvidaPOST['duvidaAtual'];
+
+        if ($ex != $atual) {
+            $query = "update duvida set duvida = {$atual} where idDuvida = {$duvidaPOST['id']};";
+            try {
+                $this->conexao->exec($query);
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }else{
+            echo "alert('aaaaaa burrao errou tudo')";
+        }
+
     }
 
-    public function deletarComentario($comentario){
-        
+    public function deletarComentario($idDuvida){
+        try {
+            $query = "delete from duvida where idDuvida = {$idDuvida}";
+            $linhas = $this->conexao->exec($query);
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 
     public function getComentario($idConteudo){
@@ -43,9 +63,8 @@ class Comentario {
 $n = new Comentario;
 
 $arrayin=[
-    'duvida'=>"pq lalaland é tão bom?",
-    'idConteudo'=> 8,
-    'idUsuario'=>2017312535
+    'id'=>14,
+    'duvidaAtual'=> "they'll tell you that your black is really white, the moon is just the sun at night"
 ];
 
-$a = $n->cadastrarComentario($arrayin);
+$a = $n->editarComentario($arrayin);

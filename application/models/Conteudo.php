@@ -49,6 +49,16 @@
             //$conteudoSelecionado = $conteudo->fecth(PDO::FETCH_ASSOC);
             return $conteudo;
         }
+
+        public function deletarConteudo($idConteudo){
+            try {
+                $query = "delete from duvida where idDuvida = {$idConteudo}";
+                $linhas = $this->conexao->exec($query);
+    
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
     }
 
     //LINK IMPORTANTE
