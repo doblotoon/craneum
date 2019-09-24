@@ -17,6 +17,9 @@
       <li class="nav-item active">
         <a class="nav-link linkCinza" href="<?=$caminho?>views/home.php">Home <span class="sr-only">(current)</span></a>
       </li>
+<?php
+  if(isset($_SESSION)==false){
+?>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle linkCinza" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Entrar
@@ -27,6 +30,21 @@
           <a class="dropdown-item linkCinza" href="<?=$caminho?>views/cadastroUsuario.php">Registrar-se</a>
         </div>
       </li>
+<?php
+  } else {
+?>
+      <li class="nav-item active">
+        <a class="nav-link linkCinza" href="<?=$caminho?>views/paginaUsuario.php"> Página do Usuario <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link linkCinza" href="<?=$caminho?>views/cadastroConteudo.php" >Cadastrar Conteúdo<span class="sr-only">(current)</span></a>
+      </li>
+
+
+<?php
+  }
+?>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Pesquise" aria-label="Search">
