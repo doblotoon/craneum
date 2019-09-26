@@ -25,24 +25,6 @@ class Comentario {
         }
     }
 
-    public function editarComentario($duvidaPOST){// $_POST;
-        $query = "select * from duvida where idDuvida = {$duvidaPOST['id']}";;
-        $ex = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
-        $atual = $duvidaPOST['duvidaAtual'];
-
-        if ($ex != $atual) {
-            $query = "update duvida set duvida = {$atual} where idDuvida = {$duvidaPOST['id']};";
-            try {
-                $this->conexao->exec($query);
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
-        }else{
-            echo "alert('aaaaaa burrao errou tudo')";
-        }
-
-    }
-
     public function deletarComentario($idDuvida){
         try {
             $query = "delete from duvida where idDuvida = {$idDuvida}";
@@ -59,12 +41,34 @@ class Comentario {
 
         return $duvida;
     }
+
+    public function editarComentario($duvidaPOST){// $_POST;
+        $query = "select * from duvida where idDuvida = {$duvidaPOST['id']}";
+        $ex = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        $atual = $duvidaPOST['duvidaAtual'];
+        $idDuvida = $duvidaPOST['id'];
+
+        $query = "UPDATE duvida SET duvida='{$atual}' WHERE idDuvida={$idDuvida}";      
+            
+        if ($ex != $atual) {
+            try {
+                $this->conexao->exec($query);
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }else{
+            echo "alert('aaaaaa burrao errou tudo')";
+        }
+
+    }
+
 }
+exit;
 $n = new Comentario;
 
 $arrayin=[
     'id'=>14,
-    'duvidaAtual'=> "they'll tell you that your black is really white, the moon is just the sun at night"
+    'duvidaAtual'=> "just a rainbow in the dark"
 ];
 
 $a = $n->editarComentario($arrayin);
