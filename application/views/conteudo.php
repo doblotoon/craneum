@@ -103,9 +103,11 @@
                     <hr>
                     <?php
                         //$duvidas[] = ['nomeUsuario'=>"aaaaaa","duvida"=>"nao entendi",'data'=>'07/09/2019']; /// ESTOU AQUI///
-                        foreach ($comentarios as $comentario) {
-                            echo "<h4>{$comentario['duvida']}</h4>";
-                            echo "<p>{$duvida['duvida']}</p>";
+                        foreach ($comentarios as $duvida) {
+                            //$a=$comentarios->trocaIDporNome($duvida['fk_duv_idUsuario']);
+                            print_r("<pre>$duvida</pre>");
+                            echo "<h4>{$duvida['duvida']}</h4>";
+                            echo "<p>{$a}</p>";
                             echo "<hr>";
                             echo "<h6>{$duvida['data']}</h6>";
                         }

@@ -64,6 +64,18 @@ class Comentario {
 
     }
 
+    public function trocaIDporNome(int $idUsuario){
+        $query = "SELECT nome FROM usuario WHERE idUsuario = {$idUsuario}";
+
+        try {
+            $nomeUsuario = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        
+        return $nomeUsuario;
+    }//n sei se deixo aqui ou na controller
+
 }
 /*
 $n = new Comentario;

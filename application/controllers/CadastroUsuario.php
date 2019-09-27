@@ -1,4 +1,4 @@
-<?php
+	<?php
 	require "../models/Aluno.php";
 	require '../models/Professor.php';
 	$usuario = new Aluno;
