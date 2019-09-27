@@ -1,11 +1,16 @@
 <?php
     require_once "header.php";
     require_once "../models/Conteudo.php";
+    require_once "../models/Comentario.php";
     require_once "../models/Tag.php";
 
     $idConteudo = (int) $_GET['idConteudo'];
     $conteudo = new Conteudo();
     $conteudoSelecionado = $conteudo->getConteudo($idConteudo);
+
+    $comentario = new Comentario;
+    $comentarios = $comentario->getComentario($idConteudo);
+    print_r($comentarios);
 
     $tag = new Tag();
     $tags = $tag->getTagsConteudo($conteudoSelecionado['idConteudo']);
@@ -77,6 +82,7 @@
                     <hr class="mb-4">
                     <div class='col-md-12 mb-3'>
                     <?php
+
                             //print_r($tags);
                             foreach ($tags as $key => $tag) {
                                 $tagNome = $tag['tag'];
@@ -96,9 +102,9 @@
                     <br>
                     <hr>
                     <?php
-                        $duvidas[] = ['nomeUsuario'=>"aaaaaa","duvida"=>"nao entendi",'data'=>'07/09/2019'];
-                        foreach ($duvidas as $key => $duvida) {
-                            echo "<h4>{$duvida['nomeUsuario']}</h4>";
+                        //$duvidas[] = ['nomeUsuario'=>"aaaaaa","duvida"=>"nao entendi",'data'=>'07/09/2019']; /// ESTOU AQUI///
+                        foreach ($comentarios as $comentario) {
+                            echo "<h4>{$comentario['duvida']}</h4>";
                             echo "<p>{$duvida['duvida']}</p>";
                             echo "<hr>";
                             echo "<h6>{$duvida['data']}</h6>";

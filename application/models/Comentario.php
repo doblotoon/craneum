@@ -16,10 +16,12 @@ class Comentario {
         $dataDuvida = date("Y-m-d H:i:s");
         $idConteudo = $dadosRecebidos['idConteudo'];
         $idUsuario = $dadosRecebidos['idUsuario'];
-        $query = "insert into duvida (duvida,adendo,respondido,dataDuvida,fk_duv_idConteudo,fk_duv_idUsuario) values ('{$duvida}',0,0,'{$dataDuvida}', {$idConteudo} ,{$idUsuario});";    
+        $query = "insert into duvida (duvida,adendo,respondido,dataDuvida,fk_duv_idConteudo,fk_duv_idUsuario) values ('{$duvida}',0,0,'{$dataDuvida}', {$idConteudo} ,{$idUsuario});"; 
+        
         
         try {
             $this->conexao->exec($query);
+            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -63,12 +65,15 @@ class Comentario {
     }
 
 }
-exit;
+/*
 $n = new Comentario;
 
 $arrayin=[
-    'id'=>14,
-    'duvidaAtual'=> "just a rainbow in the dark"
+    "duvida"=>"you lied to me",
+    "idConteudo"=> 18,
+    "idUsuario"=>2017312535//por alguma razão a gente tá tendo algum problema com o tamanho desses números
 ];
+//var_dump($arrayin);
 
-$a = $n->editarComentario($arrayin);
+$a = $n->cadastrarComentario($arrayin);
+*/
