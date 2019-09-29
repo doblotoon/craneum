@@ -75,15 +75,13 @@
   <section class="section parallax bg1">
     <h1><?=$conteudoSelecionado['titulo']?></h1>
   </section>
-  <section>
-  <h5 class="infoConteudo">Postada (data) por (autor)</h5>
-</section>
+
 
   <section class="section static">
   <div class="container">
             <div class="row">
 
-            <div class="col-12">
+            <div class="col-11"> <!-- COM OS COMENTÁRIOS ABERTOS: col-8 !-->
                     <div class="col-md-12 mb-3 aEsquerda">
                         <h6 class="aEsquerda negrito">Disciplina(s): </h6>
                         <h6 class="aEsquerda"><a href="tag.php?tag={$tagNome}"><span class="badge badge-secondary aEsquerda espacoDireita">Sociologia</span></h6></a>
@@ -105,43 +103,8 @@
                     </div>
                 </div>
 
-                
- 
+                <!-- COM OS COMENTÁRIOS ABERTOS O BOTÃO FICA DENTRO DE UMA DIV ASSIM:
 
-
-    
-            <!-- COM OS COMENTÁRIOS ABERTOS
-            <div class="col-8">
-                    <h3><?=$conteudoSelecionado['titulo']?></h3>
-                    <hr class="mb-4">
-                    <div>
-                        <div class="col-md-6 mb-3 aEsquerda">
-                            <h6 class="aEsquerda negrito">Data:</h6>
-                        </div>
-
-                        <div class="col-md-6 mb-3 aEsquerda">
-                            <h6 class="aEsquerda negrito">Autor(a):</h6>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mb-3 aEsquerda">
-                        <h6 class="aEsquerda negrito">Disciplina: </h6>
-                        <h6 class="aEsquerda"> Disciplina 1</h6>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <?=$conteudoSelecionado['conteudo']?>
-                    </div>
-                    <hr class="mb-4">
-                    <div class='col-md-12 mb-3'>
-                    <?php
-
-                            //print_r($tags);
-                            foreach ($tags as $key => $tag) {
-                                $tagNome = $tag['tag'];
-                                print('<a href="tag.php?tag={$tagNome}"><span class="badge badge-secondary aEsquerda espacoDireita">'.$tagNome.'</span></h6></a>');
-                            }
-                        ?>
-                    </div>
-                </div>
                 <div class="col-4">
                 <button id='someDuvida'>
                     <i class="material-icons">speaker_notes_off</i>
@@ -171,9 +134,6 @@
                         <button class='<?=$displayNone?>'>Enviar duvida</button>
                     </div>
                 </div>
-            </div>
-            </div>
-            
         <style>
             .hide{
                 display:none;
@@ -203,7 +163,14 @@
             <div class="modal-content" style='height:80%;'>
                 <embed src="" id='embedDoc' name='embedDoc' style="height:100%;">
             </div>
-            -->
+
+                -->
+                <div class="col-md-1 mb-3 aEsquerda fixed">
+                <button type="button" class="btn btn-secondary"><i class="far fa-eye"></i> Visualizar comentários</button> <!-- COM OS COMENTÁRIOS ABERTOS O ICON MUDA PARA fa-eye-slash e o texto vira fechar comentarios -->
+                </div>
+
+
+    
         </div>
         </div>
 
