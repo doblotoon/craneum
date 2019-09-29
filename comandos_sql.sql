@@ -181,7 +181,7 @@
 
 /* to do list
     - pesquisa de conteudo
-    - cadastro conteudo -OK
+    - cadastro conteudo -OKpesquisa
 */
 
 

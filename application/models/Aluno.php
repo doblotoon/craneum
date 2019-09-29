@@ -71,7 +71,8 @@ class Aluno extends Usuarios{
     
 }
 
-$aluno = new Aluno;
+$aluno = new Aluno();
+
 //$aluno->logar("odeioprog@gmail.com","123456");
 
 

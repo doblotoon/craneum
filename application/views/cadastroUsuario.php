@@ -19,7 +19,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <img class="img-fluid" src="../assets/images/apply2.jpg" alt="">
                     </div>
                     <div class="col-lg-7 comment-bottom w3pvt_mail_grid_right">
-                        <form action="../controllers/cadastroUsuario.php" method="post" enctype="multipart/form-data">
+                        <form action="../controllers/CadastroUsuario.php" method="post" enctype="multipart/form-data">
                             <div class="row">
 
                                 <div class="col-lg-6 form-group">
