@@ -36,7 +36,7 @@
     <!-- // Recentemente Postados -->
     <section class="ab-info-main py-5">
         <div class="container py-md-4">
-            <h3 class="tittle-w3layouts two text-center">Recentemente Postados</h3>
+            <h3 class="tittle-w3layouts two text-center">Recentemente Postados <button type="button" class="btn botaoMaisHome">+</button></h3>
             <div id="products" class="row view-group my-lg-5 my-4">
                 <div class="item col-lg-4 mt-3">
                     <div class="thumbnail card">
@@ -105,7 +105,9 @@
         </div>
     </section>
     <!--//-->
-
+<?php
+    if(empty($_SESSION)){
+?>
     <!--/ Participe -->
     <section class="last-content text py-5">
         <div class="container py-md-3 text-center">
@@ -120,7 +122,9 @@
         </div>
     </section>
     <!--// Participe -->
-
+<?php
+    }
+?>
     <!-- footer -->
 <?php
     require_once 'footer.php';

@@ -15,14 +15,14 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link linkCinza" href="<?=$caminho?>views/home.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link linkCinza" href="<?=$caminho?>views/home.php"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
       </li>
 <?php
-  if(isset($_SESSION)==false){
+  if(empty($_SESSION)){
 ?>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle linkCinza" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Entrar
+          <i class="fas fa-sign-in-alt"></i> Entrar
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item linkCinza" href="<?=$caminho?>views/login.php">Login</a>
@@ -34,21 +34,31 @@
   } else {
 ?>
       <li class="nav-item active">
-        <a class="nav-link linkCinza" href="<?=$caminho?>views/paginaUsuario.php"> Página do Usuario <span class="sr-only">(current)</span></a>
+        <a class="nav-link linkCinza" href="<?=$caminho?>views/paginaUsuario.php"><i class="fas fa-user"></i> Página do Usuario <span class="sr-only">(current)</span></a>
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link linkCinza" href="<?=$caminho?>views/cadastroConteudo.php" >Cadastrar Conteúdo<span class="sr-only">(current)</span></a>
+        <a class="nav-link linkCinza" href="<?=$caminho?>views/cadastroConteudo.php"><i class="fas fa-pencil-alt"></i> Cadastrar Conteúdo<span class="sr-only">(current)</span></a>
       </li>
 
-
+      <li class="nav-item active">
+        <a class="nav-link linkCinza" href="<?=$caminho?>views/sair.php"><i class="fas fa-sign-out-alt"></i> Sair <span class="sr-only">(current)</span></a>
+      </li>
+      
 <?php
   }
 ?>
     </ul>
+<?php
+  if($URLAtual!="index"){
+?>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Pesquise" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0 botaoPesquisarMenu" type="submit">Ir</button>
     </form>
+<?php
+  }
+
+?>
   </div>
 </nav>

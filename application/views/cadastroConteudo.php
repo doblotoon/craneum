@@ -20,7 +20,7 @@
 				<div class="row">
 					<div class="col-1"></div>
 					<div class="col-10">
-					<h4 class="tittle-w3layouts two text-center tituloPagUser">Cadastro de Conteúdo</h4> 
+					<h4 class="tittle-w3layouts two text-center tituloPagUser espacoCadConteudo">Cadastro de Conteúdo</h4> 
 						<form id='form' action="../controllers/CadastroConteudo.php" method="post" enctype="multipart/form-data">
 							
 							<div class="mb-3">
@@ -71,7 +71,7 @@
 						<label for="termos">Termo</label>
 						<div class="custom-control custom-checkbox">
 							<input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-							<label class="custom-control-label" for="defaultUnchecked">O conteúdo que estou prestes a publicar não é ofensivo</label>
+							<label class="custom-control-label" for="defaultUnchecked">O conteúdo que estou prestes a publicar não é ofensivo.</label>
 						</div>
 
 						<hr class="mb-4">

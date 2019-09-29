@@ -19,7 +19,7 @@
             $dados_banco = $this->sistema();
             $usuario = $dados_banco['usuario'];
             $senha = $dados_banco['senha'];
-            $this->connection = new PDO("mysql:host=localhost;dbname=craneum;", $usuario, $senha);
+            $this->connection = new PDO("mysql:host=localhost;dbname=craneum;charset=UTF8", $usuario, $senha);
         }
         public function getConexao(){
             return $this->connection;

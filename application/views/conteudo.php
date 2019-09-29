@@ -1,5 +1,5 @@
 <?php
-    require_once "header.php";
+    require_once "head.php";
     require_once "../models/Conteudo.php";
     require_once "../models/Tag.php";
 
@@ -18,32 +18,78 @@
         $precisaLogar = '';
         $displayNone = '';
     }
-?>
+
+    print("
+    
+    <style>
+    
+    /* Sets the actual background images to adorable kitties. This part is crucial. */
+    
+    .wrapper{
+        overflow-y:scroll !important;
+    }
+    .static{
+        background-color: #fff;
+    }
+
+    .bg1{
+        height: 50vh;
+    }
+
+    .bg1::after {
+      background-image: background: rgb(0,0,0);
+      background: radial-gradient(circle, rgba(0,0,0,0.09653368183210786) 35%, rgba(0,14,17,0.6287465669861695) 100%), url('../assets/images/login.png');
+      background-position: center;
+      background-repeat: no-repeat;
+    background-size: cover;
+    
+    }
+    
+    body,html{margin:0;padding:0;overflow-y:hidden !important;}
+
+    </style>
+    <script>
+    $('.container img').replaceWith(function(i, v){
+        return $('<div/>', {
+            style: 'background-image: url(' + this.src + ');' + 
+            'width:' + this.width + 'px;' + 
+            'height:' + this.height + 'px;' ,
+            class: 'fakeImg'
+        })
+    })
+    </script>
+
     <body>
-        <div class="container">
+    <main class='wrapper'>
+    ");
+
+    require_once "menu.php";
+
+?>
+
+  <section class="section parallax bg1">
+    <h1><?=$conteudoSelecionado['titulo']?></h1>
+  </section>
+  <section>
+  <h5 class="infoConteudo">Postada (data) por (autor)</h5>
+</section>
+
+  <section class="section static">
+  <div class="container">
             <div class="row">
 
             <div class="col-12">
-                    <h3><?=$conteudoSelecionado['titulo']?></h3>
-                    <hr class="mb-4">
-                    <div>
-                        <div class="col-md-6 mb-3 aEsquerda">
-                            <h6 class="aEsquerda negrito">Data:</h6>
-                        </div>
-
-                        <div class="col-md-6 mb-3 aEsquerda">
-                            <h6 class="aEsquerda negrito">Autor(a):</h6>
-                        </div>
-                    </div>
                     <div class="col-md-12 mb-3 aEsquerda">
-                        <h6 class="aEsquerda negrito">Disciplina: </h6>
-                        <h6 class="aEsquerda"> Disciplina 1</h6>
+                        <h6 class="aEsquerda negrito">Disciplina(s): </h6>
+                        <h6 class="aEsquerda"><a href="tag.php?tag={$tagNome}"><span class="badge badge-secondary aEsquerda espacoDireita">Sociologia</span></h6></a>
                     </div>
+                    <hr class="mb-4">
                     <div class="col-md-12 mb-3">
                         <?=$conteudoSelecionado['conteudo']?>
                     </div>
                     <hr class="mb-4">
                     <div class='col-md-12 mb-3'>
+                    <h6 class="aEsquerda negrito">Tags(s): </h6>
                     <?php
                             //print_r($tags);
                             foreach ($tags as $key => $tag) {
@@ -54,8 +100,13 @@
                     </div>
                 </div>
 
-            <!-- COM OS COMENTÁRIOS ABERTOS -->
-                <div class="col-8">
+                
+ 
+
+
+    
+            <!-- COM OS COMENTÁRIOS ABERTOS
+            <div class="col-8">
                     <h3><?=$conteudoSelecionado['titulo']?></h3>
                     <hr class="mb-4">
                     <div>
@@ -114,6 +165,7 @@
                 </div>
             </div>
             </div>
+            
         <style>
             .hide{
                 display:none;
@@ -132,7 +184,7 @@
 
             </div>
         </div>
-        
+    
 
 
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id='modalDocs'>
@@ -143,6 +195,7 @@
             <div class="modal-content" style='height:80%;'>
                 <embed src="" id='embedDoc' name='embedDoc' style="height:100%;">
             </div>
+            -->
         </div>
         </div>
 
@@ -177,3 +230,7 @@
 <?php
     require_once 'footer.php';
 ?>   
+
+  </section>
+
+</main>

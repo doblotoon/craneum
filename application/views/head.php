@@ -2,11 +2,9 @@
     if (!isset($_SESSION)) {
         session_start();
         if (!empty($_SESSION['status']) and $_SESSION['status']==true) {
-            echo 'ta logado';
             $login = true;
         }else{
             $login = false;
-            echo 'nao ta logado';
         }
     }
     
@@ -40,12 +38,12 @@
         <link href="<?=$caminho?>assets/css/guardini.css" type="text/css" rel="stylesheet" media="all">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- font-awesome icons -->
-        <link href="<?=$caminho?>assets/css/font-awesome.min.css" rel="stylesheet">
+        <link href="<?=$caminho?>assets/fontawesome/css/all.min.css" rel="stylesheet">
         <!-- //Custom Theme files -->
         <!-- online-fonts -->
         <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
         <!-- //online-fonts -->
-        <link rel="shortcut icon" href="assets/images/au.png" /> <!-- TODO: Buscar uma forma de fazer com que o favicon funcione nas demais páginas, não apenas na index --> 
+        <link rel="shortcut icon" type="image/png" href="<?=$caminho?>assets/images/au.png"/> <!-- TODO: Buscar uma forma de fazer com que o favicon funcione nas demais páginas, não apenas na index --> 
         <script src='<?=$caminho?>assets/js/jquery.js'></script>
         <script src='<?=$caminho?>assets/bootstrap/js/bootstrap.min.js'></script>
         <script>
