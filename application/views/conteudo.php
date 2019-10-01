@@ -14,6 +14,7 @@
 
     $tag = new Tag();
     $tags = $tag->getTagsConteudo($conteudoSelecionado['idConteudo']);
+
     if (!$login) {
         $precisaLogar = "<div class='alert alert-primary' role='alert'>
         Para cadastrar uma dúvida você precisa estar logado. <a href='login.php?conteudo={$idConteudo}'>Clique aqui</a> para se logar.
@@ -38,7 +39,7 @@
     }
 
     .bg1{
-        height: 50vh;
+        height: 55vh;
     }
 
     .bg1::after {
@@ -72,10 +73,11 @@
 
 ?>
 
-  <section class="section parallax bg1">
-    <h1><?=$conteudoSelecionado['titulo']?></h1>
-  </section>
 
+  <section class="section parallax bg1 tituloConteudo">
+  <h1><?=$conteudoSelecionado['titulo']?></h1>
+  <h4 id="infoConteudo">Postado por <?=$conteudoSelecionado['nome']?> em <?=$conteudoSelecionado['dataPostagem']?></h4>
+  </section>
 
   <section class="section static">
   <div class="container">

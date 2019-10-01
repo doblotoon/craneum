@@ -30,7 +30,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <!-- END SIDEBAR USERPIC -->
                     <!-- SIDEBAR USER TITLE -->
                     <div class="profile-usertitle">
-                        <div class="profile-usertitle-name">
+                        <div class="profile-usertitle-name img-fluid">
                             Marcus Doe
                         </div>
                         <div class="profile-usertitle-job">

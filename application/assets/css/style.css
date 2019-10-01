@@ -1216,8 +1216,9 @@
 
 .tituloConteudo{
       /* For text formatting. */
+  align-items: center !important;
+  text-align: center;
   display: flex;
-  align-items: center;
   justify-content: center;
   color: white;
   text-shadow: 0 0 5px #000;
