@@ -10,7 +10,7 @@
 
     $comentario = new Comentario;
     $comentarios = $comentario->getComentario($idConteudo);
-    print_r($comentarios);
+   
 
     $tag = new Tag();
     $tags = $tag->getTagsConteudo($conteudoSelecionado['idConteudo']);
@@ -24,12 +24,14 @@
         $displayNone = '';
     }
 
-    print("
+    echo "
     
     <style>
     
     /* Sets the actual background images to adorable kitties. This part is crucial. */
-    
+    .hide{
+        display:none;
+    }
     .wrapper{
         overflow-y:scroll !important;
     }
@@ -66,10 +68,10 @@
 
     <body>
     <main class='wrapper'>
-    ");
+    ";
 
     require_once "menu.php";
-
+    
 ?>
 
   <section class="section parallax bg1">
@@ -92,7 +94,7 @@
                     </div>
                     <hr class="mb-4">
                     <div class='col-md-12 mb-3'>
-                    <h6 class="aEsquerda negrito">Tags(s): </h6>
+                    <h2 class="aEsquerda negrito">Dúvidas: </h2>
                     <?php
                             //print_r($tags);
                             foreach ($tags as $key => $tag) {
@@ -115,17 +117,30 @@
                     <br>
                     <br>
                     <hr>
+                    -->
+                    <div id='divDuvida' class='hide'>
                     <?php
+                        
                         //$duvidas[] = ['nomeUsuario'=>"aaaaaa","duvida"=>"nao entendi",'data'=>'07/09/2019']; /// ESTOU AQUI///
                         foreach ($comentarios as $duvida) {
                             //$a=$comentarios->trocaIDporNome($duvida['fk_duv_idUsuario']);
-                            print_r("<pre>$duvida</pre>");
+                            //print_r("<pre>$duvida</pre>");
+                            echo "<h6>{$duvida['dataDuvida']}</h6>";
                             echo "<h4>{$duvida['duvida']}</h4>";
                             echo "<p>{$a}</p>";
                             echo "<hr>";
-                            echo "<h6>{$duvida['data']}</h6>";
+                            if ($duvida['idUsuario']==$_SESSION['id']) {
+                                echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=excluir&idDuvida={$duvida['idDuvida']}'><button class='btn-danger'>excluir</button></a>";
+                                echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn-primary'>editar</button></a>";
+                            }
+                            //echo "<button></button>";
+                        }
+                        if ($_GET['acao']=="excluir") {//acho que isso vai para a controller
+                            $a = $comentario->deletarComentario($_GET['idDuvida']);
                         }
                     ?>
+                    </div>
+                    <!--
                     </div>
                     <div style=''>
                         <?=$precisaLogar?>
@@ -166,7 +181,7 @@
 
                 -->
                 <div class="col-md-1 mb-3 aEsquerda fixed">
-                <button type="button" class="btn btn-secondary"><i class="far fa-eye"></i> Visualizar comentários</button> <!-- COM OS COMENTÁRIOS ABERTOS O ICON MUDA PARA fa-eye-slash e o texto vira fechar comentarios -->
+                <button type="button" id='someDuvida' class="btn btn-secondary"><i class="material-icons">speaker_notes_off</i></button> <!-- COM OS COMENTÁRIOS ABERTOS O ICON MUDA PARA fa-eye-slash e o texto vira fechar comentarios -->
                 </div>
 
 
@@ -204,6 +219,9 @@
 
 <?php
     require_once 'footer.php';
+    print_r($_SESSION);
+    echo "<br><br><br>";
+    print_r($comentarios);
 ?>   
 
   </section>

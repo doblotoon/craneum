@@ -38,7 +38,7 @@ class Comentario {
     }
 
     public function getComentario($idConteudo){
-        $query = "select * from duvida where fk_duv_idConteudo = {$idConteudo}";
+        $query = "select idDuvida, duvida, adendo, respondido, dataDuvida, idUsuario from usuario, duvida where fk_duv_idConteudo = {$idConteudo} and fk_duv_idUsuario = idUsuario;";
         $duvida = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
         return $duvida;
@@ -64,7 +64,7 @@ class Comentario {
 
     }
 
-    public function trocaIDporNome(int $idUsuario){
+    /*public function trocaIDporNome(int $idUsuario){
         $query = "SELECT nome FROM usuario WHERE idUsuario = {$idUsuario}";
 
         try {
@@ -74,7 +74,7 @@ class Comentario {
         }
         
         return $nomeUsuario;
-    }//n sei se deixo aqui ou na controller
+    }//n sei se deixo aqui ou na controller*/
 
 }
 /*
