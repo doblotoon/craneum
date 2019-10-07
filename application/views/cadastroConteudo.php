@@ -47,6 +47,9 @@
 									<label for="disciplina" class="espacoLabelsCadastroUsuario">Disciplinas</label>
 									<select class="form-control" id='selectDisciplinas' name='disciplinas' multiple="multiple">
 										<option>Artes</option>
+										<option>Artesagksajgasjks</option>
+										<option>Artessagasgas</option>
+										<option>Araaa</option>
 									</select>
 								</div>
 
@@ -86,10 +89,10 @@
 			<script>
 				$(document).ready(function() {
 					$("#selectDisciplinas").select2({
+						maximumSelectionLength: 3,
 						tags: true,
     					tokenSeparators: [',', '']
 					});
-
 					$("#selectTags").select2({
 						tags: true,
     					tokenSeparators: [',', '']
@@ -100,16 +103,25 @@
 
 					$("#form").submit(function(){
 						var tags = [];
-						var tagsSelecionadas = $("#teste").select2("data");
+						var tagsSelecionadas = $("#selectTags").select2("data");
+						var disciplinas = [];
+						var disciplinasSelecionadas = $("#selectDisciplinas").select2("data");
+
+						//foreach para add disciplinas
+						$.each(disciplinasSelecionadas,function(index,value){
+							disciplinas.push(value['text']);
+						});
+
+						//foreach para add tags
 						$.each(tagsSelecionadas,function(index,value){
 							tags.push(value['text']);
 						});
 						console.log(tags);
 						$.ajax({
-							url: "../controllers/SalvaTags.php",
+							url: "../controllers/SalvaDados.php",
 							method: "post",
 							dataType: "json",
-							data: {'tags':tags},
+							data: {'tags':tags, 'disciplinas':disciplinas},
 							success: function( data, textStatus, jQxhr ){
 								console.log(data);
 							},

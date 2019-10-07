@@ -19,6 +19,12 @@
                 <!-- //move top icon -->
             </div>
     </footer>
+    <?php
+        echo $URLAtual;
+        if($URLAtual=='editarUsuario'){
+            echo '<script src="'.$caminho.'assets/js/editar.js"></script>';
+        }
+    ?>
     <script src="<?=$caminho?>assets/js/menu.js"></script>
-    <script src="<?=$caminho?>assets/js/editar.js"></script>
+    
 </body>
