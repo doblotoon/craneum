@@ -1,75 +1,75 @@
 <?php
     require_once "Conexao.php";
 
-    class Tag{
+    class Disciplina{
         public $conexao;
 
         public function __construct(){
             $conexao_objeto = new Conexao();
             $this->conexao = $conexao_objeto->getConexao();
         }
-        public function cadastroTag($ultimaId){
-            echo $ultimaId;
-            $tags = json_decode(file_get_contents("../controllers/tags.txt"),true);
-            $tagsInsert = [];
-            foreach ($tags as $key => $value) {
-                $query = "select tag from tag where tag = '{$value}';";
+        public function cadastroDisciplina($ultimaId){
+            //echo $ultimaId;
+            $disciplinas = json_decode(file_get_contents("../controllers/disciplinas.txt"),true);
+            $disciplinasInsert = [];
+            foreach ($disciplinas as $key => $value) {
+                $query = "select disciplina from disciplina where disciplina = '{$value}';";
                 $linhas = $this->conexao->query($query);
                 //echo $linhas->rowCount();
                 //echo "caiu no try\n";
     
                 if ($linhas->rowCount()==0) {
                     ucwords($value);
-                    $queryInsert = "insert into tag(tag) values ('{$value}');";
+                    $queryInsert = "insert into disciplina(disciplina) values ('{$value}');";
                     $queryLastId = "";
                     $this->conexao->exec($queryInsert);
-                    $ultimaTag = $this->conexao->query("select max(idTag) as idTag from tag limit 1;")->fetch(PDO::FETCH_ASSOC);
-                    $tagsInsert[] = $ultimaTag['idTag'];
+                    $ultimaDisciplina = $this->conexao->query("select max(idDisciplina) as idDisciplina from disciplina limit 1;")->fetch(PDO::FETCH_ASSOC);
+                    $disciplinasInsert[] = $ultimaDisciplina['idDisciplina'];
                 }else{
-                    $queryTags = "select idTag from tag where tag = '{$value}';";
-                    $tagExistente = $this->conexao->query($queryTags)->fetch(PDO::FETCH_ASSOC);
-                    $tagsInsert[] = $tagExistente['idTag'];
+                    $queryDisciplinas = "select idDisciplina from disciplina where disciplina = '{$value}';";
+                    $disciplinaExistente = $this->conexao->query($queryDisciplinas)->fetch(PDO::FETCH_ASSOC);
+                    $disciplinasInsert[] = $disciplinaExistente['idDisciplina'];
                 }
                 
             }
             //echo "<pre>";
-            //print_r($tagsInsert);
-            $this->tagConteudo($ultimaId,$tagsInsert);
+            //print_r($disciplinasInsert);
+            $this->disciplinaConteudo($ultimaId,$disciplinasInsert);
         }
 
 
-        public function tagConteudo($idConteudo,$idTags){
+        public function disciplinaConteudo($idConteudo,$idDisciplinas){
             $queryDin = " values ";
-            $tamanho = sizeof($idTags);
+            $tamanho = sizeof($idDisciplinas);
             $cont = 1;
-            foreach ($idTags as $key => $tag) {
+            foreach ($idDisciplinas as $key => $disciplina) {
                 if ($cont!=$tamanho) {
-                    $queryDin .= "({$tag},{$idConteudo}),";
+                    $queryDin .= "({$disciplina},{$idConteudo}),";
                     $cont++;
                 }else{
-                    $queryDin .= "({$tag},{$idConteudo});";
+                    $queryDin .= "({$disciplina},{$idConteudo});";
                 }
             }
-            $query = "insert into conteudotag(fk_ct_idTag,fk_ct_idConteudo)".$queryDin;
+            $query = "insert into conteudodisciplina(fk_cd_idDisciplina,fk_cd_idConteudo)".$queryDin;
             //echo $query;
             $this->conexao->exec($query);
         }
 
-        public function getTagsConteudo($idConteudo){
-            $query = "select tag from tag,conteudoTag where fk_ct_idTag = idTag and fk_ct_idConteudo = {$idConteudo};";
+        public function getDisciplinasConteudo($idConteudo){
+            $query = "select disciplina from disciplina,conteudodisciplina where fk_cd_idDisciplina = idDisciplina and fk_cd_idConteudo = {$idConteudo};";
             
-            $tagsConteudo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+            $disciplinasConteudo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
-            return $tagsConteudo;
+            return $disciplinasConteudo;
         }
 
-        public function getTags(){
-            $query = "select tag from tag;";
-            $tagArray = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($tagArray as $key => $tag) {
-                $tags[] = $tag['tag'];
+        public function getDisciplinas(){
+            $query = "select disciplina from disciplina;";
+            $disciplinaArray = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($disciplinaArray as $key => $disciplina) {
+                $disciplinas[] = $disciplina['disciplina'];
             }
-            return $tags;
+            return $disciplinas;
         }
     }
 
@@ -77,3 +77,6 @@
    // echo "<pre>";
     //print_r($t->getTags());
     //print_r($t->getTagsConteudo(70));
+    //$a = new Disciplina();
+    //$a->cadastroDisciplina(126);
+    //print_r($a->getDisciplinasConteudo(126));

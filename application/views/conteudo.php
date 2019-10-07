@@ -3,6 +3,7 @@
     require_once "../models/Conteudo.php";
     require_once "../models/Comentario.php";
     require_once "../models/Tag.php";
+    require_once "../models/Disciplina.php";
 
     $idConteudo = (int) $_GET['idConteudo'];
     $conteudo = new Conteudo();

@@ -1,8 +1,11 @@
 <?php
 	require_once 'header.php';
 	require_once '../models/Tag.php';
+	require_once '../models/Disciplina.php';
 	$tagObj = new Tag();
 	$tags = $tagObj->getTags();
+	$disciObj = new Disciplina();
+	$disciplinas = $disciObj->getDisciplinas();
 	setlocale(LC_COLLATE, 'pt_BR.utf-8');
 	asort($tags, SORT_LOCALE_STRING);
 	
@@ -46,10 +49,11 @@
 								<div class="col-md-6 mb-3">
 									<label for="disciplina" class="espacoLabelsCadastroUsuario">Disciplinas</label>
 									<select class="form-control" id='selectDisciplinas' name='disciplinas' multiple="multiple">
-										<option>Artes</option>
-										<option>Artesagksajgasjks</option>
-										<option>Artessagasgas</option>
-										<option>Araaa</option>
+									<?php
+										foreach ($disciplinas as $key => $disciplina) {
+											echo "<option>{$disciplina}</option>";
+										}
+									?>
 									</select>
 								</div>
 

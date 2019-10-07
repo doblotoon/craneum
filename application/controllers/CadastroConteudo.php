@@ -2,18 +2,21 @@
     //$_POST['texto']=str_replace(".pdf\">",".pdf\" target='mostra'>",$_POST['texto']);
     //echo $_POST['texto'];
     require "../models/Conteudo.php";
-    require "../controllers/cadastroTag.php";
+    require "../controllers/CadastroTag.php";
+    require "../controllers/CadastroDisciplina.php";
    // print_r($_POST);
     $conteudo = new Conteudo();
     $tag = new cadastroTag();
+    $disciplina = new cadastroDisciplina();
     class cadastroConteudo{
-        public function cadastrarConteudo($conteudo,$tag){
+        public function cadastrarConteudo($conteudo,$tag,$disciplina){
             $fotoCapa = $this->salvarCapa();
             $dadosEnviados = $_POST;
             $dadosEnviados['fotoCapa'] = $fotoCapa;
             $ultimaId = $conteudo->cadastroConteudo($dadosEnviados);
             //pegar a id do conteudo salvo para passar pra tag
             $tag->cadastrarTag($ultimaId['idConteudo']);
+            $disciplina->cadastrarDisciplina($ultimaId['idConteudo']);
             //$disciplina->cadastrarTag($ultimaId['idConteudo']);
         }
         public function salvarCapa(){
@@ -35,7 +38,7 @@
         }
     }
     $cadastro = new cadastroConteudo();
-    $cadastro->cadastrarConteudo($conteudo,$tag);
+    $cadastro->cadastrarConteudo($conteudo,$tag,$disciplina);
     //print_r($_POST);
     //echo $_POST['tags'];
 ?>
