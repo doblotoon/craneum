@@ -224,3 +224,7 @@
     color: white;
     text-shadow: 0 0 10px #000;
   }
+
+  .espacoAntesConteudo{
+    margin-bottom: 6%;
+  }

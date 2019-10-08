@@ -34,7 +34,7 @@
 
 							<div class="mb-9" style='height:500px;'>
 								<label for="conteudo" class="espacoLabelsCadastroUsuario">Conteúdo</label>
-								<textarea name='conteudo' id='editor'></textarea>
+								<textarea name='conteudo' id='editor' required></textarea>
 							</div>
 
 							<label for="address" class="espacoLabelsCadastroUsuario">Foto de Capa do Conteúdo</label>
@@ -48,7 +48,7 @@
 							<div class="row">
 								<div class="col-md-6 mb-3">
 									<label for="disciplina" class="espacoLabelsCadastroUsuario">Disciplinas</label>
-									<select class="form-control" id='selectDisciplinas' name='disciplinas' multiple="multiple">
+									<select class="form-control" id='selectDisciplinas' name='disciplinas' multiple="multiple" required>
 									<?php
 										foreach ($disciplinas as $key => $disciplina) {
 											echo "<option>{$disciplina}</option>";
@@ -59,7 +59,7 @@
 
 								<div class="col-md-6 mb-3">
 									<label for="tags" class="espacoLabelsCadastroUsuario">Tags</label>
-									<select class="form-control" id='selectTags' name='tags' multiple="multiple">
+									<select class="form-control" id='selectTags' name='tags' multiple="multiple" required>
 								<?php
 									foreach ($tags as $key => $tag) {
 										echo "<option>{$tag}</option>";
