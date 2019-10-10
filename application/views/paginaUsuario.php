@@ -15,6 +15,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         $tipo = $_SESSION['tipo']."s";
     }
     require "../models/".ucwords($tipo).".php";
+    
 ?>
 <body>
     <div class="espacoInferiorUsuario">.</div>
@@ -25,7 +26,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="profile-sidebar espacoSuperiorSidebarUser card">
                     <!-- SIDEBAR USERPIC -->
                     <div>
-                        <img src="../assets/images/test.jpg" class="img-fluid" alt="">
+                        <img src="<?=$_SESSION['fotoPerfil']?>" class="img-fluid" alt="">
                     </div>
                     <!-- END SIDEBAR USERPIC -->
                     <!-- SIDEBAR USER TITLE -->
@@ -49,7 +50,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li class="active">
                                 <a href="#">
                                 <span class="fa fa-bookmark espacoIcon"></span>
-                                Conteúdo Salvo </a>
+                                Conteúdos Salvos </a>
                             </li>
                             <li>
                                 <a href="#">

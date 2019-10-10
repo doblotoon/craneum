@@ -32,7 +32,7 @@
 									<input type="text" name="titulo" id="" placeholder="Título" class="form-control" required>
 							</div>
 
-							<div class="mb-9" style='height:500px;'>
+							<div class="mb-9">
 								<label for="conteudo" class="espacoLabelsCadastroUsuario">Conteúdo</label>
 								<textarea name='conteudo' id='editor' required></textarea>
 							</div>
@@ -48,7 +48,7 @@
 							<div class="row">
 								<div class="col-md-6 mb-3">
 									<label for="disciplina" class="espacoLabelsCadastroUsuario">Disciplinas</label>
-									<select class="form-control" id='selectDisciplinas' name='disciplinas' multiple="multiple" required>
+									<select class="form-control selectCadastroConteudo" id='selectDisciplinas' name='disciplinas' multiple="multiple" required>
 									<?php
 										foreach ($disciplinas as $key => $disciplina) {
 											echo "<option>{$disciplina}</option>";
@@ -139,7 +139,7 @@
 			</script>
 			<script type="text/javascript">
 				CKEDITOR.replace( 'editor', {
-					//height: '50%',
+					height: 440,
 					//width: '100%',
 					filebrowserUploadUrl: "../models/upload.php?type=file",
 					filebrowserImageUploadUrl: "../models/upload.php?type=image"
