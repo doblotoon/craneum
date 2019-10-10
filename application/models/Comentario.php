@@ -81,9 +81,9 @@ class Comentario {
 $n = new Comentario;
 
 $arrayin=[
-    "duvida"=>"you lied to me",
+    "duvida"=>"when I popped off",
     "idConteudo"=> 18,
-    "idUsuario"=>2017312535//por alguma razão a gente tá tendo algum problema com o tamanho desses números
+    "idUsuario"=>20133145//por alguma razão a gente tá tendo algum problema com o tamanho desses números
 ];
 //var_dump($arrayin);
 

@@ -2,7 +2,7 @@
     //$_POST['texto']=str_replace(".pdf\">",".pdf\" target='mostra'>",$_POST['texto']);
     //echo $_POST['texto'];
     require "../models/Conteudo.php";
-    require "../controllers/cadastroTag.php";
+    require "../controllers/CadastroTag.php";
    // print_r($_POST);
     $conteudo = new Conteudo();
     $tag = new cadastroTag();

@@ -127,19 +127,20 @@
                         foreach ($comentarios as $duvida) {
                             //$a=$comentarios->trocaIDporNome($duvida['fk_duv_idUsuario']);
                             //print_r("<pre>$duvida</pre>");
+                            echo "<span id='".$duvida['idDuvida']."'>";
                             echo "<h6>{$duvida['dataDuvida']}</h6>";
                             echo "<h4>{$duvida['duvida']}</h4>";
                             echo "<p>{$a}</p>";
-                            echo "<hr>";
                             if ($duvida['idUsuario']==$_SESSION['id']) {
                                 echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=excluir&idDuvida={$duvida['idDuvida']}'><button class='btn-danger'>excluir</button></a>";
-                                echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn-primary'>editar</button></a>";
+                                echo "<button class='btn-primary comentarioEdita'>editar</button>";
                             }
+                            
+                            echo "<hr>";
+                            echo "</span>";
                             //echo "<button></button>";
                         }
-                        if ($_GET['acao']=="excluir") {//acho que isso vai para a controller
-                            $a = $comentario->deletarComentario($_GET['idDuvida']);
-                        }
+                        
                     ?>
                     </div>
                     <!--
@@ -171,17 +172,8 @@
         </div>
     
 
+-->
 
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id='modalDocs'>
-        <div class="modal-dialog modal-lg">
-            <div>
-                <h3 id='tituloModal'></h3>
-            </div>
-            <div class="modal-content" style='height:80%;'>
-                <embed src="" id='embedDoc' name='embedDoc' style="height:100%;">
-            </div>
-
-                -->
                 <div class="col-md-1 mb-3 aEsquerda fixed">
                 <button type="button" id='someDuvida' class="btn btn-secondary"><i class="material-icons">speaker_notes_off</i></button> <!-- COM OS COMENTÁRIOS ABERTOS O ICON MUDA PARA fa-eye-slash e o texto vira fechar comentarios -->
                 </div>
@@ -190,6 +182,11 @@
     
         </div>
         </div>
+
+
+
+        
+
 
 
         <script>
@@ -216,16 +213,65 @@
                     $("#embedDoc").attr("src",doc);
                     $("#tituloModal").text(titulo);
                 })
+                $(".comentarioEdita").click(function(){
+                    //console.log($(this).attr('href'));
+                    //var doc = $(this).attr('href');
+                    //var titulo = $(this).text();
+                    //$("#embedDoc").attr("src",$(this).attr("href"));
+                    $('#modalComentario').modal();
+                    //$("#embedDoc").attr("src",doc);
+                    //$("#tituloModal").text(titulo);
+                })
+<?php
+                if ($_GET['acao']=="excluir") {//acho que isso vai para a controller
+                    $a = $comentario->deletarComentario($_GET['idDuvida']);
+                    echo "$('#".$_GET['idDuvida']."').addClass('hide');";
+                }
+?>
             })
         </script>
 
 <?php
     require_once 'footer.php';
-    print_r($_SESSION);
-    echo "<br><br><br>";
-    print_r($comentarios);
+    //print_r($_SESSION);
+   // echo "<br><br><br>";
+   // print_r($comentarios);
 ?>   
-
-  </section>
+</section>
 
 </main>
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id='modalDocs'>
+            <div class="modal-dialog modal-lg">
+                <div>
+                    <h3 id='tituloModal'></h3>
+                </div>
+                <div class="modal-content" style='height:80%;'>
+                    <embed src="" id='embedDoc' name='embedDoc' style="height:100%;">
+                </div>
+            </div>
+
+
+            <!-- modal comentario -->
+            <div class="modal" tabindex="-1" role="dialog" id='modalComentario'>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Título do modal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Texto do corpo do modal, é aqui.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+
+            
