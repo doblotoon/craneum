@@ -78,12 +78,27 @@
 
     require_once "menu.php";
     
+    $conteudoSelecionado['dataPostagem'] = date("d/m/Y", strtotime($conteudoSelecionado['dataPostagem']));
 ?>
 
 
   <section class="section parallax bg1 tituloConteudo">
-  <h1><?=$conteudoSelecionado['titulo']?></h1>
-  <h4 id="infoConteudo">Postado por <?=$conteudoSelecionado['nome']?> em <?=$conteudoSelecionado['dataPostagem']?></h4>
+  <div class="container">
+        <h1 class="infosConteudo"><?=$conteudoSelecionado['titulo']?></h1>
+        <h4 class="infosConteudo"><i class="fas fa-pen espacoIconInfo"></i> Postado por <?=$conteudoSelecionado['nome']?> em <?=$conteudoSelecionado['dataPostagem']?></h4>
+
+<?php
+    if($conteudoSelecionado['idUsuario']!= $_SESSION['id']){
+?>
+        <button class="btn btn-light espacoSalvar"><i class="fas fa-bookmark"></i> Salvar</button>
+<?php
+    } else {
+?>
+    <button type="button" class="btn btn-warning"><i class="far fa-edit"></i> Editar</button>
+<?php
+    }
+?>
+  </div>
   </section>
 
   <section class="section static">
@@ -98,7 +113,7 @@
                         <h6 class="aEsquerda negrito">Disciplina(s): </h6>
 <?php
     foreach ($disciplinas as $disciplina) {
-        print('<h6 class="aEsquerda"><a href="resultadoPesquisar.php?termoPesquisado='.$disciplina['disciplina'].'"><span class="badge badge-secondary aEsquerda espacoDireita">'.$disciplina['disciplina'].'</span></h6></a>');
+        print('<h5 class="aEsquerda"><a href="resultadoPesquisar.php?termoPesquisado='.$disciplina['disciplina'].'"><span class="badge badge-secondary aEsquerda espacoDireita disciplina">'.$disciplina['disciplina'].'</span></h5></a>');
     }
 ?>
                     </div>
@@ -108,14 +123,15 @@
                     </div>
                     <hr class="mb-4">
                     <div class='col-md-12 mb-3'>
-                    <h2 class="aEsquerda negrito">Dúvidas: </h2>
+                    <h6 class="aEsquerda negrito">Tags: </h6>
                     <?php
                             //print_r($tags);
                             foreach ($tags as $key => $tag) {
                                 $tagNome = $tag['tag'];
-                                print('<a href="resultadoPesquisar.php?termoPesquisado='.$tagNome.'"><span class="badge badge-secondary aEsquerda espacoDireita">'.$tagNome.'</span></h6></a>');
+                                print('<a href="resultadoPesquisar.php?termoPesquisado='.$tagNome.'"><span class="badge badge-secondary aEsquerda espacoDireita tag">'.$tagNome.'</span></h6></a>');
                             }
                         ?>
+                    <h2 class="aEsquerda negrito">Dúvidas: </h2>
                     </div>
                 </div>
 
