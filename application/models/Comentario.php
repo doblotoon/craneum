@@ -16,6 +16,7 @@ class Comentario {
         $dataDuvida = date("Y-m-d H:i:s");
         $idConteudo = $dadosRecebidos['idConteudo'];
         $idUsuario = $dadosRecebidos['idUsuario'];
+
         $query = "insert into duvida (duvida,adendo,respondido,dataDuvida,fk_duv_idConteudo,fk_duv_idUsuario) values ('{$duvida}',0,0,'{$dataDuvida}', {$idConteudo} ,{$idUsuario});"; 
         
         
@@ -77,15 +78,18 @@ class Comentario {
     }//n sei se deixo aqui ou na controller*/
 
 }
-/*
-$n = new Comentario;
+
+/*$n = new Comentario;
 
 $arrayin=[
-    "duvida"=>"when I popped off",
-    "idConteudo"=> 18,
-    "idUsuario"=>20133145//por alguma razão a gente tá tendo algum problema com o tamanho desses números
+    "duvida" =>"golpe em cima de golpe",
+    "id_conteudo" => 18,
+    "idUsuario" => 2
 ];
 //var_dump($arrayin);
+try {
+    $a = $n->cadastrarComentario($arrayin);
+} catch(PDOException $e) {
+    echo $e->getMessage();
+}*/
 
-$a = $n->cadastrarComentario($arrayin);
-*/

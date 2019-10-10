@@ -3,6 +3,7 @@
     require_once "../models/Conteudo.php";
     require_once "../models/Comentario.php";
     require_once "../models/Tag.php";
+    require_once "../models/Disciplina.php";
 
     $idConteudo = (int) $_GET['idConteudo'];
     $conteudo = new Conteudo();
@@ -14,6 +15,10 @@
 
     $tag = new Tag();
     $tags = $tag->getTagsConteudo($conteudoSelecionado['idConteudo']);
+
+    $disciplina = new Disciplina();
+    $disciplinas = $disciplina->getDisciplinasConteudo($conteudoSelecionado['idConteudo']);
+    
 
     if (!$login) {
         $precisaLogar = "<div class='alert alert-primary' role='alert'>
@@ -46,7 +51,7 @@
 
     .bg1::after {
       background-image: background: rgb(0,0,0);
-      background: radial-gradient(circle, rgba(0,0,0,0.09653368183210786) 35%, rgba(0,14,17,0.6287465669861695) 100%), url('../assets/images/login.png');
+      background: radial-gradient(circle, rgba(0,0,0,0.09653368183210786) 35%, rgba(0,14,17,0.6287465669861695) 100%), url('".$conteudoSelecionado['fotoCapa']."');
       background-position: center;
       background-repeat: no-repeat;
     background-size: cover;
@@ -73,22 +78,44 @@
 
     require_once "menu.php";
     
+    $conteudoSelecionado['dataPostagem'] = date("d/m/Y", strtotime($conteudoSelecionado['dataPostagem']));
 ?>
 
 
   <section class="section parallax bg1 tituloConteudo">
-  <h1><?=$conteudoSelecionado['titulo']?></h1>
-  <h4 id="infoConteudo">Postado por <?=$conteudoSelecionado['nome']?> em <?=$conteudoSelecionado['dataPostagem']?></h4>
+  <div class="container">
+        <h1 class="infosConteudo"><?=$conteudoSelecionado['titulo']?></h1>
+        <h4 class="infosConteudo"><i class="fas fa-pen espacoIconInfo"></i> Postado por <?=$conteudoSelecionado['nome']?> em <?=$conteudoSelecionado['dataPostagem']?></h4>
+
+<?php
+    if($conteudoSelecionado['idUsuario']!= $_SESSION['id']){
+?>
+        <button class="btn btn-light espacoSalvar"><i class="fas fa-bookmark"></i> Salvar</button>
+<?php
+    } else {
+?>
+    <button type="button" class="btn btn-warning"><i class="far fa-edit"></i> Editar</button>
+<?php
+    }
+?>
+  </div>
   </section>
 
   <section class="section static">
+
+  <div class="espacoAntesConteudo"></div>
+
   <div class="container">
             <div class="row">
 
             <div class="col-11"> <!-- COM OS COMENTÁRIOS ABERTOS: col-8 !-->
                     <div class="col-md-12 mb-3 aEsquerda">
                         <h6 class="aEsquerda negrito">Disciplina(s): </h6>
-                        <h6 class="aEsquerda"><a href="tag.php?tag={$tagNome}"><span class="badge badge-secondary aEsquerda espacoDireita">Sociologia</span></h6></a>
+<?php
+    foreach ($disciplinas as $disciplina) {
+        print('<h5 class="aEsquerda"><a href="resultadoPesquisar.php?termoPesquisado='.$disciplina['disciplina'].'"><span class="badge badge-secondary aEsquerda espacoDireita disciplina">'.$disciplina['disciplina'].'</span></h5></a>');
+    }
+?>
                     </div>
                     <hr class="mb-4">
                     <div class="col-md-12 mb-3">
@@ -96,18 +123,19 @@
                     </div>
                     <hr class="mb-4">
                     <div class='col-md-12 mb-3'>
-                    <h2 class="aEsquerda negrito">Dúvidas: </h2>
+                    <h6 class="aEsquerda negrito">Tags: </h6>
                     <?php
                             //print_r($tags);
                             foreach ($tags as $key => $tag) {
                                 $tagNome = $tag['tag'];
-                                print('<a href="tag.php?tag={$tagNome}"><span class="badge badge-secondary aEsquerda espacoDireita">'.$tagNome.'</span></h6></a>');
+                                print('<a href="resultadoPesquisar.php?termoPesquisado='.$tagNome.'"><span class="badge badge-secondary aEsquerda espacoDireita tag">'.$tagNome.'</span></h6></a>');
                             }
                         ?>
+                    
                     </div>
                 </div>
 
-                <!-- COM OS COMENTÁRIOS ABERTOS O BOTÃO FICA DENTRO DE UMA DIV ASSIM:
+<!-- COM OS COMENTÁRIOS ABERTOS O BOTÃO FICA DENTRO DE UMA DIV ASSIM:
 
                 <div class="col-4">
                 <button id='someDuvida'>
@@ -119,8 +147,11 @@
                     <br>
                     <br>
                     <hr>
-                    -->
+-->
                     <div id='divDuvida' class='hide'>
+                    <h2 class="aEsquerda negrito">Dúvidas: </h2>
+
+                    <br><br>
                     <?php
                         
                         //$duvidas[] = ['nomeUsuario'=>"aaaaaa","duvida"=>"nao entendi",'data'=>'07/09/2019']; /// ESTOU AQUI///
@@ -142,8 +173,13 @@
                         }
                         
                     ?>
+
+                        <form action="" method="post" class="">
+                            <textarea name="duvida" id="" cols="30" rows="5"></textarea>    
+                            <button class="btn btn-primary" type="submit">Comentar Dúvida</button>
+                        </form>
                     </div>
-                    <!--
+<!--
                     </div>
                     <div style=''>
                         <?=$precisaLogar?>
@@ -178,7 +214,27 @@
                 <button type="button" id='someDuvida' class="btn btn-secondary"><i class="material-icons">speaker_notes_off</i></button> <!-- COM OS COMENTÁRIOS ABERTOS O ICON MUDA PARA fa-eye-slash e o texto vira fechar comentarios -->
                 </div>
 
+                <?php
 
+                    $arrayCadastrarComentario=[
+                        "duvida" => $_POST['duvida'],
+                        "idConteudo" => $_GET['idConteudo'],
+                        "idUsuario" => $_SESSION['id']
+                    ];
+                    echo isset($arrayCadastrarComentario);
+                    if (isset($arrayCadastrarComentario)) {
+                        //try {
+                            $duvida = $comentario->cadastrarComentario($arrayCadastrarComentario);
+                            $arrayCadastrarComentario = 0;    
+                            print_r($arrayCadastrarComentario);
+                            
+                        /*} catch (PDOException $e) {
+                            echo $e->getMessage();
+                        }*/
+                        
+                    }
+                    
+                ?>
     
         </div>
         </div>

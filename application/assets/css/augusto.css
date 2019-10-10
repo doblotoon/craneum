@@ -216,11 +216,36 @@
     margin-top: 5%;
   }
 
-  .infoConteudo{
-    clear: both;
+  .infosConteudo{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center !important;
+    justify-content: center !important;
     color: white;
     text-shadow: 0 0 10px #000;
+  }
+
+  .espacoAntesConteudo{
+    margin-bottom: 6%;
+  }
+
+  .tag {
+    background-color: #f75225 !important;
+    font-weight: normal;
+    margin-left: 5px; 
+  }
+
+  .disciplina {
+    background-color: #5b9bd1 !important;
+    font-weight: normal; 
+    margin-left: 5px;
+  }
+
+  .espacoIconInfo{
+    margin-right: 7px;
+    text-shadow: 0 0 50px #000;
+  }
+
+  .espacoSalvar{
+    margin-top: 30px;
+    font-family: 'Open Sans', sans-serif !important;
   }

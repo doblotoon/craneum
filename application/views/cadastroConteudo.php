@@ -1,8 +1,11 @@
 <?php
 	require_once 'header.php';
 	require_once '../models/Tag.php';
+	require_once '../models/Disciplina.php';
 	$tagObj = new Tag();
 	$tags = $tagObj->getTags();
+	$disciObj = new Disciplina();
+	$disciplinas = $disciObj->getDisciplinas();
 	setlocale(LC_COLLATE, 'pt_BR.utf-8');
 	asort($tags, SORT_LOCALE_STRING);
 	
@@ -31,7 +34,7 @@
 
 							<div class="mb-9" style='height:500px;'>
 								<label for="conteudo" class="espacoLabelsCadastroUsuario">Conteúdo</label>
-								<textarea name='conteudo' id='editor'></textarea>
+								<textarea name='conteudo' id='editor' required></textarea>
 							</div>
 
 							<label for="address" class="espacoLabelsCadastroUsuario">Foto de Capa do Conteúdo</label>
@@ -45,14 +48,18 @@
 							<div class="row">
 								<div class="col-md-6 mb-3">
 									<label for="disciplina" class="espacoLabelsCadastroUsuario">Disciplinas</label>
-									<select class="form-control" id='selectDisciplinas' name='disciplinas' multiple="multiple">
-										<option>Artes</option>
+									<select class="form-control" id='selectDisciplinas' name='disciplinas' multiple="multiple" required>
+									<?php
+										foreach ($disciplinas as $key => $disciplina) {
+											echo "<option>{$disciplina}</option>";
+										}
+									?>
 									</select>
 								</div>
 
 								<div class="col-md-6 mb-3">
 									<label for="tags" class="espacoLabelsCadastroUsuario">Tags</label>
-									<select class="form-control" id='selectTags' name='tags' multiple="multiple">
+									<select class="form-control" id='selectTags' name='tags' multiple="multiple" required>
 								<?php
 									foreach ($tags as $key => $tag) {
 										echo "<option>{$tag}</option>";
@@ -86,10 +93,10 @@
 			<script>
 				$(document).ready(function() {
 					$("#selectDisciplinas").select2({
+						maximumSelectionLength: 3,
 						tags: true,
     					tokenSeparators: [',', '']
 					});
-
 					$("#selectTags").select2({
 						tags: true,
     					tokenSeparators: [',', '']
@@ -100,16 +107,25 @@
 
 					$("#form").submit(function(){
 						var tags = [];
-						var tagsSelecionadas = $("#teste").select2("data");
+						var tagsSelecionadas = $("#selectTags").select2("data");
+						var disciplinas = [];
+						var disciplinasSelecionadas = $("#selectDisciplinas").select2("data");
+
+						//foreach para add disciplinas
+						$.each(disciplinasSelecionadas,function(index,value){
+							disciplinas.push(value['text']);
+						});
+
+						//foreach para add tags
 						$.each(tagsSelecionadas,function(index,value){
 							tags.push(value['text']);
 						});
 						console.log(tags);
 						$.ajax({
-							url: "../controllers/SalvaTags.php",
+							url: "../controllers/SalvaDados.php",
 							method: "post",
 							dataType: "json",
-							data: {'tags':tags},
+							data: {'tags':tags, 'disciplinas':disciplinas},
 							success: function( data, textStatus, jQxhr ){
 								console.log(data);
 							},
