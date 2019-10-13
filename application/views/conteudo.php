@@ -132,8 +132,13 @@
                 
             </div>
             
-            <!-- DIV DOS COMENTÁRIOS class hide-->
+            
+            <!-- botao para aparecer ou sumir duvida -->
+            <div class='col-1'>
+                <button type="button" id='someDuvida' class="btn btn-secondary"><i class="far fa-eye"></i></button> <!-- COM OS COMENTÁRIOS ABERTOS O ICON MUDA PARA fa-eye-slash e o texto vira fechar comentarios -->
+            </div>
 
+            <!-- DIV DOS COMENTÁRIOS -->
             <div class="col-3 hide" id='colunaComentario'>
                 <h2 class="aEsquerda negrito">Dúvidas: </h2>
                 <br><br>
@@ -181,10 +186,7 @@
             </div>
             
 
-            <!-- botao para aparecer ou sumir duvida -->
-            <div class='col-1'>
-                <button type="button" id='someDuvida' class="btn btn-secondary"><i class="material-icons">speaker_notes_off</i></button> <!-- COM OS COMENTÁRIOS ABERTOS O ICON MUDA PARA fa-eye-slash e o texto vira fechar comentarios -->
-            </div>
+            
 
                         
             <div class="col-md-1 mb-3 aEsquerda fixed">
@@ -248,14 +250,16 @@
                         $("#colunaConteudo").removeClass("col-11");
                         $("#colunaConteudo").addClass("col-8");
 
-                        $("#someDuvida i").text("speaker_notes");
+                        $("#someDuvida i").removeClass("far fa-eye");
+                        $("#someDuvida i").addClass("far fa-eye-slash");
                         
                         chat = 1;
                     }else{
                         $("#colunaConteudo").removeClass("col-8");
                         $("#colunaConteudo").addClass("col-11");
 
-                        $("#someDuvida i").text("speaker_notes_off");
+                        $("#someDuvida i").removeClass("far fa-eye-slash");
+                        $("#someDuvida i").addClass("far fa-eye");
                         
                         chat = 0;
                     }
