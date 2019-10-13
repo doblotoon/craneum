@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-null
-=======
-["Arte Moderna"]
->>>>>>> 342e58cf686a61a91b7e74f1f8302d54350251d7
+["teste funfando"]

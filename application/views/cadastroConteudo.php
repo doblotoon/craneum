@@ -139,12 +139,17 @@
 				});
 			</script>
 			<script type="text/javascript">
-				CKEDITOR.replace( 'editor', {
+				var editor = CKEDITOR.replace( 'editor', {
 					height: 440,
 					//width: '100%',
 					filebrowserUploadUrl: "../models/upload.php?type=file",
-					filebrowserImageUploadUrl: "../models/upload.php?type=image"
-				} );
+					filebrowserImageUploadUrl: "../models/upload.php?type=image",
+					extraPlugins: 'notification'
+				});
+				editor.on('required', function(evt){
+					editor.showNotification('Você precisar preencher esse campo!', 'warning');
+					evt.cancel();
+				})
 			</script>
 
 <?php

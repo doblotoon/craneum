@@ -3,10 +3,10 @@
     //echo $_POST['texto'];
     require "../models/Conteudo.php";
     require "../controllers/CadastroTag.php";
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
     require "../controllers/CadastroDisciplina.php";
->>>>>>> 342e58cf686a61a91b7e74f1f8302d54350251d7
+//>>>>>>> 342e58cf686a61a91b7e74f1f8302d54350251d7
    // print_r($_POST);
     $conteudo = new Conteudo();
     $tag = new cadastroTag();
