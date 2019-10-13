@@ -9,7 +9,7 @@
     $conteudo = new Conteudo();
     $conteudoSelecionado = $conteudo->getConteudo($idConteudo);
     
-    if(empty($conteudoSelecionado[$idConteudo])){
+    if(!$conteudoSelecionado){
         header("Location: erro.php?erro=naoEncontrado");
     }
 
@@ -78,7 +78,7 @@
 
     <body>
     <main class='wrapper'>
-    ";
+";
 
     require_once "menu.php";
     
@@ -86,139 +86,127 @@
 ?>
 
 
-  <section class="section parallax bg1 tituloConteudo">
-  <div class="container">
-        <h1 class="infosConteudo"><?=$conteudoSelecionado['titulo']?></h1>
-        <h4 class="infosConteudo"><i class="fas fa-pen espacoIconInfo"></i> Postado por <?=$conteudoSelecionado['nome']?> em <?=$conteudoSelecionado['dataPostagem']?></h4>
+    <section class="section parallax bg1 tituloConteudo">
+        <div class="container">
+            <h1 class="infosConteudo"><?=$conteudoSelecionado['titulo']?></h1>
+            <h4 class="infosConteudo"><i class="fas fa-pen espacoIconInfo"></i> Postado por <?=$conteudoSelecionado['nome']?> em <?=$conteudoSelecionado['dataPostagem']?></h4>
 
 <?php
-    if($conteudoSelecionado['idUsuario']!= $_SESSION['id']){
+        if(isset($_SESSION['id']) && $conteudoSelecionado['idUsuario']!=$_SESSION['id']){
+        echo '<button class="btn btn-light espacoSalvar"><i class="fas fa-bookmark"></i> Salvar</button>';
+        } elseif(isset($_SESSION['id']) && $conteudoSelecionado['idUsuario']!=$_SESSION['id']){
+            echo'<button type="button" class="btn btn-warning"><i class="far fa-edit"></i> Editar</button>';
+        }
 ?>
-        <button class="btn btn-light espacoSalvar"><i class="fas fa-bookmark"></i> Salvar</button>
-<?php
-    } else {
-?>
-    <button type="button" class="btn btn-warning"><i class="far fa-edit"></i> Editar</button>
-<?php
-    }
-?>
-  </div>
-  </section>
+        </div>
+    </section>
 
   <section class="section static">
 
-  <div class="espacoAntesConteudo"></div>
+    <div class="espacoAntesConteudo"></div>
 
-  <div class="container">
-            <div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-3 aEsquerda">
+                <br>
+                <h6 class="aEsquerda negrito">Disciplina(s): </h6>
+                <?php
+                    foreach ($disciplinas as $disciplina) {
+                        echo '<a href="resultadoPesquisar.php?termoPesquisado='.$disciplina['disciplina'].'">
+                                    <h5 class="aEsquerda">
+                                        <span class="badge badge-secondary aEsquerda espacoDireita disciplina">'.$disciplina['disciplina'].'</span>
+                                    </h5>
+                                </a>';
+                    }
+                ?>
+            </div>
+            <hr class="mb-4">
+            <!-- DIV DO CONTEUDO -->
 
-            <div class="col-11"> <!-- COM OS COMENTÁRIOS ABERTOS: col-8 !-->
-                    <div class="col-md-12 mb-3 aEsquerda">
-                        <h6 class="aEsquerda negrito">Disciplina(s): </h6>
-<?php
-    foreach ($disciplinas as $disciplina) {
-        print('<h5 class="aEsquerda"><a href="resultadoPesquisar.php?termoPesquisado='.$disciplina['disciplina'].'"><span class="badge badge-secondary aEsquerda espacoDireita disciplina">'.$disciplina['disciplina'].'</span></h5></a>');
-    }
-?>
+            <div class="col-11 card" id='colunaConteudo'>
+                <br>
+                <div class="col-md-12 mb-3">
+                    <?=$conteudoSelecionado['conteudo']?>
+                </div>
+                <hr class="mb-4">
+                
+            </div>
+            
+            <!-- DIV DOS COMENTÁRIOS class hide-->
+
+            <div class="col-3 hide" id='colunaComentario'>
+                <h2 class="aEsquerda negrito">Dúvidas: </h2>
+                <br><br>
+
+                <!-- Comentarios listados -->
+                <?php
+                        
+                        //$duvidas[] = ['nomeUsuario'=>"aaaaaa","duvida"=>"nao entendi",'data'=>'07/09/2019']; /// ESTOU AQUI///
+                        if (empty($comentarios)) {
+                            echo "<h5> Não há nenhuma dúvida cadastrada";
+                            echo "<hr>";
+                        }else{
+                            foreach ($comentarios as $duvida) {
+                                //$a=$comentarios->trocaIDporNome($duvida['fk_duv_idUsuario']);
+                                //print_r("<pre>$duvida</pre>");
+                                echo "<span id='".$duvida['idDuvida']."'>";
+                                echo "<h6>{$duvida['dataDuvida']}</h6>";
+                                echo "<h4>{$duvida['duvida']}</h4>";
+                                //echo "<p>{$a}</p>";
+                                if(isset($_SESSION['id'])){
+                                    if ($duvida['idUsuario']==$_SESSION['id']) {
+                                        echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=excluir&idDuvida={$duvida['idDuvida']}'><button class='btn-danger'>excluir</button></a>";
+                                        echo "<button class='btn-primary comentarioEdita'>editar</button>";
+                                    }
+                                }
+                                
+                                echo "<hr>";
+                                echo "</span>";
+                            }
+                        }
+                ?>
+
+                
+                <!--<form action="" method="post" class="">
+                    <textarea name="duvida" id="" cols="30" rows="5"></textarea>    
+                    <button class="btn btn-primary" type="submit">Comentar Dúvida</button>
+                </form>
+                -->
+                <div style=''>
+                        <?=$precisaLogar?>
+                        <textarea id='duvida' cols="30" rows="5" class='<?=$displayNone?>'></textarea>
+                        <hr>
+                        <button class='<?=$displayNone?> btn btn-primary'>Comentar Dúvida</button>
                     </div>
-                    <hr class="mb-4">
-                    <div class="col-md-12 mb-3">
-                        <?=$conteudoSelecionado['conteudo']?>
-                    </div>
-                    <hr class="mb-4">
-                    <div class='col-md-12 mb-3'>
+            </div>
+            
+
+            <!-- botao para aparecer ou sumir duvida -->
+            <div class='col-1'>
+                <button type="button" id='someDuvida' class="btn btn-secondary"><i class="material-icons">speaker_notes_off</i></button> <!-- COM OS COMENTÁRIOS ABERTOS O ICON MUDA PARA fa-eye-slash e o texto vira fechar comentarios -->
+            </div>
+
+                        
+            <div class="col-md-1 mb-3 aEsquerda fixed">
+                <div class='col-md-12 mb-3'>
+                <br>
                     <h6 class="aEsquerda negrito">Tags: </h6>
                     <?php
                             //print_r($tags);
                             foreach ($tags as $key => $tag) {
                                 $tagNome = $tag['tag'];
-                                print('<a href="resultadoPesquisar.php?termoPesquisado='.$tagNome.'"><span class="badge badge-secondary aEsquerda espacoDireita tag">'.$tagNome.'</span></h6></a>');
+                                echo '<a href="resultadoPesquisar.php?termoPesquisado='.$tagNome.'"><span class="badge badge-secondary aEsquerda espacoDireita tag">'.$tagNome.'</span></h6></a>';
                             }
                         ?>
                     
                     </div>
-                </div>
 
-<!-- COM OS COMENTÁRIOS ABERTOS O BOTÃO FICA DENTRO DE UMA DIV ASSIM:
-
-                <div class="col-4">
-                <button id='someDuvida'>
-                    <i class="material-icons">speaker_notes_off</i>
-                </button>
-                <div id='divDuvida'>
-                    <div style='overflow:scroll;height:70%;'>
-                    <h2 style='text-align:center;'>Dúvidas</h2>
-                    <br>
-                    <br>
-                    <hr>
--->
-                    <div id='divDuvida' class='hide'>
-                    <h2 class="aEsquerda negrito">Dúvidas: </h2>
-
-                    <br><br>
-                    <?php
-                        
-                        //$duvidas[] = ['nomeUsuario'=>"aaaaaa","duvida"=>"nao entendi",'data'=>'07/09/2019']; /// ESTOU AQUI///
-                        foreach ($comentarios as $duvida) {
-                            //$a=$comentarios->trocaIDporNome($duvida['fk_duv_idUsuario']);
-                            //print_r("<pre>$duvida</pre>");
-                            echo "<span id='".$duvida['idDuvida']."'>";
-                            echo "<h6>{$duvida['dataDuvida']}</h6>";
-                            echo "<h4>{$duvida['duvida']}</h4>";
-                            echo "<p>{$a}</p>";
-                            if ($duvida['idUsuario']==$_SESSION['id']) {
-                                echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=excluir&idDuvida={$duvida['idDuvida']}'><button class='btn-danger'>excluir</button></a>";
-                                echo "<button class='btn-primary comentarioEdita'>editar</button>";
-                            }
-                            
-                            echo "<hr>";
-                            echo "</span>";
-                            //echo "<button></button>";
-                        }
-                        
-                    ?>
-
-                        <form action="" method="post" class="">
-                            <textarea name="duvida" id="" cols="30" rows="5"></textarea>    
-                            <button class="btn btn-primary" type="submit">Comentar Dúvida</button>
-                        </form>
-                    </div>
-<!--
-                    </div>
-                    <div style=''>
-                        <?=$precisaLogar?>
-                        <textarea id='duvida' class='<?=$displayNone?>'></textarea>
-                        <hr>
-                        <button class='<?=$displayNone?>'>Enviar duvida</button>
-                    </div>
-                </div>
-        <style>
-            .hide{
-                display:none;
-            }
-            .containerGrande{
-                width:60% !important;
-                margin-left:20% !important;
-            }
-            .containerPequeno{
-                width:20% !important;
-                margin:0 !important;
-            }
-        </style>
-        <div>
-            <div></div>
-
-            </div>
-        </div>
-    
-
--->
-
-                <div class="col-md-1 mb-3 aEsquerda fixed">
-                <button type="button" id='someDuvida' class="btn btn-secondary"><i class="material-icons">speaker_notes_off</i></button> <!-- COM OS COMENTÁRIOS ABERTOS O ICON MUDA PARA fa-eye-slash e o texto vira fechar comentarios -->
+                <!-- essa div debaixo fecha a div class row -->
                 </div>
 
                 <?php
+/*
+        #-#--fazer ajax com isso aqui, no caso, cadastrar comentario--#-#
 
                     $arrayCadastrarComentario=[
                         "duvida" => $_POST['duvida'],
@@ -232,12 +220,12 @@
                             $arrayCadastrarComentario = 0;    
                             print_r($arrayCadastrarComentario);
                             
-                        /*} catch (PDOException $e) {
-                            echo $e->getMessage();
-                        }*/
+                        //} catch (PDOException $e) {
+                         //   echo $e->getMessage();
+                       // }
                         
                     }
-                    
+  */                  
                 ?>
     
         </div>
@@ -253,14 +241,22 @@
             $(document).ready(function(){
                 var chat = 0;
                 $("#someDuvida").click(function () {
-                    $("#divDuvida").toggleClass("hide");
-                    $("#containerConteudo").toggleClass("containerGrande");
-                    $("#containerDuvida").toggleClass("containerPequeno");
+                    $("#colunaComentario").toggleClass("hide");
+                    //alert("A");
+
                     if(chat==0){
+                        $("#colunaConteudo").removeClass("col-11");
+                        $("#colunaConteudo").addClass("col-8");
+
                         $("#someDuvida i").text("speaker_notes");
+                        
                         chat = 1;
                     }else{
+                        $("#colunaConteudo").removeClass("col-8");
+                        $("#colunaConteudo").addClass("col-11");
+
                         $("#someDuvida i").text("speaker_notes_off");
+                        
                         chat = 0;
                     }
                 })
@@ -283,7 +279,7 @@
                     //$("#tituloModal").text(titulo);
                 })
 <?php
-                if ($_GET['acao']=="excluir") {//acho que isso vai para a controller
+                if (isset($_GET['acao']) and $_GET['acao']=="excluir") {//acho que isso vai para a controller
                     $a = $comentario->deletarComentario($_GET['idDuvida']);
                     echo "$('#".$_GET['idDuvida']."').addClass('hide');";
                 }
@@ -331,7 +327,3 @@
                 </div>
             </div>
             </div>
-
-
-
-            

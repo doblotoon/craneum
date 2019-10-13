@@ -98,6 +98,7 @@
     					tokenSeparators: [',', '']
 					});
 					$("#selectTags").select2({
+						maximumSelectionLength: 5,
 						tags: true,
     					tokenSeparators: [',', '']
 					});
