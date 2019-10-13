@@ -7,23 +7,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <?php
     require_once 'header.php';
-    if (isset($_GET['err'])) {
-        switch ($_GET['err']) {
-            case '1':
-                echo "erro o email";
-                //exibir um modal dizendo o que a pessoa errou
-                break;
-            case '2':
-                echo "erro a senha";
-                //exibir um modal dizendo o que a pessoa errou
-                break;
+
+    if(!empty($_SESSION)){
+        header("Location: erro.php?erro=jaCadastrado");
+    } else {
+
+        if (isset($_GET['err'])) {
+            switch ($_GET['err']) {
+                case '1':
+                    echo "erro o email";
+                    //exibir um modal dizendo o que a pessoa errou
+                    break;
+                case '2':
+                    echo "erro a senha";
+                    //exibir um modal dizendo o que a pessoa errou
+                    break;
+            }
         }
-    }
-    if (isset($_GET['conteudo'])) {
-        $conteudoPagina = "&conteudo=".$_GET['conteudo'];
-    }else{
-        $conteudoPagina = "";
-    }
+        if (isset($_GET['conteudo'])) {
+            $conteudoPagina = "&conteudo=".$_GET['conteudo'];
+        }else{
+            $conteudoPagina = "";
+        }
     //session_destroy();
 ?>
 <body>
@@ -62,6 +67,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     
 <?php
     require_once 'footer.php';
+    }
 ?>   
 
     <!-- //footer -->

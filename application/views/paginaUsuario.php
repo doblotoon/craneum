@@ -7,14 +7,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <?php
     require_once 'header.php';
-    if($_SESSION['tipo']=="professor"){
-        echo $_SESSION['tipo']."<br>";
-        $tipo = $_SESSION['tipo']."es";
-    }else{
-        echo $_SESSION['tipo']."<br>";
-        $tipo = $_SESSION['tipo']."s";
-    }
-    require "../models/".ucwords($tipo).".php";
+
+    if(empty($_SESSION)){
+        header("Location: erro.php?erro=acessoNegado");
+    } else {
+        if($_SESSION['tipo']=="professor"){
+            echo $_SESSION['tipo']."<br>";
+            $tipo = $_SESSION['tipo']."es";
+        }else{
+            echo $_SESSION['tipo']."<br>";
+            $tipo = $_SESSION['tipo']."s";
+        }
+        require "../models/".ucwords($tipo).".php";
     
 ?>
 <body>
@@ -132,5 +136,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     
 <?php
+    }
     require_once('footer.php');
 ?>   

@@ -8,6 +8,10 @@
     $idConteudo = (int) $_GET['idConteudo'];
     $conteudo = new Conteudo();
     $conteudoSelecionado = $conteudo->getConteudo($idConteudo);
+    
+    if(empty($conteudoSelecionado[$idConteudo])){
+        header("Location: erro.php?erro=naoEncontrado");
+    }
 
     $comentario = new Comentario;
     $comentarios = $comentario->getComentario($idConteudo);

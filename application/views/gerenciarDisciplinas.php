@@ -1,7 +1,7 @@
 <?php
     require_once('header.php');
     require_once "../models/Disciplina.php";
-
+	
     $disciplina = new Disciplina();
     $disciplinas = $disciplina->getDisciplinas();
 ?>
@@ -76,7 +76,7 @@ $(document).ready(function(){
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-						<th class="gerenciarSelect">
+						<th class="gerenciarSelect text-center">
 							<span class="custom-checkbox">
 								<input type="checkbox" id="selectAll">
 								<label for="selectAll"></label>
@@ -91,7 +91,7 @@ $(document).ready(function(){
     for ($i=0; $i < sizeof($disciplinas); $i++) { 
 ?>
                     <tr>
-						<td class="gerenciarSelect">
+						<td class="gerenciarSelect text-center">
 							<span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
 								<label for="checkbox1"></label>

@@ -155,5 +155,6 @@
             $consulta = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);
             return $consulta;
         }*/
+
     }
 

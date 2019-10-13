@@ -7,6 +7,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <?php
     require_once('header.php');
+    if(!empty($_SESSION)){
+        header("Location: erro.php?erro=jaCadastrado");
+    } else {
 ?>
 
     <!-- main -->
@@ -67,6 +70,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- footer -->
     
 <?php
+    }
     require_once('footer.php');
 ?>   
 

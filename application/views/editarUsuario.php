@@ -1,6 +1,10 @@
 <?php
     require_once('header.php');
     $foto = $_SESSION['fotoPerfil'];
+
+    if(empty($_SESSION)){
+        header("Location: erro.php?erro=acessoNegado");
+    }
 ?>
 
 <body>

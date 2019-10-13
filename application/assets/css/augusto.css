@@ -255,7 +255,7 @@
 }
 
 .table-wrapper {
-  width: 700px;
+  width: 100%;
   margin: 30px auto;
       background: #fff;
       padding: 20px;	
@@ -334,5 +334,20 @@ table.table td .add {
 }
 
 .gerenciarSelect {
-  width: 10%;
+  width: 7%;
 }
+.espacoErro{
+  margin-top: 3.2% !important;
+  margin-bottom: 1.8% !important;
+}
+
+.espacoInferiorErro{
+  margin-bottom: 3% !important;
+}
+
+.table-wrapperUser {
+  width: 100%;
+  margin: 30px auto;
+      background: #fff;
+      box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  }
