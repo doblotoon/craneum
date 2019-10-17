@@ -15,7 +15,10 @@
 
     $comentario = new Comentario;
     $comentarios = $comentario->getComentario($idConteudo);
-   
+    print_r($comentarios[$_GET['idDuvida']]);
+    //print("<pre>");
+    //print_r($comentarios);
+    //print("</pre>");
 
     $tag = new Tag();
     $tags = $tag->getTagsConteudo($conteudoSelecionado['idConteudo']);
@@ -145,7 +148,7 @@
 
                 <!-- Comentarios listados -->
                 <?php
-                        
+                        //print_r($comentarios);
                         //$duvidas[] = ['nomeUsuario'=>"aaaaaa","duvida"=>"nao entendi",'data'=>'07/09/2019']; /// ESTOU AQUI///
                         if (empty($comentarios)) {
                             echo "<h5> Não há nenhuma dúvida cadastrada";
@@ -161,7 +164,7 @@
                                 if(isset($_SESSION['id'])){
                                     if ($duvida['idUsuario']==$_SESSION['id']) {
                                         echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=excluir&idDuvida={$duvida['idDuvida']}'><button class='btn-danger'>excluir</button></a>";
-                                        echo "<button class='btn-primary comentarioEdita'>editar</button>";
+                                        echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn-primary '>editar</button></a>";
                                     }
                                 }
                                 
@@ -169,6 +172,28 @@
                                 echo "</span>";
                             }
                         }
+                    
+                        if ($_GET['acao'] == "editar") {
+                          foreach ($comentarios as $key => $value) {
+                            if ($idDuvida == $_GET['idDuvida']) {
+                                $ex; //colcoar aqui o comenjtário antigo; 
+                            }    
+                            print_r($value);
+                              //$ex = ;
+                          }  
+                        ?>
+
+                            <form action="" method="post">
+                                lolo<textarea name="duvidaAtual" id="" cols="30" rows="5" value="<?php //print_r($comentarios[$_GET['idDuvida']]);?>">
+                                    tchu
+                                </textarea>
+                                <input type="hidden" name="id" value="{$_GET['idConteudo']}">
+                                <button class="btn btn-primary" type="submit">Comentar Dúvida editada</button>
+                            </form>
+
+                        <?php
+                        }
+
                 ?>
 
                 
