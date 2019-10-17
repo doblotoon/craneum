@@ -135,7 +135,7 @@
             
             <!-- botao para aparecer ou sumir duvida -->
             <div class='col-1'>
-                <button type="button" id='someDuvida' class="btn btn-secondary"><i class="far fa-eye"></i></button> <!-- COM OS COMENTÁRIOS ABERTOS O ICON MUDA PARA fa-eye-slash e o texto vira fechar comentarios -->
+                <button type="button" id='someDuvida' class="btn btn-secondary botaoDuvida"><i class="far fa-eye"></i></button> <!-- COM OS COMENTÁRIOS ABERTOS O ICON MUDA PARA fa-eye-slash e o texto vira fechar comentarios -->
             </div>
 
             <!-- DIV DOS COMENTÁRIOS -->

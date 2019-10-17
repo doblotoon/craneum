@@ -63,8 +63,7 @@ background:#eee;
 </head>
 <body>
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container">
+<div class="container espacoPesquisa">
 <div class="row">
 	<!-- BEGIN SEARCH RESULT -->
 	<div class="col-md-12">
@@ -73,11 +72,30 @@ background:#eee;
 				<div class="row">
 					<!-- BEGIN FILTERS -->
 					<div class="col-md-3">
-						<h2 class="grid-title"><i class="fa fa-filter"></i> Filtros</h2>
+						<h3 class="grid-title"><i class="fa fa-filter"></i> Filtros</h3>
 						<hr>
 						
 						<!-- BEGIN FILTER BY CATEGORY -->
-						<h4>Por disciplina:</h4>
+						<h4 class="opcaoFiltro">Por disciplina:</h4>
+						<div class="checkbox">
+							<label><input type="checkbox" class="icheck"> Application</label>
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox" class="icheck"> Design</label>
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox" class="icheck"> Desktop</label>
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox" class="icheck"> Management</label>
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox" class="icheck"> Mobile</label>
+						</div>
+						<!-- END FILTER BY CATEGORY -->
+
+						<!-- BEGIN FILTER BY CATEGORY -->
+						<h4 class="opcaoFiltro">Por Professor</h4>
 						<div class="checkbox">
 							<label><input type="checkbox" class="icheck"> Application</label>
 						</div>
@@ -98,15 +116,15 @@ background:#eee;
 						<div class="padding"></div>
 						
 						<!-- BEGIN FILTER BY DATE -->
-						<h4>By date:</h4>
-						From
+						<h4 class="opcaoFiltro">Por data:</h4>
+						De
 						<div class="input-group date form_date" data-date="2014-06-14T05:25:07Z" data-date-format="dd-mm-yyyy" data-link-field="dtp_input1">
 							<input type="text" class="form-control">
 							<span class="input-group-addon bg-blue"><i class="fa fa-th"></i></span>
 						</div>
 						<input type="hidden" id="dtp_input1" value="">
 						
-						To
+						Até
 						<div class="input-group date form_date" data-date="2014-06-14T05:25:07Z" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2">
 							<input type="text" class="form-control">
 							<span class="input-group-addon bg-blue"><i class="fa fa-th"></i></span>
@@ -116,18 +134,11 @@ background:#eee;
 						
 						<div class="padding"></div>
 						
-						<!-- BEGIN FILTER BY PRICE -->
-						<h4>By price:</h4>
-						Between <div id="price1">$300</div> to <div id="price2">$800</div>
-						<div class="slider-primary">
-							<div class="slider slider-horizontal" style="width: 152px;"><div class="slider-track"><div class="slider-selection" style="left: 30%; width: 50%;"></div><div class="slider-handle round" style="left: 30%;"></div><div class="slider-handle round" style="left: 80%;"></div></div><div class="tooltip top hide" style="top: -30px; left: 50.1px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">300 : 800</div></div><input type="text" class="slider" value="" data-slider-min="0" data-slider-max="1000" data-slider-step="1" data-slider-value="[300,800]" data-slider-tooltip="hide"></div>
-						</div>
-						<!-- END FILTER BY PRICE -->
 					</div>
 					<!-- END FILTERS -->
 					<!-- BEGIN RESULT -->
 					<div class="col-md-9">
-						<h2><i class="fa fa-file-o"></i> Result</h2>
+						<h2><i class="fa fa-search"></i> Resultado</h2>
 						<hr>
 						<!-- BEGIN SEARCH INPUT -->
 						<div class="input-group">
@@ -137,7 +148,7 @@ background:#eee;
 							</span>
 						</div>
 						<!-- END SEARCH INPUT -->
-						<p>Showing all results matching "web development"</p>
+						<p>Mostrando todos os resultados com o termo "(TERMO PESQUISADO)"</p>
 						
 						<div class="padding"></div>
 						
@@ -146,7 +157,7 @@ background:#eee;
 							<div class="col-sm-6">
 								<div class="btn-group">
 									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-										Order by <span class="caret"></span>
+										Ordenar por <span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="#">Name</a></li>

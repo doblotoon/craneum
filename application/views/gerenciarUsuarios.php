@@ -69,7 +69,7 @@ $(document).ready(function(){
 					</div>
                 </div>
             </div>
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover class table-responsive">
                 <thead>
                     <tr>
 						<th class="gerenciarSelect text-center">
@@ -94,11 +94,11 @@ $(document).ready(function(){
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-                        <td>2017312160</td>
-                        <td>Aluno</td>
-                        <td>Pedro</td>
-                        <td>pedro.canteli2001@gmail.com</td>
-                        <td>aa</td>
+                        <td class="text-center">2017312160</td>
+                        <td class="text-center">Aluno</td>
+                        <td class="text-center">Pedro</td>
+                        <td class="text-center">pedro.canteli2001@gmail.com</td>
+                        <td class="text-center">aa</td>
                         <td>
                             <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="far fa-edit"></i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash"></i> </a>

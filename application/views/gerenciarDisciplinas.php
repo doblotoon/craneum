@@ -69,7 +69,6 @@ $(document).ready(function(){
                 <div class="row">
 					<div class="col-sm-12">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-plus"></i> <span>Adicionar nova disciplina</span></a>
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-trash-alt"></i> <span>Excluir</span></a>						
 					</div>
                 </div>
             </div>
@@ -83,7 +82,7 @@ $(document).ready(function(){
 							</span>
 						</th>
                         <th class="text-center">Disciplina</th>
-                        <th class="text-center">Ações</th>
+                        <th class="text-center">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -98,9 +97,8 @@ $(document).ready(function(){
 							</span>
 						</td>
                         <td><?=$disciplinas[$i]?></td>
-                        <td>
+                        <td class="text-center">
                             <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="far fa-edit"></i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash"></i> </a>
                         </td>
                     </tr>
 
@@ -170,28 +168,6 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
-	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">						
-						<h4 class="modal-title">Deletar Disciplina</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<p>Você tem certeza que deseja deletar a disciplina selecionada?</p>
-						<p class="text-warning"><small>Essa ação não pode ser desfeita.</small></p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-danger" value="Delete">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-
 <?php
 	require_once 'footer.php';
 ?>
