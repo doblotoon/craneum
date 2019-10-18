@@ -53,11 +53,7 @@ $(document).ready(function(){
 		$(this).parents("tr").find(".add, .edit").toggle();
 		$(".add-new").attr("disabled", "disabled");
     });
-	// Delete row on delete button click
-	$(document).on("click", ".delete", function(){
-        $(this).parents("tr").remove();
-		$(".add-new").removeAttr("disabled");
-    });
+
 });
 </script>
 
@@ -110,16 +106,22 @@ $(document).ready(function(){
             </table>
 			<div class="clearfix">
                 <div class="hint-text">Mostrando <b>5</b> de <b>30</b> disciplinas</div>
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Anterior</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Próximo</a></li>
-                </ul>
-            </div>
+                <!-- BEGIN PAGINATION -->
+						<nav>
+						<ul class="pagination ">
+							<li class="page-item disabled">
+							<a class="page-link" href="#" tabindex="-1">Anterior</a>
+							</li>
+							<li class="page-item active"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item">
+							<a class="page-link" href="#">Próximo</a>
+							</li>
+						</ul>
+						</nav>
+				<!-- END PAGINATION -->
+			</div>
         </div>
     </div>
 	<!-- Edit Modal HTML -->

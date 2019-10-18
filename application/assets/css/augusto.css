@@ -375,41 +375,157 @@ table.table td .add {
     margin-bottom: 8%;
   }
 
-  @media (max-width: 767px) {
-
-  .table-responsive {
-    display: block;
-    position: relative;
+  table.table th:last-child {
     width: 100%;
   }
   
-  .table-responsive thead,
-  .table-responsive tbody,
-  .table-responsive th,
-  .table-responsive td,
-  .table-responsive tr {
-    display: block;
+  .iconGerenciarUsers {
+    border-radius: 3.25rem!important;
+    width: 35px !important;
+    margin-top: -5px !important;
+    margin-bottom: -5px !important;
   }
+  
 
-  .table-responsive td,
-.table-responsive th {
-  height: 35px;
+  @media (max-width: 767px) {
+
+    .table-responsive {
+      display: block;
+      position: relative;
+      width: 100%;
+    }
+    
+    .table-responsive thead,
+    .table-responsive tbody,
+    .table-responsive th,
+    .table-responsive td,
+    .table-responsive tr {
+      display: block;
+    }
+
+    .table-responsive td,
+    .table-responsive th {
+      height: 35px !important;
+    
+    }
+
+    .table-responsive thead {
+      float: left;
+    }
+
+    .table-responsive tbody {
+      width: auto;
+      position: relative;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+    }
+
+    .table-responsive tbody tr {
+      display: inline-block;
+    }
+
+    .iconGerenciarUsers {
+      width: 31px !important;
+      position: absolute;
+      top: 178px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
 }
 
-.table-responsive thead {
-  float: left;
+#nomeUser {
+  width: 15%;
 }
 
-.table-responsive tbody {
-  width: auto;
+#tipoUser{
+  width: 15% !important;
+}
+
+#emailUser {
+  width: 37% !important;
+}
+
+#fotoPerfilUser {
+  width: 10% !important;
+}
+
+.botaoRefinar{
+  margin-top: 10%;
+}
+
+.tituloPesquisa{
+  font-weight: bold !important;
+  width: 39%;
+}
+
+.iconPesquisa {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.disciplinaResultadoPesquisa{
+  width: 25%;
+}
+
+.gridPesquisa {
   position: relative;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  white-space: nowrap;
+  width: 100%;
+  background: #fff;
+  color: #666666;
+  border-radius: 2px;
+  margin-bottom: 25px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
 }
 
-.table-responsive tbody tr {
-  display: inline-block;
+.gridPesquisa .grid-body {
+  padding: 15px 20px 15px 20px;
+  font-size: 0.9em;
+  line-height: 1.9em;
 }
 
+.search table tr:hover {
+  cursor: pointer;
+}
+
+.search table tr td.image {
+width: 50px;
+}
+
+.search table tr td img {
+width: 50px;
+height: 50px;
+}
+
+
+.botaoResultadoPesquisa {
+  margin-left: 10% !important;
+  background-color: #E34724 !important;
+  border: #E34724;
+}
+
+.disciplinaMobilePesquisa {
+  margin-top: 7%;
+  margin-bottom: -6%;
+}
+
+.autorMobilePesquisa {
+  color: #f75225;
+}
+
+.paginacaoPesquisa {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.tabelaPesquisar {
+  cursor: default !important;
+}
+
+.espacoPaginacaoMobile{
+  float:right;
+  margin-top: 2% !important;
 }

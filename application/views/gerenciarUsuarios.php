@@ -82,7 +82,7 @@ $(document).ready(function(){
                         <th class="text-center">Tipo</th>
                         <th class="text-center">Nome</th>
                         <th class="text-center">Email</th>
-                        <th class="text-center">Foto de Perfil</th>
+                        <th class="text-center">Foto</th>
                         <th class="text-center">Ações</th>
                     </tr>
                 </thead>
@@ -94,13 +94,12 @@ $(document).ready(function(){
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-                        <td class="text-center">2017312160</td>
-                        <td class="text-center">Aluno</td>
-                        <td class="text-center">Pedro</td>
-                        <td class="text-center">pedro.canteli2001@gmail.com</td>
-                        <td class="text-center">aa</td>
-                        <td>
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="far fa-edit"></i></a>
+                        <td class="text-center" id="codigoUser">2017312160</td>
+                        <td class="text-center" id="tipoUsuario">Aluno</td>
+                        <td class="text-center" id="nomeUser">Pedro</td>
+                        <td class="text-center" id="emailUser">pedro.canteli2001@gmail.com</td>
+                        <td id="fotoPerfilUser"><div class="text-center"><img src="../assets/images/usuarios/Emil_Lenz23092019205811.jpg" class="iconGerenciarUsers"></div></td>
+                        <td class="text-center"> 
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash"></i> </a>
                             <a href="#elevarUsuario" class="elevar" data-toggle="modal"><i class="fas fa-arrow-up"></i></a>
                         </td>
@@ -109,41 +108,25 @@ $(document).ready(function(){
             </table>
 			<div class="clearfix">
                 <div class="hint-text">Mostrando <b>5</b> de <b>30</b> disciplinas</div>
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Anterior</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Próximo</a></li>
-                </ul>
+                <!-- BEGIN PAGINATION -->
+						<nav>
+						<ul class="pagination">
+							<li class="page-item disabled">
+							<a class="page-link" href="#" tabindex="-1">Anterior</a>
+							</li>
+							<li class="page-item active"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item">
+							<a class="page-link" href="#">Próximo</a>
+							</li>
+						</ul>
+						</nav>					
+				<!-- END PAGINATION -->
             </div>
         </div>
     </div>
-	<!-- Edit Modal HTML -->
-	<div id="elevarUsuario" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">						
-						<h4 class="modal-title">Adicionar Disciplina</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<div class="form-group">
-							<label>Disciplina</label>
-							<input type="text" class="form-control" required>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-success" value="Add">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+
 	<!-- Edit Modal HTML -->
 	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">

@@ -70,7 +70,6 @@
 
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label ><h4>Nova Foto de Perfil</h4></label>
                                 <input type="file" class="form-control" name="fotoPerfil" id="fotoPerfilUpdate">
                             </div>
                         </div>
