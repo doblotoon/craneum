@@ -46,6 +46,7 @@ class Comentario {
     }
 
     public function editarComentario($duvidaPOST){// $_POST;
+        // precisa da duvida atual e da idDuvida da comentario
         $query = "select * from duvida where idDuvida = {$duvidaPOST['id']}";
         $ex = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
         $atual = $duvidaPOST['duvidaAtual'];
