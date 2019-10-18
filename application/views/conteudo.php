@@ -172,47 +172,83 @@
                                 echo "</span>";
                             }
                         }
+
+                        if (isset($_GET['acao']) and $_GET['acao']=="excluir") {//acho que isso vai para a controller
+                            $a = $comentario->deletarComentario($_GET['idDuvida']);
+                            //echo "$('#".$_GET['idDuvida']."').addClass('hide');"; isso aqui é lá dos javascript do tanso
+                        }
                     
-                        if ($_GET['acao'] == "editar") {
+                        if (isset($_GET['acao']) and $_GET['acao'] == "editar") { // aqui a gente vai pegar o comentario pra colocar no textarea pra editar a dúvida
                           foreach ($comentarios as $key => $value) {
-                            if ($idDuvida == $_GET['idDuvida']) {
-                                $ex; //colcoar aqui o comenjtário antigo; 
-                            }    
-                            print_r($value);
-                              //$ex = ;
-                          }  
+                              /*print("tá no foreach");
+                              print("<br>");
+                              print_r($value['idDuvida']);*/
+                                if ($value['idDuvida'] == $_GET['idDuvida']) {
+                                    $ex = $value; //colcoar aqui o comenjtário antigo; 
+                                    /*echo "<pre>";
+                                    print_r($ex);
+                                    echo "</pre>";
+                                    print($ex['duvida']);*/
+                                }  
+                                //$ex = ;
+                            }   
                         ?>
 
                             <form action="" method="post">
-                                lolo<textarea name="duvidaAtual" id="" cols="30" rows="5" value="<?php //print_r($comentarios[$_GET['idDuvida']]);?>">
-                                    tchu
-                                </textarea>
+                                <textarea name="duvidaAtual" id="" cols="30" rows="5"><?php print($ex['duvida']);?></textarea>
                                 <input type="hidden" name="id" value="{$_GET['idConteudo']}">
-                                <button class="btn btn-primary" type="submit">Comentar Dúvida editada</button>
+                                <button class="btn btn-primary" type="submit">Comentar Dúvida Editada</button>
                             </form>
 
                         <?php
+                        }else {
+
+                            ?>
+
+                            <form action="../controllers/CadastrarComentario.php" method="post" class="">
+                                <textarea name="duvida" id="" cols="30" rows="5"></textarea>    
+                               <button class="btn btn-primary" type="submit">Comentar Dúvida</button>
+                                <input type="hidden" name="idUsuario" value="<?=$_SESSION['id']?>">
+                                <input type="hidden" name="idConteudo" value="<?=$_GET['idConteudo']?>">
+                            </form>
+
+                            <?php
                         }
-
+                        
+                #-#--fazer ajax com isso aqui, no caso, cadastrar comentario--#-#
+                        if (isset($_POST['cadastrar']) and $_POST['cadastrar'] == true){ //a verificação era pra ser essa: isset($_GET['acao']) and $_GET['acao']=="cadastrar"
+                            print_r($_POST);
+                            $arrayCadastrarComentario=[
+                                "duvida" => $_POST['duvida'],
+                                "idConteudo" => $_GET['idConteudo'],
+                                "idUsuario" => $_SESSION['id']
+                            ];
+                            //echo isset($arrayCadastrarComentario);
+                            if (isset($arrayCadastrarComentario)) {
+                                //try {
+                                    $duvida = $comentario->cadastrarComentario($arrayCadastrarComentario);
+                                    $arrayCadastrarComentario = 0;
+                                    $_POST['cadastrar'] = false;  
+                                    unset($_POST['cadastrar']);  
+                                    //print_r($arrayCadastrarComentario."sls,");
+                                    print_r($_POST);
+                                //} catch (PDOException $e) {
+                                //   echo $e->getMessage();
+                            // }
+                                
+                            }
+                        }
                 ?>
-
-                
-                <!--<form action="" method="post" class="">
-                    <textarea name="duvida" id="" cols="30" rows="5"></textarea>    
-                    <button class="btn btn-primary" type="submit">Comentar Dúvida</button>
-                </form>
-                -->
-                <div style=''>
-                        <?=$precisaLogar?>
-                        <textarea id='duvida' cols="30" rows="5" class='<?=$displayNone?>'></textarea>
+    
+            
+                <!--<div style=''> esse é o botao do guardini que nao funciona, que segundo ele vai ter ajax pra ele
+                        <?php //print($precisaLogar)?>
+                        <textarea id='duvida' cols="30" rows="5" class='<?php //print($displayNone)?>'></textarea>
                         <hr>
-                        <button class='<?=$displayNone?> btn btn-primary'>Comentar Dúvida</button>
-                    </div>
+                        <button class='<?php //print($displayNone)?> btn btn-primary'>Comentar Dúvida</button>
+                    </div>-->
             </div>
             
-
-            
-
                         
             <div class="col-md-1 mb-3 aEsquerda fixed">
                 <div class='col-md-12 mb-3'>
@@ -232,27 +268,8 @@
                 </div>
 
                 <?php
-/*
-        #-#--fazer ajax com isso aqui, no caso, cadastrar comentario--#-#
 
-                    $arrayCadastrarComentario=[
-                        "duvida" => $_POST['duvida'],
-                        "idConteudo" => $_GET['idConteudo'],
-                        "idUsuario" => $_SESSION['id']
-                    ];
-                    echo isset($arrayCadastrarComentario);
-                    if (isset($arrayCadastrarComentario)) {
-                        //try {
-                            $duvida = $comentario->cadastrarComentario($arrayCadastrarComentario);
-                            $arrayCadastrarComentario = 0;    
-                            print_r($arrayCadastrarComentario);
-                            
-                        //} catch (PDOException $e) {
-                         //   echo $e->getMessage();
-                       // }
-                        
-                    }
-  */                  
+       
                 ?>
     
         </div>
@@ -308,10 +325,7 @@
                     //$("#tituloModal").text(titulo);
                 })
 <?php
-                if (isset($_GET['acao']) and $_GET['acao']=="excluir") {//acho que isso vai para a controller
-                    $a = $comentario->deletarComentario($_GET['idDuvida']);
-                    echo "$('#".$_GET['idDuvida']."').addClass('hide');";
-                }
+                
 ?>
             })
         </script>
