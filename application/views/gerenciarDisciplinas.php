@@ -3,12 +3,16 @@
     require_once "../models/Disciplina.php";
 	
     $disciplina = new Disciplina();
-    $disciplinas = $disciplina->getDisciplinas();
+	$disciplinas = $disciplina->getAllDisciplinas();
+	//echo "<pre>";
+	//print_r($disciplinas);
+	//exit;
+	
 ?>
 
 <script type="text/javascript">
 $(document).ready(function(){
-	$('[data-toggle="tooltip"]').tooltip();
+	/*$('[data-toggle="tooltip"]').tooltip();
 	var actions = $("table td:last-child").html();
 	// Append table with add row form on add new button click
     $(".add-new").click(function(){
@@ -57,7 +61,7 @@ $(document).ready(function(){
 	$(document).on("click", ".delete", function(){
         $(this).parents("tr").remove();
 		$(".add-new").removeAttr("disabled");
-    });
+    });*/
 });
 </script>
 
@@ -87,7 +91,8 @@ $(document).ready(function(){
                 </thead>
                 <tbody>
 <?php
-    for ($i=0; $i < sizeof($disciplinas); $i++) { 
+    //for ($i=0; $i < sizeof($disciplinas); $i++) { 
+		foreach ($disciplinas as $key => $disciplina) {
 ?>
                     <tr>
 						<td class="gerenciarSelect text-center">
@@ -96,9 +101,9 @@ $(document).ready(function(){
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-                        <td><?=$disciplinas[$i]?></td>
+                        <td><?=$disciplina['disciplina']?></td>
                         <td class="text-center">
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="far fa-edit"></i></a>
+                            <a href="?acao=editar&disciplina=<?=$disciplina['disciplina']?>&idDisciplina=<?=$disciplina['idDisciplina']?>" class="edit"><i class="far fa-edit"></i></a>
                         </td>
                     </tr>
 
@@ -122,11 +127,11 @@ $(document).ready(function(){
             </div>
         </div>
     </div>
-	<!-- Edit Modal HTML -->
+	<!-- Create Modal HTML -->
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+				<form action="?acao=criar" method='post'>
 					<div class="modal-header">						
 						<h4 class="modal-title">Adicionar Disciplina</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -134,7 +139,9 @@ $(document).ready(function(){
 					<div class="modal-body">					
 						<div class="form-group">
 							<label>Disciplina</label>
-							<input type="text" class="form-control" required>
+					
+							<input type="text" name='disciplina' class="form-control" required>
+						
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -146,28 +153,53 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<!-- Edit Modal HTML -->
-	<div id="editEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">						
-						<h4 class="modal-title">Editar Disciplina</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<div class="form-group">
-							<label>Disciplina</label>
-							<input type="text" class="form-control" required>
-						</div>					
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-info" value="Save">
-					</div>
-				</form>
+	
+<?php
+	if (isset($_GET['acao'])) {
+		switch ($_GET['acao']) {
+			case 'editar':
+?>
+			<div id="modalEditar" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form action="../controllers/EditarDisciplina.php" method='post'>
+						<div class="modal-header">						
+							<h4 class="modal-title">Editar Disciplina</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">					
+							<div class="form-group">
+								<label>Disciplina</label>
+						
+								<input type="hidden" name="idDisciplina" value='<?=$_GET['idDisciplina']?>'>
+								<input type="text" name='idDisciplina' value='<?=$_GET['disciplina']?>' class="form-control" required>
+								
+							</div>					
+						</div>
+						<div class="modal-footer">
+							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+							<input type="submit" class="btn btn-info" value="Save">
+						</div>
+						
+					</form>
+				</div>
 			</div>
 		</div>
-	</div>
 <?php
+		echo "<script>
+				$(document).ready(function(){
+					$('#modalEditar').modal('toggle');
+				})
+			</script>";
+
+
+				break;
+		case 'criar':
+			//	print_r($_POST);
+			$disciplina->cadastroDisciplina($_POST);
+
+			break;
+		}
+	}
 	require_once 'footer.php';
 ?>

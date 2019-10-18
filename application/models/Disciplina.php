@@ -8,12 +8,17 @@
             $conexao_objeto = new Conexao();
             $this->conexao = $conexao_objeto->getConexao();
         }
-        public function cadastroDisciplina($ultimaId){
+        
+        public function cadastroDisciplina($disciplina){
+            print_r($disciplina);
+        }
+
+        public function cadastroDisciplinaConteudo($ultimaId){
             //echo $ultimaId;
             $disciplinas = json_decode(file_get_contents("../controllers/disciplinas.txt"),true);
             $disciplinasInsert = [];
             foreach ($disciplinas as $key => $value) {
-                $query = "select disciplina from disciplina where disciplina = '{$value}';";
+        /*        $query = "select disciplina from disciplina where disciplina = '{$value}';";
                 $linhas = $this->conexao->query($query);
                 //echo $linhas->rowCount();
                 //echo "caiu no try\n";
@@ -30,7 +35,7 @@
                     $disciplinaExistente = $this->conexao->query($queryDisciplinas)->fetch(PDO::FETCH_ASSOC);
                     $disciplinasInsert[] = $disciplinaExistente['idDisciplina'];
                 }
-                
+             */   
             }
             //echo "<pre>";
             //print_r($disciplinasInsert);
@@ -68,6 +73,17 @@
             $disciplinaArray = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
             foreach ($disciplinaArray as $key => $disciplina) {
                 $disciplinas[] = $disciplina['disciplina'];
+            }
+            return $disciplinas;
+        }
+        public function getAllDisciplinas(){
+            $query = "select * from disciplina;";
+            $disciplinaArray = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($disciplinaArray as $key => $disciplina) {
+                $disciplinas[] = [
+                                    "idDisciplina"=>$disciplina['idDisciplina'],
+                                    "disciplina"=>$disciplina['disciplina']
+                                ];
             }
             return $disciplinas;
         }
