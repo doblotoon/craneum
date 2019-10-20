@@ -57,88 +57,91 @@ $(document).ready(function(){
 		$(this).parents("tr").find(".add, .edit").toggle();
 		$(".add-new").attr("disabled", "disabled");
     });
-<<<<<<< HEAD
-
-=======
 	// Delete row on delete button click
 	$(document).on("click", ".delete", function(){
         $(this).parents("tr").remove();
 		$(".add-new").removeAttr("disabled");
     });*/
->>>>>>> 85445e84a025120833c62ba14edb6845125dffa3
 });
 </script>
 
     <body> 
-    <h4 class="tittle-w3layouts two text-center tituloPagUser espacoCadConteudo">Gerenciar Disciplinas</h4> 
+    <h4 class="tittle-w3layouts two text-center tituloPagUser espacoGerenciarDisciplinas">Gerenciar Disciplinas</h4> 
     <div class="container">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-					<div class="col-sm-12">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-plus"></i> <span>Adicionar nova disciplina</span></a>
+		<div class="row">
+			<div class="col-2"></div>
+
+			<div class="col-8">
+				<div class="table-title">
+					<div class="row">
+						<div class="col-sm-12">
+							<a href="#adicionarDisciplinaModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-plus"></i> <span>Adicionar nova disciplina</span></a>
+						</div>
 					</div>
-                </div>
-            </div>
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-						<th class="gerenciarSelect text-center">
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
-						</th>
-                        <th class="text-center">Disciplina</th>
-                        <th class="text-center">Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th class="gerenciarSelect text-center">
+									<span class="custom-checkbox">
+										<input type="checkbox" id="selectAll">
+										<label for="selectAll"></label>
+									</span>
+								</th>
+								<th class="text-center">Disciplina</th>
+								<th class="text-center">Ação</th>
+							</tr>
+						</thead>
+						<tbody>
 <?php
     //for ($i=0; $i < sizeof($disciplinas); $i++) { 
 		foreach ($disciplinas as $key => $disciplina) {
 ?>
-                    <tr>
-						<td class="gerenciarSelect text-center">
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
-                        <td><?=$disciplina['disciplina']?></td>
-                        <td class="text-center">
-                            <a href="?acao=editar&disciplina=<?=$disciplina['disciplina']?>&idDisciplina=<?=$disciplina['idDisciplina']?>" class="edit"><i class="far fa-edit"></i></a>
-                        </td>
-                    </tr>
+							<tr>
+								<td class="gerenciarSelect text-center">
+									<span class="custom-checkbox">
+										<input type="checkbox" id="checkbox1" name="options[]" value="1">
+										<label for="checkbox1"></label>
+									</span>
+								</td>
+								<td><?=$disciplina['disciplina']?></td>
+								<td class="text-center">
+									<a href="?acao=editar&disciplina=<?=$disciplina['disciplina']?>&idDisciplina=<?=$disciplina['idDisciplina']?>" class="edit"><i class="far fa-edit"></i></a>
+								</td>
+							</tr>
 
 <?php
     }
-
-?>
-                </tbody>
-            </table>
-			<div class="clearfix">
-                <div class="hint-text">Mostrando <b>5</b> de <b>30</b> disciplinas</div>
-                <!-- BEGIN PAGINATION -->
+	?>
+						</tbody>
+					</table>
+				</div>
+				<div class="clearfix paginacaoGerenciar">
+					<div class="hint-text">Mostrando <b>5</b> de <b>30</b> disciplinas</div>
+						<!-- BEGIN PAGINATION -->
 						<nav>
-						<ul class="pagination ">
-							<li class="page-item disabled">
-							<a class="page-link" href="#" tabindex="-1">Anterior</a>
-							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item">
-							<a class="page-link" href="#">Próximo</a>
-							</li>
-						</ul>
+							<ul class="pagination ">
+								<li class="page-item disabled">
+								<a class="page-link" href="#" tabindex="-1">Anterior</a>
+								</li>
+								<li class="page-item active"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item">
+								<a class="page-link" href="#">Próximo</a>
+								</li>
+							</ul>
 						</nav>
-				<!-- END PAGINATION -->
-			</div>
-        </div>
-    </div>
+						<!-- END PAGINATION -->
+					</div>
+				</div>
+			<div class="col-2"></div>
+		</div>
+	</div>
+
 	<!-- Create Modal HTML -->
-	<div id="addEmployeeModal" class="modal fade">
+	<div id="adicionarDisciplinaModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="?acao=criar" method='post'>
@@ -161,7 +164,7 @@ $(document).ready(function(){
 				</form>
 			</div>
 		</div>
-	</div>
+</div>
 	<!-- Edit Modal HTML -->
 	
 <?php
@@ -211,5 +214,6 @@ $(document).ready(function(){
 			break;
 		}
 	}
+
 	require_once 'footer.php';
 ?>

@@ -36,47 +36,80 @@
     <!-- // Recentemente Postados -->
     <section class="ab-info-main py-5">
         <div class="container py-md-4">
-            <h3 class="tittle-w3layouts two text-center">Recentemente Postados <button type="button" class="btn botaoMaisHome">+</button></h3>
+            <h3 class="tittle-w3layouts two text-center">Recentemente Postados <a href="recentementePostados.php"><button type="button" class="btn botaoMaisHome">+ Ver Mais</button></a></h3>
             <div id="products" class="row view-group my-lg-5 my-4">
-                <div class="item col-lg-4 mt-3">
+               
+            <div class="item col-lg-4 mt-3">
                     <div class="thumbnail card">
                         <div class="img-event">
                             <img class="group list-group-image img-fluid" src="<?=$caminho?>assets/images/g1.jpg" alt="">
                         </div>
-                        <div class="caption card-body">
-                            <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
-                                Programming</h4>
+                        <div class="caption card-body cardConteudo">
+                         <!-- TÍTULO -->
+                            <a class="linkItemRecemPostado" href="">
+                                <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
+                                    Programming
+                                </h5>
                             </a>
-                            <p class="group inner list-group-item-text">
-                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
+                        <!-- PRÉVIA DO CONTEÚDO -->
+                            <p class="group inner list-group-item-text textoCardConteudo">
+                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit
+                            </p>
+                            <hr>
+                            <!-- INFORMAÇÕES (AUTOR E DATA) -->
+                            <h6 class="autorCard group card-title inner list-group-item-heading">
+                                <img class="imagemAutorCard" src="../assets/images/c1.jpg">Postado por Zé em 25/12/2018
+                            </h6>
                         </div>
                     </div>
                 </div>
+
                 <div class="item col-lg-4 mt-3">
                     <div class="thumbnail card">
                         <div class="img-event">
                             <img class="group list-group-image img-fluid" src="<?=$caminho?>assets/images/g1.jpg" alt="">
                         </div>
-                        <div class="caption card-body">
-                            <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
-                                Art &amp; Design</h4>
+                        <div class="caption card-body cardConteudo">
+                         <!-- TÍTULO -->
+                            <a class="linkItemRecemPostado" href="">
+                                <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
+                                    Programming
+                                </h5>
                             </a>
-                            <p class="group inner list-group-item-text">
-                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
+                        <!-- PRÉVIA DO CONTEÚDO -->
+                            <p class="group inner list-group-item-text textoCardConteudo">
+                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit
+                            </p>
+                            <hr>
+                            <!-- INFORMAÇÕES (AUTOR E DATA) -->
+                            <h6 class="autorCard group card-title inner list-group-item-heading">
+                                <img class="imagemAutorCard" src="../assets/images/c1.jpg">Postado por Zé em 25/12/2018
+                            </h6>
                         </div>
                     </div>
                 </div>
+                
                 <div class="item col-lg-4 mt-3">
                     <div class="thumbnail card">
                         <div class="img-event">
                             <img class="group list-group-image img-fluid" src="<?=$caminho?>assets/images/g1.jpg" alt="">
                         </div>
-                        <div class="caption card-body">
-                            <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
-                                Languages</h4>
+                        <div class="caption card-body cardConteudo">
+                         <!-- TÍTULO -->
+                            <a class="linkItemRecemPostado" href="">
+                                <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
+                                    Programming
+                                </h5>
                             </a>
-                            <p class="group inner list-group-item-text">
-                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
+                        <!-- PRÉVIA DO CONTEÚDO -->
+                            <p class="group inner list-group-item-text textoCardConteudo">
+                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit
+                            </p>
+                            <hr>
+                            <!-- INFORMAÇÕES (AUTOR E DATA) -->
+                            <h6 class="autorCard group card-title inner list-group-item-heading">
+                                <img class="imagemAutorCard" src="../assets/images/c1.jpg">Postado por Zé em 25/12/2018
+                            </h6>
                         </div>
                     </div>
                 </div>

@@ -70,63 +70,106 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="profile-content">
                 <h4 class="tittle-w3layouts two text-center tituloPagUser">Conteúdos Salvos</h4> 
                 <div id="products" class="row view-group my-lg-5 my-4">
-                    <div class="item col-lg-6 mt-3">
-                        <div class="thumbnail card">
-                            <div class="img-event">
-                                <img class="group list-group-image img-fluid" src="../assets/images/g1.jpg" alt="">
-                            </div>
-                            <div class="caption card-body">
-                                <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
-                                    Programming</h4>
-                                </a>
-                                <p class="group inner list-group-item-text">
-                                    Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item col-lg-6 mt-3">
-                        <div class="thumbnail card">
-                            <div class="img-event">
-                                <img class="group list-group-image img-fluid" src="../assets/images/g2.jpg" alt="">
-                            </div>
-                            <div class="caption card-body">
-                                <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
-                                    Art &amp; Design</h4>
-                                </a>
-                                <p class="group inner list-group-item-text">
-                                    Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="item col-lg-6 mt-3 espacoAcima">
-                        <div class="thumbnail card">
-                            <div class="img-event">
-                                <img class="group list-group-image img-fluid" src="../assets/images/g1.jpg" alt="">
-                            </div>
-                            <div class="caption card-body">
-                                <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
-                                    Programming</h4>
-                                </a>
-                                <p class="group inner list-group-item-text">
-                                    Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
-                            </div>
+                <div class="item col-lg-6 mt-3">
+                    <div class="thumbnail card">
+                        <div class="img-event">
+                            <img class="group list-group-image img-fluid" src="<?=$caminho?>assets/images/g1.jpg" alt="">
+                        </div>
+                        <div class="caption card-body cardConteudo">
+                         <!-- TÍTULO -->
+                            <a class="linkItemRecemPostado" href="">
+                                <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
+                                    Programming
+                                </h5>
+                            </a>
+                        <!-- PRÉVIA DO CONTEÚDO -->
+                            <p class="group inner list-group-item-text textoCardConteudo">
+                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit
+                            </p>
+                            <hr>
+                            <!-- INFORMAÇÕES (AUTOR E DATA) -->
+                            <h6 class="autorCard group card-title inner list-group-item-heading">
+                                <img class="imagemAutorCard" src="../assets/images/c1.jpg">Postado por Zé em 25/12/2018
+                            </h6>
                         </div>
                     </div>
-                    <div class="item col-lg-6 mt-3 espacoAcima">
-                        <div class="thumbnail card">
-                            <div class="img-event">
-                                <img class="group list-group-image img-fluid" src="../assets/images/g2.jpg" alt="">
-                            </div>
-                            <div class="caption card-body">
-                                <a class="linkItemRecemPostado" href=""><h4 class="group card-title inner list-group-item-heading">
-                                    Art &amp; Design</h4>
-                                </a>
-                                <p class="group inner list-group-item-text">
-                                    Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit</p>
-                            </div>
+                </div>
+
+                <div class="item col-lg-6 mt-3">
+                    <div class="thumbnail card">
+                        <div class="img-event">
+                            <img class="group list-group-image img-fluid" src="<?=$caminho?>assets/images/g1.jpg" alt="">
+                        </div>
+                        <div class="caption card-body cardConteudo">
+                         <!-- TÍTULO -->
+                            <a class="linkItemRecemPostado" href="">
+                                <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
+                                    Programming
+                                </h5>
+                            </a>
+                        <!-- PRÉVIA DO CONTEÚDO -->
+                            <p class="group inner list-group-item-text textoCardConteudo">
+                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit
+                            </p>
+                            <hr>
+                            <!-- INFORMAÇÕES (AUTOR E DATA) -->
+                            <h6 class="autorCard group card-title inner list-group-item-heading">
+                                <img class="imagemAutorCard" src="../assets/images/c1.jpg">Postado por Zé em 25/12/2018
+                            </h6>
                         </div>
                     </div>
+                </div>
+
+                <div class="item col-lg-6 mt-3 espacoAcima">
+                    <div class="thumbnail card">
+                        <div class="img-event">
+                            <img class="group list-group-image img-fluid" src="<?=$caminho?>assets/images/g1.jpg" alt="">
+                        </div>
+                        <div class="caption card-body cardConteudo">
+                         <!-- TÍTULO -->
+                            <a class="linkItemRecemPostado" href="">
+                                <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
+                                    Programming
+                                </h5>
+                            </a>
+                        <!-- PRÉVIA DO CONTEÚDO -->
+                            <p class="group inner list-group-item-text textoCardConteudo">
+                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit
+                            </p>
+                            <hr>
+                            <!-- INFORMAÇÕES (AUTOR E DATA) -->
+                            <h6 class="autorCard group card-title inner list-group-item-heading">
+                                <img class="imagemAutorCard" src="../assets/images/c1.jpg">Postado por Zé em 25/12/2018
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item col-lg-6 mt-3 espacoAcima">
+                    <div class="thumbnail card">
+                        <div class="img-event">
+                            <img class="group list-group-image img-fluid" src="<?=$caminho?>assets/images/g1.jpg" alt="">
+                        </div>
+                        <div class="caption card-body cardConteudo">
+                         <!-- TÍTULO -->
+                            <a class="linkItemRecemPostado" href="">
+                                <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
+                                    Programming
+                                </h5>
+                            </a>
+                        <!-- PRÉVIA DO CONTEÚDO -->
+                            <p class="group inner list-group-item-text textoCardConteudo">
+                                Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit
+                            </p>
+                            <hr>
+                            <!-- INFORMAÇÕES (AUTOR E DATA) -->
+                            <h6 class="autorCard group card-title inner list-group-item-heading">
+                                <img class="imagemAutorCard" src="../assets/images/c1.jpg">Postado por Zé em 25/12/2018
+                            </h6>
+                        </div>
+                    </div>
+                </div>
 
                 </div>     
             </div>
