@@ -1,16 +1,17 @@
 <?php
-require "../models/Comentario.php";
+    require "../models/Comentario.php";
 
- $comentario = new Comentario;
-print_r($_POST);
-class CadastrarComentario{
+    $comentarioObj = new Comentario();
 
-    public function cadastrarComentario($comentario){
-        $dados = $_POST;
-
-        $comentario->cadastrarComentario($dados);
+    class cadastrarComentario{
+        public function cadastroComentario($comentarioObj){
+            $dados = $_POST;
+            $comentarioObj->cadastrarComentario($dados);
+        }
     }
-}
 
-$cadastro = new cadastrarComentario;
-$cadastro->cadastrarComentario($usuario);
+    $cadastro = new cadastrarComentario();
+    $cadastro->cadastroComentario($comentarioObj);
+    
+    header("Location: ../views/conteudo.php?idConteudo=".$_POST['idConteudo']);
+

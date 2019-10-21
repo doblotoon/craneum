@@ -14,13 +14,11 @@ class Comentario {
 
         $duvida = $dadosRecebidos['duvida'];
         $dataDuvida = date("Y-m-d H:i:s");
-        $idConteudo = $dadosRecebidos['idConteudo'];
-        $idUsuario = $dadosRecebidos['idUsuario'];
-
-        $query = "insert into duvida (duvida,adendo,respondido,dataDuvida,fk_duv_idConteudo,fk_duv_idUsuario) values ('{$duvida}',0,0,'{$dataDuvida}', {$idConteudo} ,{$idUsuario});"; 
-        
+        $idConteudo = (int)$dadosRecebidos['idConteudo'];
+        $idUsuario = (int)$dadosRecebidos['idUsuario'];
         
         try {
+            $query = "insert into duvida (duvida,adendo,respondido,dataDuvida,fk_duv_idConteudo,fk_duv_idUsuario) values ('{$duvida}',0,0,'{$dataDuvida}', {$idConteudo} ,{$idUsuario});"; 
             $this->conexao->exec($query);
             
         } catch (PDOException $e) {
@@ -83,14 +81,12 @@ class Comentario {
 /*$n = new Comentario;
 
 $arrayin=[
-    "duvida" =>"golpe em cima de golpe",
-    "id_conteudo" => 18,
-    "idUsuario" => 2
+    "duvida" =>"agora me da um tiro",
+    "idConteudo" => 4,
+    "idUsuario" => 20133145
 ];
-//var_dump($arrayin);
-try {
-    $a = $n->cadastrarComentario($arrayin);
-} catch(PDOException $e) {
-    echo $e->getMessage();
-}*/
+echo "<pre>";
+//print_r($arrayin);
 
+    $n->cadastrarComentario($arrayin);
+*/

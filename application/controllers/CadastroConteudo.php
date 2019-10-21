@@ -11,6 +11,7 @@
     $conteudo = new Conteudo();
     $tag = new cadastroTag();
     $disciplina = new cadastroDisciplina();
+    
     class cadastroConteudo{
         public function cadastrarConteudo($conteudo,$tag,$disciplina){
             $fotoCapa = $this->salvarCapa();
