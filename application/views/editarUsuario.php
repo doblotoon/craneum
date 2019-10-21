@@ -7,22 +7,20 @@
     }
 ?>
 
-<body>
-    <div class="espacoInferiorUsuario">.</div>
-
+    <body>
+        <div class="espacoInferiorUsuario"></div>
 
         <div class="container bootstrap snippet">
 
-        
+            <h3 class="tittle-w3layouts two text-center">Editar Usuário</h3>
+
+            <!-- Foto User -->
+                
             <div class="row">
-                <div class="col-sm-3 text-center espacoInferiorFotoPerfilEditar"><h1>Username</h1></div>
-            </div>
-            
-            <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-3 editarFotoUser">
                     <div class="text-center">
                         <div id='labelFotoUpdate'>
-                        <img src="<?=$_SESSION['fotoPerfil']?>" id='imgPerfilUpdate' class="avatar img-circle img-thumbnail" alt="avatar">
+                            <img src="<?=$_SESSION['fotoPerfil']?>" id='imgPerfilUpdate' class="avatar img-circle img-thumbnail" alt="avatar">
                             <div id='cover'>
                                 <label for="fotoPerfilUpdate" id='textoCover'>    
                                     Atualizar <i class='material-icons'>edit</i>
@@ -30,73 +28,87 @@
                             </div>
                         </div>
                     </div>
-            </div>
-                
+                </div>
+                    
+                <!-- Formulário-->
 
-            <!-- Formulário-->
+                <div class="col-sm-9 espacoSuperiorEditarUsuario">
 
-            <div class="col-sm-9">
+                    <div class="tab-content">
+                    
+                        <form class="form" action="../controllers/EditarUsuario.php" method="post" enctype='multipart/form-data' id="registrationForm">
+                            
+                             <!-- Nome -->
 
-            <div class="tab-content">
-                    <form class="form" action="../controllers/EditarUsuario.php" method="post" enctype='multipart/form-data' id="registrationForm">
-                        
-                        <div class="form-group"> 
-                            <div class="col-xs-6">
-                                <label for="first_name"><h4>Novo Nome</h4></label>
-                                <input type="text" class="form-control" name="nome" id="first_name" placeholder="Ex.: João Silva" title="enter your first name if any.">
-                            </div>
-                        </div>
-            
-                        <div class="form-group">   
-                            <div class="col-xs-6">
-                                <label for="email"><h4>Novo Email</h4></label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Ex.: joao.silva@gmail.com" title="enter your email.">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-xs-6">
-                                <label for="password"><h4>Nova Senha</h4></label>
-                                <input type="password" class="form-control" name="senha" id="password" placeholder="Senha" title="enter your password.">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-xs-6">
-                                <label for="password2"><h4>Confirmar Nova Senha</h4></label>
-                                <input type="password" class="form-control" name="confirmarSenha" id="password2" placeholder="Repita a sua senha" title="enter your password2.">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-xs-6">
-                                <input type="file" class="form-control" name="fotoPerfil" id="fotoPerfilUpdate">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                    <br>
-                                    <button class="btn btn-lg btn-success" type="submit">Atualizar Dados</button>
-                                    <button class="btn btn-lg btn-info" type="reset">Limpar</button>
-                                    <button class="btn btn-lg btn-danger" type="submit"><a href="../controllers/ExcluirUsuario.php">Excluir Conta</a></button>
+                            <div class="form-group"> 
+                                <div class="col-xs-6">
+                                    <label for="nome">
+                                        <h5>Novo Nome</h5>
+                                    </label>
+                                    <input type="text" class="form-control" name="nome" id="first_name" placeholder="Ex.: João Silva" title="enter your first name if any.">
                                 </div>
-                        </div>
-                    </form>
+                            </div>
+
+                             <!-- Email -->
+                
+                            <div class="form-group espacoFormGroupEditarUsuario">   
+                                <div class="col-xs-6">
+                                    <label for="email">
+                                        <h5>Novo Email</h5>
+                                    </label>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Ex.: joao.silva@gmail.com" title="enter your email.">
+                                </div>
+                            </div>
+
+                             <!-- Senha -->
+
+                            <div class="form-group espacoFormGroupEditarUsuario">
+                                <div class="col-xs-6">
+                                    <label for="senha">
+                                        <h5>Nova Senha</h5>
+                                    </label>
+                                    <input type="password" class="form-control" name="senha" id="password" placeholder="Senha" title="enter your password.">
+                                </div>
+                            </div>
+
+                             <!-- Confirmar Senha -->
+
+                            <div class="form-group espacoFormGroupEditarUsuario">
+                                <div class="col-xs-6">
+                                    <label for="confirmarSenha">
+                                        <h5>Confirmar Nova Senha</h5>
+                                    </label>
+                                    <input type="password" class="form-control" name="confirmarSenha" id="password2" placeholder="Repita a sua senha" title="enter your password2.">
+                                </div>
+                            </div>
+
+                            <div class="form-group espacoFormGroupEditarUsuario">
+                                <div class="col-xs-6">
+                                    <input type="file" class="form-control" name="fotoPerfil" id="fotoPerfilUpdate">
+                                </div>
+                            </div>
+
+                             <!-- Botões -->
+
+                            <div class="form-group espacoFormGroupEditarUsuario">
+                                <div class="col-xs-12 text-center">
+                                    <br>
+                                    <button class="btn btn-success" type="submit">Atualizar Dados</button>
+                                    <button class="btn btn-info" type="reset">Limpar</button>
+                                    <button class="btn btn-danger" type="submit">
+                                        <a href="../controllers/ExcluirUsuario.php" id="botaoExcluirUsuarioPagEditarUsuario">Excluir Conta</a>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="espacoInferiorEditarUsuario">.</div>
+        <div class="espacoInferiorEditarUsuario"></div>
 
 <?php
     require_once('footer.php');
 ?>   
-
-    <!-- //footer -->
-
-
-</body>
-
-</html>

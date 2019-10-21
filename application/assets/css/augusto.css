@@ -154,7 +154,7 @@
 }
 
 .espacoInferiorEditarUsuario{
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 
 .espacoLabelsCadastroUsuario{
@@ -477,4 +477,28 @@ height: 50px;
 
 .cardConteudo {
   padding-bottom: 0.15rem !important;
+}
+
+.botaoPublicarConteudo {
+  margin-bottom: 5%;
+}
+
+.botaoCadastrarUser{
+  margin-top: 7% !important;
+}
+
+.editarFotoUser{
+  margin-top: 7%;
+}
+
+.espacoSuperiorEditarUsuario{
+  margin-top: 2.5%;
+}
+
+.espacoFormGroupEditarUsuario{
+  margin-top: 3%;
+}
+
+#botaoExcluirUsuarioPagEditarUsuario{
+  color: #fff !important;
 }

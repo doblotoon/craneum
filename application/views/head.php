@@ -47,6 +47,7 @@
         <script src='<?=$caminho?>assets/js/jquery.js'></script>
         <script src='<?=$caminho?>assets/bootstrap/js/bootstrap.min.js'></script>
         <script>
+            
             addEventListener("load", function() {
                 setTimeout(hideURLbar, 0);
             }, false);
