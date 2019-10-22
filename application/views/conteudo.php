@@ -163,7 +163,7 @@
                                     //echo "<p>{$a}</p>";
                                     if(isset($_SESSION['id'])){
                                         if ($duvida['idUsuario']==$_SESSION['id']) {
-                                            echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=excluir&idDuvida={$duvida['idDuvida']}'><button class='btn-danger'>excluir</button></a>";
+                                            echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn-danger' type='submit' value='excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
                                             echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn-primary '>editar</button></a>";
                                         }
                                     }
@@ -172,9 +172,10 @@
                                     echo "</span>";
                                 }
                             }
-                            
+
                             if (isset($_GET['acao']) and $_GET['acao']=="excluir") {//acho que isso vai para a controller
                                 $a = $comentario->deletarComentario($_GET['idDuvida']);
+                                header("Location: ../views/conteudo.php?idConteudo={$_GET['idConteudo']}");
                                 //echo "$('#".$_GET['idDuvida']."').addClass('hide');"; isso aqui é lá dos javascript do tanso
                             }
                     
