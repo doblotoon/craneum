@@ -49,7 +49,7 @@
 ?>
       </ul>
 <?php
-  if($URLAtual!="index" and $URLAtual!="home" and $URLAtual!="resultadoPesquisa"){
+  if($URLAtual!="index" and $URLAtual!="home" and $URLAtual!="resultadoPesquisa" and !empty($URLAtual)){
 ?>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Pesquise" aria-label="Search">

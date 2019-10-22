@@ -25,7 +25,6 @@
         </footer>
 
 <?php
-    //echo $URLAtual;
     if($URLAtual=='editarUsuario'){
         echo '<script src="'.$caminho.'assets/js/editar.js"></script>';
     }
