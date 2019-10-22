@@ -194,12 +194,16 @@
                                 }   
 ?>
 
-                                <form action="" method="post">
+                                <form action="../controllers/EditarComentario.php" method="post">
                                     <textarea name="duvidaAtual" id="" cols="30" rows="5"><?php print($ex['duvida']);?></textarea>
-                                    <input type="hidden" name="id" value="{$_GET['idConteudo']}">
                                     <button class="btn btn-primary" type="submit">Comentar Dúvida Editada</button>
+                                    <input type="hidden" name="id" value="<?=$_GET['idConteudo']?>">
+                                    <input type="hidden" name="idDuvida" value="<?=$_GET['idDuvida']?>">
+                                    
                                 </form>
+                                
 <?php
+                        //print_r($comentarios);
                             } else {
 ?>
                                 <form action="../controllers/CadastrarComentario.php" method="post" class="">

@@ -48,7 +48,7 @@ class Comentario {
         $query = "select * from duvida where idDuvida = {$duvidaPOST['id']}";
         $ex = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
         $atual = $duvidaPOST['duvidaAtual'];
-        $idDuvida = $duvidaPOST['id'];
+        $idDuvida = $duvidaPOST['idDuvida'];
 
         $query = "UPDATE duvida SET duvida='{$atual}' WHERE idDuvida={$idDuvida}";      
             
