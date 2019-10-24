@@ -64,6 +64,12 @@ class Comentario {
 
     }
 
+    public function adendo($idComentario){
+        $idDuvida = $idComentario['idDuvida'];
+
+        $query = "UPDATE duvida SET adendo=1 where idDuvida={$idDuvida} ";
+    }
+
     /*public function trocaIDporNome(int $idUsuario){
         $query = "SELECT nome FROM usuario WHERE idUsuario = {$idUsuario}";
 
