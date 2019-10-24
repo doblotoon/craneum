@@ -502,3 +502,7 @@ height: 50px;
 #botaoExcluirUsuarioPagEditarUsuario{
   color: #fff !important;
 }
+
+.footerConteudo {
+  padding-bottom: 8% !important;
+}

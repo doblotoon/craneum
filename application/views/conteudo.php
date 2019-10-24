@@ -244,10 +244,9 @@
                         </div>-->
                         </div>
                         
-                        <div class="col-md-1 mb-3 aEsquerda fixed">
-                            <div class='col-md-12 mb-3'>
-                                <br>
-                                <h6 class="aEsquerda negrito">Tags: </h6>
+                        <div class='col-md-12 mb-3 fixed'>
+                            <br>
+                            <h6 class="aEsquerda negrito">Tags: </h6>
 <?php
                             //print_r($tags);
                             foreach ($tags as $key => $tag) {
@@ -255,12 +254,16 @@
                                 echo '<a href="resultadoPesquisar.php?termoPesquisado='.$tagNome.'"><span class="badge badge-secondary aEsquerda espacoDireita tag">'.$tagNome.'</span></h6></a>';
                             }
 ?>
-                            </div>
-                    <!-- essa div debaixo fecha a div class row -->
                         </div>
+                    <!-- essa div debaixo fecha a div class row -->
                     </div>
                 </div>
-
+<?php
+    require_once 'footer.php'; //height do .section: auto...
+    //print_r($_SESSION);
+   // echo "<br><br><br>";
+   // print_r($comentarios);
+?>   
                 <script>
                     $(document).ready(function(){
                         var chat = 0;
@@ -303,15 +306,10 @@
                         })
                     })
                 </script>
-<?php
-    require_once 'footer.php';
-    //print_r($_SESSION);
-   // echo "<br><br><br>";
-   // print_r($comentarios);
-?>   
+
             </section>
         </main>
-
+        
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id='modalDocs'>
             
             <div class="modal-dialog modal-lg">
@@ -345,3 +343,4 @@
             </div>
         </body>
     </html>
+    

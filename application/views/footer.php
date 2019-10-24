@@ -1,4 +1,13 @@
-        <footer class="footer-content text-center py-5">
+<?php
+    if($URLAtual!='conteudo'){
+?>
+    <footer class="footer-content text-center py-5">
+<?php 
+    } else {
+?>
+    <footer class="footer-content text-center py-5 footerConteudo">
+<?php } ?>
+
             <div class="container py-md-3">
 
                 <!-- logo -->
