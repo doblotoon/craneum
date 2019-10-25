@@ -128,7 +128,7 @@
 
                         <div class="col-11 card" id='colunaConteudo'>
                             <br>
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-12 mb-3" style="min-height:120px;">
                                 <?=$conteudoSelecionado['conteudo']?>
                             </div>
                             <hr class="mb-4">  
