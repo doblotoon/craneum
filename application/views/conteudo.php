@@ -46,7 +46,7 @@
     
     <style>
     
-    /* Sets the actual background images to adorable kitties. This part is crucial. */
+    /* Sets the actual background images to adorable kitties. $ part is crucial. */
     .hide{
         display:none;
     }
