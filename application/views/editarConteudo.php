@@ -17,7 +17,42 @@
     $tagsCorretas = [];
     foreach ($tagsSelecionadas as $k => $tagSelecionada) {
         $tagsCorretas[] = $tagSelecionada['tag'];
-    }
+	}
+
+	$disciplinasCorretas = [];
+	foreach($disciplinasSelecionadas as $chave => $disciplina){
+		$disciplinasCorretas[] = $disciplina['disciplina'];
+	}
+	foreach ($disciplinas as $key => $disciplina) {
+		foreach ($disciplinasCorretas as $key => $discCorreta) {
+			if ($discCorreta==$disciplina) {
+				unset($disciplinas[$key]);
+				// key tem que ser pega pelo nome da tag no caso os nomes de tag ou disciplinas tem que ser iguais
+			}
+		}
+	}
+	/*
+	echo "<pre>";
+	print_r($tags);
+	echo "</pre><br>";
+
+	echo "<pre>";
+	print_r($tagsCorretas);
+	echo "</pre><br>";
+	*/
+	foreach ($tags as $ky => $tag) {
+		foreach ($tagsCorretas as $k => $valor) {
+			if ($valor == $tag) {
+				unset($tags[$ky]);
+			}
+		}
+
+	}
+	asort($tags, SORT_LOCALE_STRING);
+	asort($tagsCorretas, SORT_LOCALE_STRING);
+/*	echo "<pre>";
+	print_r($tags);
+	echo "</pre>";*/
 ?>
 
 	<body>
@@ -86,7 +121,10 @@
 								<label for="tags" class="espacoLabelsCadastroUsuario">Tags</label>
 								<select class="form-control" id='selectTags' name='tags' multiple="multiple" required>
 									<?php
-                                        //19
+										//19
+										foreach ($tagsCorretas as $key => $tagCorreta) {
+											echo "<option selected='selected'>".$tagCorreta."</option>";
+										}
 										foreach ($tags as $key => $tag) {
 
                                             //19 vzs roda
@@ -155,12 +193,12 @@
 					maximumSelectionLength: 5,
 					tags: true,
     				tokenSeparators: [',', '']
-                });
+                });/*
                 var tagsSelecionadas = [];
                 <?php
-                    foreach ($tagsCorretas as $k => $tag) {
-                        echo "tagSelecionadas[] = $tag";
-                    }
+                 //   foreach ($tagsCorretas as $k => $tag) {
+                   //     echo "tagSelecionadas[] = $tag";
+                   // }
                 ?>
                 var options = $('#selectBox option');
                 var values = $.map(options ,function(option) {
@@ -168,7 +206,7 @@
                         
                     }
                     return option.value;
-                });
+                });*/
 				//console.log(tags);
 
 				$("#form").submit(function(){
