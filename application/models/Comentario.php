@@ -64,10 +64,17 @@ class Comentario {
 
     }
 
-    public function adendo($idComentario){
-        $idDuvida = $idComentario['idDuvida'];
+    public function adendo($dados){
+        $idDuvida = (int)$dados['idDuvida'];
+        $funcao = (int)$dados['funcao'];
 
-        $query = "UPDATE duvida SET adendo=1 where idDuvida={$idDuvida} ";
+        $query = "UPDATE duvida SET adendo={$funcao} where idDuvida={$idDuvida} ";
+
+        try {
+            $this->conexao->exec($query);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 
     /*public function trocaIDporNome(int $idUsuario){
@@ -87,12 +94,11 @@ class Comentario {
 /*$n = new Comentario;
 
 $arrayin=[
-    "duvida" =>"agora me da um tiro",
-    "idConteudo" => 4,
-    "idUsuario" => 20133145
+    "idDuvida" =>176,
+    "funcao" => 1
 ];
 echo "<pre>";
-//print_r($arrayin);
+print_r($arrayin);
 
-    $n->cadastrarComentario($arrayin);
+    $n->adendo($arrayin);
 */

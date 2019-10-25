@@ -161,6 +161,10 @@
                                                 echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn-primary '>editar</button></a>";
                                             }
                                         }
+                                        if ($_SESSION['tipo']="professor") {
+                                            echo "<form action='../controllers/TransformaComentario.php' method='post'> <input class='btn-dark' type='submit' value='transformar em comentário novamente'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'> <input type='hidden' name='funcao' value=0> </form>";   
+
+                                        }
 
                                         echo "<hr>";
                                         echo "</span>";
@@ -200,7 +204,7 @@
                                                 echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn-primary '>editar</button></a>";
                                             }
                                             if ($_SESSION['tipo']="professor") {
-                                                echo "<form action='../controllers/TransformaComentario.php' method='post'> <input class='btn-dark' type='submit' value='transformar em adendo'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
+                                                echo "<form action='../controllers/TransformaComentario.php' method='post'> <input class='btn-dark' type='submit' value='transformar em adendo'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'> <input type='hidden' name='funcao' value=1> </form>";   
 
                                             }
                                             
