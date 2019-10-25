@@ -125,7 +125,7 @@
                         <hr class="mb-4">
 
                         <!-- CONTEUDO -->
-
+                                    
                         <div class="col-11 card" id='colunaConteudo'>
                             <br>
                             <div class="col-md-12 mb-3" style="min-height:120px;">
@@ -140,7 +140,38 @@
                                 <i class="far fa-eye"></i>
                             </button> <!-- COM OS COMENTÁRIOS ABERTOS O ICON MUDA PARA fa-eye-slash e o texto vira fechar comentarios -->
                         </div>
+                    <!-- não vou me preocupar agora mas aqui está quebrando o css-->
+                        <div class="row">
+                            <div class="col-8"> <h2 class="font-weight-bold">Adendos:</h2> 
+                            <br>
+                            <?php
+                               
+                                foreach ($comentarios as $duvida) {
+                                    if ($duvida['adendo'] == 1) {
+                                                                                
+                                        //print_r("<pre>$duvida</pre>");
+                                        
+                                        echo " <span id='".$duvida['idDuvida']."'>";
+                                        echo "<h6>{$duvida['dataDuvida']}</h6>";
+                                        echo "<h4>{$duvida['duvida']}</h4>";
+                                        //echo "<p>{$a}</p>";
+                                        if(isset($_SESSION['id'])){
+                                            if ($duvida['idUsuario']==$_SESSION['id']) {
+                                                echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn-danger' type='submit' value='excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
+                                                echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn-primary '>editar</button></a>";
+                                            }
+                                        }
 
+                                        echo "<hr>";
+                                        echo "</span>";
+                                    }
+                                }
+                                
+                            ?>
+                            <div class="clear"></div>
+                            </div>
+                        </div>
+                    <!-- não vou me preocupar agora mas aqui está quebrando o css-->
                         <!-- DIV DOS COMENTÁRIOS -->
                         <div class="col-3 hide" id='colunaComentario'>
                             <h2 class="aEsquerda negrito">Dúvidas: </h2>
@@ -155,21 +186,29 @@
                                 echo "<hr>";
                             } else {
                                 foreach ($comentarios as $duvida) {
-                                    //$a=$comentarios->trocaIDporNome($duvida['fk_duv_idUsuario']);
-                                    //print_r("<pre>$duvida</pre>");
-                                    echo "<span id='".$duvida['idDuvida']."'>";
-                                    echo "<h6>{$duvida['dataDuvida']}</h6>";
-                                    echo "<h4>{$duvida['duvida']}</h4>";
-                                    //echo "<p>{$a}</p>";
-                                    if(isset($_SESSION['id'])){
-                                        if ($duvida['idUsuario']==$_SESSION['id']) {
-                                            echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn-danger' type='submit' value='excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
-                                            echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn-primary '>editar</button></a>";
+                                    if ($duvida['adendo'] == 0) {
+                                        
+                                        //$a=$comentarios->trocaIDporNome($duvida['fk_duv_idUsuario']);
+                                        //print_r("<pre>$duvida</pre>");
+                                        echo "<span id='".$duvida['idDuvida']."'>";
+                                        echo "<h6>{$duvida['dataDuvida']}</h6>";
+                                        echo "<h4>{$duvida['duvida']}</h4>";
+                                        //echo "<p>{$a}</p>";
+                                        if(isset($_SESSION['id'])){
+                                            if ($duvida['idUsuario']==$_SESSION['id']) {
+                                                echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn-danger' type='submit' value='excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
+                                                echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn-primary '>editar</button></a>";
+                                            }
+                                            if ($_SESSION['tipo']="professor") {
+                                                echo "<form action='../controllers/TransformaComentario.php' method='post'> <input class='btn-dark' type='submit' value='transformar em adendo'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
+
+                                            }
+                                            
                                         }
+
+                                        echo "<hr>";
+                                        echo "</span>";
                                     }
-                                    
-                                    echo "<hr>";
-                                    echo "</span>";
                                 }
                             }
 
