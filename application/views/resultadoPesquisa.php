@@ -1,6 +1,41 @@
 <?php
+	require_once "Conexao.php";
+	$conexao_objeto = new Conexao();
+
 	require_once "header.php";
 ?>
+
+<?php //pesquisaaa
+                        //#'%{$_GET['pesquisa']}%'
+                        //if(isset($_GET['termo'])) {
+                            echo'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';//isso ele executa
+                            $query = "select idConteudo,titulo from conteudo where titulo like '%{$_GET['termo']}%';";//no phpmyadmin tá dando bom
+                            //print_r($query);
+
+                            $termo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+                            try {
+                                
+                                $termo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+                    
+                            } catch (PDOException $e) {
+                                echo $e->getMessage();
+                            }
+                           
+
+                            print_r($termo);
+                        //}
+                        exit();
+
+                        
+
+
+                        //echo "<pre>";
+                        //print_r($pesquisa);
+                        //echo"</pre>";
+?> 
+
+
 		<div class="container espacoPesquisa">
 			<div class="row">
 				<!-- BEGIN SEARCH RESULT -->

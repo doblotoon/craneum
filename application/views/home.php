@@ -25,20 +25,10 @@
             <div class="banner-content-w3pvt">
                 <div class="banner-w3layouts-info text-center">
                     <h3>Pesquise um tema, professor, disciplina ou tag</h3>
-                    <form class="banner-form" method="get" action=" ">
-                        <input type="text" class="form-control"  placeholder="Ex: Revolução Francesa" name="pesquisa"  required="">
+                    <form class="banner-form" method="get" action="resultadoPesquisa.php">
+                        <input type="text" class="form-control"  placeholder="Ex: Revolução Francesa" name="termo"  required="">
                         <button type="submit" class="btn btn-default">Pesquisar</button>
                     </form>
-
-                    <?php //pesquisaaa
-
-                        $query = "select idConteudo,titulo from conteudo where titulo like '%{$_GET['pesquisa']}%' or (select idConteudo,idDisciplina,fk_cd_idConteudo,fk_cd_idDisciplina from conteudo,disciplina,conteudodisciplina where idConteudo = fk_cd_idConteudo and idDisciplina = fk_cd_idDisciplina and disciplina like '%{$_GET['pesquisa']}%');";
-                        $pesquisa = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
-
-                        //echo "<pre>";
-                        print_r($pesquisa);
-                        //echo"</pre>";
-                    ?> 
                 </div>
             </div>
         <!-- // Parte Central -->

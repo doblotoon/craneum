@@ -51,12 +51,28 @@
 <?php
   if($URLAtual!="index" and $URLAtual!="home" and $URLAtual!="resultadoPesquisa" and !empty($URLAtual)){
 ?>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Pesquise" aria-label="Search">
+      <form method="get" action=" " class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" name="pesquisa" type="search" placeholder="Pesquise" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0 botaoPesquisarMenu" type="submit">Ir</button>
       </form>
-<?php
+<?php //pesquisaaa
+                     /*   #'%{$_GET['pesquisa']}%'
+                        $query = "select idConteudo,titulo from conteudo where titulo like '%{$_GET['pesquisa']}%'";//no phpmyadmin tá dando bom
+                        $pesquisa = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+
+                        //echo "<pre>";
+                        print_r($pesquisa);
+                        //echo"</pre>";
+                     */  
+                    
   }
 ?>
     </div>
   </nav>
+
+  <?php
+  //print_r($pesquisa);
+
+  //print_r($_GET);
+//echo 'aaaaaaaaaaaaaaaa';
