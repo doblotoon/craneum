@@ -109,6 +109,9 @@
 								<label for="disciplinas" class="espacoLabelsCadastroUsuario">Disciplinas</label>
 								<select class="form-control selectCadastroConteudo" id='selectDisciplinas' name='disciplinas' multiple="multiple" required>
 									<?php
+										foreach ($disciplinasCorretas as $key => $disciplinaCorreta) {
+											echo "<option selected='selected'>{$disciplinaCorreta}</option>";
+										}
 										foreach ($disciplinas as $key => $disciplina) {
 											echo "<option>{$disciplina}</option>";
 										}
@@ -227,7 +230,7 @@
 
 					console.log(tags);
 					$.ajax({
-						url: "../controllers/SalvaDados.php",
+						url: "../controllers/SalvaDadosAtualizados.php",
 						method: "post",
 						dataType: "json",
 						data: {'tags':tags, 'disciplinas':disciplinas},

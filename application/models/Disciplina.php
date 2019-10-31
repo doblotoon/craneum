@@ -10,7 +10,13 @@
         }
         
         public function cadastroDisciplina($disciplina){
-            print_r($disciplina);
+            try{
+                $query = "insert into `disciplina` (`disciplina`) values ('{$disciplina}');";
+                $this->conexao->exec($query);
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+            //print_r($disciplina);
         }
 
         public function cadastroDisciplinaConteudo($ultimaId){
@@ -18,11 +24,12 @@
             $disciplinas = json_decode(file_get_contents("../controllers/disciplinas.txt"),true);
             $disciplinasInsert = [];
             foreach ($disciplinas as $key => $value) {
-        /*        $query = "select disciplina from disciplina where disciplina = '{$value}';";
+            
+                /*  $query = "select disciplina from disciplina where disciplina = '{$value}';";
                 $linhas = $this->conexao->query($query);
                 //echo $linhas->rowCount();
                 //echo "caiu no try\n";
-    
+                
                 if ($linhas->rowCount()==0) {
                     ucwords($value);
                     $queryInsert = "insert into disciplina(disciplina) values ('{$value}');";
@@ -86,6 +93,16 @@
                                 ];
             }
             return $disciplinas;
+        }
+
+        public function editarDisciplina($id, $disciplina){
+            try {
+                $query = "update disciplina set disciplina = '{$disciplina}' where idDisciplina = {$id};";
+                $this->conexao->exec($query);
+
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
     }
 

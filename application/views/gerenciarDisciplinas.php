@@ -187,7 +187,7 @@
 								
 								<label>Disciplina</label>
 								<input type="hidden" name="idDisciplina" value='<?=$_GET['idDisciplina']?>'>
-								<input type="text" name='idDisciplina' value='<?=$_GET['disciplina']?>' class="form-control" required>
+								<input type="text" name='disciplina' value='<?=$_GET['disciplina']?>' class="form-control" required>
 								
 							</div>					
 						</div>
@@ -209,8 +209,9 @@
 			break;
 
 		case 'criar':
-			//	print_r($_POST);
-			$disciplina->cadastroDisciplina($_POST);
+			//print_r($_POST);
+			$disciplinaCriar = $_POST['disciplina']; 
+			$disciplina->cadastroDisciplina($disciplinaCriar);
 
 			break;
 		}
