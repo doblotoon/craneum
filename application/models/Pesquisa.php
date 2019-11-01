@@ -9,9 +9,9 @@ class Pesquisa {
         $conexao_objeto = new Conexao();
         $this->conexao = $conexao_objeto->getConexao();
     }
-    
-    public function pesquisarTema($arrayPesquisa){
-        $query = "select idConteudo,titulo from conteudo where titulo like '%{$_GET['termo']}%';";//no phpmyadmin tá dando bom
+    //%{$_GET['termo']}%
+    public function pesquisarTema(){ // get: termo = valor da pesquisa
+        $query = "select distinct idConteudo,titulo,fotoCapa,nome, disciplina from conteudo,usuario, conteudodisciplina, disciplina where titulo like '%{$_GET['termo']}%' and fk_cont_idUsuario = idUsuario and fk_cd_idDisciplina = idDisciplina and fk_cd_idConteudo = idConteudo;";//no phpmyadmin tá dando bom
         //print_r($query);
 
         $termo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
@@ -25,14 +25,15 @@ class Pesquisa {
             echo $e->getMessage();
 
         }
-        print('<pre>');
-        print_r($termo);
+        //print('<pre>');
+        //print_r($termo);
+        return $termo;
     }
 }
 
 $pesquisa = new Pesquisa;
 
-$arrayin = ["termo" => "teste1"];
+//$arrayin = ["termo" => "teste1"];
 
 $pesquisa->pesquisarTema($arrayin);
 

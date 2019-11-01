@@ -25,7 +25,7 @@
             <div class="banner-content-w3pvt">
                 <div class="banner-w3layouts-info text-center">
                     <h3>Pesquise um tema, professor, disciplina ou tag</h3>
-                    <form class="banner-form" method="get" action="resultadoPesquisa.php">
+                    <form class="banner-form" method="get" action="views/resultadoPesquisa.php">
                         <input type="text" class="form-control"  placeholder="Ex: Revolução Francesa" name="termo"  required="">
                         <button type="submit" class="btn btn-default">Pesquisar</button>
                     </form>

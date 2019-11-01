@@ -1,38 +1,17 @@
 <?php
-	require_once "Conexao.php";
+	require_once "../models/Conexao.php";
+	require_once "../models/Pesquisa.php";
 	$conexao_objeto = new Conexao();
+	$pesquisa = new Pesquisa;
 
 	require_once "header.php";
 ?>
 
 <?php //pesquisaaa
-                        //#'%{$_GET['pesquisa']}%'
-                        //if(isset($_GET['termo'])) {
-                            echo'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';//isso ele executa
-                            $query = "select idConteudo,titulo from conteudo where titulo like '%{$_GET['termo']}%';";//no phpmyadmin tá dando bom
-                            //print_r($query);
-
-                            $termo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
-
-                            try {
-                                
-                                $termo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
-                    
-                            } catch (PDOException $e) {
-                                echo $e->getMessage();
-                            }
-                           
-
-                            print_r($termo);
-                        //}
-                        exit();
-
-                        
-
-
-                        //echo "<pre>";
-                        //print_r($pesquisa);
-                        //echo"</pre>";
+                       if (isset($_GET['termo'])) {
+						   $resultadosTema = $pesquisa->pesquisarTema();
+						   //print_r($resultadosTema); 
+					   }
 ?> 
 
 
@@ -146,36 +125,36 @@
 									</div>
 								
 									<!-- BEGIN TABLE RESULT -->
-						
-									<div class="table-responsive">
-										<table class="table">
+
+						<?php
+							//print_r ($resultadosTema);
+							foreach ($resultadosTema as $a => $b) {
+											   //print $b['titulo'];
+											   //echo "<br>";
+											   
+										   
+					   					
+									
+								echo"
+									<div class='table-responsive'>
+										<table class='table'>
 											<tbody>
-												<tr class="tabelaPesquisar">
-													<td class="text-center"><img class="imagemConteudoTabela" src="../assets/images/c2.jpg" alt=""></td>
-													<td class="text-center titulo">(TITULO)</td>
-													<td class="">
-														<h6 class="aEsquerda">
+												<tr class='tabelaPesquisar'>
+													<td class='text-center'><img class='imagemConteudoTabela' src='../assets/images/{$b['fotoCapa']}' alt=''></td>
+													<td class='text-center titulo'>{$b['titulo']}</td>
+													<td class=''>
+														<h6 class='aEsquerda>
 															<!-- CASO A PESQUISA SEJA DE UMA DISCIPLINA, NÃO DEVE SER LINKADO POIS NÃO FAZ SENTIDO... -->
-															<a href="resultadoPesquisa.php?"><span class="badge badge-secondary aEsquerda espacoDireita disciplina">Disciplina</span></a>
+															<a href='resultadoPesquisa.php?'><span class='badge badge-secondary aEsquerda espacoDireita disciplina'>{$b['disciplina']}</span></a>
 														</h6>
 													</td>
-													<td class="text-center">(AUTOR)</td>
-													<td class="price text-center">
-														<a class="verPost">
-															<i class="fa fa-eye iconPesquisa"></i>
-														</a>
-														<a class="edit">
-															<i class="far fa-edit iconPesquisa"></i>
-														</a>
-														<a class="delete">
-															<i class="fas fa-trash iconPesquisa"></i>
-														</a>
-													</td>
+													<td class='text-center'>{$b['nome']}</td>
 												</tr>
 											</tbody>
 										</table>
-									</div>
-
+									</div>";
+							}
+						?>
 									<!-- BEGIN PAGINATION -->
 
 									<nav>
