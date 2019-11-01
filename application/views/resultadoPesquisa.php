@@ -136,23 +136,25 @@
 					   					
 									
 								echo"
-									<div class='table-responsive'>
-										<table class='table'>
-											<tbody>
-												<tr class='tabelaPesquisar'>
-													<td class='text-center'><img class='imagemConteudoTabela' src='../assets/images/{$b['fotoCapa']}' alt=''></td>
-													<td class='text-center titulo'>{$b['titulo']}</td>
-													<td class=''>
-														<h6 class='aEsquerda>
-															<!-- CASO A PESQUISA SEJA DE UMA DISCIPLINA, NÃO DEVE SER LINKADO POIS NÃO FAZ SENTIDO... -->
-															<a href='resultadoPesquisa.php?'><span class='badge badge-secondary aEsquerda espacoDireita disciplina'>{$b['disciplina']}</span></a>
-														</h6>
-													</td>
-													<td class='text-center'>{$b['nome']}</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>";
+									<a class='cursorPointer' href='conteudo.php?idConteudo={$b['idConteudo']}'>
+										<div class='table-responsive'>
+											<table class='table'>
+												<tbody>
+													<tr class='tabelaPesquisar'>
+														<td class='text-center'><img class='imagemConteudoTabela' src='../assets/images/{$b['fotoCapa']}' alt=''></td>
+														<td class='text-center titulo'>{$b['titulo']}</td>
+														<td class=''>
+															<h6 class='aEsquerda>
+																<!-- CASO A PESQUISA SEJA DE UMA DISCIPLINA, NÃO DEVE SER LINKADO POIS NÃO FAZ SENTIDO... -->
+																<a href='resultadoPesquisa.php?'><span class='badge badge-secondary aEsquerda espacoDireita disciplina'>{$b['disciplina']}</span></a>
+															</h6>
+														</td>
+														<td class='text-center'>{$b['nome']}</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</a>";
 							}
 						?>
 									<!-- BEGIN PAGINATION -->

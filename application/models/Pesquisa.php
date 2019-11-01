@@ -29,11 +29,51 @@ class Pesquisa {
         //print_r($termo);
         return $termo;
     }
+
+    public function pesquisarDisciplina(){
+        $query = "select disciplina from disciplina where disciplina like '%{$_GET['termo']}%';";
+        
+        $termo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+        try {
+            
+            $termo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+
+            echo $e->getMessage();
+
+        }
+        //print('<pre>');
+        //print_r($termo);
+        return $termo;
+    }
+
+    public function pesquisarTag(){
+        $query = "select tag from tag where tag like '%{$_GET['termo']}%';";
+    
+
+        $termo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+            try {
+
+                $termo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+            } catch (PDOException $e) {
+
+                echo $e->getMessage();
+
+            }
+            //print('<pre>');
+            print_r($termo);
+            //return $termo;
+        
+    }
 }
 
 $pesquisa = new Pesquisa;
 
 //$arrayin = ["termo" => "teste1"];
 
-$pesquisa->pesquisarTema($arrayin);
+$pesquisa->pesquisarTag();
 
