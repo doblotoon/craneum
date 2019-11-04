@@ -10,7 +10,10 @@
 <?php //pesquisaaa
                        if (isset($_GET['termo'])) {
 						   $resultadosTema = $pesquisa->pesquisarTema();
-						   //print_r($resultadosTema); 
+						   $resultadosDisciplina = $pesquisa->pesquisarDisciplina();
+						   $resultadosTag = $pesquisa->pesquisarTag();
+
+						   //print_r($resultadosTag); 
 					   }
 ?> 
 
@@ -108,7 +111,7 @@
 									<div class="padding"></div>
 									
 									<div class="row">
-										<!-- BEGIN ORDER RESULT -->
+									<!-- BEGIN ORDER RESULT -->
 										<div class="col-sm-6">
 											<div class="btn-group">
 												<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -127,6 +130,47 @@
 									<!-- BEGIN TABLE RESULT -->
 
 						<?php
+
+							foreach ($resultadosDisciplina as $a => $b) {
+								//print $b['titulo'];
+								//echo "<br>";
+							
+							
+							echo"
+							<a class='cursorPointer' href='#'>
+							<div class='table-responsive'>
+							 <table class='table'>
+								 <tbody>
+									 <tr class='tabelaPesquisar'>
+										 <h6>Disciplina</h6>
+										 <td class='text-left titulo'><h2>{$b['disciplina']}</h2></td>
+									 </tr>
+								 </tbody>
+							 </table>
+							</div>
+							</a>";
+							}
+
+							foreach ($resultadosTag as $a => $b) {
+								//print $b['titulo'];
+								//echo "<br>";
+							
+							
+							echo"
+							<a class='cursorPointer' href='#'>
+								<div class='table-responsive'>
+								 	<table class='table'>
+										<tbody>
+											<tr class='tabelaPesquisar'>
+										 		<h6>Tag</h6>
+												<td class='text-left titulo'><h2>{$b['tag']}</h2></td>
+											</tr>
+										</tbody>
+								 	</table>
+								</div>
+							</a>";
+							}
+
 							//print_r ($resultadosTema);
 							foreach ($resultadosTema as $a => $b) {
 											   //print $b['titulo'];
@@ -141,6 +185,7 @@
 											<table class='table'>
 												<tbody>
 													<tr class='tabelaPesquisar'>
+														<h6>Conteúdo</h6>
 														<td class='text-center'><img class='imagemConteudoTabela' src='../assets/images/{$b['fotoCapa']}' alt=''></td>
 														<td class='text-center titulo'>{$b['titulo']}</td>
 														<td class=''>
