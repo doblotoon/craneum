@@ -99,7 +99,7 @@
                 
             }
             foreach ($tagsAntigas as $k => $tagA) {
-                $idTagApaga = $this->conexao->query("select ")
+                $idTagApaga = $this->conexao->query("select ");
             }
             //echo "<pre>";
             //print_r($tagsInsert);
