@@ -65,8 +65,8 @@ class Pesquisa {
 
             }
             //print('<pre>');
-            print_r($termo);
-            //return $termo;
+            //print_r($termo);
+            return $termo;
         
     }
 }

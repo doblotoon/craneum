@@ -100,13 +100,20 @@
 									<hr>
 									<!-- BEGIN SEARCH INPUT -->
 									<div class="input-group">
-										<input type="text" class="form-control" value="web development">
-										<span class="input-group-btn">
-											<button class="btn btn-primary botaoResultadoPesquisa" type="button"><i class="fa fa-search"></i></button>
-										</span>
+										<form action="" method="get">
+											<input type="text" class="form-control" name="termo" value="<?=$_GET['termo']?>">
+											<span class="input-group-btn">
+												<button class="btn btn-primary botaoResultadoPesquisa" type="submit"><i class="fa fa-search"></i></button>
+											</span>
+										</form>
 									</div>
+					   			
+
+
+
+									
 									<!-- END SEARCH INPUT -->
-									<p>Mostrando todos os resultados com o termo "(TERMO PESQUISADO)"</p>
+									
 									
 									<div class="padding"></div>
 									
@@ -152,7 +159,8 @@
 							}
 
 							foreach ($resultadosTag as $a => $b) {
-								//print $b['titulo'];
+								//print_r($resultadosTag);
+								print $b['tag'];
 								//echo "<br>";
 							
 							
