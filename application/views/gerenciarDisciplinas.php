@@ -9,62 +9,11 @@
 	//exit;
 	
 ?>
-
-	<script type="text/javascript">
-	$(document).ready(function(){
-		/*$('[data-toggle="tooltip"]').tooltip();
-		var actions = $("table td:last-child").html();
-		// Append table with add row form on add new button click
-		$(".add-new").click(function(){
-			$(this).attr("disabled", "disabled");
-			var index = $("table tbody tr:last-child").index();
-			var row = '<tr>' +
-				'<td><input type="text" class="form-control" name="name" id="name"></td>' +
-				'<td><input type="text" class="form-control" name="department" id="department"></td>' +
-				'<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
-				'<td>' + actions + '</td>' +
-			'</tr>';
-			$("table").append(row);		
-			$("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
-			$('[data-toggle="tooltip"]').tooltip();
-		});
-		// Add row on add button click
-		$(document).on("click", ".add", function(){
-			var empty = false;
-			var input = $(this).parents("tr").find('input[type="text"]');
-			input.each(function(){
-				if(!$(this).val()){
-					$(this).addClass("error");
-					empty = true;
-				} else{
-					$(this).removeClass("error");
-				}
-			});
-			$(this).parents("tr").find(".error").first().focus();
-			if(!empty){
-				input.each(function(){
-					$(this).parent("td").html($(this).val());
-				});			
-				$(this).parents("tr").find(".add, .edit").toggle();
-				$(".add-new").removeAttr("disabled");
-			}		
-		});
-		// Edit row on edit button click
-		$(document).on("click", ".edit", function(){		
-			$(this).parents("tr").find("td:not(:last-child)").each(function(){
-				$(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-			});		
-			$(this).parents("tr").find(".add, .edit").toggle();
-			$(".add-new").attr("disabled", "disabled");
-		});
-		// Delete row on delete button click
-		$(document).on("click", ".delete", function(){
-			$(this).parents("tr").remove();
-			$(".add-new").removeAttr("disabled");
-		});*/
-	});
-	</script>
-
+	<style>
+		.escondido{
+			display:none;
+		}
+	</style>
     <body> 
     	<h4 class="tittle-w3layouts two text-center tituloPagUser espacoGerenciarDisciplinas">Gerenciar Disciplinas</h4> 
     	<div class="container">
@@ -86,31 +35,27 @@
 						<table class="table table-striped table-hover">
 							<thead>
 								<tr>
-									<th class="gerenciarSelect text-center">
-										<span class="custom-checkbox">
-											<input type="checkbox" id="selectAll">
-											<label for="selectAll"></label>
-										</span>
-									</th>
 									<th class="text-center">Disciplina</th>
 									<th class="text-center">Ação</th>
 								</tr>
 							</thead>
 							<tbody>
-<?php
-    //for ($i=0; $i < sizeof($disciplinas); $i++) { 
-		foreach ($disciplinas as $key => $disciplina) {
+<?php 
+		foreach ($disciplinas as $key => $disciplinaArray) {
 ?>
-								<tr>
-									<td class="gerenciarSelect text-center">
+								<tr  id=<?=$disciplinaArray['idDisciplina']?>>
+									<!--<td class="gerenciarSelect text-center">
 										<span class="custom-checkbox">
 											<input type="checkbox" id="checkbox1" name="options[]" value="1">
 											<label for="checkbox1"></label>
 										</span>
-									</td>
-									<td><?=$disciplina['disciplina']?></td>
+									</td>-->
+									<td><?=$disciplinaArray['disciplina']?></td>
 									<td class="text-center">
-										<a href="?acao=editar&disciplina=<?=$disciplina['disciplina']?>&idDisciplina=<?=$disciplina['idDisciplina']?>" class="edit"><i class="far fa-edit"></i></a>
+										<a href="?acao=editar&disciplina=<?=$disciplinaArray['disciplina']?>&idDisciplina=<?=$disciplinaArray['idDisciplina']?>" class="edit"><i class="far fa-edit"></i></a>
+									</td>
+									<td class="text-center">
+										<a href="?acao=excluir&idDisciplina=<?=$disciplinaArray['idDisciplina']?>">X<i class="far fa-remove"></i></a>
 									</td>
 								</tr>
 <?php
@@ -119,27 +64,8 @@
 							</tbody>
 						</table>
 					</div>
-
-					<div class="clearfix paginacaoGerenciar">
-						<div class="hint-text">Mostrando <b>5</b> de <b>30</b> disciplinas</div>
-							<!-- BEGIN PAGINATION -->
-							<nav>
-								<ul class="pagination ">
-									<li class="page-item disabled">
-										<a class="page-link" href="#" tabindex="-1">Anterior</a>
-									</li>
-									<li class="page-item active"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item">
-										<a class="page-link" href="#">Próximo</a>
-									</li>
-								</ul>
-							</nav>
-							<!-- END PAGINATION -->
-						</div>
-					</div>
-				<div class="col-2"></div>
+				</div>
+				<div class="col-2 clear"></div>
 			</div>
 		</div>
 
@@ -209,11 +135,21 @@
 			break;
 
 		case 'criar':
-			//print_r($_POST);
-			$disciplinaCriar = $_POST['disciplina']; 
+			$disciplinaCriar = $_POST['disciplina'];
 			$disciplina->cadastroDisciplina($disciplinaCriar);
-
+			header("Location: gerenciarDisciplinas.php");
 			break;
+		
+		case 'excluir':
+			$disciplinaExcluir = $_GET['idDisciplina'];
+			$disciplina->excluirDisciplina($disciplinaExcluir);
+			echo "<script>
+					$(document).ready(function(){
+						$('#{$disciplinaExcluir}').addClass('escondido');
+					});
+				</script>";
+			break;
+		
 		}
 	}
 

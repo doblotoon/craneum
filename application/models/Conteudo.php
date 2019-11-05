@@ -31,7 +31,7 @@
             }
             $dataPostagem = date("Y-m-d H:i:s");
             $fotoCapa = $dadosRecebidos['fotoCapa'];
-            $idUsuario = 1;//$dadosRecebidos['idUsuario'];
+            $idUsuario = $dadosRecebidos['idUsuario'];
             
             try {
                 $query = "insert into conteudo (titulo,conteudo,dataPostagem,fotoCapa,fk_cont_idUsuario) values ('{$titulo}','{$conteudo}','{$dataPostagem}','{$fotoCapa}',{$idUsuario});";
@@ -59,6 +59,37 @@
                 echo $e->getMessage();
             }
         }
+
+        public function editarConteudo($dadosRecebidos){
+            $titulo = $dadosRecebidos['titulo'];
+            $conteudo = str_replace("watch?v=","embed/",$dadosRecebidos['conteudo']);
+            $idConteudo = $dadosRecebidos['idConteudo'];
+            #colocar classes nos links de documentos \/
+            $regexDoc = "/\/assets\/files\/.*\.(pdf|doc|docx)\"/";
+            $regexLink2P="/<a href=\"\.\.\/assets\/files\/.*\.(pdf|doc|docx)\" class=\"modalDoc\">.*<\/a>/";
+            preg_match_all($regexDoc, $conteudo, $matches);
+            unset($matches[1]);
+            foreach ($matches[0] as $key => $match) {
+                $replaceDoc=$match." class=\"modalDoc\" onclick=\"return false;\"";
+                $pesquisa = "/".preg_replace('/\//','\/',$match)."/";
+                $conteudo = preg_replace($pesquisa,$replaceDoc,$conteudo);
+            }
+            $dataPostagem = date("Y-m-d H:i:s");
+            $fotoCapa = $dadosRecebidos['fotoCapa'];
+            $idUsuario = $dadosRecebidos['idUsuario'];
+            
+            try {
+                $query = "update conteudo set titulo = '{$titulo}', conteudo = '{$conteudo}', fotoCapa = '{$fotoCapa}' where idConteudo = {$idConteudo};";
+                $this->conexao->exec($query);
+                //$ultimaId = $this->conexao->query("select max(idConteudo) as idConteudo from conteudo limit 1;")->fetch(PDO::FETCH_ASSOC);
+                return $idConteudo;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+            //formato das datas para serem salvos == ano-mes-dia *espaço* hora:minuto:segundo
+        }
+
+
     }
 
     //LINK IMPORTANTE

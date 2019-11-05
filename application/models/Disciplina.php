@@ -11,7 +11,17 @@
         
         public function cadastroDisciplina($disciplina){
             try{
-                $query = "insert into `disciplina` (`disciplina`) values ('{$disciplina}');";
+                $query = "insert into disciplina (disciplina) values ('{$disciplina}');";
+                $this->conexao->exec($query);
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+            //print_r($disciplina);
+        }
+
+        public function excluirDisciplina($id){
+            try{
+                $query = "delete from disciplina where idDisciplina = {$id};";
                 $this->conexao->exec($query);
             } catch (PDOException $e) {
                 echo $e->getMessage();
@@ -24,25 +34,9 @@
             $disciplinas = json_decode(file_get_contents("../controllers/disciplinas.txt"),true);
             $disciplinasInsert = [];
             foreach ($disciplinas as $key => $value) {
-            
-                /*  $query = "select disciplina from disciplina where disciplina = '{$value}';";
-                $linhas = $this->conexao->query($query);
-                //echo $linhas->rowCount();
-                //echo "caiu no try\n";
-                
-                if ($linhas->rowCount()==0) {
-                    ucwords($value);
-                    $queryInsert = "insert into disciplina(disciplina) values ('{$value}');";
-                    $queryLastId = "";
-                    $this->conexao->exec($queryInsert);
-                    $ultimaDisciplina = $this->conexao->query("select max(idDisciplina) as idDisciplina from disciplina limit 1;")->fetch(PDO::FETCH_ASSOC);
-                    $disciplinasInsert[] = $ultimaDisciplina['idDisciplina'];
-                }else{
-                    $queryDisciplinas = "select idDisciplina from disciplina where disciplina = '{$value}';";
-                    $disciplinaExistente = $this->conexao->query($queryDisciplinas)->fetch(PDO::FETCH_ASSOC);
-                    $disciplinasInsert[] = $disciplinaExistente['idDisciplina'];
-                }
-             */   
+                $queryDisciplinas = "select idDisciplina from disciplina where disciplina = '{$value}';";
+                $disciplinaExistente = $this->conexao->query($queryDisciplinas)->fetch(PDO::FETCH_ASSOC);
+                $disciplinasInsert[] = $disciplinaExistente['idDisciplina'];
             }
             //echo "<pre>";
             //print_r($disciplinasInsert);
@@ -104,7 +98,29 @@
                 echo $e->getMessage();
             }
         }
+
+        public function atualizarDisciplinaConteudo($idConteudo){
+            $disciplinasAtualizadas = json_decode(file_get_contents("../controllers/disciplinasAtualizadas.txt"),true);
+            $disciplinasInsert = [];
+            $disciplinasAntigas = $this->conexao->query("select idDisciplina from disciplina,conteudodisciplina,conteudo where fk_cd_idDisciplina = idDisciplina and fk_cd_idConteudo = idConteudo and idConteudo = {$idConteudo};")->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($disciplinasAtualizadas as $key => $value) {
+                $queryDisciplinas = "select idDisciplina from disciplina where disciplina = '{$value}';";
+                $disciplinaExistente = $this->conexao->query($queryDisciplinas)->fetch(PDO::FETCH_ASSOC);
+                $disciplinasInsert[] = $disciplinaExistente['idDisciplina'];
+            }
+            //print_r($disciplinasAntigas);
+            foreach ($disciplinasAntigas as $k => $discip) {
+                $this->conexao->exec("delete from conteudodisciplina where fk_cd_idDisciplina = {$discip['idDisciplina']};");
+            }
+            //print_r($disciplinasInsert);
+            $this->disciplinaConteudo($idConteudo,$disciplinasInsert);
+        }
     }
+
+    //$a = new Disciplina();
+    //$a->atualizarDisciplinaConteudo(126);
+
+
 
     //$t = new Tag();
    // echo "<pre>";

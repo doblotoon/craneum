@@ -8,6 +8,9 @@
             $this->disciClasse = new Disciplina();
         }
         public function cadastrarDisciplina($ultimaId){
-            $this->disciClasse->cadastroDisciplina($ultimaId);
+            $this->disciClasse->cadastroDisciplinaConteudo($ultimaId);
+        }
+        public function atualizarDisciplina($idConteudo){
+            $this->disciClasse->atualizarDisciplinaConteudo($idConteudo);
         }
     }

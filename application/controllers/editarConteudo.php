@@ -1,27 +1,25 @@
 <?php
-    //$_POST['texto']=str_replace(".pdf\">",".pdf\" target='mostra'>",$_POST['texto']);
-    //echo $_POST['texto'];
     require "../models/Conteudo.php";
     require "../controllers/CadastroTag.php";
-//<<<<<<< HEAD
-//=======
     require "../controllers/CadastroDisciplina.php";
-//>>>>>>> 342e58cf686a61a91b7e74f1f8302d54350251d7
-   // print_r($_POST);
+    require "../views/head.php";
+    //print_r($_SESSION);
     $conteudo = new Conteudo();
     $tag = new cadastroTag();
     $disciplina = new cadastroDisciplina();
     
     class atualizarConteudo{
-        public function atualizarConteudo($conteudo,$tag,$disciplina){
+        public function editarConteudo($conteudo,$tag,$disciplina){
             $fotoCapa = $this->salvarCapa();
             $dadosEnviados = $_POST;
+            //print_r($dadosEnviados);
             $dadosEnviados['fotoCapa'] = $fotoCapa;
-            $ultimaId = $conteudo->cadastroConteudo($dadosEnviados);
+            $dadosEnviados['idUsuario'] = $_SESSION['id'];
+            $ultimaId = $conteudo->editarConteudo($dadosEnviados);
             //pegar a id do conteudo salvo para passar pra tag
-            $tag->cadastrarTag($ultimaId['idConteudo']);
-            $disciplina->cadastrarDisciplina($ultimaId['idConteudo']);
-            //$disciplina->cadastrarTag($ultimaId['idConteudo']);
+            $tag->cadastrarTag($ultimaId);
+            $disciplina->atualizarDisciplina($ultimaId);
+            
         }
         public function salvarCapa(){
 			$foto = $_FILES['fotoCapa'];
@@ -41,9 +39,8 @@
 			return $caminho;
         }
     }
-    $cadastro = new cadastroConteudo();
-    $cadastro->cadastrarConteudo($conteudo,$tag,$disciplina);
+    $atualizar = new atualizarConteudo();
+    $atualizar->editarConteudo($conteudo,$tag,$disciplina);
     //print_r($_POST);
     //echo $_POST['tags'];
 ?>
-<!--<iframe name='mostra' frameborder="0">-->

@@ -71,6 +71,41 @@
             }
             return $tags;
         }
+
+        public function atualizarTag($idConteudo){
+            //echo $ultimaId;
+            $tagsAtuais = json_decode(file_get_contents("../controllers/tagsAtualizadas.txt"),true);
+            $tagsInsert = [];
+            $tagsAntigas = $this->conexao->query("select idTag from tag, conteudotag, conteudo where idTag = fk_ct_idTag and fk_ct_idConteudo = idConteudo and idConteudo = {$idConteudo};");
+            
+            foreach ($tagsAtuais as $key => $value) {
+                $query = "select tag from tag where tag = '{$value}';";
+                $linhas = $this->conexao->query($query);
+                //echo $linhas->rowCount();
+                //echo "caiu no try\n";
+    
+                if ($linhas->rowCount()==0) {
+                    ucwords($value);
+                    $queryInsert = "insert into tag(tag) values ('{$value}');";
+                    $queryLastId = "";
+                    $this->conexao->exec($queryInsert);
+                    $ultimaTag = $this->conexao->query("select max(idTag) as idTag from tag limit 1;")->fetch(PDO::FETCH_ASSOC);
+                    $tagsInsert[] = $ultimaTag['idTag'];
+                }/*else{
+                    $queryTags = "select idTag from tag where tag = '{$value}';";
+                    $tagExistente = $this->conexao->query($queryTags)->fetch(PDO::FETCH_ASSOC);
+                    $tagsInsert[] = $tagExistente['idTag'];
+                }*/
+                
+            }
+            foreach ($tagsAntigas as $k => $tagA) {
+                $idTagApaga = $this->conexao->query("select ")
+            }
+            //echo "<pre>";
+            //print_r($tagsInsert);
+            $this->tagConteudo($ultimaId,$tagsInsert);
+        }
+
     }
 
     //$t = new Tag();

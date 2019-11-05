@@ -176,7 +176,7 @@
 								</div>
 							</div>
 						</div>
-
+						<input type='hidden' value='<?=$_GET["idConteudo"]?>' name='idConteudo'>
 					</form>
 				</div>
 			</div>

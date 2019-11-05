@@ -10,4 +10,7 @@
         public function cadastrarTag($ultimaId){
             $this->tagClasse->cadastroTag($ultimaId);
         }
+        public function atualizarTag($idConteudo){
+            $this->tagClasse->atualizarTag($idConteudo);
+        }
     }
