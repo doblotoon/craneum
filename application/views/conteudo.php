@@ -154,7 +154,7 @@
                                 foreach ($comentarios as $duvida) {
                                     if ($duvida['adendo'] == 0) {
                                         
-                                        //$a=$comentarios->trocaIDporNome($duvida['fk_duv_idUsuario']);
+                                        $a=$comentarios->trocaIDporNome($duvida['fk_duv_idUsuario']);
                                         //print_r("<pre>$duvida</pre>");
                                         echo "<span id='".$duvida['idDuvida']."'>";
                                         echo "<h6>{$duvida['dataDuvida']}</h6>";

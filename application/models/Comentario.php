@@ -77,8 +77,8 @@ class Comentario {
         }
     }
 
-    /*public function trocaIDporNome(int $idUsuario){
-        $query = "SELECT nome FROM usuario WHERE idUsuario = {$idUsuario}";
+    public function trocaIDporNome(int $idUsuario){
+        $query = "SELECT nome from usuario, duvida where fk_duv_idUsuario = {$idUsuario}";// é mais trab doq isso
 
         try {
             $nomeUsuario = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);
@@ -87,7 +87,7 @@ class Comentario {
         }
         
         return $nomeUsuario;
-    }//n sei se deixo aqui ou na controller*/
+    }
 
 }
 
