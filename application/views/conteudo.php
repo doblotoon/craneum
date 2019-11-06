@@ -110,7 +110,7 @@
                             <br>
                             <h6 class="aEsquerda negrito">Disciplina(s): </h6>
 <?php
-                                print_r($disciplinas);
+                                //print_r($disciplinas);
                                 foreach ($disciplinas as $disciplina) {
                                     echo '<a href="resultadoPesquisar.php?termoPesquisado='.$disciplina['disciplina'].'">
                                                 <h5 class="aEsquerda">

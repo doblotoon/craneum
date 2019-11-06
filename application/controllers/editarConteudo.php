@@ -17,7 +17,7 @@
             $dadosEnviados['idUsuario'] = $_SESSION['id'];
             $ultimaId = $conteudo->editarConteudo($dadosEnviados);
             //pegar a id do conteudo salvo para passar pra tag
-            $tag->cadastrarTag($ultimaId);
+            $tag->atualizarTag($ultimaId);
             $disciplina->atualizarDisciplina($ultimaId);
             
         }
