@@ -152,13 +152,17 @@
                                 echo "<hr>";
                             } else {
                                 foreach ($comentarios as $duvida) {
+                                    //print_r($duvida);
+                                    //print $duvida['nome'];
                                     if ($duvida['adendo'] == 0) {
                                         
-                                        $a=$comentarios->trocaIDporNome($duvida['fk_duv_idUsuario']);
+                                        //$a=$comentarios->trocaIDporNome($duvida['fk_duv_idUsuario']);
                                         //print_r("<pre>$duvida</pre>");
                                         echo "<span id='".$duvida['idDuvida']."'>";
+                                        
+                                        echo "<h4 class='font-weight-bold'>{$duvida['nome']}</h4>";
+                                        echo "<h5>{$duvida['duvida']}</h5>";
                                         echo "<h6>{$duvida['dataDuvida']}</h6>";
-                                        echo "<h4>{$duvida['duvida']}</h4>";
                                         //echo "<p>{$a}</p>";
                                         if(isset($_SESSION['id'])){
                                             if ($duvida['idUsuario']==$_SESSION['id']) {
@@ -254,8 +258,9 @@
                                 foreach ($comentarios as $duvida) {
                                     if ($duvida['adendo'] == 1) {
                                         echo " <span id='".$duvida['idDuvida']."'>";
-                                        echo "<h6>{$duvida['dataDuvida']}</h6>";
+                                        echo "<h4 class='font-weight-bold'>{$duvida['nome']}</h4>";
                                         echo "<h4>{$duvida['duvida']}</h4>";
+                                        echo "<h6>{$duvida['dataDuvida']}</h6>";
                                         if(isset($_SESSION['id'])){
                                             if ($duvida['idUsuario']==$_SESSION['id']) {
                                                 echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn-danger' type='submit' value='excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   

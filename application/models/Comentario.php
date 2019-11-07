@@ -37,7 +37,7 @@ class Comentario {
     }
 
     public function getComentario($idConteudo){
-        $query = "select idDuvida, duvida, adendo, respondido, dataDuvida, idUsuario from usuario, duvida where fk_duv_idConteudo = {$idConteudo} and fk_duv_idUsuario = idUsuario;";
+        $query = "select idDuvida, duvida, adendo, respondido, dataDuvida, idUsuario, nome from usuario, duvida where fk_duv_idConteudo = {$idConteudo} and fk_duv_idUsuario = idUsuario;";
         $duvida = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
         return $duvida;
