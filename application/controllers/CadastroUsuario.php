@@ -1,6 +1,6 @@
 	<?php
-	require "../models/Aluno.php";
-	require '../models/Professor.php';
+	require "../models/Usuario.php";
+	//require '../models/Professor.php';
 	$usuario = new Aluno;
 	class CadastroUsuario {
 

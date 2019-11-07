@@ -65,7 +65,7 @@
 
         
 
-        public function ExcluirUsuario($idUser){
+        public function deletaUsuario($idUser){
 
             try {
                 $query = "delete from usuario where idUsuario = {$idUser}";

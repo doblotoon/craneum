@@ -96,7 +96,7 @@
                                     <button class="btn btn-success" type="submit">Atualizar Dados</button>
                                     <button class="btn btn-info" type="reset">Limpar</button>
                                     <button class="btn btn-danger" type="submit">
-                                        <a href="../controllers/ExcluirUsuario.php" id="botaoExcluirUsuarioPagEditarUsuario">Excluir Conta</a>
+                                        <a href="../controllers/ExcluirUsuario.php?idUsuario=<?=$_SESSION['id']?>" id="botaoExcluirUsuarioPagEditarUsuario">Excluir Conta</a>
                                     </button>
                                 </div>
                             </div>

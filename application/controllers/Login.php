@@ -1,6 +1,6 @@
 <?php
     require "../views/head.php";
-    require_once "../models/Aluno.php";
+    require_once "../models/Usuario.php";
     //print_r($_GET);
     
     if (isset($_GET['conteudo']) and !empty($_GET['conteudo'])) {

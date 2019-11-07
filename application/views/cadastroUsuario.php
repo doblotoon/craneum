@@ -50,7 +50,7 @@
                                 <!-- Matrícula/Siape -->
                                 <div class="col-lg-6 form-group">
                                     <label for="idUsuario">N° de matrícula / SIAPE</label>
-                                    <input class="form-control" type="text" name="idUsuario" placeholder="" required="">
+                                    <input class="form-control" type="text" name="idUsuario" placeholder="" required="" min='0000000' max='999999999'>
                                 </div>
 
                             </div>

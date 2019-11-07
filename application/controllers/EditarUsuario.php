@@ -1,7 +1,7 @@
 <?php
 require "../views/header.php";
-require "../models/Aluno.php";
-require '../models/Professor.php';
+require "../models/Usuario.php";
+//require '../models/Professor.php';
     //print_r($_SESSION);
     $usuario = new Aluno;
 

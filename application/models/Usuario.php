@@ -4,6 +4,7 @@
 class Aluno extends Usuarios{
     
     public function cadastrar($dadosRecebidos){
+        $idUsuario = $dadosRecebidos['idUsuario'];
         $email = $dadosRecebidos['email'];
         $senha = $dadosRecebidos['senha'];
         $confirmarSenha = $dadosRecebidos['confirmaSenha'];
@@ -22,7 +23,12 @@ class Aluno extends Usuarios{
                 //    echo $valores."</br>";
                     if ($cont==sizeof($dadosRecebidos)) {
                         $queryColunas = $queryColunas."{$colunas},fk_usu_idTipoUsuario) values("; 
-                        $queryDados = $queryDados."'{$valores}',1);";
+                        if (strlen($idUsuario)==7) {
+                            $queryDados = $queryDados."'{$valores}',2);";
+                        }elseif (strlen($idUsuario)>7 && strlen($idUsuario)<=10) {
+                            $queryDados = $queryDados."'{$valores}',1);";
+                        }
+                        
                         //echo $valores."</br>";
                     }else{
                         
@@ -43,7 +49,7 @@ class Aluno extends Usuarios{
                 //echo $queryColunas;
             }else{
                 echo "Senha errada \n";
-               //header('Location: CadastroUsuario.php?err=2');
+               header('Location: CadastroUsuario.php?err=2');
             }
         }else{
             echo "Email errado\n";
@@ -53,7 +59,7 @@ class Aluno extends Usuarios{
             $queryCompleta = $query.$queryColunas.$queryDados;
             //echo $queryCompleta;
             $this->conexao->exec($queryCompleta);
-            header('Location: ../views/login.php');
+            //header('Location: ../views/login.php');
         } catch (PDOException $e) {
             echo $e;
         }

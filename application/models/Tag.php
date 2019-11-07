@@ -93,9 +93,7 @@
             //descubro quais ja estao no conteudo tag, essas eu nao mexo
             $quaisTao = array_intersect($idAtuais,$idsAntigas);
             $quaisApagar = array_diff($idsAntigas,$quaisTao);
-            //print_r($idsAntigas);
-            //print_r($quaisTao);
-            //print_r($quaisApagar);
+            
             //excluo qual ja ta no conteudo tag
             foreach ($idAtuais as $key => $id) {
                 if (in_array($id,$quaisTao)) {
