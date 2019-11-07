@@ -78,7 +78,7 @@ class Comentario {
     }
 
     public function trocaIDporNome(int $idUsuario){
-        $query = "SELECT nome from usuario, duvida where fk_duv_idUsuario = {$idUsuario}";// é mais trab doq isso
+        $query = "SELECT nome from usuario, duvida where fk_duv_idUsuario = {$idUsuario};";// é mais trab doq isso
 
         try {
             $nomeUsuario = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);
