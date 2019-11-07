@@ -32,6 +32,8 @@ class Pesquisa {
 
     public function pesquisarDisciplina(){
         $query = "select disciplina from disciplina where disciplina like '%{$_GET['termo']}%';";
+        //select titulo from conteudo, conteudodisciplina, disciplina where disciplina like '%fundamentos%' and idConteudo = fk_cd_idConteudo and idDisciplina = fk_cd_idDisciplina
+        //consulta pra terminar amanha ^^^
         
         $termo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
@@ -50,7 +52,7 @@ class Pesquisa {
     }
 
     public function pesquisarTag(){
-        $query = "select tag from tag where tag like '%{$_GET['termo']}%';";
+        $query = "select distinct titulo, idConteudo, titulo, fotoCapa, disciplina from conteudo, conteudotag, tag, disciplina, usuario, conteudodisciplina where idConteudo = fk_ct_idConteudo and idTag = fk_ct_idTag and tag like '%{$_GET['termo']}%' and fk_cont_idUsuario = idUsuario and fk_cd_idDisciplina = idDisciplina and fk_cd_idConteudo = idConteudo;";
     
 
         $termo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
