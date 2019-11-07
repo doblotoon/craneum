@@ -68,7 +68,7 @@
         public function deletaUsuario($idUser){
 
             try {
-                $query = "delete from usuario where idUsuario = {$idUser}";
+                $query = "delete from usuario where idUsuario = {$idUser};";
                 $linhas = $this->conexao->exec($query);
 
             } catch (PDOException $e) {

@@ -5,54 +5,38 @@
     require_once '../models/Conteudo.php';
     $conteudo = new Conteudo();
     $idConteudo = (int) $_GET['idConteudo'];
-    $conteudoSelecionado = $conteudo->getConteudo($idConteudo);
+	$conteudoSelecionado = $conteudo->getConteudo($idConteudo);
+	
 	$tagObj = new Tag();
     $tags = $tagObj->getTags();
     $tagsSelecionadas = $tagObj->getTagsConteudo($idConteudo);
-    $disciObj = new Disciplina();
+	
+	$disciObj = new Disciplina();
     $disciplinas = $disciObj->getDisciplinas();
 	$disciplinasSelecionadas = $disciObj->getDisciplinasConteudo($idConteudo);
+	
 	setlocale(LC_COLLATE, 'pt_BR.utf-8');
 	asort($tags, SORT_LOCALE_STRING);
     $tagsCorretas = [];
     foreach ($tagsSelecionadas as $k => $tagSelecionada) {
         $tagsCorretas[] = $tagSelecionada['tag'];
 	}
+	$tagsResto = array_diff($tags,$tagsCorretas);
+
 
 	$disciplinasCorretas = [];
 	foreach($disciplinasSelecionadas as $chave => $disciplina){
 		$disciplinasCorretas[] = $disciplina['disciplina'];
 	}
-	foreach ($disciplinas as $key => $disciplina) {
-		foreach ($disciplinasCorretas as $key => $discCorreta) {
-			if ($discCorreta==$disciplina) {
-				unset($disciplinas[$key]);
-				// key tem que ser pega pelo nome da tag no caso os nomes de tag ou disciplinas tem que ser iguais
-			}
-		}
-	}
-	/*
-	echo "<pre>";
-	print_r($tags);
-	echo "</pre><br>";
 
-	echo "<pre>";
-	print_r($tagsCorretas);
-	echo "</pre><br>";
-	*/
-	foreach ($tags as $ky => $tag) {
-		foreach ($tagsCorretas as $k => $valor) {
-			if ($valor == $tag) {
-				unset($tags[$ky]);
-			}
-		}
+	$disciplinasResto = array_diff($disciplinas,$disciplinasCorretas);
 
-	}
-	asort($tags, SORT_LOCALE_STRING);
+	asort($tagsResto, SORT_LOCALE_STRING);
 	asort($tagsCorretas, SORT_LOCALE_STRING);
-/*	echo "<pre>";
-	print_r($tags);
-	echo "</pre>";*/
+
+	asort($disciplinasResto, SORT_LOCALE_STRING);
+	asort($disciplinasCorretas, SORT_LOCALE_STRING);
+
 ?>
 
 	<body>
@@ -112,7 +96,7 @@
 										foreach ($disciplinasCorretas as $key => $disciplinaCorreta) {
 											echo "<option selected='selected'>{$disciplinaCorreta}</option>";
 										}
-										foreach ($disciplinas as $key => $disciplina) {
+										foreach ($disciplinasResto as $key => $disciplina) {
 											echo "<option>{$disciplina}</option>";
 										}
 									?>
@@ -128,7 +112,7 @@
 										foreach ($tagsCorretas as $key => $tagCorreta) {
 											echo "<option selected='selected'>".$tagCorreta."</option>";
 										}
-										foreach ($tags as $key => $tag) {
+										foreach ($tagsResto as $key => $tag) {
 
                                             //19 vzs roda
                                             //foreach($tagsSelecionadas as $chave => $tagSelecionada){
@@ -188,7 +172,7 @@
 			$(document).ready(function() {
 				$("#selectDisciplinas").select2({
 					maximumSelectionLength: 3,
-					tags: true,
+					//tags: true,
     				tokenSeparators: [',', '']
 				});
 

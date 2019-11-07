@@ -86,10 +86,11 @@
 						<!-- Termo -->
 
 						<label>Termo</label>
-						<div class="custom-control custom-checkbox">
-							<input name="termo" type="checkbox" class="custom-control-input" id="defaultUnchecked">
-							<label class="custom-control-label" for="termo">O conteúdo que estou prestes a publicar não é ofensivo.</label>
+						<div class="form-check">
+							<input type="checkbox" name="termo" class="form-check-input">
+							<label class="form-check-label" for="exampleCheck1">O conteúdo que estou prestes a publicar não é ofensivo.</label>
 						</div>
+
 
 						<hr class="mb-4">
 

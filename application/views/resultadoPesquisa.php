@@ -14,6 +14,8 @@
 						   $resultadosTag = $pesquisa->pesquisarTag();
 
 						   //print_r($resultadosTag); 
+					   } else {
+						   header("location: erro.php?erro=naoEncontrado");
 					   }
 ?> 
 

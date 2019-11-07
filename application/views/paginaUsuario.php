@@ -3,15 +3,8 @@
 
     if(empty($_SESSION)){
         header("Location: erro.php?erro=acessoNegado");
-    } else {
-        if($_SESSION['tipo']=="professor"){
-            echo $_SESSION['tipo']."<br>";
-            $tipo = $_SESSION['tipo']."es";
-        }else{
-            echo $_SESSION['tipo']."<br>";
-            $tipo = $_SESSION['tipo']."s";
-        }
-        require "../models/".ucwords($tipo).".php";
+    }
+    require "../models/Usuario.php";
 ?>
 
     <body>

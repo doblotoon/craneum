@@ -3,11 +3,20 @@
         session_start();
         if (!empty($_SESSION['status']) and $_SESSION['status']==true) {
             $login = true;
+
+            $paginasNegado = json_decode(file_get_contents("../controllers/".$_SESSION['tipo'].".json"),true);
+            echo "<pre>";
+            print_r($paginasNegado);
+            echo "</pre>";
         }else{
             $login = false;
         }
     }
+
     
+
+    
+
     function reqURL(){
         $aux = explode("/", $_SERVER['REQUEST_URI']);
         $aux_two = explode(".", end($aux));
