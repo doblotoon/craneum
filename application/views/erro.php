@@ -26,6 +26,16 @@
         case 'jaCadastrado':
             $texto = "Você já está cadastrado(a) e/ou logado!";
             break;
+        case 'jaLogadoCriar':
+            $texto = "Você já tem uma conta, deslogue para criar outra!";
+            break;
+        case 'jaLogado':
+            $texto = "Você já está logado!";
+            break;
+
+        /*case 'usuario':
+            $texto = "ACESSO NEGADO!!! Você é <strong>{$_GET['erro']}</strong>. Para voltar para a home <a href='".$caminho."index.php'>clique aqui</a>.";
+            break;*/
     }
 
 ?>

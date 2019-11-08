@@ -59,7 +59,7 @@ class Aluno extends Usuarios{
             $queryCompleta = $query.$queryColunas.$queryDados;
             //echo $queryCompleta;
             $this->conexao->exec($queryCompleta);
-            //header('Location: ../views/login.php');
+            header('Location: ../views/login.php');
         } catch (PDOException $e) {
             echo $e;
         }

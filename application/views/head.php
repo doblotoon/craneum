@@ -1,22 +1,4 @@
 <?php
-    if (!isset($_SESSION)) {
-        session_start();
-        if (!empty($_SESSION['status']) and $_SESSION['status']==true) {
-            $login = true;
-
-            $paginasNegado = json_decode(file_get_contents("../controllers/".$_SESSION['tipo'].".json"),true);
-            echo "<pre>";
-            print_r($paginasNegado);
-            echo "</pre>";
-        }else{
-            $login = false;
-        }
-    }
-
-    
-
-    
-
     function reqURL(){
         $aux = explode("/", $_SERVER['REQUEST_URI']);
         $aux_two = explode(".", end($aux));
@@ -30,7 +12,24 @@
     } else {
         $caminho= "../";
     }
-    
+
+    if (!isset($_SESSION)) {
+        session_start();
+        if (!empty($_SESSION['status']) and $_SESSION['status']==true) {
+            $login = true;
+            if ($_SESSION['tipo']!="administrador") {    
+                $dadosJson = file_get_contents($caminho."controllers/".$_SESSION['tipo'].".json");
+                $paginasNegado = json_decode($dadosJson,true);
+            }
+            if ($login and $URLAtual=="cadastroUsuario") {
+                header("Location: erro.php?erro=jaLogadoCriar");
+            }elseif ($login and $URLAtual=="login") {
+                header("Location: erro.php?erro=jaLogado");
+            }
+        }else{
+            $login = false;
+        }
+    }
 ?>
 
 <!DOCTYPE html>
