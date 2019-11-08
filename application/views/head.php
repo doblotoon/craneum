@@ -28,6 +28,10 @@
             }
         }else{
             $login = false;
+            if (empty($_SESSION)) {        
+                $dadosJson = file_get_contents($caminho."controllers/naoLogado.json");
+                $paginasNegado = json_decode($dadosJson,true);
+            }
         }
     }
 ?>
