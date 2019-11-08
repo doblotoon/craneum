@@ -31,9 +31,8 @@ class Pesquisa {
     }
 
     public function pesquisarDisciplina(){
-        $query = "select disciplina from disciplina where disciplina like '%{$_GET['termo']}%';";
+        $query = "select distinct titulo, idConteudo, fotoCapa, disciplina, nome from conteudo, conteudodisciplina, disciplina, usuario where disciplina like '%{$_GET['termo']}%' and idConteudo = fk_cd_idConteudo and idDisciplina = fk_cd_idDisciplina and idUsuario = fk_cont_idUsuario;";
         //select titulo from conteudo, conteudodisciplina, disciplina where disciplina like '%fundamentos%' and idConteudo = fk_cd_idConteudo and idDisciplina = fk_cd_idDisciplina
-        //consulta pra terminar amanha ^^^
         
         $termo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
@@ -52,7 +51,7 @@ class Pesquisa {
     }
 
     public function pesquisarTag(){
-        $query = "select distinct titulo, idConteudo, titulo, fotoCapa, disciplina from conteudo, conteudotag, tag, disciplina, usuario, conteudodisciplina where idConteudo = fk_ct_idConteudo and idTag = fk_ct_idTag and tag like '%{$_GET['termo']}%' and fk_cont_idUsuario = idUsuario and fk_cd_idDisciplina = idDisciplina and fk_cd_idConteudo = idConteudo;";
+        $query = "select distinct titulo, idConteudo, titulo, fotoCapa, disciplina, nome from conteudo, conteudotag, tag, disciplina, usuario, conteudodisciplina where idConteudo = fk_ct_idConteudo and idTag = fk_ct_idTag and tag like '%{$_GET['termo']}%' and fk_cont_idUsuario = idUsuario and fk_cd_idDisciplina = idDisciplina and fk_cd_idConteudo = idConteudo and idUsuario = fk_cont_idUsuario;";
     
 
         $termo = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
