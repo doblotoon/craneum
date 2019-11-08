@@ -328,6 +328,8 @@ table.table .form-control.error {
   .botaoDuvida {
     background-color: #5b9bd1;
     border: #5b9bd1;
+    margin-top: 3.5%;
+    margin-bottom: 2%;
   }
 
   .botaoDuvida:hover{
@@ -505,4 +507,44 @@ height: 50px;
 
 .footerConteudo {
   padding-bottom: 8% !important;
+}
+
+.comment-wrapper .panel-body {
+  max-height:650px;
+  overflow:auto;
+}
+
+.comment-wrapper .media-list .media img {
+  margin-right: 15px;
+  margin-bottom: 5px;
+  width:50px;
+  border:2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+  border-bottom:1px dashed #efefef;
+  margin-bottom:25px;
+}
+
+.resposta {
+  margin-left: 10%;
+}
+
+.espacoDireitoBotaoComentarios{
+  margin-right: 4px;
+}
+
+.nomeUsuarioComentario{
+  float: left;
+  margin-right: 6px;
+}
+
+.espacoSuperiorComentarDuvida{
+  margin-top: 2%;
+  margin-bottom: 4%;
+}
+
+.tituloAdendo {
+  margin-top: 3%;
+  margin-bottom: 2%;
 }

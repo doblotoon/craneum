@@ -124,161 +124,66 @@
 
                         <!-- CONTEUDO -->
                                     
-                        <div class="col-11 card" id='colunaConteudo'>
+                        <div class="col-12 card" id='colunaConteudo'>
                             <br>
                             <div class="col-md-12 mb-3" style="min-height:120px;">
                                 <?=$conteudoSelecionado['conteudo']?>
+<?php
+
+    foreach($comentarios as $duvida){
+        if($duvida['adendo']==1){
+            print("<h3 class='text-center tituloAdendo'>Adendo(s)</h3>");
+            break;
+        }
+    }
+                              
+    foreach ($comentarios as $duvida) {
+            if ($duvida['adendo'] == 1) {
+                echo "<span id='".$duvida['idDuvida']."'>";
+?>
+                            <div class="comment-wrapper">
+                                <div class="panel panel-info">
+                                    <div class="panel-body">
+                                        <hr>
+                                        <ul class="media-list">
+                                            <li class="media">
+                                                <img src="<?=$duvida['fotoPerfil']?>" alt="" class="img-circle">
+                                                <div class="media-body">
+                                                    <strong class="nomeUsuarioComentario"><?=$duvida['nome']?></strong><p> em <?= date("d/m/Y", strtotime($duvida['dataDuvida']))?></p>
+                                                    <p>
+                                                        <?=$duvida['duvida']?> 
+                                                    </p>
+                                                </div>
+<?php
+
+if(isset($_SESSION['id'])){
+    if ($duvida['idUsuario']==$_SESSION['id']) {
+        echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn btn-sm btn-danger espacoDireitoBotaoComentarios' type='submit' value='Excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
+        echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn btn-sm btn-primary espacoDireitoBotaoComentarios'>Editar</button></a>";
+    }
+    if ($_SESSION['tipo']="professor") {
+        echo "<form action='../controllers/TransformaComentario.php' method='post'> <input class='btn btn-sm btn-dark' type='submit' value='Tornar Comentário'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'> <input type='hidden' name='funcao' value=1> </form>";   
+    }
+}
+
+?>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>          
+<?php
+                echo "<hr>";
+                echo "</span>";
+            }
+        }
+?>
                             </div>
-                            <hr class="mb-4">  
+                            <hr class="mb-4">
                         </div>
-            
-                        <!-- BOTAO DUVIDA -->
-                        <div class='col-1'>
-                            <button type="button" id='someDuvida' class="btn btn-secondary botaoDuvida">
-                                <i class="far fa-eye"></i>
-                            </button>
-                        </div>
-                        <!-- DIV DOS COMENTÁRIOS -->
-                        <div class="col-3 hide" id='colunaComentario'>
-                            <h2 class="aEsquerda negrito">Dúvidas: </h2>
-                            <br><br>
+                
+                        <!-- TAGS -->
 
-                            <!-- COMENTÁRIOS LISTADOS -->
-<?php
-                            //print_r($comentarios);
-                            //$duvidas[] = ['nomeUsuario'=>"aaaaaa","duvida"=>"nao entendi",'data'=>'07/09/2019']; /// ESTOU AQUI///
-                            if (empty($comentarios)) {
-                                echo "<h5> Não há nenhuma dúvida cadastrada";
-                                echo "<hr>";
-                            } else {
-                                foreach ($comentarios as $duvida) {
-                                    //print_r($duvida);
-                                    //print $duvida['nome'];
-                                    if ($duvida['adendo'] == 0) {
-                                        
-                                        //$a=$comentarios->trocaIDporNome($duvida['fk_duv_idUsuario']);
-                                        //print_r("<pre>$duvida</pre>");
-                                        echo "<span id='".$duvida['idDuvida']."'>";
-                                        
-                                        echo "<h4 class='font-weight-bold'>{$duvida['nome']}</h4>";
-                                        echo "<h5>{$duvida['duvida']}</h5>";
-                                        echo "<h6>{$duvida['dataDuvida']}</h6>";
-                                        //echo "<p>{$a}</p>";
-                                        if(isset($_SESSION['id'])){
-                                            if ($duvida['idUsuario']==$_SESSION['id']) {
-                                                echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn-danger' type='submit' value='excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
-                                                echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn-primary '>editar</button></a>";
-                                            }
-                                            if ($_SESSION['tipo']="professor") {
-                                                echo "<form action='../controllers/TransformaComentario.php' method='post'> <input class='btn-dark' type='submit' value='transformar em adendo'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'> <input type='hidden' name='funcao' value=1> </form>";   
-
-                                            }
-                                            
-                                        }
-
-                                        echo "<hr>";
-                                        echo "</span>";
-                                    }
-                                }
-                            }
-
-                            if (isset($_GET['acao']) and $_GET['acao']=="excluir") {//acho que isso vai para a controller
-                                $a = $comentario->deletarComentario($_GET['idDuvida']);
-                                header("Location: ../views/conteudo.php?idConteudo={$_GET['idConteudo']}");
-                                //echo "$('#".$_GET['idDuvida']."').addClass('hide');"; isso aqui é lá dos javascript do tanso
-                            }
-                    
-                            if (isset($_GET['acao']) and $_GET['acao'] == "editar") { // aqui a gente vai pegar o comentario pra colocar no textarea pra editar a dúvida
-                                foreach ($comentarios as $key => $value) {
-                                /*print("tá no foreach");
-                                print("<br>");
-                                print_r($value['idDuvida']);*/
-                                    if ($value['idDuvida'] == $_GET['idDuvida']) {
-                                        $ex = $value; //colcoar aqui o comenjtário antigo; 
-                                        /*echo "<pre>";
-                                        print_r($ex);
-                                        echo "</pre>";
-                                        print($ex['duvida']);*/
-                                    }  
-                                    //$ex = ;
-                                }   
-?>
-
-                                <form action="../controllers/EditarComentario.php" method="post">
-                                    <textarea name="duvidaAtual" id="" cols="30" rows="5"><?php print($ex['duvida']);?></textarea>
-                                    <button class="btn btn-primary" type="submit">Comentar Dúvida Editada</button>
-                                    <input type="hidden" name="id" value="<?=$_GET['idConteudo']?>">
-                                    <input type="hidden" name="idDuvida" value="<?=$_GET['idDuvida']?>">
-                                    
-                                </form>
-                                
-<?php
-                        //print_r($comentarios);
-                            } else {
-?>
-                                <form action="../controllers/CadastrarComentario.php" method="post" class="">
-                                    <textarea name="duvida" id="" cols="30" rows="5"></textarea>    
-                                    <button class="btn btn-primary" type="submit">Comentar Dúvida</button>
-                                    <input type="hidden" name="idUsuario" value="<?=$_SESSION['id']?>">
-                                    <input type="hidden" name="idConteudo" value="<?=$_GET['idConteudo']?>">
-                                </form>
-<?php
-                                }
-                                
-                                #-#--fazer ajax com isso aqui, no caso, cadastrar comentario--#-#
-                                if (isset($_POST['cadastrar']) and $_POST['cadastrar'] == true){ //a verificação era pra ser essa: isset($_GET['acao']) and $_GET['acao']=="cadastrar"
-                                    print_r($_POST);
-                                    $arrayCadastrarComentario=[
-                                        "duvida" => $_POST['duvida'],
-                                        "idConteudo" => $_GET['idConteudo'],
-                                        "idUsuario" => $_SESSION['id']
-                                    ];
-                                    //echo isset($arrayCadastrarComentario);
-                                    if (isset($arrayCadastrarComentario)) {
-                                        //try {
-                                            $duvida = $comentario->cadastrarComentario($arrayCadastrarComentario);
-                                            $arrayCadastrarComentario = 0;
-                                            $_POST['cadastrar'] = false;  
-                                            unset($_POST['cadastrar']);  
-                                            //print_r($arrayCadastrarComentario."sls,");
-                                            print_r($_POST);
-                                        //} catch (PDOException $e) {
-                                        //   echo $e->getMessage();
-                                    // }
-                                        
-                                    }
-                                }
-?>
-                        </div>
-                        <div class="row">
-                            <div class="col-8"> <h2 class="font-weight-bold">Adendos:</h2> 
-                            <br>
-                            <?php
-                               
-                                foreach ($comentarios as $duvida) {
-                                    if ($duvida['adendo'] == 1) {
-                                        echo " <span id='".$duvida['idDuvida']."'>";
-                                        echo "<h4 class='font-weight-bold'>{$duvida['nome']}</h4>";
-                                        echo "<h4>{$duvida['duvida']}</h4>";
-                                        echo "<h6>{$duvida['dataDuvida']}</h6>";
-                                        if(isset($_SESSION['id'])){
-                                            if ($duvida['idUsuario']==$_SESSION['id']) {
-                                                echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn-danger' type='submit' value='excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
-                                                echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn-primary '>editar</button></a>";
-                                            }
-                                        }
-                                        if ($_SESSION['tipo']="professor") {
-                                            echo "<form action='../controllers/TransformaComentario.php' method='post'> <input class='btn-dark' type='submit' value='transformar em comentário novamente'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'> <input type='hidden' name='funcao' value=0> </form>";   
-
-                                        }
-                                        echo "<hr>";
-                                        echo "</span>";
-                                    }
-                                }
-                            ?>
-                            <div class="clear"></div>
-                            </div>
-                        </div>
                         <div class='col-md-12 mb-3 fixed'>
                             <br>
                             <h6 class="aEsquerda negrito">Tags: </h6>
@@ -289,6 +194,156 @@
                             }
 ?>
                         </div>
+
+                        <!-- BOTAO DUVIDA -->
+                        <div class='col-12'>
+                            <button type="button" id='someDuvida' class="btn btn-secondary btn-block botaoDuvida">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+
+                        <!-- DIV DOS COMENTÁRIOS -->
+                            
+                            <div class="col-1"></div>
+                            <div class="col-10 hide" id='colunaComentario'>
+                                <h4 class="text-center">Dúvidas: </h4>
+                                <br><br>
+<?php
+    if (empty($comentarios)) {
+        echo "<h5> Não há nenhuma dúvida cadastrada";
+        echo "<hr>";
+    } else {  
+?>
+                                <div class="comment-wrapper">
+                                    <div class="panel panel-info">
+                                        <div class="panel-body">
+                                        <hr>
+                                        <ul class="media-list">
+<?php
+        foreach ($comentarios as $duvida) {
+            //print_r($duvida);
+            //print $duvida['nome'];
+            if ($duvida['adendo'] == 0) {
+            
+                //$a=$comentarios->trocaIDporNome($duvida['fk_duv_idUsuario']);
+                //print_r("<pre>$duvida</pre>");
+                echo "<span id='".$duvida['idDuvida']."'>";
+?>
+                                            <li class="media">
+                                                <img src="<?=$duvida['fotoPerfil']?>" alt="" class="img-circle">
+                                                <div class="media-body">
+                                                    <strong class="nomeUsuarioComentario"><?=$duvida['nome']?></strong><p> em <?= date("d/m/Y", strtotime($duvida['dataDuvida']))?></p>
+                                                    <p>
+                                                        <?=$duvida['duvida']?> 
+                                                    </p>
+                                                </div>
+<?php
+                if(isset($_SESSION['id'])){
+                    if ($duvida['idUsuario']==$_SESSION['id']) {
+                        echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn btn-sm btn-danger espacoDireitoBotaoComentarios' type='submit' value='Excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
+                        echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn btn-sm btn-primary espacoDireitoBotaoComentarios'>Editar</button></a>";
+                    }
+                    if ($_SESSION['tipo']="professor") {
+                        echo "<form action='../controllers/TransformaComentario.php' method='post'> <input class='btn btn-sm btn-dark' type='submit' value='Marcar como Adendo'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'> <input type='hidden' name='funcao' value=1> </form>";   
+                    }
+                }
+?>
+                                            </li>
+<!--                                            <li class="media resposta">
+                                                <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                                <div class="media-body">
+                                                    <span class="text-muted pull-right">
+                                                        <small class="text-muted"><?=$duvida['dataDuvida']?></small>
+                                                    </span>
+                                                    <strong class="text-success"></strong>
+                                                    <p>
+                                                        <?=$duvida['duvida']?>
+                                                    </p>
+                                                </div>
+                                            </li> -->
+
+<?php
+                echo "<span id='".$duvida['idDuvida']."'>";
+            }
+        }
+    }
+    
+    if (isset($_GET['acao']) and $_GET['acao']=="excluir") {//acho que isso vai para a controller
+        $a = $comentario->deletarComentario($_GET['idDuvida']);
+        header("Location: ../views/conteudo.php?idConteudo={$_GET['idConteudo']}");
+        //echo "$('#".$_GET['idDuvida']."').addClass('hide');"; isso aqui é lá dos javascript do tanso
+    }
+
+    if (isset($_GET['acao']) and $_GET['acao'] == "editar") { // aqui a gente vai pegar o comentario pra colocar no textarea pra editar a dúvida
+        foreach ($comentarios as $key => $value) {
+        /*print("tá no foreach");
+        print("<br>");
+        print_r($value['idDuvida']);*/
+            if ($value['idDuvida'] == $_GET['idDuvida']) {
+                $ex = $value; //colcoar aqui o comenjtário antigo; 
+                /*echo "<pre>";
+                print_r($ex);
+                echo "</pre>";
+                print($ex['duvida']);*/
+
+                #-#--fazer ajax com isso aqui, no caso, cadastrar comentario--#-#
+                if (isset($_POST['cadastrar']) and $_POST['cadastrar'] == true){ //a verificação era pra ser essa: isset($_GET['acao']) and $_GET['acao']=="cadastrar"
+                    print_r($_POST);
+                    $arrayCadastrarComentario=[
+                        "duvida" => $_POST['duvida'],
+                        "idConteudo" => $_GET['idConteudo'],
+                        "idUsuario" => $_SESSION['id']
+                    ];
+                    //echo isset($arrayCadastrarComentario);
+                    if (isset($arrayCadastrarComentario)) {
+                        //try {
+                            $duvida = $comentario->cadastrarComentario($arrayCadastrarComentario);
+                            $arrayCadastrarComentario = 0;
+                            $_POST['cadastrar'] = false;  
+                            unset($_POST['cadastrar']);  
+                            //print_r($arrayCadastrarComentario."sls,");
+                            print_r($_POST);
+                        //} catch (PDOException $e) {
+                        //   echo $e->getMessage();
+                    // }
+                        
+                    }
+                }
+            }  
+            //$ex = ;
+        }
+?>
+
+</ul>
+                                <form action="../controllers/EditarComentario.php" method="post">
+                                    <textarea class="form-control" name="duvidaAtual" id="" rows="4"><?php print($ex['duvida']);?></textarea>
+                                    <button class="btn btn-primary espacoSuperiorComentarDuvida" type="submit">Comentar Dúvida Editada</button>
+                                    <input type="hidden" name="id" value="<?=$_GET['idConteudo']?>">
+                                    <input type="hidden" name="idDuvida" value="<?=$_GET['idDuvida']?>">
+                                    
+                                </form>
+
+<?php
+
+    } else {
+    ?>
+                                    <form action="../controllers/CadastrarComentario.php" method="post" class="">
+                                        <textarea class="form-control" name="duvida" placeholder="Escreva um comentário" rows="4"></textarea>
+                                        <button class="btn btn-primary espacoSuperiorComentarDuvida" type="submit">Comentar Dúvida</button>
+                                        <input type="hidden" name="idUsuario" value="<?=$_SESSION['id']?>">
+                                        <input type="hidden" name="idConteudo" value="<?=$_GET['idConteudo']?>">
+                                    </form>
+<?php
+    }
+
+?>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
                     <!-- essa div debaixo fecha a div class row -->
                     </div>
                 </div>
@@ -317,13 +372,13 @@
                         $("#colunaComentario").toggleClass("hide");
                         if(chat==0){
                             $("#colunaConteudo").removeClass("col-11");
-                            $("#colunaConteudo").addClass("col-8");
+                            $("#colunaConteudo").addClass("col-7");
                             $("#someDuvida i").removeClass("far fa-eye");
                             $("#someDuvida i").addClass("far fa-eye-slash");
                             
                             chat = 1;
                         }else{
-                            $("#colunaConteudo").removeClass("col-8");
+                            $("#colunaConteudo").removeClass("col-7");
                             $("#colunaConteudo").addClass("col-11");
                             $("#someDuvida i").removeClass("far fa-eye-slash");
                             $("#someDuvida i").addClass("far fa-eye");
