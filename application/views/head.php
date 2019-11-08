@@ -34,6 +34,9 @@
             }
         }
     }
+    if ($URLAtual=="editarConteudo") {
+        echo "<script> alert({$_GET['idConteudo']})</script>";
+    }
 ?>
 
 <!DOCTYPE html>

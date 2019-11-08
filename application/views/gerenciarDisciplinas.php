@@ -54,9 +54,6 @@
 									<td class="text-center">
 										<a href="?acao=editar&disciplina=<?=$disciplinaArray['disciplina']?>&idDisciplina=<?=$disciplinaArray['idDisciplina']?>" class="edit"><i class="far fa-edit"></i></a>
 									</td>
-									<td class="text-center">
-										<a href="?acao=excluir&idDisciplina=<?=$disciplinaArray['idDisciplina']?>">X<i class="far fa-remove"></i></a>
-									</td>
 								</tr>
 <?php
     }
@@ -139,17 +136,6 @@
 			$disciplina->cadastroDisciplina($disciplinaCriar);
 			header("Location: gerenciarDisciplinas.php");
 			break;
-		
-		case 'excluir':
-			$disciplinaExcluir = $_GET['idDisciplina'];
-			$disciplina->excluirDisciplina($disciplinaExcluir);
-			echo "<script>
-					$(document).ready(function(){
-						$('#{$disciplinaExcluir}').addClass('escondido');
-					});
-				</script>";
-			break;
-		
 		}
 	}
 

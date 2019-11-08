@@ -25,6 +25,7 @@
     if (isset($paginasNegado)) {
         if (in_array($URLAtual,$paginasNegado) and $login) {
             //header("Location: ".$caminho."erro.php?erro={$_SESSION['tipo']}");
+            echo $_SESSION['tipo'];
             echo "
                 <br>
                 <div class='container'>
