@@ -32,66 +32,29 @@
 									<h3 class="grid-title"><i class="fa fa-filter"></i> Filtros</h3>
 									<hr>
 									
-									<!-- BEGIN FILTER BY CATEGORY -->
-									<h4 class="opcaoFiltro">Por disciplina:</h4>
-									<div class="checkbox">
-										<label><input type="checkbox" class="icheck"> Application</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" class="icheck"> Design</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" class="icheck"> Desktop</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" class="icheck"> Management</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" class="icheck"> Mobile</label>
-									</div>
-									<!-- END FILTER BY CATEGORY -->
+									<!-- BEGIN FILTER BY CATEGORY filtaralhos-->
+									<a href="?termo=<?=$_GET['termo']?>&ft=1">
+										<label><div type="checkbox" class="icheck"> Titulo</div></label>
+										<br>
+									</a>
 
-									<!-- BEGIN FILTER BY CATEGORY -->
-									<h4 class="opcaoFiltro">Por Professor:</h4>
-									<div class="checkbox">
-										<label><input type="checkbox" class="icheck"> Application</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" class="icheck"> Design</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" class="icheck"> Desktop</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" class="icheck"> Management</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" class="icheck"> Mobile</label>
-									</div>
+									<a href="?termo=<?=$_GET['termo']?>&ft=2">
+										<label><div type="checkbox" class="icheck"> Disciplina</div></label>
+										<br>
+									</a>
+
+									<a href="?termo=<?=$_GET['termo']?>&ft=3">
+										<label><div type="checkbox" class="icheck"> Tag</div></label>
+										<br>
+									</a>
+
+									<a href="?termo=<?=$_GET['termo']?>&ft=0">
+										<label><div type="checkbox" class="icheck"> Sem filtro</div></label>
+										<br>
+									</a>
 									<!-- END FILTER BY CATEGORY -->
 								
 									<div class="padding"></div>
-								
-									<!-- BEGIN FILTER BY DATE -->
-									<h4 class="opcaoFiltro">Por data:</h4>
-									De
-									<div class="input-group date form_date">
-										<input type="date" class="form-control">
-									</div>
-									<input type="hidden" id="dtp_input1" value="">
-									
-									Até
-									<div class="input-group date form_date">
-										<input type="date" class="form-control">
-									</div>
-									<input type="hidden" id="dtp_input2" value="">
-									<!-- END FILTER BY DATE -->
-								
-									<div class="padding"></div>
-
-									<div class="text-center botaoRefinar">
-										<button type="button" class="btn btn-primary botaoResultadoPesquisa">Refinar</button>
-									</div>
 
 								</div>
 								<!-- END FILTERS -->
@@ -127,6 +90,7 @@
 													Ordenar por <span class="caret"></span>
 												</button>
 												<ul class="dropdown-menu" role="menu">
+
 													<li><a href="#">Name</a></li>
 													<li><a href="#">Date</a></li>
 													<li><a href="#">View</a></li>
@@ -137,9 +101,11 @@
 									</div>
 								
 									<!-- BEGIN TABLE RESULT -->
-
+					   	
 						<?php
 
+						if (empty($_GET['ft']) OR $_GET['ft'] == 0) {
+						
 							foreach ($resultadosDisciplina as $a => $b) {
 								//print $b['titulo'];
 								//echo "<br>";
@@ -227,6 +193,98 @@
 										</div>
 									</a>";
 							}
+						}
+
+						switch ($_GET['ft']) {
+							case 1:
+								foreach ($resultadosTema as $a => $b) {
+									//print $b['titulo'];
+									//echo "<br>";
+				
+									echo"
+										<a class='cursorPointer' href='conteudo.php?idConteudo={$b['idConteudo']}'>
+											<div class='table-responsive'>
+												<table class='table'>
+													<tbody>
+														<tr class='tabelaPesquisar'>
+															
+															<td class='text-center'><img class='imagemConteudoTabela' src='../assets/images/{$b['fotoCapa']}' alt=''></td>
+															<td class='text-center titulo'>{$b['titulo']}</td>
+															<td class=''>
+																<h6 class='aEsquerda>
+																	<!-- CASO A PESQUISA SEJA DE UMA DISCIPLINA, NÃO DEVE SER LINKADO POIS NÃO FAZ SENTIDO... -->
+																	<a href='resultadoPesquisa.php?'><span class='badge badge-secondary aEsquerda espacoDireita disciplina'>{$b['disciplina']}</span></a>
+																</h6>
+															</td>
+															<td class='text-center'>{$b['nome']}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</a>";
+								}
+							break;
+							
+							case 2:
+								foreach ($resultadosDisciplina as $a => $b) {
+									//print $b['titulo'];
+									//echo "<br>";
+								
+								
+									echo"
+									<a class='cursorPointer' href='conteudo.php?idConteudo={$b['idConteudo']}'>
+										<div class='table-responsive'>
+											<table class='table'>
+												<tbody>
+													<tr class='tabelaPesquisar'>
+														
+														<td class='text-center'><img class='imagemConteudoTabela' src='../assets/images/{$b['fotoCapa']}' alt=''></td>
+														<td class='text-center titulo'>{$b['titulo']}</td>
+														<td class=''>
+															<h6 class='aEsquerda>
+																<!-- CASO A PESQUISA SEJA DE UMA DISCIPLINA, NÃO DEVE SER LINKADO POIS NÃO FAZ SENTIDO... -->
+																<a href='resultadoPesquisa.php?'><span class='badge badge-secondary aEsquerda espacoDireita disciplina'>{$b['disciplina']}</span></a>
+															</h6>
+														</td>
+														<td class='text-center'>{$b['nome']}</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</a>";
+								}
+							break;
+							case 3:
+								foreach ($resultadosTag as $a => $b) {
+									//print_r($resultadosTag);
+									print $b['tag'];
+									//echo "<br>";
+								
+								
+									echo"
+									<a class='cursorPointer' href='conteudo.php?idConteudo={$b['idConteudo']}'>
+										<div class='table-responsive'>
+											<table class='table'>
+												<tbody>
+													<tr class='tabelaPesquisar'>
+														
+														<td class='text-center'><img class='imagemConteudoTabela' src='../assets/images/{$b['fotoCapa']}' alt=''></td>
+														<td class='text-center titulo'>{$b['titulo']}</td>
+														<td class=''>
+															<h6 class='aEsquerda>
+																<!-- CASO A PESQUISA SEJA DE UMA DISCIPLINA, NÃO DEVE SER LINKADO POIS NÃO FAZ SENTIDO... -->
+																<a href='resultadoPesquisa.php?'><span class='badge badge-secondary aEsquerda espacoDireita disciplina'>{$b['disciplina']}</span></a>
+															</h6>
+														</td>
+														<td class='text-center'>{$b['nome']}</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</a>";
+								}
+							break;
+						}
 						?>
 									<!-- BEGIN PAGINATION -->
 
