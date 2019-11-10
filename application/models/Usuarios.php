@@ -150,6 +150,26 @@
             return $tipoUsuario;
         }
 
+        public function salvarConteudo($idUsuario,$idConteudo){
+            $dataSalvo = date("Y-m-d H:i:s");
+            $query = "insert into conteudosalvo (fk_cs_idUsuario,fk_cs_idConteudo, salvoEm) values ({$idUsuario},{$idConteudo},'{$dataSalvo}';)";
+            try {
+                $this->conexao->exec($query);
+            } catch (PDOException $e) {
+                echo $e;
+            }
+        }
+
+        public function taSalvo($idUsuario,$idConteudo){
+            $query = "select * from conteudosalvo where fk_cs_idUsuario = {$idUsuario} and fk_cs_idConteudo = {$idConteudo};";
+            $linhas = $this->conexao->query($query);
+            if ($linhas->rowCount()>0) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+
         /*public function mostrarUsuarios($id){
             $query = "select * from usuario where idUsuario = {$id};";
             $consulta = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);

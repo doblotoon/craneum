@@ -35,7 +35,15 @@
         }
     }
     if ($URLAtual=="editarConteudo") {
-        echo "<script> alert({$_GET['idConteudo']})</script>";
+        //echo "<script> alert({$_GET['idConteudo']})</script>";
+        include "../models/Usuario.php";
+        $editaUsuario = new Aluno();
+        if (isset($_SESSION['id'])) {
+            $passa = $editaUsuario->editarValido($_SESSION['id'],$_GET['idConteudo']);
+            if (!$passa) {
+                header("Location: erro.php?erro=editaErro");
+            }
+        }
     }
 ?>
 

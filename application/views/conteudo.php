@@ -7,6 +7,7 @@
     require_once "../models/Comentario.php";
     require_once "../models/Tag.php";
     require_once "../models/Disciplina.php";
+    require_once "../models/Usuario.php";
 
     /* LÓGICA */
 
@@ -26,7 +27,11 @@
     $tags = $tag->getTagsConteudo($conteudoSelecionado['idConteudo']);
     $disciplina = new Disciplina();
     $disciplinas = $disciplina->getDisciplinasConteudo($conteudoSelecionado['idConteudo']);
-    
+
+    if (!empty($_SESSION)) {    
+        $usuarioSalvo = new Aluno();
+        $salvo = $usuarioSalvo->taSalvo($_SESSION['id'],$idConteudo);
+    }
     if (!$login) {
         $precisaLogar = "<div class='alert alert-primary' role='alert'>
         Para cadastrar uma dúvida você precisa estar logado. <a href='login.php?conteudo={$idConteudo}'>Clique aqui</a> para se logar.
@@ -92,7 +97,19 @@
 
 <?php
                     if (isset($_SESSION['id']) && $conteudoSelecionado['idUsuario']!=$_SESSION['id']){
-                        echo '<button class="btn btn-light espacoSalvar"><i class="fas fa-bookmark"></i> Salvar</button>';
+                        if (isset($salvo)) {    
+                            if ($salvo) {
+                                $acao = "remover";   
+                                $texto = "Remover dos Salvos";
+                            }else{
+                                $acao = "salvar";
+                                $texto = "Salvar";
+                            }
+
+                        
+                        echo "<a href='../controllers/SalvaConteudo.php?acao={$acao}&idConteudo={$idConteudo}&idUsuario={$_SESSION['id']}'><button class='btn btn-light espacoSalvar'><i class='fas fa-bookmark'></i> {$texto}</button></a>";
+
+                        }
                     } elseif(isset($_SESSION['id']) && $conteudoSelecionado['idUsuario']!=$_SESSION['id']){
                         echo'<button type="button" class="btn btn-warning"><i class="far fa-edit"></i> Editar</button>';
                     }
@@ -103,6 +120,7 @@
             <section class="section static">
 
                 <div class="espacoAntesConteudo"></div>
+                
 
                 <div class="container">
                     <div class="row">

@@ -74,7 +74,19 @@ class Aluno extends Usuarios{
         return $this->mostrarUsuarios($this->conexao->lastInsertId());
     }*/
    
-    
+    public function editarValido($idUsuario,$idConteudo){
+        $queryValida = "select fk_cont_idUsuario from conteudo where idConteudo = {$idConteudo}";
+        try {
+            $idCont = $this->conexao->query($queryValida)->fetch(PDO::FETCH_ASSOC);
+            if ($idCont==$idUsuario) {
+                return true;
+            }else{
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 }
 
 $aluno = new Aluno();

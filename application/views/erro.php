@@ -32,6 +32,9 @@
         case 'jaLogado':
             $texto = "Você já está logado!";
             break;
+        case 'editaErro':
+            $texto = "Você não pode editar conteúdo de outros usuários!";
+            break;
 
         /*case 'usuario':
             $texto = "ACESSO NEGADO!!! Você é <strong>{$_GET['erro']}</strong>. Para voltar para a home <a href='".$caminho."index.php'>clique aqui</a>.";

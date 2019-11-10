@@ -8,11 +8,11 @@
         if (isset($_GET['err'])) {
             switch ($_GET['err']) {
                 case '1':
-                    echo "erro o email";
+                    echo "<script> alert('Você errou o email!')</script>";
                     //exibir um modal dizendo o que a pessoa errou
                     break;
                 case '2':
-                    echo "erro a senha";
+                    echo "<script> alert('Você errou a senha!')</script>";
                     //exibir um modal dizendo o que a pessoa errou
                     break;
             }
