@@ -78,7 +78,7 @@ class Comentario {
     }
 
     public function trocaIDporNome(int $idUsuario){
-        $query = "SELECT nome from usuario, duvida where fk_duv_idUsuario = {$idUsuario};";// é mais trab doq isso
+        $query = "SELECT nome from usuario, duvida where fk_duv_idUsuario = {$idUsuario};";// dx isso bx filhote
 
         try {
             $nomeUsuario = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);
@@ -89,16 +89,66 @@ class Comentario {
         return $nomeUsuario;
     }
 
-}
+    public function getResposta(){
+        $query = "select * from resposta;";
+        $duvida = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
-/*$n = new Comentario;
+        return $duvida;
+    }
+
+    public function cadastrarResposta($poste){
+        $query = "INSERT INTO resposta(`resposta`, `fk_resp_idDuvida`) VALUES ('{$poste['resposta']}',{$poste['idDuvida']});";
+
+        try {
+            $this->conexao->exec($query);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function deletarResposta($idDuvida){
+        $query = "delete from resposta where idResposta = {$idDuvida}";
+
+        try {
+            $this->conexao->exec($query);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function editarResposta($resPOST){
+
+        $query = "select * from resposta where idResposta = {$resPOST['idResposta']}";
+        $ex = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        $atual = $resPOST['respostaAtual'];
+        $idResposta = $resPOST['idResposta'];
+
+        $query = "UPDATE resposta SET resposta='{$atual}' WHERE idResposta={$idResposta}";      
+            
+        if ($ex != $atual) {
+            try {
+                $this->conexao->exec($query);
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }else{
+            echo "alert('aaaaaa burrao errou tudo')";
+        }
+
+    }
+
+}
+/*
+$n = new Comentario;
 
 $arrayin=[
-    "idDuvida" =>176,
-    "funcao" => 1
+    "idResposta" =>12,
+    "respostaAtual" => 'funfando porra',
 ];
 echo "<pre>";
-print_r($arrayin);
+   print_r($arrayin);
 
-    $n->adendo($arrayin);
+    $n->editarResposta($arrayin);
+    $resp = $n->getResposta();
+    print_r($resp);
 */
