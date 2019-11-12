@@ -116,7 +116,7 @@
 ?>
                         <div class="espacoSuperiorBotoesConteudoProf">
                             <button type="button" class="btn btn-warning"><i class="far fa-edit"></i> Editar</button>
-                            <button type="button" class="btn btn-danger"><i class="far fa-edit"></i> Excluir</button>
+                            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Excluir</button>
                         </div>
 <?php                   
                     } 

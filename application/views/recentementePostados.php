@@ -1,5 +1,11 @@
 <?php
     require_once('header.php');
+    require_once('../models/Conteudo.php');
+
+    $conteudo= new Conteudo();
+    $conteudos= $conteudo->getConteudosRecentes();
+
+    print_r($conteudos);
 ?>
     <body>
         <section class="ab-info-main py-5">

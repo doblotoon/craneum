@@ -50,13 +50,15 @@
             return $conteudo;
         }
 
-        /*public function getConteudoSRecentes(){
+        public function getConteudosRecentes(){
             $query = "select * from conteudo;";
-            $conteudo = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);
+            $conteudos = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+            array_multisort($conteudos, SORT_DESC);
+            //rsort($conteudos);
             //$conteudoSelecionado = $conteudo->fecth(PDO::FETCH_ASSOC);
 
-            return $conteudo;
-        }*/
+            return $conteudos;
+        }
 
         public function deletarConteudo($idConteudo){
             try {
