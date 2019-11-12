@@ -1,4 +1,4 @@
-|<?php
+<?php
     require_once "Usuarios.php";
 
 class Aluno extends Usuarios{
@@ -89,7 +89,7 @@ class Aluno extends Usuarios{
     }
 }
 
-$aluno = new Aluno();
+//$aluno = new Aluno();
 
 //$aluno->logar("odeioprog@gmail.com","123456");
 

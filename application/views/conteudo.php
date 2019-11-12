@@ -98,7 +98,7 @@
 <?php
                     if (isset($_SESSION['id']) && $conteudoSelecionado['idUsuario']!=$_SESSION['id']){
                         if (isset($salvo)) {    
-                            if ($salvo) {
+                            if ($salvo || (isset($_GET['salvo']) && $_GET['salvo'] == 1)) {
                                 $acao = "remover";   
                                 $texto = "Remover dos Salvos";
                             }else{

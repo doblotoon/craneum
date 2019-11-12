@@ -152,7 +152,20 @@
 
         public function salvarConteudo($idUsuario,$idConteudo){
             $dataSalvo = date("Y-m-d H:i:s");
-            $query = "insert into conteudosalvo (fk_cs_idUsuario,fk_cs_idConteudo, salvoEm) values ({$idUsuario},{$idConteudo},'{$dataSalvo}';)";
+            //var_dump($idConteudo);
+            //$idConteudo = (int) $idConteudo;
+            //$idUsuario = (int) $idUsuario;
+            
+            $query = "insert into conteudosalvo (fk_cs_idUsuario,fk_cs_idConteudo, salvoEm) values ({$idUsuario},{$idConteudo},'{$dataSalvo}');";
+            try {
+                $this->conexao->exec($query);
+            } catch (PDOException $e) {
+                echo $e;
+            }
+        }
+
+        public function removerSalvo($idUsuario,$idConteudo){
+            $query = "delete from conteudosalvo where fk_cs_idUsuario = {$idUsuario} and fk_cs_idConteudo = {$idConteudo};";
             try {
                 $this->conexao->exec($query);
             } catch (PDOException $e) {
@@ -162,11 +175,16 @@
 
         public function taSalvo($idUsuario,$idConteudo){
             $query = "select * from conteudosalvo where fk_cs_idUsuario = {$idUsuario} and fk_cs_idConteudo = {$idConteudo};";
-            $linhas = $this->conexao->query($query);
-            if ($linhas->rowCount()>0) {
-                return true;
-            }else{
-                return false;
+            
+            try{
+                $linhas = $this->conexao->query($query);
+                if ($linhas->rowCount()>0) {
+                    return true;
+                }else{
+                    return false;
+                }
+            }catch(PDOException $e){
+                echo $e;
             }
         }
 
