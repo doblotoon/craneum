@@ -110,9 +110,16 @@
                         echo "<a href='../controllers/SalvaConteudo.php?acao={$acao}&idConteudo={$idConteudo}&idUsuario={$_SESSION['id']}'><button class='btn btn-light espacoSalvar'><i class='fas fa-bookmark'></i> {$texto}</button></a>";
 
                         }
-                    } elseif(isset($_SESSION['id']) && $conteudoSelecionado['idUsuario']!=$_SESSION['id']){
-                        echo'<button type="button" class="btn btn-warning"><i class="far fa-edit"></i> Editar</button>';
                     }
+                    
+                    if(isset($_SESSION['id']) && $conteudoSelecionado['idUsuario']==$_SESSION['id']){
+?>
+                        <div class="espacoSuperiorBotoesConteudoProf">
+                            <button type="button" class="btn btn-warning"><i class="far fa-edit"></i> Editar</button>
+                            <button type="button" class="btn btn-danger"><i class="far fa-edit"></i> Excluir</button>
+                        </div>
+<?php                   
+                    } 
 ?>
                 </div>
             </section>

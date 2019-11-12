@@ -50,6 +50,14 @@
             return $conteudo;
         }
 
+        /*public function getConteudoSRecentes(){
+            $query = "select * from conteudo;";
+            $conteudo = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);
+            //$conteudoSelecionado = $conteudo->fecth(PDO::FETCH_ASSOC);
+
+            return $conteudo;
+        }*/
+
         public function deletarConteudo($idConteudo){
             try {
                 $query = "delete from duvida where idDuvida = {$idConteudo}";
