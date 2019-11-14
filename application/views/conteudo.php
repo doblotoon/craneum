@@ -115,7 +115,7 @@
                     if(isset($_SESSION['id']) && $conteudoSelecionado['idUsuario']==$_SESSION['id']){
 ?>
                         <div class="espacoSuperiorBotoesConteudoProf">
-                            <button type="button" class="btn btn-warning"><i class="far fa-edit"></i> Editar</button>
+                            <a href="editarConteudo.php?idConteudo=<?=$conteudoSelecionado['idConteudo']?>"><button type="button" class="btn btn-warning"><i class="far fa-edit"></i> Editar</button></a>
                             <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Excluir</button>
                         </div>
 <?php                   
@@ -215,7 +215,7 @@ if(isset($_SESSION['id'])){
 <?php
                             foreach ($tags as $key => $tag) {
                                 $tagNome = $tag['tag'];
-                                echo '<a href="resultadoPesquisar.php?termoPesquisado='.$tagNome.'"><span class="badge badge-secondary aEsquerda espacoDireita tag">'.$tagNome.'</span></h6></a>';
+                                echo '<h5><a href="resultadoPesquisar.php?termoPesquisado='.$tagNome.'"><span class="badge badge-secondary aEsquerda espacoDireita tag">'.$tagNome.'</span></h5></a>';
                             }
 ?>
                         </div>

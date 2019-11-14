@@ -3,6 +3,7 @@
     //$pasta = __DIR__;
     //echo $pasta;
     // TODO: Alterar o formato dos links para eles funcionarem em todas as páginas da forma correta.
+
 ?>
                             
   <nav id='home' class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -35,11 +36,15 @@
         <li class="nav-item active">
           <a class="nav-link linkCinza" href="<?=$caminho?>views/paginaUsuario.php"><i class="fas fa-user"></i> Página do Usuario <span class="sr-only">(current)</span></a>
         </li>
-
+<?php
+      if($_SESSION['tipo']!='usuario'){
+?>
         <li class="nav-item active">
           <a class="nav-link linkCinza" href="<?=$caminho?>views/cadastroConteudo.php"><i class="fas fa-pencil-alt"></i> Cadastrar Conteúdo<span class="sr-only">(current)</span></a>
         </li>
-
+<?php
+      }
+?>
         <li class="nav-item active">
           <a class="nav-link linkCinza" href="<?=$caminho?>views/sair.php"><i class="fas fa-sign-out-alt"></i> Sair <span class="sr-only">(current)</span></a>
         </li>

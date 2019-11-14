@@ -72,11 +72,8 @@
 											</span>
 										</form>
 									</div>
-					   			
 
 
-
-									
 									<!-- END SEARCH INPUT -->
 									
 									

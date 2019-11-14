@@ -24,10 +24,10 @@
                         <!-- SIDEBAR USER TITLE -->
                         <div class="profile-usertitle">
                             <div class="profile-usertitle-name img-fluid">
-                                Marcus Doe
+                                <?=$_SESSION['nome']?>
                             </div>
                             <div class="profile-usertitle-job">
-                                Estudante
+                                <?=$_SESSION['tipo']?>
                             </div>
                         </div>
                         <!-- END SIDEBAR USER TITLE -->
@@ -48,11 +48,38 @@
                                         <span class="fa fa-bookmark espacoIcon"></span>Conteúdos Salvos
                                     </a>
                                 </li>
+<?php
+                        if($_SESSION['tipo']!='usuario'){
+?>
                                 <li>
                                     <a href="#">
-                                        <span class="fa fa-bell espacoIcon"></span>Painel de Controle
+                                        <span class="fa fa-pencil-alt espacoIcon"></span>Conteúdos Postados
                                     </a>
                                 </li>
+<?php
+                        } if($_SESSION['tipo']=='administrador'){
+?>
+                                <li>
+                                    <a href="gerenciarUsuarios.php">
+                                        <span class="fa fa-user-cog espacoIcon"></span>Gerenciar Usuários
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span class="fa fa-user-cog espacoIcon"></span>Gerenciar Conteúdos
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="gerenciarDisciplinas.php">
+                                        <span class="fa fa-user-cog espacoIcon espacoIcon"></span>Gerenciar Disciplinas
+                                    </a>
+                                </li>
+
+<?php
+    }
+?>
                             </ul>
                         </div>
                         <!-- END MENU -->
