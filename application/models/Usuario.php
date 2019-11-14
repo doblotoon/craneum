@@ -78,7 +78,7 @@ class Aluno extends Usuarios{
         $queryValida = "select fk_cont_idUsuario from conteudo where idConteudo = {$idConteudo}";
         try {
             $idCont = $this->conexao->query($queryValida)->fetch(PDO::FETCH_ASSOC);
-            if ($idCont==$idUsuario) {
+            if ($idCont['fk_cont_idUsuario']==$idUsuario) {
                 return true;
             }else{
                 return false;
