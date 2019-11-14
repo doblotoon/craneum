@@ -45,7 +45,7 @@
                                     <label for="nome">
                                         <h5>Novo Nome</h5>
                                     </label>
-                                    <input type="text" class="form-control" name="nome" id="first_name" placeholder="Ex.: João Silva" title="enter your first name if any.">
+                                    <input type="text" class="form-control" name="nome" id="first_name" value="<?=$_SESSION['nome']?>">
                                 </div>
                             </div>
 
@@ -56,7 +56,7 @@
                                     <label for="email">
                                         <h5>Novo Email</h5>
                                     </label>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Ex.: joao.silva@gmail.com" title="enter your email.">
+                                    <input type="email" class="form-control" name="email" id="email" value="<?=$_SESSION['email']?>">
                                 </div>
                             </div>
 

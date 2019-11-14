@@ -25,7 +25,7 @@
                             <div class="row">
                                 <!-- Nome -->
                                 <div class="col-lg-6 form-group">
-                                    <label for="nome">Nome Completo</label>
+                                    <label for="nome">Nome de Usuário</label>
                                     <input class="form-control" type="text" name="nome" placeholder="" required="">
                                 </div>
 
