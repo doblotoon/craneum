@@ -24,9 +24,9 @@
     $comentarios = $comentario->getComentario($idConteudo);
     $comentarios['resposta'] = $comentario->getResposta();
     
-    print "<pre>";
-    print_r($comentarios);
-    exit;
+ //   print "<pre>";
+ //   print_r($comentarios);
+ //   exit;
 
     $tag = new Tag();
     $tags = $tag->getTagsConteudo($conteudoSelecionado['idConteudo']);
@@ -268,6 +268,15 @@ if(isset($_SESSION['id'])){
                                                     </p>
                                                 </div>
 <?php
+                                                #<!-- inicio da getResposta-->#
+
+                                                print_r($duvida);
+                                                #if ($duvida['idDuvida']== $duvida['resposta'][]) {
+                                                #    # code...
+                                                #}
+
+                                                #<!-- final da getResposta-->#
+
 
                 if ($_SESSION['id'] == $conteudoSelecionado['idUsuario']) {
                     echo "<a href='?idConteudo={$_GET['idConteudo']}&rc=1'>responder dúvida</a>";
