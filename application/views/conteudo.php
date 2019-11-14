@@ -22,7 +22,7 @@
 
     $comentario = new Comentario;
     $comentarios = $comentario->getComentario($idConteudo);
-    $comentarios['resposta'] = $comentario->getResposta();
+    $respostas = $comentario->getResposta();
     
  //   print "<pre>";
  //   print_r($comentarios);
@@ -270,7 +270,8 @@ if(isset($_SESSION['id'])){
 <?php
                                                 #<!-- inicio da getResposta-->#
 
-                                                print_r($duvida);
+                                                #print_r($duvida);
+                                                print_r ($respostas);
                                                 #if ($duvida['idDuvida']== $duvida['resposta'][]) {
                                                 #    # code...
                                                 #}
