@@ -100,6 +100,18 @@
         }
 
 
+
+        public function getConteudoSalvo($idUsuario){
+            $query = "select idConteudo, conteudo, fotoCapa, titulo, dataPostagem, nome, fotoPerfil from conteudo, conteudosalvo, usuario where idConteudo = fk_cs_idConteudo and fk_cs_idUsuario = {$idUsuario} and fk_cont_idUsuario = idUsuario;";
+            try {
+                $conteudosSalvos = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+                return $conteudosSalvos;
+            } catch (PDOExcetion $e) {
+                echo $e;
+            }
+        }
+
+
     }
 
     //LINK IMPORTANTE
