@@ -22,6 +22,11 @@
 
     $comentario = new Comentario;
     $comentarios = $comentario->getComentario($idConteudo);
+    $comentarios['resposta'] = $comentario->getResposta();
+    
+    print "<pre>";
+    print_r($comentarios);
+    exit;
 
     $tag = new Tag();
     $tags = $tag->getTagsConteudo($conteudoSelecionado['idConteudo']);
@@ -263,6 +268,23 @@ if(isset($_SESSION['id'])){
                                                     </p>
                                                 </div>
 <?php
+
+                if ($_SESSION['id'] == $conteudoSelecionado['idUsuario']) {
+                    echo "<a href='?idConteudo={$_GET['idConteudo']}&rc=1'>responder dúvida</a>";
+                }
+                if (isset($_GET['rc'])) {
+
+                    if ( $_GET['rc']==1) {
+                        echo"
+                            <form action='../controllers/CadastrarComentario.php' method='post' class=''>
+                                        <textarea class='form-control' name='duvida' placeholder='Escreva um comentário' rows='4'></textarea>
+                                        <button class='btn btn-primary espacoSuperiorComentarDuvida' type='submit'>Comentar Resposta</button>
+                                        <input type='hidden' name='idUsuario' value='{$_SESSION['id']}'>
+                                        <input type='hidden' name='idConteudo' value='{$_GET['idConteudo']}'>
+                            </form>";
+                    }
+                }
+
                 if(isset($_SESSION['id'])){
                     if ($duvida['idUsuario']==$_SESSION['id']) {
                         echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn btn-sm btn-danger espacoDireitoBotaoComentarios' type='submit' value='Excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
