@@ -1,6 +1,20 @@
 <?php
     require_once 'head.php';
+    PRINT($caminho);
+    require_once $caminho."models/Conteudo.php";
+    $conteudo= new Conteudo();
+    $conteudos= $conteudo->getConteudosRecentes();
     
+    $count=0;
+    foreach ($conteudos as $key => $conteudo) {
+        if($count < 3) {
+            $tresRecentes[] = $conteudo;
+        }
+
+        $count++;
+
+    }
+
     //$caminhos = explode("\\",__DIR__);
     //print_r($caminhos);
 ?>
@@ -39,90 +53,39 @@
             <div class="container py-md-4">
                 <h3 class="tittle-w3layouts two text-center">Recentemente Postados <a href="recentementePostados.php"><button type="button" class="btn botaoMaisHome">+ Ver Mais</button></a></h3>
                 <div id="products" class="row view-group my-lg-5 my-4">
-               
+<?php
+                foreach ($tresRecentes as $conteudoRecente) {
+?>
                     <div class="item col-lg-4 mt-3">
                         <div class="thumbnail card">
                             <div class="img-event">
-                                <img class="group list-group-image img-fluid" src="<?=$caminho?>assets/images/g1.jpg" alt="">
+                                <img class="group list-group-image img-fluid" src="<?=$conteudoRecente['fotoCapa']?>">
                             </div>
 
                             <div class="caption card-body cardConteudo">
                             <!-- TÍTULO -->
-                                <a class="linkItemRecemPostado" href="">
+                                <a class="linkItemRecemPostado" href="conteudo.php?idConteudo=<?=$conteudoRecente['idConteudo']?>">
                                     <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
-                                        Programming
+                                        <?=mb_strimwidth($conteudoRecente['titulo'],0,80,"...")?>
                                     </h5>
                                 </a>
 
                             <!-- PRÉVIA DO CONTEÚDO -->
                                 <p class="group inner list-group-item-text textoCardConteudo">
-                                    Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit
+                                        <?=mb_strimwidth($conteudoRecente['conteudo'],0,120,"...")?>
                                 </p>
                                 <hr>
 
                                 <!-- INFORMAÇÕES (AUTOR E DATA) -->
                                 <h6 class="autorCard group card-title inner list-group-item-heading">
-                                    <img class="imagemAutorCard" src="../assets/images/c1.jpg">Postado por Zé em 25/12/2018
+                                    <img class="imagemAutorCard" src="<?=$conteudoRecente['fotoPerfil']?>">Postado por <?=$conteudoRecente['nome']?> em <?=date("d/m/Y", strtotime($conteudoRecente['dataPostagem']));?>
                                 </h6>
                             </div>
                         </div>
                     </div>
-
-                    <div class="item col-lg-4 mt-3">
-                        <div class="thumbnail card">
-                            <div class="img-event">
-                                <img class="group list-group-image img-fluid" src="<?=$caminho?>assets/images/g1.jpg" alt="">
-                            </div>
-
-                            <div class="caption card-body cardConteudo">
-                            <!-- TÍTULO -->
-                                <a class="linkItemRecemPostado" href="">
-                                    <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
-                                        Programming
-                                    </h5>
-                                </a>
-
-                            <!-- PRÉVIA DO CONTEÚDO -->
-                                <p class="group inner list-group-item-text textoCardConteudo">
-                                    Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit
-                                </p>
-                                <hr>
-
-                                <!-- INFORMAÇÕES (AUTOR E DATA) -->
-                                <h6 class="autorCard group card-title inner list-group-item-heading">
-                                    <img class="imagemAutorCard" src="../assets/images/c1.jpg">Postado por Zé em 25/12/2018
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="item col-lg-4 mt-3">
-                        <div class="thumbnail card">
-                            <div class="img-event">
-                                <img class="group list-group-image img-fluid" src="<?=$caminho?>assets/images/g1.jpg" alt="">
-                            </div>
-
-                            <div class="caption card-body cardConteudo">
-                            <!-- TÍTULO -->
-                                <a class="linkItemRecemPostado" href="">
-                                    <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
-                                        Programming
-                                    </h5>
-                                </a>
-
-                            <!-- PRÉVIA DO CONTEÚDO -->
-                                <p class="group inner list-group-item-text textoCardConteudo">
-                                    Lorem ipsum dolor sit amet consectetuer, consectetuer adipiscing elit sit
-                                </p>
-                                <hr>
-
-                                <!-- INFORMAÇÕES (AUTOR E DATA) -->
-                                <h6 class="autorCard group card-title inner list-group-item-heading">
-                                    <img class="imagemAutorCard" src="../assets/images/c1.jpg">Postado por Zé em 25/12/2018
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
+<?php
+                }
+?>
                 </div>
                 
                 <div class="row text-center mt-lg-5 mt-4 pt-5" id="stats">

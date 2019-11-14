@@ -51,9 +51,9 @@
         }
 
         public function getConteudosRecentes(){
-            $query = "select * from conteudo;";
+            $query = "select * from conteudo,usuario where idUsuario = fk_cont_idUsuario order by idConteudo desc;";
             $conteudos = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
-            array_multisort($conteudos, SORT_DESC);
+            //array_multisort($conteudos, SORT_DESC);
             //rsort($conteudos);
             //$conteudoSelecionado = $conteudo->fecth(PDO::FETCH_ASSOC);
 
