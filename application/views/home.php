@@ -55,16 +55,23 @@
                 <div id="products" class="row view-group my-lg-5 my-4">
 <?php
                 foreach ($tresRecentes as $conteudoRecente) {
+                    if ($URLAtual== "") {
+                        $fotoCapa = substr($conteudoRecente['fotoCapa'],3);
+                        $caminhoLink = "views/";
+                        $fotoPerfil = substr($conteudoRecente['fotoPerfil'],3);
+                    }else{
+                        $caminhoLink = '';
+                    }
 ?>
                     <div class="item col-lg-4 mt-3">
                         <div class="thumbnail card">
                             <div class="img-event">
-                                <img class="group list-group-image img-fluid" src="<?=$conteudoRecente['fotoCapa']?>">
+                                <img class="group list-group-image img-fluid" src="<?=$fotoCapa?>">
                             </div>
 
                             <div class="caption card-body cardConteudo">
                             <!-- TÍTULO -->
-                                <a class="linkItemRecemPostado" href="conteudo.php?idConteudo=<?=$conteudoRecente['idConteudo']?>">
+                                <a class="linkItemRecemPostado" href="<?=$caminhoLink?>conteudo.php?idConteudo=<?=$conteudoRecente['idConteudo']?>">
                                     <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
                                         <?=mb_strimwidth($conteudoRecente['titulo'],0,80,"...")?>
                                     </h5>
@@ -78,7 +85,7 @@
 
                                 <!-- INFORMAÇÕES (AUTOR E DATA) -->
                                 <h6 class="autorCard group card-title inner list-group-item-heading">
-                                    <img class="imagemAutorCard" src="<?=$conteudoRecente['fotoPerfil']?>">Postado por <?=$conteudoRecente['nome']?> em <?=date("d/m/Y", strtotime($conteudoRecente['dataPostagem']));?>
+                                    <img class="imagemAutorCard" src="<?=$fotoPerfil?>">Postado por <?=$conteudoRecente['nome']?> em <?=date("d/m/Y", strtotime($conteudoRecente['dataPostagem']));?>
                                 </h6>
                             </div>
                         </div>

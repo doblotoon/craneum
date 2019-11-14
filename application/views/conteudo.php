@@ -24,9 +24,11 @@
     $comentarios = $comentario->getComentario($idConteudo);
     $respostas = $comentario->getResposta();
     
+
  //   print "<pre>";
  //   print_r($comentarios);
  //   exit;
+
 
     $tag = new Tag();
     $tags = $tag->getTagsConteudo($conteudoSelecionado['idConteudo']);
