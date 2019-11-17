@@ -115,7 +115,6 @@
 			$(document).ready(function() {
 				$("#selectDisciplinas").select2({
 					maximumSelectionLength: 3,
-					tags: true,
     				tokenSeparators: [',', '']
 				});
 
