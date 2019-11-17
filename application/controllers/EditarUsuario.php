@@ -14,6 +14,7 @@ require "../models/Usuario.php";
         }
 
         public function editarUsuario($sessao, array $dadosRecebidos, $todosDados){
+            unset($todosDados['tipo']);
             if (!empty($_FILES['fotoPerfil']['name'])) {
                 $dadosRecebidos['fotoPerfil'] = $this->salvarFoto();
             }
@@ -27,6 +28,22 @@ require "../models/Usuario.php";
                 }
             }else{
                 $this->usuario->editarUsuario($sessao, $dadosRecebidos, $todosDados);
+
+                echo "
+                <br>
+                <div class='container'>
+                    <div class='alert alert-success' role='alert'>
+                       <h3 style='text-align:center'>Dados Atualizados!</h3>
+                    </div>
+                </div>";
+
+
+                echo '
+                <script type="text/javascript">
+                setTimeout(function(){
+                    window.location.href = "../views/paginaUsuario.php"
+                },3000)
+                </script>';
             }
         }
 

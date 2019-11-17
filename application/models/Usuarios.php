@@ -188,6 +188,41 @@
             }
         }
 
+        public function getAllUsuarios($idUsuario){
+            $query = "select nome, idUsuario, fotoPerfil, email, tipo from usuario, tipousuario where fk_usu_idTipoUsuario = idTipoUsuario and idUsuario != {$idUsuario};";
+            try {
+                $usuarios = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+                return $usuarios;
+            } catch (PDOException $e) {
+                echo $e;
+            }
+        }
+
+        public function mudaTipoUsuario($idUsuario,$tipoMudanca){
+                if (strlen((string)$idUsuario)>7) {
+                    $tipoOriginal = 1;
+                }else{
+                    $tipoOriginal = 2;
+                }
+
+                switch ($tipoMudanca) {
+                    case 'eleva':
+                        $tipoNovo = 4;
+                        break;
+
+                    case 'rebaixa':
+                        $tipoNovo = $tipoOriginal;
+                        break;
+                    
+                }
+                $query = "update usuario set fk_usu_idTipoUsuario = {$tipoNovo} where idUsuario = {$idUsuario};";
+                try {
+                    $this->conexao->exec($query);
+                } catch (PDOException $e) {
+                    echo $e;
+                }
+        }
+
         /*public function mostrarUsuarios($id){
             $query = "select * from usuario where idUsuario = {$id};";
             $consulta = $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);

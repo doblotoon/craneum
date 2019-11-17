@@ -7,13 +7,24 @@
     $usuario = new Aluno();
 
     class ExcluirUsuario {
-        public function deletaUsuario($idUsuario,$usuario){
+        public function deletaUsuario($idUsuario,$usuario,$redirect){
             $usuario->deletaUsuario($idUsuario);
-            session_destroy();
-            header("Location: ../index.php");
+            if ($_SESSION['id']==$idUsuario) {
+                
+                session_destroy();
+            }
+            //echo $redirect;
+            header("Location: {$redirect}");
         }
     }
 
-    $id = $_GET['idUsuario'];
+    if (isset($_POST['idUsuario'])) {
+        $id = $_POST['idUsuario'];
+        $redirect = "../views/gerenciarUsuarios.php";
+        echo "<script> alert('a')</script>";
+    }else{
+        $id = $_GET['idUsuario'];
+        $redirect = "../index.php";
+    }
     $exclusao = new ExcluirUsuario();
-    $exclusao->deletaUsuario($id,$usuario);
+    $exclusao->deletaUsuario($id,$usuario,$redirect);

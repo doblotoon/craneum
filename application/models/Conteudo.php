@@ -111,6 +111,17 @@
             }
         }
 
+        public function getConteudoPostado($idUsuario){
+            $query = "select idConteudo, conteudo, fotoCapa, titulo, dataPostagem from conteudo where fk_cont_idUsuario = {$idUsuario};";
+            try {
+                $conteudos = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+                return $conteudos;
+            } catch (PDOException $e) {
+                echo $e;
+            }
+            
+        }
+
 
     }
 

@@ -9,11 +9,19 @@
     require '../models/Conteudo.php';
     $conteudoClasse = new Conteudo();
     $conteudosSalvos = $conteudoClasse->getConteudoSalvo($_SESSION['id']);
+    if ($_SESSION['tipo']!="usuario") {
+        $conteudosPostados = $conteudoClasse->getConteudoPostado($_SESSION['id']);
+    }
     //print_r($conteudoClasse->getConteudoSalvo($_SESSION['id']));
     //exit;
 ?>
 
     <body>
+        <style>
+            .escondido{
+                display:none;
+            }
+        </style>
         <div class="espacoInferiorUsuario">.</div>
 
         <div class="container">
@@ -49,16 +57,16 @@
                         <!-- SIDEBAR MENU -->
                         <div class="profile-usermenu">
                             <ul class="navUser">
-                                <li class="active">
-                                    <a href="#">
+                                <li class="active salvo">
+                                    <a id='salvo'>
                                         <span class="fa fa-bookmark espacoIcon"></span>Conteúdos Salvos
                                     </a>
                                 </li>
 <?php
                         if($_SESSION['tipo']!='usuario'){
 ?>
-                                <li>
-                                    <a href="#">
+                                <li class='postado'>
+                                    <a id='postado'>
                                         <span class="fa fa-pencil-alt espacoIcon"></span>Conteúdos Postados
                                     </a>
                                 </li>
@@ -95,17 +103,24 @@
 
                 <div class="col-md-9">
                     <div class="profile-content">
-                        <h4 class="tittle-w3layouts two text-center tituloPagUser">Conteúdos Salvos</h4> 
+                        <h4 class="tittle-w3layouts two text-center tituloPagUser" id='textoConteudo'>Conteúdos Salvos</h4> 
                         <div id="products" class="row view-group my-lg-5 my-4">
 
 
                         <?php
-                            $cont = 0;
+                            if (empty($conteudosSalvos)) {
+                                echo "
+                                <div class='item col-lg-12 mt-9 salvos'>
+                                    <div class='alert alert-warning' role='alert'>
+                                        <h5>Você não salvou nada ainda. Veja algum conteúdo que lhe interesse e salve.</h5>
+                                    </div>
+                                </div>";
+                            }
                             foreach ($conteudosSalvos as $key => $conteudoSalvo) {
                         ?>  
 
 
-                                <div class="item col-lg-6 mt-3">
+                                <div class="item col-lg-6 mt-3 salvos">
                                 <div class="thumbnail card">
                                     <div class="img-event">
                                         <img class="group list-group-image img-fluid" src="<?=$conteudoSalvo['fotoCapa']?>" alt="">
@@ -134,14 +149,88 @@
 
 
                         <?php
-                                $cont++;
                             }
                         ?>
+
+
+
+                        <!-- conteudos postados -->
+                        <?php
+                            if ($_SESSION['tipo']!="usuario") {
+                        
+                                if (empty($conteudosPostados)) {
+                                    echo "
+                                    <div class='item col-lg-12 postados escondido'>
+                                        <div class='alert alert-info' role='alert'>
+                                            <h5>Você não postou nenhum conteúdo ainda.</h5>
+                                        </div>
+                                    </div>";
+                                }
+                                foreach ($conteudosPostados as $key => $conteudoPostado) {
+                        ?>  
+
+
+                                    <div class="item col-lg-6 mt-3 escondido postados">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid" src="<?=$conteudoPostado['fotoCapa']?>" alt="">
+                                        </div>
+                                        <div class="caption card-body cardConteudo">
+                                        <!-- TÍTULO -->
+                                            <a class="linkItemRecemPostado" href="conteudo.php?idConteudo=<?=$conteudoPostado['idConteudo']?>">
+                                                <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
+                                                    <?=$conteudoPostado['titulo']?>
+                                                </h5>
+                                            </a>
+                                        <!-- PRÉVIA DO CONTEÚDO -->
+                                            <p class="group inner list-group-item-text textoCardConteudo">
+                                                <?=strip_tags(mb_strimwidth($conteudoPostado['conteudo'],0,120,"..."))?>
+                                            </p>
+                                            <hr>
+                                            <!-- INFORMAÇÕES (AUTOR E DATA) -->
+                                            <h6 class="autorCard group card-title inner list-group-item-heading">
+                                                <img class="imagemAutorCard" src="<?=$_SESSION['fotoPerfil']?>">
+                                                Postado por você em <?=$conteudoPostado['dataPostagem']?>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                        <?php
+                                }
+                            }
+                        ?>
+
+
                         </div>
                     </div>     
                 </div>
             </div>
         </div>
+
+
+
+        <script>
+            $(document).ready(function(){
+                $("#postado").click(function () {
+                    $(".salvos").addClass("escondido");
+                    $(".postados").removeClass("escondido");
+                    $("#postado").parent(".postado").addClass("active");
+                    $("#salvo").parent(".salvo").removeClass("active");
+                    $("#textoConteudo").text("Conteúdos Postados");
+                })
+                $("#salvo").click(function () {
+                    $(".postados").addClass("escondido");
+                    $(".salvos").removeClass("escondido");
+                    $("#salvo").parent(".salvo").addClass("active");
+                    $("#postado").parent(".postado").removeClass("active");
+                    $("#textoConteudo").text("Conteúdos Salvos");
+                })
+            })
+
+        </script>
 <?php
     
 
