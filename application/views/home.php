@@ -17,6 +17,15 @@
 
     //$caminhos = explode("\\",__DIR__);
     //print_r($caminhos);
+
+    if ($URLAtual== "" or $URLAtual=="index") {
+        $caminhoLink = "views/";
+        $testeIndex = true;
+    }else{
+        $testeIndex = false;
+        $caminhoLink = '';    
+    }
+
 ?>
     <body>
     <!-- main -->
@@ -39,8 +48,9 @@
             <div class="banner-content-w3pvt">
                 <div class="banner-w3layouts-info text-center">
                     <h3>Pesquise um tema, professor, disciplina ou tag</h3>
-                    <form class="banner-form" method="get" action="resultadoPesquisa.php">
+                    <form class="banner-form" method="get" action="<?=$caminhoLink?>resultadoPesquisa.php">
                         <input type="text" class="form-control"  placeholder="Ex: Revolução Francesa" name="termo"  required="">
+                        <input type="hidden" value="0" name="ft">
                         <button type="submit" class="btn btn-default">Pesquisar</button>
                     </form>
                 </div>
@@ -51,16 +61,16 @@
         <!-- // Recentemente Postados -->
         <section class="ab-info-main py-5">
             <div class="container py-md-4">
-                <h3 class="tittle-w3layouts two text-center">Recentemente Postados <a href="recentementePostados.php"><button type="button" class="btn botaoMaisHome">+ Ver Mais</button></a></h3>
+                <h3 class="tittle-w3layouts two text-center">Recentemente Postados <a href="<?=$caminhoLink?>recentementePostados.php"><button type="button" class="btn botaoMaisHome">+ Ver Mais</button></a></h3>
                 <div id="products" class="row view-group my-lg-5 my-4">
 <?php
                 foreach ($tresRecentes as $conteudoRecente) {
-                    if ($URLAtual== "") {
+                    if ($testeIndex) {
                         $fotoCapa = substr($conteudoRecente['fotoCapa'],3);
-                        $caminhoLink = "views/";
                         $fotoPerfil = substr($conteudoRecente['fotoPerfil'],3);
                     }else{
-                        $caminhoLink = '';
+                        $fotoCapa = $conteudoRecente['fotoCapa'];
+                        $fotoPerfil = $conteudoRecente['fotoPerfil'];
                     }
 ?>
                     <div class="item col-lg-4 mt-3">

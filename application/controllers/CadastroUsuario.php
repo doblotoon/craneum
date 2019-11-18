@@ -26,6 +26,7 @@
 			$origem= $foto['tmp_name'];
 			$enviada= move_uploaded_file($origem, $arquivoFinal);
 			//$caminho = $nomeFoto;
+			//echo $enviada;
 			$caminho = $arquivoFinal;
 
 			return $caminho;

@@ -33,7 +33,6 @@
 									<th class="text-center">Título</th>
 									<th class="text-center">Autor</th> <!-- Quando o usuário não é admin, ele terá acesso apenas ao conteúdo que ele mesmo postou, sendo assim não teremos essa coluna -->
 									<th class="text-center">Disciplina(s)</th>
-									<th class="text-center">Visualizações</th>
 									<th class="text-center">Comentários</th>
 									<th class="text-center">Ações</th>
 								</tr>
@@ -60,9 +59,6 @@
 												<span class="badge badge-secondary aEsquerda espacoDireita disciplina">Disciplina</span>
 											</a>
 										</h6>
-									</td>
-									<td class="text-center">
-										<i class="far fa-chart-bar iconsGerenciarConteudo"></i>112
 									</td>
 									<td class="text-center">
 										<i class="fas fa-comments iconsGerenciarConteudo"></i>3

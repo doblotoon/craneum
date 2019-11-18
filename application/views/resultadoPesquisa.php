@@ -195,6 +195,7 @@
 							}
 						}
 
+					if(isset($GET['ft'])){
 						switch ($_GET['ft']) {
 							case 1:
 								foreach ($resultadosTema as $a => $b) {
@@ -285,6 +286,7 @@
 								}
 							break;
 						}
+					}
 						?>
 									<!-- BEGIN PAGINATION -->
 
