@@ -97,7 +97,7 @@ class Comentario {
     }
 
     public function cadastrarResposta($poste){
-        $query = "INSERT INTO resposta(`resposta`, `fk_resp_idDuvida`) VALUES ('{$poste['resposta']}',{$poste['idDuvida']});";
+        $query = "INSERT INTO resposta(resposta, fk_resp_idDuvida) VALUES ('{$poste['resposta']}',{$poste['idDuvida']});";
 
         try {
             $this->conexao->exec($query);
@@ -142,13 +142,14 @@ class Comentario {
 $n = new Comentario;
 
 $arrayin=[
-    "idResposta" =>12,
-    "respostaAtual" => 'funfando porra',
+    "idDuvida" =>19,
+    "resposta" => 'respostaostaosta'
 ];
-echo "<pre>";
-   print_r($arrayin);
+//echo "<pre>";
+   //print_r($arrayin);
 
-    $n->editarResposta($arrayin);
+    //$n->editarResposta($arrayin);
+    $n->cadastrarResposta($arrayin);
     $resp = $n->getResposta();
     print_r($resp);
 */
