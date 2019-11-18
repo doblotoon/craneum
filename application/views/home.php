@@ -120,6 +120,12 @@
         <!--//-->
 <?php
     if(empty($_SESSION)){
+
+        if($URLAtual=='') {
+            $link = 'views/';
+        } else {
+            $link = '';
+        }
 ?>
         <!--/ Participe -->
         <section class="last-content text py-5">
@@ -128,7 +134,7 @@
                     <h3 class="mb-4 tittle-w3layouts">Participe Dessa <span>Comunidade</span>!</h3>
                     <p class="px-lg-5">Se inscrevendo você pode comentar suas dúvidas e salvar conteúdos para ler depois.</p>
                     <div class="buttons mt-md-4 mt-3">
-                        <a href="cadastroUsuario.php" class="btn btn-default btnIndex">Participar</a>
+                        <a href="<?=$link?>cadastroUsuario.php" class="btn btn-default btnIndex">Participar</a>
                         <a href="login.php" class="btn btn1 btnIndex"> Entrar </a>
                     </div>
                 </div>

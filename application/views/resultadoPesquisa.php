@@ -29,29 +29,31 @@
 							<div class="row">
 								<!-- BEGIN FILTERS -->
 								<div class="col-md-3">
-									<h3 class="grid-title"><i class="fa fa-filter"></i> Filtros</h3>
+									<h5 class="grid-title"><i class="fa fa-filter"></i> Filtros</h5>
 									<hr>
 									
 									<!-- BEGIN FILTER BY CATEGORY filtaralhos-->
+
+									<a href="?termo=<?=$_GET['termo']?>&ft=0">
+										<h5><div type="checkbox" class="icheck"> Sem filtro</div></h5>
+										<br>
+									</a>
+
 									<a href="?termo=<?=$_GET['termo']?>&ft=1">
-										<label><div type="checkbox" class="icheck"> Titulo</div></label>
+										<h5><div type="checkbox" class="icheck"> Titulo</div></h5>
 										<br>
 									</a>
 
 									<a href="?termo=<?=$_GET['termo']?>&ft=2">
-										<label><div type="checkbox" class="icheck"> Disciplina</div></label>
+										<h5><div type="checkbox" class="icheck"> Disciplina</div></h5>
 										<br>
 									</a>
 
 									<a href="?termo=<?=$_GET['termo']?>&ft=3">
-										<label><div type="checkbox" class="icheck"> Tag</div></label>
+										<h5><div type="checkbox" class="icheck"> Tag</div></h5>
 										<br>
 									</a>
 
-									<a href="?termo=<?=$_GET['termo']?>&ft=0">
-										<label><div type="checkbox" class="icheck"> Sem filtro</div></label>
-										<br>
-									</a>
 									<!-- END FILTER BY CATEGORY -->
 								
 									<div class="padding"></div>
@@ -63,15 +65,16 @@
 								<div class="col-md-9">
 									<h2><i class="fa fa-search"></i> Resultado</h2>
 									<hr>
+
 									<!-- BEGIN SEARCH INPUT -->
-									<div class="input-group">
-										<form action="" method="get">
+									<form action="" method="get">
+										<div class="input-group">
 											<input type="text" class="form-control" name="termo" value="<?=$_GET['termo']?>">
 											<span class="input-group-btn">
 												<button class="btn btn-primary botaoResultadoPesquisa" type="submit"><i class="fa fa-search"></i></button>
 											</span>
-										</form>
-									</div>
+										</div>
+									</form>
 
 
 									<!-- END SEARCH INPUT -->
