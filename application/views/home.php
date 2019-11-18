@@ -89,7 +89,7 @@
 
                             <!-- PRÉVIA DO CONTEÚDO -->
                                 <p class="group inner list-group-item-text textoCardConteudo">
-                                        <?=mb_strimwidth($conteudoRecente['conteudo'],0,120,"...")?>
+                                        <?=mb_strimwidth($conteudoRecente['conteudo'],0,155,"...")?>
                                 </p>
                                 <hr>
 

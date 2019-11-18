@@ -129,18 +129,18 @@
                                     <!-- TÍTULO -->
                                         <a class="linkItemRecemPostado" href="conteudo.php?idConteudo=<?=$conteudoSalvo['idConteudo']?>">
                                             <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
-                                                <?=$conteudoSalvo['titulo']?>
+                                                <?=mb_strimwidth($conteudoSalvo['titulo'],0,80,"...")?>
                                             </h5>
                                         </a>
                                     <!-- PRÉVIA DO CONTEÚDO -->
                                         <p class="group inner list-group-item-text textoCardConteudo">
-                                            <?=strip_tags(mb_strimwidth($conteudoSalvo['conteudo'],0,120,"..."))?>
+                                            <?=mb_strimwidth($conteudoSalvo['conteudo'],0,155,"...")?>
                                         </p>
                                         <hr>
                                         <!-- INFORMAÇÕES (AUTOR E DATA) -->
                                         <h6 class="autorCard group card-title inner list-group-item-heading">
                                             <img class="imagemAutorCard" src="<?=$conteudoSalvo['fotoPerfil']?>">
-                                            Postado por <?=$conteudoSalvo['nome']?> em <?=$conteudoSalvo['dataPostagem']?>
+                                            Postado por <?=$conteudoSalvo['nome']?> em <?=date("d/m/Y", strtotime($conteudoSalvo['dataPostagem']));?>
                                         </h6>
                                     </div>
                                 </div>
@@ -179,18 +179,18 @@
                                         <!-- TÍTULO -->
                                             <a class="linkItemRecemPostado" href="conteudo.php?idConteudo=<?=$conteudoPostado['idConteudo']?>">
                                                 <h5 class="tituloConteudoCard group card-title inner list-group-item-heading">
-                                                    <?=$conteudoPostado['titulo']?>
+                                                    <?=mb_strimwidth($conteudoPostado['titulo'],0,80,"...")?>
                                                 </h5>
                                             </a>
                                         <!-- PRÉVIA DO CONTEÚDO -->
                                             <p class="group inner list-group-item-text textoCardConteudo">
-                                                <?=strip_tags(mb_strimwidth($conteudoPostado['conteudo'],0,120,"..."))?>
+                                                <?=mb_strimwidth($conteudoPostado['conteudo'],0,155,"...")?>
                                             </p>
                                             <hr>
                                             <!-- INFORMAÇÕES (AUTOR E DATA) -->
                                             <h6 class="autorCard group card-title inner list-group-item-heading">
                                                 <img class="imagemAutorCard" src="<?=$_SESSION['fotoPerfil']?>">
-                                                Postado por você em <?=$conteudoPostado['dataPostagem']?>
+                                                Postado por você em <?=date("d/m/Y", strtotime($conteudoPostado['dataPostagem']));?>
                                             </h6>
                                         </div>
                                     </div>

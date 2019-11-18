@@ -136,7 +136,7 @@
 
 							foreach ($resultadosTag as $a => $b) {
 								//print_r($resultadosTag);
-								print $b['tag'];
+								//print $b['tag'];
 								//echo "<br>";
 							
 							

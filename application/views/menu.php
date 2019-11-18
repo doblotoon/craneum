@@ -57,7 +57,8 @@
   if($URLAtual!="index" and $URLAtual!="home" and $URLAtual!="resultadoPesquisa" and !empty($URLAtual)){
 ?>
       <form method="get" action="resultadoPesquisa.php" class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" name="termo" type="search" placeholder="Pesquise" aria-label="Search">
+          <input type="text" class="form-control"  placeholder="Pesquisar" name="termo"  required="">
+          <input type="hidden" value="0" name="ft">
         <button class="btn btn-outline-success my-2 my-sm-0 botaoPesquisarMenu" type="submit">Ir</button>
       </form>
 <?php //pesquisaaa
