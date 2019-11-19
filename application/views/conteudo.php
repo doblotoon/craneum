@@ -273,23 +273,37 @@ if(isset($_SESSION['id'])){
                                                 </div>
 <?php
                                                 #<!-- inicio da getResposta-->#
-
-                                                #print_r($duvida);
-                                                print_r ($respostas);
+                                                
+                                                foreach ($respostas as $resposta ){
+                                                    var_dump (' - '.$duvida['idDuvida'].' - ');
+                                                    
+                                                    var_dump (' = '.$resposta['fk_resp_idDuvida'].' = ');
+                                                    
+                                                    if ($duvida['idDuvida']==$resposta['fk_resp_idDuvida']) {
+                                                        print("aaaaa");
+                                                        print $resposta['resposta'];
+                                                    }
+                                                    //
+                                                    //
+                                                }
+                                                //echo "<br>";
+                                                //print_r ($respostas);
                                                 #if ($duvida['idDuvida']== $duvida['resposta'][]) {
                                                 #    # code...
                                                 #}
 
                                                 #<!-- final da getResposta-->#
 
-
+                //print_r($duvida);
                 if (isset($_SESSION['id']) and $_SESSION['id'] == $conteudoSelecionado['idUsuario']) {
-                    echo "<a href='?idConteudo={$_GET['idConteudo']}&rc=1'>responder dúvida</a>";
+                    echo "<a href='?idConteudo={$_GET['idConteudo']}&rc=1&idDuvida={$duvida['idDuvida']}'>responder dúvida</a>";
                 }
                 if (isset($_GET['rc'])) {
 
-                    if ( $_GET['rc']==1) {
+                    if ( $_GET['rc']==1 and $_GET['idDuvida']==$duvida['idDuvida']) {
+                        # aqui temos a estrutura pra responder mas não temos nada feito, primeiro fazer a getRespostas
                         echo"
+                        
                             <form action='../controllers/CadastrarComentario.php' method='post' class=''>
                                         <textarea class='form-control' name='duvida' placeholder='Escreva um comentário' rows='4'></textarea>
                                         <button class='btn btn-primary espacoSuperiorComentarDuvida' type='submit'>Comentar Resposta</button>
@@ -298,12 +312,13 @@ if(isset($_SESSION['id'])){
                             </form>";
                     }
                 }
-
+               # print_r($_SESSION);
                 if(isset($_SESSION['id'])){
                     if ($duvida['idUsuario']==$_SESSION['id']) {
                         echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn btn-sm btn-danger espacoDireitoBotaoComentarios' type='submit' value='Excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
                         echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}&abre=true#someDuvida'><button class='btn btn-sm btn-primary espacoDireitoBotaoComentarios'>Editar</button></a>";
                     }
+               #    print_r($_SESSION['tipo']);
                     if ($_SESSION['tipo']=="professor") {
                         echo "<form action='../controllers/TransformaComentario.php' method='post'> <input class='btn btn-sm btn-dark' type='submit' value='Marcar como Adendo'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'> <input type='hidden' name='funcao' value=1> </form>";   
                     }

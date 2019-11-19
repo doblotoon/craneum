@@ -152,8 +152,8 @@ class Comentario {
 $n = new Comentario;
 
 $arrayin=[
-    "idDuvida" =>19,
-    "resposta" => 'respostaostaosta'
+    "idDuvida" =>18,
+    "resposta" => 'risos'
 ];
 //echo "<pre>";
    //print_r($arrayin);
