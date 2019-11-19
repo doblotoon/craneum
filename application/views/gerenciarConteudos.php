@@ -3,7 +3,7 @@
 	require '../models/Conteudo.php';
 	require '../models/Disciplina.php';
 	$conteudoClasse = new Conteudo();
-	$conteudosGerais = $conteudoClasse->getConteudoGerenciarAdmin();
+	$conteudosGerais = $conteudoClasse->getConteudoGerenciar($_SESSION['id']);
 	$disciplinaClasse = new Disciplina();
 	//echo "<pre>";
 	//print_r($conteudosGerais);
@@ -30,7 +30,6 @@
 								<tr>
 									<th class="text-center">Capa</th>
 									<th class="text-center">Título</th>
-									<th class="text-center">Autor</th> <!-- Quando o usuário não é admin, ele terá acesso apenas ao conteúdo que ele mesmo postou, sendo assim não teremos essa coluna -->
 									<th class="text-center">Disciplina(s)</th>
 									<th class="text-center">Comentários</th>
 									<th class="text-center">Ações</th>
@@ -48,29 +47,6 @@
 									</td>
 
 									<td class="text-center titulo"><?=$conteudo['titulo']?></td>
-
-									<?php
-										if ($_SESSION['id']!=$conteudo['idUsuario']) {
-									?>
-
-										<td class="text-center">
-											<?=$conteudo['nome']?>
-										</td>
-
-									<?php
-									
-										}else{
-									
-									?>
-										<td class="text-center">
-											<strong>Você</strong>
-										</td>
-									<?php
-								
-										}
-									
-									?>
-									
 
 									<td class="text-center">
 										<?php
@@ -95,19 +71,9 @@
 										<a class="verPost" href="conteudo.php?idConteudo=<?=$conteudo['idConteudo']?>">
 											<i class="fa fa-eye iconPesquisa"></i>
 										</a>
-
-										<?php
-											if ($_SESSION['id']==$conteudo['idUsuario']) {
-										?>
-
-											<a href="editarConteudo.php?idConteudo=<?=$conteudo['idConteudo']?>" class="edit">
-												<i class="fas fa-edit iconPesquisa"></i>
-											</a>
-
-										<?php
-											}
-										?>
-
+                                        <a href="editarConteudo.php?idConteudo=<?=$conteudo['idConteudo']?>" class="edit">
+                                            <i class="fas fa-edit iconPesquisa"></i>
+                                        </a>
 										<a href="?acao=excluir&idConteudo=<?=$conteudo['idConteudo']?>" class="delete">
 											<i class="fas fa-trash iconPesquisa"></i>
 										</a>
@@ -145,7 +111,7 @@
 		<div id="deletarConteudoModal" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form method='post' action='../controllers/ExcluirConteudo.php?tipo=admin'>
+					<form method='post' action='../controllers/ExcluirConteudo.php?tipo=prof'>
 						<div class="modal-header">						
 							<h4 class="modal-title">Deletar Conteúdo</h4>
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

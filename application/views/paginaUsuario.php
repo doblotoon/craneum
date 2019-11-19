@@ -71,17 +71,28 @@
                                     </a>
                                 </li>
 <?php
-                        } if($_SESSION['tipo']=='administrador'){
+                        } 
+                        if ($_SESSION['tipo']=="professor") {                    
+?>      
+                                <li>
+                                    <a href="gerenciarConteudos.php">
+                                        <span class="fa fa-user-cog espacoIcon"></span>Gerenciar Conteúdos
+                                    </a>
+                                </li>
+<?php
+                        }
+
+                        if($_SESSION['tipo']=='administrador'){
 ?>
                                 <li>
-                                    <a href="gerenciarUsuarios.php">
-                                        <span class="fa fa-user-cog espacoIcon"></span>Gerenciar Usuários
+                                    <a href="gerenciarConteudosAdmin.php">
+                                        <span class="fa fa-user-cog espacoIcon"></span>Gerenciar Conteúdos
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="#">
-                                        <span class="fa fa-user-cog espacoIcon"></span>Gerenciar Conteúdos
+                                    <a href="gerenciarUsuarios.php">
+                                        <span class="fa fa-user-cog espacoIcon"></span>Gerenciar Usuários
                                     </a>
                                 </li>
 

@@ -302,7 +302,7 @@ if(isset($_SESSION['id'])){
                         echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn btn-sm btn-danger espacoDireitoBotaoComentarios' type='submit' value='Excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
                         echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn btn-sm btn-primary espacoDireitoBotaoComentarios'>Editar</button></a>";
                     }
-                    if ($_SESSION['tipo']="professor") {
+                    if ($_SESSION['tipo']=="professor") {
                         echo "<form action='../controllers/TransformaComentario.php' method='post'> <input class='btn btn-sm btn-dark' type='submit' value='Marcar como Adendo'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'> <input type='hidden' name='funcao' value=1> </form>";   
                     }
                 }

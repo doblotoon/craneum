@@ -62,7 +62,7 @@
 
         public function deletarConteudo($idConteudo){
             try {
-                $query = "delete from duvida where idDuvida = {$idConteudo}";
+                $query = "delete from conteudo where idConteudo = {$idConteudo}";
                 $linhas = $this->conexao->exec($query);
     
             } catch (PDOException $e) {
@@ -121,6 +121,27 @@
             }
             
         }
+
+        public function getConteudoGerenciarAdmin(){
+            $query = "SELECT (select count(idDuvida) from duvida where fk_duv_idConteudo = idConteudo) as comentarios, idConteudo, titulo, fotoCapa, idUsuario, nome from usuario, conteudo where fk_cont_idUsuario = idUsuario order by titulo;";
+            try {
+                $conteudos = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+                return $conteudos;
+            } catch (PDOException $e) {
+                echo $e;
+            }
+        }
+
+        public function getConteudoGerenciar($idUsuario){
+            $query = "SELECT (select count(idDuvida) from duvida where fk_duv_idConteudo = idConteudo) as comentarios, idConteudo, titulo, fotoCapa, idUsuario, nome from usuario, conteudo where fk_cont_idUsuario = idUsuario and fk_cont_idUsuario = {$idUsuario} order by titulo;";
+            try {
+                $conteudos = $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+                return $conteudos;
+            } catch (PDOException $e) {
+                echo $e;
+            }
+        }
+
 
 
     }
