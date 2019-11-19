@@ -25,9 +25,15 @@
                 <!-- //copyright -->
 
                 <!-- move top icon -->
-                <div class="move-top text-center mt-3">
-                    <a href="#home" class="move-top"><span class="fa fa-angle-double-up" aria-hidden="true"></span></a>
-                </div>
+                <?php
+                    if($URLAtual!="conteudo"){
+                ?>
+                        <div class="move-top text-center mt-3">
+                            <a href="#sobe" class="move-top"><span class="fa fa-angle-double-up" aria-hidden="true"></span></a>
+                        </div>
+                <?php
+                    }
+                ?>
                 <!-- //move top icon -->
 
             </div>

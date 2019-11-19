@@ -10,6 +10,16 @@ class Comentario {
         $this->conexao = $conexao_objeto->getConexao();
     }
     
+    public function contarComentarios(){
+        $query = "select count(idDuvida) as qtd_duvida from duvida";
+        try {
+            $quantidadeDuvidas= $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+            return $quantidadeDuvidas;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function cadastrarComentario($dadosRecebidos){
 
         $duvida = $dadosRecebidos['duvida'];

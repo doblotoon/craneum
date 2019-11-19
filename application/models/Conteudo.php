@@ -15,6 +15,27 @@
             $conexao_objeto = new Conexao();
             $this->conexao = $conexao_objeto->getConexao();
         }
+
+        public function contarConteudosSalvos(){
+            $query = "select count(salvoEm) as qtd_conteudosSalvos from conteudoSalvo";
+            try {
+                $quantidadeConteudosSalvos= $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+                return $quantidadeConteudosSalvos;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function contarConteudos(){
+            $query = "select count(idConteudo) as qtd_conteudo from conteudo";
+            try {
+                $quantidadeConteudos= $this->conexao->query($query)->fetchAll(PDO::FETCH_ASSOC);
+                return $quantidadeConteudos;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
         public function cadastroConteudo($dadosRecebidos){
             $titulo = $dadosRecebidos['titulo'];
             $conteudo = str_replace("watch?v=","embed/",$dadosRecebidos['conteudo']);

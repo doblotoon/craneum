@@ -123,7 +123,9 @@
 ?>
                         <div class="espacoSuperiorBotoesConteudoProf">
                             <a href="editarConteudo.php?idConteudo=<?=$conteudoSelecionado['idConteudo']?>"><button type="button" class="btn btn-warning"><i class="far fa-edit"></i> Editar</button></a>
-                            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Excluir</button>
+                            <a href='?acao=excluir&idConteudo=<?=$conteudoSelecionado["idConteudo"]?>'>
+                                <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Excluir</button>
+                            </a>
                         </div>
 <?php                   
                     } 
@@ -300,7 +302,7 @@ if(isset($_SESSION['id'])){
                 if(isset($_SESSION['id'])){
                     if ($duvida['idUsuario']==$_SESSION['id']) {
                         echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn btn-sm btn-danger espacoDireitoBotaoComentarios' type='submit' value='Excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
-                        echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn btn-sm btn-primary espacoDireitoBotaoComentarios'>Editar</button></a>";
+                        echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}&abre=true#someDuvida'><button class='btn btn-sm btn-primary espacoDireitoBotaoComentarios'>Editar</button></a>";
                     }
                     if ($_SESSION['tipo']=="professor") {
                         echo "<form action='../controllers/TransformaComentario.php' method='post'> <input class='btn btn-sm btn-dark' type='submit' value='Marcar como Adendo'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'> <input type='hidden' name='funcao' value=1> </form>";   
@@ -406,7 +408,15 @@ if(isset($_SESSION['id'])){
                     <!-- essa div debaixo fecha a div class row -->
                     </div>
                 </div>
+
+
+
+
+
+
+
 <?php
+    
     require_once 'footer.php';
 ?>   
             </section>
@@ -423,9 +433,50 @@ if(isset($_SESSION['id'])){
                 </div>                
             </div>
 
+    
+            <?php
+
+if (isset($_GET['acao']) and $_GET['acao']=="excluir" and isset($_GET['idConteudo'])) {
+echo  "	<script>
+            $(document).ready(function(){
+                $('#deletarConteudoModal').modal('toggle');
+            })
+        </script>";
+
+
+?>
+
+<div id="deletarConteudoModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method='post' action='../controllers/ExcluirConteudo.php'>
+                <div class="modal-header">						
+                    <h4 class="modal-title">Deletar Conteúdo</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">					
+                    <p>Você tem certeza que deseja deletar este conteúdo?</p>
+                    <p class="text-warning"><small>Essa ação não pode ser desfeita.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input type="hidden" name="idConteudo" value="<?=$_GET['idConteudo']?>">
+                    <input type="submit" class="btn btn-danger" value="Deletar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php
+    }
+
+
+?>
+
             
             <script>
-                $(document).ready(function(){
+                $(document).ready(function(){                    
                     var chat = 0;
                     $("#someDuvida").click(function () {
                         $("#colunaComentario").toggleClass("hide");
@@ -434,14 +485,12 @@ if(isset($_SESSION['id'])){
                             $("#colunaConteudo").addClass("col-7");
                             $("#someDuvida i").removeClass("far fa-eye");
                             $("#someDuvida i").addClass("far fa-eye-slash");
-                            
                             chat = 1;
                         }else{
                             $("#colunaConteudo").removeClass("col-7");
                             $("#colunaConteudo").addClass("col-11");
                             $("#someDuvida i").removeClass("far fa-eye-slash");
                             $("#someDuvida i").addClass("far fa-eye");
-                            
                             chat = 0;
                         }
                     })
@@ -455,6 +504,12 @@ if(isset($_SESSION['id'])){
                         $("#embedDoc").attr("src",doc);
                         $("#tituloModal").text(titulo);
                     })
+
+<?php
+                if (isset($_GET['abre']) and $_GET['abre']=='true') {
+                    echo '$("#colunaComentario").toggleClass("hide");';
+                }
+?>
                 })
             </script>
 

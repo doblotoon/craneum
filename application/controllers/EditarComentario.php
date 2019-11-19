@@ -15,5 +15,5 @@
     $cadastro = new editarComentario();
     $cadastro->editadoComentario($comentarioObj);
     
-    header("Location: ../views/conteudo.php?idConteudo=".$_POST['id']);
+    header("Location: ../views/conteudo.php?idConteudo=".$_POST['id']."&abre=true#someDuvida");
 

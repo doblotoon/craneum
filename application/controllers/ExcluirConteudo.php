@@ -11,14 +11,22 @@
             $idConteudo = (int) $_POST['idConteudo'];
             //print_r($dados);
             $conteudoObj->deletarConteudo($idConteudo);
-            header("Location: ../views/gerenciarConteudos".$tipo.".php");
+            if ($tipo==null) {
+                header("Location: ../index.php");
+            }else {
+                header("Location: ../views/gerenciarConteudos".$tipo.".php");
+            }
         }
     }
 
-    if ($_GET['tipo']=='admin') {
-        $tipo = "Admin";
-    }else{
-        $tipo = "";
+    if (isset($_GET['tipo'])) {    
+        if ($_GET['tipo']=='admin') {
+            $tipo = "Admin";
+        }else{
+            $tipo = "";
+        }   
+    }else {
+        $tipo = null;
     }
     $exclui = new deletarConteudo();
     $exclui->deleta($conteudoObj,$tipo);

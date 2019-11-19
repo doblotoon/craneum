@@ -11,4 +11,4 @@
     $cadastro = new cadastrarComentario();
     $cadastro->cadastroComentario($comentarioObj);
     
-    header("Location: ../views/conteudo.php?idConteudo=".$_POST['idConteudo']);
+    header("Location: ../views/conteudo.php?idConteudo=".$_POST['idConteudo']."&abre=true#someDuvida");

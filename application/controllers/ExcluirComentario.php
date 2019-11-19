@@ -17,4 +17,4 @@
     $cadastro = new deletarComentario();
     $cadastro->excluidoComentario($comentarioObj);
     
-   header("Location: ../views/conteudo.php?idConteudo=".$_POST['id']);
+   header("Location: ../views/conteudo.php?idConteudo=".$_POST['id']."&abre=true#someDuvida");
