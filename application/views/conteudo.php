@@ -272,31 +272,20 @@ if(isset($_SESSION['id'])){
                                                     </p>
                                                 </div>
 <?php
-                                                #<!-- inicio da getResposta-->#
+                                                #<!-- inicio da getResposta--># precisa de css
                                                 
-                                                foreach ($respostas as $resposta ){
-                                                    var_dump (' - '.$duvida['idDuvida'].' - ');
-                                                    
-                                                    var_dump (' = '.$resposta['fk_resp_idDuvida'].' = ');
-                                                    
-                                                    if ($duvida['idDuvida']==$resposta['fk_resp_idDuvida']) {
-                                                        print("aaaaa");
-                                                        print $resposta['resposta'];
+                                                foreach ($respostas as $resposta ){  
+                                                    if ($duvida['idDuvida']==$resposta['fk_resp_idDuvida']) { #resposta
+                                                        
+                                                        echo "<p>| {$resposta['resposta']} |</p>";
                                                     }
-                                                    //
-                                                    //
                                                 }
-                                                //echo "<br>";
-                                                //print_r ($respostas);
-                                                #if ($duvida['idDuvida']== $duvida['resposta'][]) {
-                                                #    # code...
-                                                #}
 
                                                 #<!-- final da getResposta-->#
 
                 //print_r($duvida);
                 if (isset($_SESSION['id']) and $_SESSION['id'] == $conteudoSelecionado['idUsuario']) {
-                    echo "<a href='?idConteudo={$_GET['idConteudo']}&rc=1&idDuvida={$duvida['idDuvida']}'>responder dúvida</a>";
+                    echo "<a href='?idConteudo={$_GET['idConteudo']}&rc=1&idDuvida={$duvida['idDuvida']}&abre=true'>responder dúvida</a>";
                 }
                 if (isset($_GET['rc'])) {
 
@@ -305,9 +294,9 @@ if(isset($_SESSION['id'])){
                         echo"
                         
                             <form action='../controllers/CadastrarComentario.php' method='post' class=''>
-                                        <textarea class='form-control' name='duvida' placeholder='Escreva um comentário' rows='4'></textarea>
+                                        <textarea class='form-control' name='resposta' placeholder='Escreva um comentário' rows='4'></textarea>
                                         <button class='btn btn-primary espacoSuperiorComentarDuvida' type='submit'>Comentar Resposta</button>
-                                        <input type='hidden' name='idUsuario' value='{$_SESSION['id']}'>
+                                        <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'>
                                         <input type='hidden' name='idConteudo' value='{$_GET['idConteudo']}'>
                             </form>";
                     }
