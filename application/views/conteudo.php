@@ -443,7 +443,7 @@ if(isset($_SESSION['id'])){
                         <h3 id='tituloModal'></h3>
                     </div>
                     <div class="modal-content">
-                        <embed src="" id='embedDoc' name='embedDoc' style="height:90vh; width:65vw; margin-left:-5vw;">
+                        <embed src="" id='embedDoc' name='embedDoc' style="height:85vh; width:65vw; margin-left:-5vw;">
                     </div>
                 </div>                
             </div>
