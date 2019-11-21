@@ -9,11 +9,16 @@
 ?>
 
 <?php //pesquisaaa
-                       if (isset($_GET['termo'])) {
-						   $resultadosTema = $pesquisa->pesquisarTema();
-						   $resultadosDisciplina = $pesquisa->pesquisarDisciplina();
-						   $resultadosTag = $pesquisa->pesquisarTag();
+                       if (isset($_GET['termo']) and isset($_GET['ft'])) {
+							if($_GET['ft']>=0 and $_GET['ft']<5) {
 
+							$resultadosTema = $pesquisa->pesquisarTema();
+							$resultadosDisciplina = $pesquisa->pesquisarDisciplina();
+							$resultadosTag = $pesquisa->pesquisarTag();
+
+							} else {
+								header("location: erro.php?erro=naoEncontrado");
+							}
 						   //print_r($resultadosTag); 
 					   } else {
 						   header("location: erro.php?erro=naoEncontrado");
@@ -53,6 +58,11 @@
 
 									<a href="?termo=<?=$_GET['termo']?>&ft=3">
 										<h5><div type="checkbox" class="icheck <?=($_GET['ft'] == 3 ? 'filtroAtivo' : '')?>"> Tag</div></h5>
+										<br>
+									</a>
+
+									<a href="?termo=<?=$_GET['termo']?>&ft=4">
+										<h5><div type="checkbox" class="icheck <?=($_GET['ft'] == 4 ? 'filtroAtivo' : '')?>"> Professor</div></h5>
 										<br>
 									</a>
 
