@@ -11,10 +11,33 @@
 <?php //pesquisaaa
                        if (isset($_GET['termo']) and isset($_GET['ft'])) {
 							if($_GET['ft']>=0 and $_GET['ft']<5) {
-
-							$resultadosTema = $pesquisa->pesquisarTema();
-							$resultadosDisciplina = $pesquisa->pesquisarDisciplina();
-							$resultadosTag = $pesquisa->pesquisarTag();
+								switch ($_GET['ft']) {
+									case '0':
+										$resultado = $pesquisa->pesquisaGeral($_GET['termo']);
+										echo "<pre>";
+										foreach ($resultado as $key => $res) {
+											print_r($res);
+											echo "=====================================================================";
+											$disciplinasPes = $pesquisa->disciplinaConteudoPesquisa($res['idConteudo']);
+											print_r($disciplinasPes);
+											echo "---------------------------------------------------------------------<br>";
+											echo "---------------------------------------------------------------------<br>";
+											echo "---------------------------------------------------------------------<br>";
+											echo "---------------------------------------------------------------------<br>";
+										}
+										
+										//print_r($resultado);
+										exit;
+										break;
+									
+									default:
+										# code...
+										break;
+								}
+								
+								//$resultadosTema = $pesquisa->pesquisarTema($_GET['termo']);
+								//$resultadosDisciplina = $pesquisa->pesquisarDisciplina($_GET['termo']);
+								//$resultadosTag = $pesquisa->pesquisarTag($_GET['termo']);
 
 							} else {
 								header("location: erro.php?erro=naoEncontrado");
@@ -270,7 +293,9 @@
 							case 3:
 								foreach ($resultadosTag as $a => $b) {
 									//print_r($resultadosTag);
-									print $b['tag'];
+									$disciplinasTag = $pesquisa->tagDisciplina($b['idConteudo']);
+									
+									echo $b['tag'];
 									//echo "<br>";
 								
 								
