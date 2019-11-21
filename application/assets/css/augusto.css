@@ -553,3 +553,8 @@ height: 50px;
 .espacoSuperiorBotoesConteudoProf{
   margin-top: 30px;
 }
+
+.filtroAtivo {
+  color: #E34724 !important;
+  font-weight: 450;
+}

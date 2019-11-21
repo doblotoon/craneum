@@ -5,6 +5,7 @@
 	$pesquisa = new Pesquisa;
 
 	require_once "header.php";
+	
 ?>
 
 <?php //pesquisaaa
@@ -34,23 +35,24 @@
 									
 									<!-- BEGIN FILTER BY CATEGORY filtaralhos-->
 
+					   	
 									<a href="?termo=<?=$_GET['termo']?>&ft=0">
-										<h5><div type="checkbox" class="icheck"> Sem filtro</div></h5>
+										<h5><div type="checkbox" class="icheck <?=($_GET['ft'] == 0 ? 'filtroAtivo' : '')?>"> Sem filtro</div></h5>
 										<br>
 									</a>
 
 									<a href="?termo=<?=$_GET['termo']?>&ft=1">
-										<h5><div type="checkbox" class="icheck"> Titulo</div></h5>
+										<h5><div type="checkbox" class="icheck <?=($_GET['ft'] == 1 ? 'filtroAtivo' : '')?>"> Titulo</div></h5>
 										<br>
 									</a>
 
 									<a href="?termo=<?=$_GET['termo']?>&ft=2">
-										<h5><div type="checkbox" class="icheck"> Disciplina</div></h5>
+										<h5><div type="checkbox" class="icheck <?=($_GET['ft'] == 2 ? 'filtroAtivo' : '')?>"> Disciplina</div></h5>
 										<br>
 									</a>
 
 									<a href="?termo=<?=$_GET['termo']?>&ft=3">
-										<h5><div type="checkbox" class="icheck"> Tag</div></h5>
+										<h5><div type="checkbox" class="icheck <?=($_GET['ft'] == 3 ? 'filtroAtivo' : '')?>"> Tag</div></h5>
 										<br>
 									</a>
 
