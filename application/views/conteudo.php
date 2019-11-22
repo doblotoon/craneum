@@ -211,13 +211,24 @@
                                                     <input type='hidden' name='id' value='{$_GET['idConteudo']}'> 
                                                     <input type='hidden' name='idResposta' value='{$resposta['idResposta']}'>
                                                 </form>";   
-                                            //echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'>
-                                                //       <button class='btn btn-sm btn-primary espacoDireitoBotaoComentarios'>Editar</button>
-                                                // </a>";
+                                            echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editarResp&idResposta={$resposta['idResposta']}'>
+                                                       <button class='btn btn-sm btn-outline-primary espacoDireitoBotaoComentarios'>Editar</button>
+                                                 </a>";
                                         }
 
                                     }
+                                    if (isset($_GET['acao']) and $_GET['acao'] == 'editarResp' and $_GET['idResposta']==$resposta['idResposta']) {
+                                        $ex = $resposta['resposta'];
+                                        echo "<form action='../controllers/EditarResposta.php' method='post'>
+                                                
+                                                <textarea class='form-control' name='respostaAtual' id='' rows='4'>{$ex}</textarea>
+                                                <button class='btn btn-primary espacoSuperiorComentarDuvida' type='submit'>Comentar Dúvida Editada</button>
+                                                <input type='hidden' name='id' value='{$_GET['idConteudo']}'>
+                                                <input type='hidden' name='idResposta' value='{$_GET['idResposta']}'>
 
+                                            </form>";
+                                    }
+                                    
                             #<!-- final da editarResposta e da excluirResposta-->#
                         }
                     }
@@ -346,11 +357,22 @@ if(isset($_SESSION['id'])){
                                                                                 <input type='hidden' name='id' value='{$_GET['idConteudo']}'> 
                                                                                 <input type='hidden' name='idResposta' value='{$resposta['idResposta']}'>
                                                                             </form>";   
-                                                                        //echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'>
-                                                                            //       <button class='btn btn-sm btn-primary espacoDireitoBotaoComentarios'>Editar</button>
-                                                                            // </a>";
+                                                                            echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editarResp&idResposta={$resposta['idResposta']}'>
+                                                                                    <button class='btn btn-sm btn-outline-primary espacoDireitoBotaoComentarios'>Editar</button>
+                                                                                </a>";
                                                                     }
-
+                     
+                                                                }
+                                                                if (isset($_GET['acao']) and $_GET['acao'] == 'editarResp' and $_GET['idResposta']==$resposta['idResposta']) {
+                                                                    $ex = $resposta['resposta'];
+                                                                    echo "<form action='../controllers/EditarResposta.php' method='post'>
+                                                                            
+                                                                            <textarea class='form-control' name='respostaAtual' id='' rows='4'>{$ex}</textarea>
+                                                                            <button class='btn btn-primary espacoSuperiorComentarDuvida' type='submit'>Comentar Dúvida Editada</button>
+                                                                            <input type='hidden' name='id' value='{$_GET['idConteudo']}'>
+                                                                            <input type='hidden' name='idResposta' value='{$_GET['idResposta']}'>
+                                                                
+                                                                        </form>";
                                                                 }
 
                                                         #<!-- final da editarResposta e da excluirResposta-->#
