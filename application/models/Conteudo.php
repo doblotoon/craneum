@@ -106,11 +106,18 @@
                 $conteudo = preg_replace($pesquisa,$replaceDoc,$conteudo);
             }
             $dataPostagem = date("Y-m-d H:i:s");
+
             $fotoCapa = $dadosRecebidos['fotoCapa'];
+            
             $idUsuario = $dadosRecebidos['idUsuario'];
             
             try {
-                $query = "update conteudo set titulo = '{$titulo}', conteudo = '{$conteudo}', fotoCapa = '{$fotoCapa}' where idConteudo = {$idConteudo};";
+                if(isset($dadosRecebidos['fotoCapa'])){
+                    $query = "update conteudo set titulo = '{$titulo}', conteudo = '{$conteudo}', fotoCapa = '{$fotoCapa}' where idConteudo = {$idConteudo};";
+                } else{
+                    $query = "update conteudo set titulo = '{$titulo}', conteudo = '{$conteudo}', fotoCapa = '{$fotoCapa}' where idConteudo = {$idConteudo};";
+                }
+                
                 $this->conexao->exec($query);
                 //$ultimaId = $this->conexao->query("select max(idConteudo) as idConteudo from conteudo limit 1;")->fetch(PDO::FETCH_ASSOC);
                 return $idConteudo;
@@ -163,7 +170,13 @@
             }
         }
 
-
+        public function pegaFotoAntiga($idConteudo){
+            $query = "SELECT fotoCapa FROM conteudo WHERE idConteudo = {$idConteudo}";
+            $fotoCapaAntiga= $this->conexao->query($query)->fetch(PDO::FETCH_ASSOC);
+            //print_r($fotoCapaAntiga);
+            //exit();
+            return $fotoCapaAntiga['fotoCapa'];
+        }
 
     }
 
@@ -180,5 +193,5 @@
     "fotoCapa"=>"foto.png",
     "idUsuario"=> 2
     );*/
-   // $conteudo = new Conteudo();
+    //$conteudo = new Conteudo();
    // $conteudo->cadastroConteudo($dados);

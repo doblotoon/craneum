@@ -24,7 +24,7 @@
 				<div class="col-1"></div>
 				<div class="col-10">
 					<h4 class="tittle-w3layouts two text-center tituloPagUser espacoCadConteudo">Cadastro de Conteúdo</h4> 
-					<form id='form' action="../controllers/CadastroConteudo.php" method="post" enctype="multipart/form-data">
+					<form id='form' action="../controllers/CadastroConteudo.php" method="post" enctype="multipart/form-data" data-toggle="validator">
 							
 						<!-- Título -->
 						<div class="mb-3">
@@ -87,8 +87,9 @@
 
 						<label>Termo</label>
 						<div class="form-check">
-							<input type="checkbox" name="termo" class="form-check-input">
+							<input type="checkbox" name="termo" class="form-check-input" data-error="Por favor, aceite os termos antes de publicar." required>
 							<label class="form-check-label" for="exampleCheck1">O conteúdo que estou prestes a publicar não é ofensivo.</label>
+							<div class="help-block with-errors"></div>	
 						</div>
 
 

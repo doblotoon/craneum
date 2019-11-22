@@ -160,7 +160,7 @@
                                     
                         <div class="col-12 card" id='colunaConteudo'>
                             <br>
-                            <div class="col-md-12 mb-3" style="min-height:120px;">
+                            <div class="col-md-12 mb-3" style="min-height:150px;">
                                 <?=$conteudoSelecionado['conteudo']?>
 <?php
 

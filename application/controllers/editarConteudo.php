@@ -10,16 +10,24 @@
     
     class atualizarConteudo{
         public function editarConteudo($conteudo,$tag,$disciplina){
-            $fotoCapa = $this->salvarCapa();
             $dadosEnviados = $_POST;
+            
+            if(!empty($_FILES['fotoCapa']['tmp_name'])){
+                $fotoCapa = $this->salvarCapa();
+                $dadosEnviados['fotoCapa'] = $fotoCapa;
+            } else {
+                $capaAntiga = $conteudo->pegaFotoAntiga((int)$dadosEnviados['idConteudo']);
+                $dadosEnviados['fotoCapa'] = $capaAntiga;
+            }
+
             //print_r($dadosEnviados);
-            $dadosEnviados['fotoCapa'] = $fotoCapa;
             $dadosEnviados['idUsuario'] = $_SESSION['id'];
             $ultimaId = $conteudo->editarConteudo($dadosEnviados);
             //pegar a id do conteudo salvo para passar pra tag
             $tag->atualizarTag($ultimaId);
             $disciplina->atualizarDisciplina($ultimaId);
-            
+            //echo $capaAntiga;
+            header("Location: ../views/conteudo.php?idConteudo=".$dadosEnviados['idConteudo']);
         }
         public function salvarCapa(){
 			$foto = $_FILES['fotoCapa'];
@@ -41,6 +49,7 @@
     }
     $atualizar = new atualizarConteudo();
     $atualizar->editarConteudo($conteudo,$tag,$disciplina);
+    
     //print_r($_POST);
     //echo $_POST['tags'];
 ?>

@@ -55,6 +55,7 @@
         <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
         <!-- Custom Theme files -->
+        
         <link href="<?=$caminho?>assets/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
         <link href="<?=$caminho?>assets/css/style.css" type="text/css" rel="stylesheet" media="all">
         <link href="<?=$caminho?>assets/css/augusto.css" type="text/css" rel="stylesheet" media="all">
@@ -71,6 +72,7 @@
         <link rel="shortcut icon" type="image/png" href="<?=$caminho?>assets/images/favicon.png"/> <!-- TODO: Buscar uma forma de fazer com que o favicon funcione nas demais páginas, não apenas na index --> 
         <script src='<?=$caminho?>assets/js/jquery.js'></script>
         <script src='<?=$caminho?>assets/bootstrap/js/bootstrap.min.js'></script>
+        <script src="<?=$caminho?>assets/bootstrap-validator/js/validator.js"></script>
         <script>
             
             addEventListener("load", function() {

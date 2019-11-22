@@ -61,7 +61,7 @@
 				<div class="col-1"></div>
 				<div class="col-10">
 					<h4 class="tittle-w3layouts two text-center tituloPagUser espacoCadConteudo">Editar Conteúdo</h4> 
-					<form id='form' action="../controllers/editarConteudo.php" method="post" enctype="multipart/form-data">
+					<form id='form' action="../controllers/EditarConteudo.php" method="post" enctype="multipart/form-data" data-toggle="validator">
 							
 						<!-- Título -->
 						<div class="mb-3">
@@ -81,7 +81,7 @@
 						<label for="fotoCapa" class="espacoLabelsCadastroUsuario">Foto de Capa do Conteúdo</label>
 						<div class="input-group mb-3">
 							<div class="custom-file">
-								<input type="file" name="fotoCapa" value="<?= $conteudoSelecionado['fotoCapa']?>" class="custom-file-input" id="" required accept=".jpg, .jpeg, .png" file-maxsize="10240" required>
+								<input type="file" name="fotoCapa" class="custom-file-input" id="" accept=".jpg, .jpeg, .png" file-maxsize="10240">
 								<label class="custom-file-label" for="inputGroupFile03">Escolha o arquivo</label>
 							</div>
 						</div>
@@ -144,9 +144,10 @@
 						<!-- Termo -->
 
 						<label>Termo</label>
-						<div class="custom-control custom-checkbox">
-							<input name="termo" type="checkbox" class="custom-control-input" id="defaultUnchecked">
-							<label class="custom-control-label" for="termo">O conteúdo que estou prestes a publicar não é ofensivo.</label>
+						<div class="form-check">
+							<input type="checkbox" name="termo" class="form-check-input" data-error="Por favor, aceite os termos antes de publicar." required>
+							<label class="form-check-label" for="exampleCheck1">O conteúdo que estou prestes a atualizar não é ofensivo.</label>
+							<div class="help-block with-errors"></div>	
 						</div>
 
 						<hr class="mb-4">
