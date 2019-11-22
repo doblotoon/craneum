@@ -9,42 +9,53 @@
 ?>
 
 <?php //pesquisaaa
-                       if (isset($_GET['termo']) and isset($_GET['ft'])) {
+                       if (isset($_GET['termo'])) {
+							if (!isset($_GET['ft'])) {
+								$_GET['ft'] = 0;
+							}
 							if($_GET['ft']>=0 and $_GET['ft']<5) {
+								
 								switch ($_GET['ft']) {
+
+									//caso sem filtro
 									case '0':
 										$resultado = $pesquisa->pesquisaGeral($_GET['termo']);
-										echo "<pre>";
-										foreach ($resultado as $key => $res) {
-											print_r($res);
-											echo "=====================================================================";
-											$disciplinasPes = $pesquisa->disciplinaConteudoPesquisa($res['idConteudo']);
-											print_r($disciplinasPes);
-											echo "---------------------------------------------------------------------<br>";
-											echo "---------------------------------------------------------------------<br>";
-											echo "---------------------------------------------------------------------<br>";
-											echo "---------------------------------------------------------------------<br>";
-										}
 										
-										//print_r($resultado);
-										exit;
 										break;
 									
-									default:
-										# code...
+									// caso titulo do conteudo	
+									case '1':
+
+										$resultado = $pesquisa->pesquisaTitulo($_GET['termo']);
+									
+										break;
+
+									// caso disciplina	
+									case '2':
+
+										$resultado = $pesquisa->pesquisaDisciplina($_GET['termo']);
+								
+										break;
+								
+									// caso tag
+									case '3':
+										
+										$resultado = $pesquisa->pesquisaTag($_GET['termo']);
+									
+										break;
+									
+									// caso professor
+									case '4':
+
+										$resultado = $pesquisa->pesquisaProfessor($_GET['termo']);
+										
 										break;
 								}
-								
-								//$resultadosTema = $pesquisa->pesquisarTema($_GET['termo']);
-								//$resultadosDisciplina = $pesquisa->pesquisarDisciplina($_GET['termo']);
-								//$resultadosTag = $pesquisa->pesquisarTag($_GET['termo']);
 
 							} else {
 								header("location: erro.php?erro=naoEncontrado");
 							}
 						   //print_r($resultadosTag); 
-					   } else {
-						   header("location: erro.php?erro=naoEncontrado");
 					   }
 ?> 
 
@@ -75,12 +86,20 @@
 									</a>
 
 									<a href="?termo=<?=$_GET['termo']?>&ft=2">
-										<h5><div type="checkbox" class="icheck <?=($_GET['ft'] == 2 ? 'filtroAtivo' : '')?>"> Disciplina</div></h5>
+										<h5>
+											<div type="checkbox" class="icheck <?=($_GET['ft'] == 2 ? 'filtroAtivo' : '')?>"> 
+												Disciplina
+											</div>
+										</h5>
 										<br>
 									</a>
 
 									<a href="?termo=<?=$_GET['termo']?>&ft=3">
-										<h5><div type="checkbox" class="icheck <?=($_GET['ft'] == 3 ? 'filtroAtivo' : '')?>"> Tag</div></h5>
+										<h5>
+											<div type="checkbox" class="icheck <?=($_GET['ft'] == 3 ? 'filtroAtivo' : '')?>"> 
+												Tag
+											</div>
+										</h5>
 										<br>
 									</a>
 
@@ -104,7 +123,14 @@
 									<!-- BEGIN SEARCH INPUT -->
 									<form action="" method="get">
 										<div class="input-group">
-											<input type="text" class="form-control" name="termo" value="<?=$_GET['termo']?>">
+											<?php
+												if (isset($_GET['termo'])) {
+													$termo = $_GET['termo'];
+												}else{
+													$termo = null;
+												}
+										   ?>
+											<input type="text" class="form-control" name="termo" value="<?=$termo?>">
 											<span class="input-group-btn">
 												<button class="btn btn-primary botaoResultadoPesquisa" type="submit"><i class="fa fa-search"></i></button>
 											</span>
@@ -115,215 +141,81 @@
 									<!-- END SEARCH INPUT -->
 									
 									
-									<div class="padding"></div>
-									
-									<div class="row">
-									<!-- BEGIN ORDER RESULT -->
-										<div class="col-sm-6">
-											<div class="btn-group">
-												<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-													Ordenar por <span class="caret"></span>
-												</button>
-												<ul class="dropdown-menu" role="menu">
-
-													<li><a href="#">Name</a></li>
-													<li><a href="#">Date</a></li>
-													<li><a href="#">View</a></li>
-													<li><a href="#">Rating</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
 								
 									<!-- BEGIN TABLE RESULT -->
 					   	
 						<?php
 
-						if (empty($_GET['ft']) OR $_GET['ft'] == 0) {
+						if (isset($resultado) and !empty($resultado)) {
 						
-							foreach ($resultadosDisciplina as $a => $b) {
-								//print $b['titulo'];
-								//echo "<br>";
+							foreach ($resultado as $chave => $conteudo) {
 							
+							?>
 							
-								echo"
-								<a class='cursorPointer' href='conteudo.php?idConteudo={$b['idConteudo']}'>
+								
 									<div class='table-responsive'>
 										<table class='table'>
 											<tbody>
 												<tr class='tabelaPesquisar'>
 													
-													<td class='text-center'><img class='imagemConteudoTabela' src='../assets/images/{$b['fotoCapa']}' alt=''></td>
-													<td class='text-center titulo'>{$b['titulo']}</td>
-													<td class=''>
-														<h6 class='aEsquerda>
-															<!-- CASO A PESQUISA SEJA DE UMA DISCIPLINA, NÃO DEVE SER LINKADO POIS NÃO FAZ SENTIDO... -->
-															<a href='resultadoPesquisa.php?'><span class='badge badge-secondary aEsquerda espacoDireita disciplina'>{$b['disciplina']}</span></a>
-														</h6>
+													<td class='text-center'>
+														<img class='imagemConteudoTabela' src="<?=$conteudo['fotoCapa']?>" alt=''>
 													</td>
-													<td class='text-center'>{$b['nome']}</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</a>";
-							}
-
-							foreach ($resultadosTag as $a => $b) {
-								//print_r($resultadosTag);
-								//print $b['tag'];
-								//echo "<br>";
-							
-							
-								echo"
-								<a class='cursorPointer' href='conteudo.php?idConteudo={$b['idConteudo']}'>
-									<div class='table-responsive'>
-										<table class='table'>
-											<tbody>
-												<tr class='tabelaPesquisar'>
 													
-													<td class='text-center'><img class='imagemConteudoTabela' src='../assets/images/{$b['fotoCapa']}' alt=''></td>
-													<td class='text-center titulo'>{$b['titulo']}</td>
-													<td class=''>
-														<h6 class='aEsquerda>
-															<!-- CASO A PESQUISA SEJA DE UMA DISCIPLINA, NÃO DEVE SER LINKADO POIS NÃO FAZ SENTIDO... -->
-															<a href='resultadoPesquisa.php?'><span class='badge badge-secondary aEsquerda espacoDireita disciplina'>{$b['disciplina']}</span></a>
-														</h6>
-													</td>
-													<td class='text-center'>{$b['nome']}</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</a>";
-							}
-
-							//print_r ($resultadosTema);
-							foreach ($resultadosTema as $a => $b) {
-											   //print $b['titulo'];
-											   //echo "<br>";
-											   
-										   
-					   					
-									
-								echo"
-									<a class='cursorPointer' href='conteudo.php?idConteudo={$b['idConteudo']}'>
-										<div class='table-responsive'>
-											<table class='table'>
-												<tbody>
-													<tr class='tabelaPesquisar'>
 														
-														<td class='text-center'><img class='imagemConteudoTabela' src='../assets/images/{$b['fotoCapa']}' alt=''></td>
-														<td class='text-center titulo'>{$b['titulo']}</td>
-														<td class=''>
-															<h6 class='aEsquerda>
-																<!-- CASO A PESQUISA SEJA DE UMA DISCIPLINA, NÃO DEVE SER LINKADO POIS NÃO FAZ SENTIDO... -->
-																<a href='resultadoPesquisa.php?'><span class='badge badge-secondary aEsquerda espacoDireita disciplina'>{$b['disciplina']}</span></a>
-															</h6>
-														</td>
-														<td class='text-center'>{$b['nome']}</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</a>";
-							}
-						}
+													<td class='text-center titulo'>
+														<a class='cursorPointer' href="conteudo.php?idConteudo=<?=$conteudo['idConteudo']?>">
+															<?=$conteudo['titulo']?>
+														</a>
+													</td>
+													
 
-					if(isset($GET['ft'])){
-						switch ($_GET['ft']) {
-							case 1:
-								foreach ($resultadosTema as $a => $b) {
-									//print $b['titulo'];
-									//echo "<br>";
-				
-									echo"
-										<a class='cursorPointer' href='conteudo.php?idConteudo={$b['idConteudo']}'>
-											<div class='table-responsive'>
-												<table class='table'>
-													<tbody>
-														<tr class='tabelaPesquisar'>
+
+													<td class=''>
 															
-															<td class='text-center'><img class='imagemConteudoTabela' src='../assets/images/{$b['fotoCapa']}' alt=''></td>
-															<td class='text-center titulo'>{$b['titulo']}</td>
-															<td class=''>
-																<h6 class='aEsquerda>
-																	<!-- CASO A PESQUISA SEJA DE UMA DISCIPLINA, NÃO DEVE SER LINKADO POIS NÃO FAZ SENTIDO... -->
-																	<a href='resultadoPesquisa.php?'><span class='badge badge-secondary aEsquerda espacoDireita disciplina'>{$b['disciplina']}</span></a>
-																</h6>
-															</td>
-															<td class='text-center'>{$b['nome']}</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</a>";
-								}
-							break;
-							
-							case 2:
-								foreach ($resultadosDisciplina as $a => $b) {
-									//print $b['titulo'];
-									//echo "<br>";
-								
-								
-									echo"
-									<a class='cursorPointer' href='conteudo.php?idConteudo={$b['idConteudo']}'>
-										<div class='table-responsive'>
-											<table class='table'>
-												<tbody>
-													<tr class='tabelaPesquisar'>
-														
-														<td class='text-center'><img class='imagemConteudoTabela' src='../assets/images/{$b['fotoCapa']}' alt=''></td>
-														<td class='text-center titulo'>{$b['titulo']}</td>
-														<td class=''>
-															<h6 class='aEsquerda>
-																<!-- CASO A PESQUISA SEJA DE UMA DISCIPLINA, NÃO DEVE SER LINKADO POIS NÃO FAZ SENTIDO... -->
-																<a href='resultadoPesquisa.php?'><span class='badge badge-secondary aEsquerda espacoDireita disciplina'>{$b['disciplina']}</span></a>
+														<?php
+															$disciplinasPes = $pesquisa->disciplinaConteudoPesquisa($conteudo['idConteudo']);
+
+															foreach ($disciplinasPes as $key => $disciplina) {
+																
+															
+														?>
+															<h6 class='aEsquerda'>
+																<a href='resultadoPesquisa.php?'>
+																	<span class='badge badge-secondary aEsquerda espacoDireita disciplina'>
+																		<?=$disciplina['disciplina']?>
+																	</span>
+																</a>
 															</h6>
-														</td>
-														<td class='text-center'>{$b['nome']}</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</a>";
-								}
-							break;
-							case 3:
-								foreach ($resultadosTag as $a => $b) {
-									//print_r($resultadosTag);
-									$disciplinasTag = $pesquisa->tagDisciplina($b['idConteudo']);
-									
-									echo $b['tag'];
-									//echo "<br>";
-								
-								
-									echo"
-									<a class='cursorPointer' href='conteudo.php?idConteudo={$b['idConteudo']}'>
-										<div class='table-responsive'>
-											<table class='table'>
-												<tbody>
-													<tr class='tabelaPesquisar'>
-														
-														<td class='text-center'><img class='imagemConteudoTabela' src='../assets/images/{$b['fotoCapa']}' alt=''></td>
-														<td class='text-center titulo'>{$b['titulo']}</td>
-														<td class=''>
-															<h6 class='aEsquerda>
-																<!-- CASO A PESQUISA SEJA DE UMA DISCIPLINA, NÃO DEVE SER LINKADO POIS NÃO FAZ SENTIDO... -->
-																<a href='resultadoPesquisa.php?'><span class='badge badge-secondary aEsquerda espacoDireita disciplina'>{$b['disciplina']}</span></a>
-															</h6>
-														</td>
-														<td class='text-center'>{$b['nome']}</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</a>";
-								}
-							break;
+
+															
+														<?php
+															}
+														?>
+													</td>
+
+
+													<td class='text-center'>
+														<?=$conteudo['nome']?>
+													</td>
+
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+						<?php
+							}
+						}else {
+							if (!isset($_GET['termo'])) {
+								$texto = 'Pesquisa Vazia!';
+								$classe = "danger";
+							}else {
+								$texto = "Nada Encontrado!";
+								$classe = "warning";
+							}
+							echo "<br><div class='alert alert-{$classe}'>{$texto}</div>";
 						}
-					}
 						?>
 								</div>
 							<!-- END RESULT -->
