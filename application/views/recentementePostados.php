@@ -51,7 +51,7 @@
 
                                 <!-- INFORMAÇÕES (AUTOR E DATA) -->
                                 <h6 class="autorCard group card-title inner list-group-item-heading">
-                                    <img class="imagemAutorCard" src="<?=$maisRecentes[$i]['fotoPerfil']?>">Postado por <?=$maisRecentes[$i]['nome']?> em <?=date("d/m/Y", strtotime($maisRecentes[$i]['dataPostagem']));?>
+                                    <img class="imagemAutorCard" src="<?=$maisRecentes[$i]['fotoPerfil']?>">Postado por <?=mb_strimwidth($maisRecentes[$i]['nome'],0,12,"...")?> em <?=date("d/m/Y", strtotime($maisRecentes[$i]['dataPostagem']));?>
                                 </h6>
                             </div>
                         </div>

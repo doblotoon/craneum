@@ -37,7 +37,7 @@
 								<tr>
 									
 									<td class="text-center" id="codigoUser"><?=$usuario['idUsuario']?></td>
-									<td class="text-center" id="tipoUsuario"><?=$usuario['tipo']?></td>
+									<td class="text-center" id="tipoUsuario"><?=ucfirst($usuario['tipo'])?></td>
 									<td class="text-center" id="nomeUser"><?=$usuario['nome']?></td>
 									<td class="text-center" id="emailUser"><?=$usuario['email']?></td>
 									<td id="fotoPerfilUser"><div class="text-center"><img src="<?=$usuario['fotoPerfil']?>" class="iconGerenciarUsers"></div></td>

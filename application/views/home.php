@@ -101,7 +101,7 @@
 
                                 <!-- INFORMAÇÕES (AUTOR E DATA) -->
                                 <h6 class="autorCard group card-title inner list-group-item-heading">
-                                    <img class="imagemAutorCard" src="<?=$fotoPerfil?>">Postado por <?=$conteudoRecente['nome']?> em <?=date("d/m/Y", strtotime($conteudoRecente['dataPostagem']));?>
+                                    <img class="imagemAutorCard" src="<?=$fotoPerfil?>">Postado por <?=mb_strimwidth($conteudoRecente['nome'],0,12,"...")?> em <?=date("d/m/Y", strtotime($conteudoRecente['dataPostagem']));?>
                                 </h6>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                     <div class="col-sm-4">
                         <div class="counter">
                             <h3 class="count-title"><?=$qtdConteudos[0]['qtd_conteudo']?></h3>
-                            <p class="count-text ">Conteudos Postados</p>
+                            <p class="count-text ">Conteúdos Postados</p>
                         </div>
                     </div>
                     <div class="col-sm-4">

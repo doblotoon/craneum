@@ -127,7 +127,12 @@
                                     </div>
                                 </div>";
                             }
+
                             foreach ($conteudosSalvos as $key => $conteudoSalvo) {
+
+                                    if($key%2==0) {
+                                        print('<div class="row view-group my-lg-5 my-4">');
+                                    }
                         ?>  
 
 
@@ -151,15 +156,20 @@
                                         <!-- INFORMAÇÕES (AUTOR E DATA) -->
                                         <h6 class="autorCard group card-title inner list-group-item-heading">
                                             <img class="imagemAutorCard" src="<?=$conteudoSalvo['fotoPerfil']?>">
-                                            Postado por <?=$conteudoSalvo['nome']?> em <?=date("d/m/Y", strtotime($conteudoSalvo['dataPostagem']));?>
+                                            Postado por <?=mb_strimwidth($conteudoSalvo['nome'],0,12,"...")?> em <?=date("d/m/Y", strtotime($conteudoSalvo['dataPostagem']));?>
                                         </h6>
                                     </div>
                                 </div>
                             </div>
 
-
-
                         <?php
+                                if($key == (sizeof($conteudosPostados)-1)){
+                                    print('</div>');  
+                                } else {
+                                    if($key%2==1 or $key==1){
+                                        print('</div>');
+                                    }
+                                }
                             }
                         ?>
 
@@ -177,7 +187,13 @@
                                         </div>
                                     </div>";
                                 }
+
+
                                 foreach ($conteudosPostados as $key => $conteudoPostado) {
+                                    
+                                    if($key%2==0) {
+                                        print('<div class="row view-group my-lg-5 my-4">');
+                                    }
                         ?>  
 
 
@@ -207,13 +223,19 @@
                                     </div>
                                 </div>
 
-
-
                         <?php
+                                
+                                if($key == (sizeof($conteudosPostados)-1)){
+                                    print('</div>');  
+                                } else {
+                                    if($key%2==1 or $key==1){
+                                        print('</div>');
+                                    }
                                 }
-                            }
-                        ?>
 
+                            }
+                        }
+                        ?>
 
                         </div>
                     </div>     
@@ -243,8 +265,6 @@
 
         </script>
 <?php
-    
-
     require_once('footer.php');
 ?>   
     

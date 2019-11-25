@@ -20,7 +20,8 @@
 
                 <!-- copyright -->
                 <div class="w3layouts-copy text-center">
-                    <p class="text-da">© 2019 Craneum. All rights reserved</p>
+                    <p class="text-da">© 2019 Craneum. Projeto Integrador desenvolvido por Pedro Augusto Canteli, Pedro Gabriel Gabiatti </p>
+                    <p class="text-da">Guardini e Victor Hugo Azevedo Nass, estudantes do curso técnico de informática da turma 3INFO3 do IFC - Campus Araquari</p>
                 </div>
                 <!-- //copyright -->
 

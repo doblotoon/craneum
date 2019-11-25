@@ -158,14 +158,14 @@
 											<tbody>
 												<tr class='tabelaPesquisar'>
 													
-													<td class='text-center'>
+													<td>
 														<img class='imagemConteudoTabela' src="<?=$conteudo['fotoCapa']?>" alt=''>
 													</td>
 													
 														
 													<td class='text-center titulo'>
 														<a class='cursorPointer' href="conteudo.php?idConteudo=<?=$conteudo['idConteudo']?>">
-															<?=$conteudo['titulo']?>
+															<?=mb_strimwidth($conteudo['titulo'],0,80,"...")?>
 														</a>
 													</td>
 													
