@@ -209,10 +209,10 @@
                                     if(isset($_SESSION['id'])){
                                         // testa se a id do usuario é igual a da session para editar/excluir comentario 
                                         if ($duvida['idUsuario']==$_SESSION['id']) {
-                                            echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn btn-sm btn-danger espacoDireitoBotaoComentarios' type='submit' value='Excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
-                                            echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}'><button class='btn btn-sm btn-primary espacoDireitoBotaoComentarios'>Editar</button></a>";
+                                            echo "<form action='../controllers/ExcluirComentario.php' method='post'> <button class='btn btn-sm btn-danger espacoDireitoBotaoComentarios' type='submit'><i class='fas fa-trash-alt'></i></button> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
+                                            echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}&tipo=adendo'><button class='btn btn-sm btn-primary espacoDireitoBotaoComentarios'><i class='fas fa-edit'></i></button></a>";
                                         }
-                                        if ($_SESSION['tipo']=="professor") {
+                                        if ($_SESSION['tipo']=="professor" and $conteudoSelecionado['idUsuario']==$_SESSION['id']) {
                                             echo "<form action='../controllers/TransformaComentario.php' method='post'> <input class='btn btn-sm btn-dark' type='submit' value='Tornar Comentário'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'> <input type='hidden' name='funcao' value=1> </form>";   
                                         }
                                     }
@@ -224,7 +224,7 @@
                             </div>          
 <?php
 
-                    if (isset($_GET['rc'])) {
+                    if (isset($_GET['rc']) and isset($_SESSION['id'])) {
                         
                         if ( $_GET['rc']==1 and $_GET['idDuvida']==$duvida['idDuvida']) {
                             echo"
@@ -249,7 +249,7 @@
                                         <ul class="media-list">
                                             <li class="media">
                                                 <div class="media-body">
-                                                    <strong class="nomeUsuarioComentario">Resposta do(a) Professor(a)</strong><p> em <?= date("d/m/Y", strtotime($resposta['dataResposta']))?></p>
+                                                    <strong class="nomeUsuarioComentario">Resposta do(a) Professor(a)</strong><p> respondida em <?= date("d/m/Y", strtotime($resposta['dataResposta']))?></p>
                                                     <p id='<?=$duvida["idDuvida"]?>'>
                                                         <?=$resposta['resposta']?> 
                                                     </p>
@@ -381,50 +381,12 @@
 <?php
                                             #<!-- inicio da getResposta--># precisa de css
                                                 
-                                                foreach ($respostas as $resposta ){  
-                                                    if ($duvida['idDuvida']==$resposta['fk_resp_idDuvida']) { #resposta
-                                                        
-                                                        echo "<p>| {$resposta['resposta']} |</p>";
-                                                        
-                                                        #<!-- inicio da editarResposta e da excluirResposta-->#
-                                                            // print_r($conteudoSelecionado);
-                                                                if(isset($_SESSION['id'])){
-                                                                    if($conteudoSelecionado['fk_cont_idUsuario']==$_SESSION['id']) {
-                                                                        echo "<form action='../controllers/ExcluirResposta.php' method='post'> 
-                                                                                <input class='btn btn-sm btn-outline-danger espacoDireitoBotaoComentarios' type='submit' value='Excluir'> 
-                                                                                <input type='hidden' name='id' value='{$_GET['idConteudo']}'> 
-                                                                                <input type='hidden' name='idResposta' value='{$resposta['idResposta']}'>
-                                                                            </form>";   
-                                                                            echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editarResp&idResposta={$resposta['idResposta']}&abre=true'>
-                                                                                    <button class='btn btn-sm btn-outline-primary espacoDireitoBotaoComentarios'>Editar</button>
-                                                                                </a>";
-                                                                    }
-                     
-                                                                }
-                                                                if (isset($_GET['acao']) and $_GET['acao'] == 'editarResp' and $_GET['idResposta']==$resposta['idResposta']) {
-                                                                    if (!isset($_GET['tipo'])) {
-                                                                        
-                                                                    
-                                                                        $ex = $resposta['resposta'];
-                                                                        //echo "CLIQUEI<BR>";
-                                                                        echo "<form action='../controllers/EditarResposta.php' method='post'>
-                                                                                
-                                                                                <textarea class='form-control' name='respostaAtual' id='' rows='4'>{$ex}</textarea>
-                                                                                <button class='btn btn-primary espacoSuperiorComentarDuvida' type='submit'>Comentar Dúvida Editada</button>
-                                                                                <input type='hidden' name='id' value='{$_GET['idConteudo']}'>
-                                                                                <input type='hidden' name='idResposta' value='{$_GET['idResposta']}'>
-                                                                            </form>";
-                                                                    }
-                                                                }
-                                                                
-                                                        #<!-- final da editarResposta e da excluirResposta-->#
-                                                    }
-                                                }
+                        
                                             #<!-- final da getResposta-->#
             #<!-- inicio da cadastrarResposta-->#
                 //print_r($duvida);
                 if (isset($_SESSION['id']) and $_SESSION['id'] == $conteudoSelecionado['idUsuario']) {
-                    echo "<a href='?idConteudo={$_GET['idConteudo']}&rc=1&idDuvida={$duvida['idDuvida']}&abre=true'>responder dúvida</a>";
+                    echo "<a href='?idConteudo={$_GET['idConteudo']}&rc=1&idDuvida={$duvida['idDuvida']}&abre=true'><button type='submit' class='btn btn-sm btn-primary espacoDireitoBotaoComentarios'><i class='fas fa-reply'></i></button></a>";
                 }
                 
             #<!-- final da cadastrarResposta-->#
@@ -432,11 +394,11 @@
                # print_r($_SESSION);
                 if(isset($_SESSION['id'])){
                     if ($duvida['idUsuario']==$_SESSION['id']) {
-                        echo "<form action='../controllers/ExcluirComentario.php' method='post'> <input class='btn btn-sm btn-danger espacoDireitoBotaoComentarios' type='submit' value='Excluir'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
+                        echo "<form action='../controllers/ExcluirComentario.php' method='post'> <button class='btn btn-sm btn-danger espacoDireitoBotaoComentarios' type='submit'><i class='fas fa-trash-alt'></i></button> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'></form>";   
                         echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editar&idDuvida={$duvida['idDuvida']}&abre=true#someDuvida'><button class='btn btn-sm btn-primary espacoDireitoBotaoComentarios'>Editar</button></a>";
                     }
                #    print_r($_SESSION['tipo']);
-                    if ($_SESSION['tipo']=="professor") {
+                    if ($_SESSION['tipo']=="professor" and $conteudoSelecionado['idUsuario']==$_SESSION['id']) {
                         echo "<form action='../controllers/TransformaComentario.php' method='post'> <input class='btn btn-sm btn-dark' type='submit' value='Marcar como Adendo'> <input type='hidden' name='id' value='{$_GET['idConteudo']}'> <input type='hidden' name='idDuvida' value='{$duvida['idDuvida']}'> <input type='hidden' name='funcao' value=1> </form>";   
                     }
                 }
@@ -457,6 +419,69 @@
 
 <?php
                 echo "<span id='".$duvida['idDuvida']."'>";
+            }
+        }
+
+        foreach ($respostas as $resposta ){  
+            if ($duvida['idDuvida']==$resposta['fk_resp_idDuvida']) { #resposta
+                
+?>
+
+
+<div class="comment-wrapper resposta">
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <hr>
+            <ul class="media-list">
+                <li class="media">
+                    <div class="media-body">
+                        <strong class="nomeUsuarioComentario">Resposta do(a) Professor(a)</strong><p> respondida em <?= date("d/m/Y", strtotime($resposta['dataResposta']))?></p>
+                        <p id='<?=$duvida["idDuvida"]?>'>
+                            <?=$resposta['resposta']?> 
+                        </p>
+                    </div>
+<?php
+if(isset($_SESSION['id'])){
+    if($conteudoSelecionado['fk_cont_idUsuario']==$_SESSION['id']) {
+        echo "<form action='../controllers/ExcluirResposta.php' method='post'> 
+                <button class='btn btn-sm btn-danger espacoDireitoBotaoComentarios' type='submit'><i class='fas fa-trash-alt'></i></button>
+                <input type='hidden' name='id' value='{$_GET['idConteudo']}'> 
+                <input type='hidden' name='idResposta' value='{$resposta['idResposta']}'>
+            </form>";   
+            echo "<a href='?idConteudo={$_GET['idConteudo']}&acao=editarResp&idResposta={$resposta['idResposta']}&abre=true'>
+                    <button class='btn btn-sm btn-primary espacoDireitoBotaoComentarios'><i class='fas fa-edit'></i></button>
+                </a>";
+    }
+
+}
+?>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> 
+<?php                
+
+if (isset($_GET['acao']) and $_GET['acao'] == 'editarResp' and $_GET['idResposta']==$resposta['idResposta']) {
+    if (!isset($_GET['tipo'])) {
+        
+    
+        $ex = $resposta['resposta'];
+        //echo "CLIQUEI<BR>";
+        echo "<form action='../controllers/EditarResposta.php' method='post'>
+                
+                <textarea class='form-control' name='respostaAtual' id='' rows='4'>{$ex}</textarea>
+                <button class='btn btn-primary espacoSuperiorComentarDuvida' type='submit'>Comentar Dúvida Editada</button>
+                <input type='hidden' name='id' value='{$_GET['idConteudo']}'>
+                <input type='hidden' name='idResposta' value='{$_GET['idResposta']}'>
+            </form>";
+    }
+}
+                #<!-- inicio da editarResposta e da excluirResposta-->#
+                    // print_r($conteudoSelecionado);
+                    
+                        
+                #<!-- final da editarResposta e da excluirResposta-->#
             }
         }
 
@@ -545,6 +570,7 @@
     <?php
 
     } else {
+        if(isset($_SESSION['id'])){
     ?>
                                     <form action="../controllers/CadastrarComentario.php" method="post" class="" id="formDuvida">
                                         <textarea class="form-control" name="duvida" placeholder="Escreva um comentário" rows="4"></textarea>
@@ -553,6 +579,7 @@
                                         <input type="hidden" name="idConteudo" value="<?=$_GET['idConteudo']?>">
                                     </form>
 <?php
+        }
     }
 ?>
 
