@@ -1251,3 +1251,7 @@
   /* Keep the image from overlapping sibling elements. */ 
   z-index: -1;
 }
+
+.espacoDireitaDeletar{
+    margin-left: 4px;
+}

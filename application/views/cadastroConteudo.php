@@ -169,7 +169,8 @@
 				//width: '100%',
 				filebrowserUploadUrl: "../models/upload.php?type=file",
 				filebrowserImageUploadUrl: "../models/upload.php?type=image",
-				extraPlugins: 'notification'
+				extraPlugins: 'notification',
+				font_names: "Arial/Arial, Helvetica, sans-serif;"+"Times New Roman/Times New Roman, Time, serif;"+"Verdana"
 			});
 
 			editor.on('required', function(evt){

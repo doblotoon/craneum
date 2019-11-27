@@ -163,7 +163,7 @@
                             </div>
 
                         <?php
-                                if($key == (sizeof($conteudosPostados)-1)){
+                                if($key == (sizeof($conteudosSalvos)-1)){
                                     print('</div>');  
                                 } else {
                                     if($key%2==1 or $key==1){
@@ -226,7 +226,8 @@
                         <?php
                                 
                                 if($key == (sizeof($conteudosPostados)-1)){
-                                    print('</div>');  
+                                    print('</div>'); 
+                                    print('</div>');   
                                 } else {
                                     if($key%2==1 or $key==1){
                                         print('</div>');
