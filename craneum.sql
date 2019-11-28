@@ -1,301 +1,500 @@
--- MySQL dump 10.13  Distrib 5.7.24, for Linux (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.8.4
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: craneum
--- ------------------------------------------------------
--- Server version	5.7.24-0ubuntu0.18.04.1
+-- Host: 127.0.0.1
+-- Generation Time: 28-Nov-2019 às 01:36
+-- Versão do servidor: 10.1.37-MariaDB
+-- versão do PHP: 7.3.0
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `conteudo`
+-- Database: `craneum`
 --
 
-DROP TABLE IF EXISTS `conteudo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `conteudo`
+--
+
 CREATE TABLE `conteudo` (
-  `idConteudo` int(11) NOT NULL AUTO_INCREMENT,
+  `idConteudo` int(11) NOT NULL,
   `titulo` varchar(256) NOT NULL,
   `conteudo` text NOT NULL,
   `dataPostagem` datetime NOT NULL,
   `fotoCapa` varchar(256) NOT NULL,
-  `fk_cont_idUsuario` int(11) NOT NULL,
-  PRIMARY KEY (`idConteudo`),
-  KEY `fk_cont_idUsuario` (`fk_cont_idUsuario`),
-  CONSTRAINT `conteudo_ibfk_1` FOREIGN KEY (`fk_cont_idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `fk_cont_idUsuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `conteudo`
+-- Extraindo dados da tabela `conteudo`
 --
 
-LOCK TABLES `conteudo` WRITE;
-/*!40000 ALTER TABLE `conteudo` DISABLE KEYS */;
-INSERT INTO `conteudo` VALUES (7,'Lorem ipsum dolor sit amet.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis eros et ipsum ullamcorper placerat. Nullam gravida turpis at dapibus pharetra. Pellentesque elementum libero lectus. Aenean lobortis at leo sollicitudin congue. Suspendisse non dolor dignissim, ornare nibh sed, mollis ipsum. In consequat mattis porta. Proin ultricies dui fermentum, vestibulum mauris et, malesuada eros. Etiam dui erat, pharetra quis mollis vitae, tincidunt quis dolor. Nam sed orci rhoncus, scelerisque ligula consectetur, ornare neque. Nam ut posuere libero. Sed elementum sed odio eu porttitor.\n\nSuspendisse eu euismod urna, quis ultricies tortor. In varius aliquam mi at maximus. Cras et quam dictum, iaculis erat sed, semper felis. Vivamus lacus turpis, tempor sit amet ex et, feugiat pretium nunc. Phasellus orci neque, bibendum et cursus dignissim, fringilla eget lorem. Cras cursus leo lectus, vitae malesuada lorem tincidunt eget. Nunc quis purus leo. Donec metus arcu, malesuada at sodales at, fermentum quis ex.\n\nIn tristique mi eleifend enim lacinia, eget ultricies quam rhoncus. Morbi mollis aliquet lorem vel viverra. Sed massa eros, iaculis lobortis porta vitae, hendrerit a velit. Maecenas quis pellentesque lorem, nec molestie lorem. Donec porta, est vitae facilisis ultrices, mauris leo faucibus urna, in condimentum ipsum justo eu risus. Mauris elementum magna id egestas fringilla. Proin vel nunc ante. Praesent auctor mauris et hendrerit elementum. Vestibulum dignissim bibendum risus, vel feugiat erat interdum non. In non ultricies dui. Curabitur lobortis tempus nisl eu malesuada. Morbi a arcu ligula. Curabitur vel sollicitudin est, ac pellentesque lacus. Mauris rhoncus faucibus ipsum auctor maximus. Maecenas posuere quis odio pretium posuere.\n\nInteger enim dolor, feugiat non dictum id, scelerisque quis leo. Proin ut tellus eleifend, molestie nisl eget, ultricies turpis. Sed vel leo feugiat, mollis nisi non, sodales odio. Duis in dignissim mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut blandit consectetur massa scelerisque rhoncus. Duis est libero, tristique vitae urna nec, hendrerit maximus odio. Aliquam quis lectus non eros convallis molestie. Nulla id metus tortor. Nullam at tempor sapien. Aliquam id lacus nec justo tempus facilisis ut vel mi. Maecenas ac libero vel leo lobortis semper nec a diam. Pellentesque mollis, tortor efficitur facilisis porta, enim leo egestas odio, sit amet eleifend libero ante eu metus. Suspendisse iaculis a erat eu molestie.\n\nVivamus sodales maximus est at cursus. Phasellus tempus tristique enim. Quisque nec ultrices mi. Pellentesque maximus consequat turpis eu efficitur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam efficitur felis ante, eget vulputate nibh vestibulum ac. Vivamus tincidunt felis nunc, id tristique neque dapibus pretium. Etiam accumsan ligula ante, sed elementum nulla gravida sit amet. Nam feugiat lectus in eros sodales luctus. Donec nunc leo, accumsan eu massa vitae, egestas consectetur lorem. Suspendisse potenti. Nulla quis diam vulputate magna tincidunt condimentum in eu elit.\n\nDonec ac nibh sed neque aliquet vestibulum eget id dui. Sed hendrerit accumsan lectus, non tincidunt orci commodo id. Etiam est nibh, vestibulum sit amet metus nec, porta sollicitudin diam. Morbi id felis viverra, consequat turpis id, pretium enim. Pellentesque vestibulum mi id ante consequat elementum. Fusce a lorem lacus. Integer nisl ligula, sodales non elementum in, feugiat a lectus. Aliquam quis vestibulum odio, ac rhoncus sem. Donec tempor neque arcu, a viverra elit tempus id. Maecenas maximus arcu metus, at tincidunt sem ultrices eu. Cras dolor ipsum, aliquam vitae lectus vitae, semper sagittis felis. Praesent vehicula ex eu lacus tempor, ac suscipit nisl sagittis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin scelerisque, nibh sed scelerisque accumsan, diam justo consequat lectus, quis tincidunt est sapien in neque. Phasellus viverra in mauris non tempor. Aliquam fermentum sodales nisl eget venenatis.\n\nInterdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur vel ante non magna tempus venenatis. In hac habitasse platea dictumst. Donec eu eros ipsum. In nibh nisi, porttitor eu risus eget, dignissim tincidunt sem. Maecenas fringilla sed nunc a pellentesque. Phasellus accumsan nibh quis diam dapibus viverra. Aenean scelerisque vitae lacus quis molestie. Aliquam vitae nunc ante. Sed ut tempor massa, tincidunt lacinia nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus leo ipsum, pulvinar vitae erat sed, blandit porttitor est. Donec tortor massa, laoreet ut ex commodo, pellentesque tincidunt nunc. Suspendisse quis placerat urna. Pellentesque ut ante nulla. Fusce quis nulla id urna vehicula porta vel vitae nulla.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at auctor velit. Aliquam eu tristique ipsum. In congue erat vitae luctus iaculis. Praesent auctor in nunc a bibendum. Donec pharetra vel nisi in eleifend. Cras mattis metus volutpat neque accumsan scelerisque.\n\nCurabitur non molestie risus. Duis faucibus mauris turpis, quis cursus dolor molestie id. Donec nec sapien vitae arcu rutrum scelerisque at ut quam. Praesent condimentum eget nibh quis pharetra. Etiam arcu ipsum, pharetra et ultrices sit amet, sagittis ut augue. Aenean nec aliquet quam. Pellentesque quis interdum leo, sed vehicula tortor. Praesent justo enim, fringilla vitae euismod eget, faucibus vel ex.\n\nAliquam aliquam libero nulla, nec ornare ex sodales quis. Suspendisse potenti. Sed ullamcorper at felis eu tempus. Sed at risus sed felis mollis sodales quis et nibh. Nunc arcu lorem, rhoncus quis placerat ac, rhoncus eget odio. Pellentesque at risus id lectus ullamcorper tristique. Etiam vitae massa pellentesque augue lacinia commodo eget nec sem. Nullam vel nisi massa. Duis et sagittis velit. Proin facilisis ex metus, vel pellentesque sapien tristique eget. Donec odio justo, finibus at fringilla sed, egestas iaculis nunc. Praesent eu feugiat massa. Donec non varius tortor.\n\nAliquam consequat finibus odio, non iaculis odio laoreet id. Pellentesque pharetra non nunc sed dictum. Suspendisse tincidunt in arcu nec fringilla. Phasellus ante nibh, rhoncus non est ac, iaculis mattis libero. Pellentesque hendrerit efficitur ipsum, sed ornare arcu semper eget. Quisque et sem est. Nunc ac imperdiet purus, ut faucibus quam. Pellentesque semper arcu in volutpat vehicula. Donec mattis non ante a venenatis. Quisque pellentesque augue id enim luctus, at sagittis tortor aliquam. Cras nec facilisis magna, tempor iaculis lorem.\n\nAenean eleifend rutrum volutpat. Nunc lacinia nec massa et scelerisque. Proin a dolor vitae odio iaculis rhoncus. Etiam accumsan, magna dignissim finibus tristique, nisi dolor efficitur orci, nec eleifend enim ante non lorem. Morbi ullamcorper ac diam at sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec egestas ullamcorper finibus. Aenean eget ligula nibh. Praesent nisl lacus, luctus quis ex in, consequat vehicula metus. Nulla facilisi. Aenean sodales placerat finibus. Suspendisse pellentesque orci justo, eu pulvinar massa hendrerit in. Nullam in nibh felis. Phasellus libero elit, pellentesque nec metus nec, fermentum fringilla arcu. Aliquam erat volutpat.\n\nInteger dui tellus, aliquet condimentum mi ac, mattis volutpat urna. Aenean vestibulum iaculis nunc, in mollis lorem aliquet ac. Nunc eu orci pretium, cursus ipsum in, volutpat purus. Fusce sagittis massa vel nulla dictum, nec commodo turpis imperdiet. Morbi ac orci sit amet neque suscipit mollis. Etiam efficitur nunc leo, id tempor nisi dapibus sit amet. Cras feugiat nisl mauris, eget rutrum ante ultricies eu. Ut varius molestie eros eget ullamcorper. In non dolor egestas, egestas risus non, porttitor massa.\n\nVivamus a dignissim quam, at tempor purus. Curabitur sit amet maximus est. Etiam sapien erat, convallis in erat at, porttitor scelerisque massa. Fusce dictum, lacus at semper tincidunt, magna nunc pharetra quam, id fringilla quam neque nec urna. Vestibulum imperdiet lacus odio, eget volutpat tortor porttitor non. Quisque ac lacus purus. Curabitur eget purus egestas, posuere erat non, dapibus sem. Mauris vel vulputate lectus, vitae commodo turpis.\n\nQuisque luctus porta aliquet. Nam faucibus quam at tempus ultrices. Pellentesque sit amet ligula posuere sapien fermentum laoreet. Nullam vulputate libero a nisl sodales lacinia. Pellentesque et nulla eu nulla mollis laoreet sit amet sed nibh. Vivamus posuere scelerisque lectus vitae pharetra. Nulla facilisi. Ut sit amet sapien ac sem auctor scelerisque faucibus at ex. Pellentesque ut dolor elit. Donec dui mi, rhoncus vel nisl ultrices, iaculis rhoncus nunc. Cras id elit nec tortor consectetur sollicitudin eget quis turpis. Donec egestas ligula felis, eget congue dui finibus ac. Duis sem ex, pellentesque sit amet dui dapibus, malesuada varius massa. Nam blandit erat cursus, rutrum odio a, laoreet eros. Suspendisse vitae tellus vitae magna facilisis porttitor.\n\nSuspendisse placerat blandit tortor id vestibulum. Maecenas eleifend leo ligula. Quisque vitae enim eget tortor interdum porttitor. Cras turpis sapien, finibus in aliquet at, convallis ut libero. Ut malesuada ligula a risus maximus ultrices. Duis et gravida nulla. Pellentesque et augue ac lacus tincidunt tincidunt ut sed purus. Nullam molestie arcu sit amet lectus viverra, egestas pharetra quam ullamcorper. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed a elementum elit, quis consectetur lacus.\n\nMauris magna diam, porta ac placerat ut, ultrices at urna. Suspendisse auctor, augue lacinia luctus iaculis, turpis turpis maximus magna, sit amet dapibus ex nulla ut sapien. Proin lobortis fringilla tortor, sit amet condimentum erat maximus tincidunt. Donec laoreet nulla neque, porta feugiat urna faucibus id. Vivamus malesuada nibh non ornare consectetur. Proin eu pretium purus. Vestibulum vel eros eu urna volutpat aliquet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisi. Nulla eu erat scelerisque metus congue rutrum eget et libero. Donec quis nisl laoreet lectus ultrices elementum ut ac ex.\n\nIn sit amet mi faucibus, suscipit nulla at, fermentum velit. Pellentesque accumsan sem ipsum, a iaculis lectus sagittis id. Donec ligula nulla, sodales ac ornare eu, sodales sed erat. Maecenas neque ante, fringilla eget rhoncus id, aliquet ac lectus. Nullam eu commodo odio. Quisque vel risus ut orci malesuada fringilla sollicitudin nec velit. Nullam a metus condimentum, convallis ante in, finibus eros. Sed tempus fermentum nibh vitae vulputate. Maecenas venenatis orci sed aliquam dictum. Morbi vestibulum ante et tellus interdum blandit. Nam scelerisque nisl mattis, consequat elit sed, sollicitudin sapien. Sed sed diam a lacus pretium consequat sed vitae nunc. Curabitur commodo massa quis leo consectetur pharetra et eleifend felis.\n\nQuisque venenatis risus volutpat, feugiat urna vitae, posuere lacus. Suspendisse lobortis neque a ante interdum, et condimentum ante feugiat. Pellentesque felis ligula, aliquet ut ex non, mollis condimentum libero. Nulla laoreet, leo in posuere fermentum, nisi nunc rutrum arcu, ac cursus dolor ipsum quis ligula. Aliquam libero erat, tempor sit amet ex vitae, tincidunt sollicitudin nunc. Pellentesque auctor varius pretium. Nullam dignissim faucibus arcu, non facilisis risus varius vel. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam elementum mi ac mauris dignissim auctor. Phasellus facilisis nunc eget velit tincidunt luctus. Etiam posuere, purus eget egestas mollis, orci mauris porta dolor, tempor porta urna orci vulputate nisi. Aenean magna justo, sodales eu dolor at, tristique vulputate dui. Donec mattis tortor at ullamcorper hendrerit. Aenean varius porttitor ultrices. Praesent iaculis, urna commodo ultricies accumsan, odio nisl scelerisque turpis, accumsan ultricies enim sapien ut quam. Quisque id pulvinar diam.\n\nMauris sit amet consequat purus, sed lacinia quam. Sed porta arcu sem, in tempus libero pharetra quis. Pellentesque congue turpis ipsum, in mattis ante tempus nec. Ut a ante laoreet dolor luctus imperdiet id et tortor. Nullam enim augue, condimentum eu porta ac, iaculis at arcu. Morbi leo eros, bibendum ac pretium sit amet, sagittis id dui. Nam interdum erat in lobortis viverra. In id lectus volutpat, commodo justo ac, sodales odio. Suspendisse mollis turpis ut mauris euismod, vitae efficitur tortor hendrerit. Praesent dignissim dolor eu ex commodo, at aliquet ex convallis. Quisque et gravida velit, sit amet rhoncus lectus. Cras neque tellus, lobortis et tempor sodales, mollis vel libero.\n\nPhasellus sapien lorem, consequat a varius eget, congue a lorem. Maecenas magna nisi, tincidunt at est a, blandit vestibulum libero. Suspendisse dictum ipsum at sem ultricies, consequat volutpat augue fermentum. Fusce elementum, nisi et fermentum venenatis, odio nibh mollis magna, non imperdiet arcu orci at nulla. Vestibulum sit amet lectus mi. Nullam accumsan arcu metus, vitae vehicula massa aliquet ac. Suspendisse aliquet lacinia tempus. Phasellus ultrices dignissim augue vitae sollicitudin. Nam aliquet neque non metus sollicitudin sagittis. Fusce vitae risus ultrices, finibus felis quis, porttitor arcu. Proin dolor ligula, gravida eu elit at, convallis sodales lectus. Vestibulum euismod risus at lectus lacinia dictum. Praesent sodales lobortis augue eget aliquet. Nulla varius a mi eget tempus. Ut nec sollicitudin turpis.\n\nPellentesque in massa dictum quam commodo ultrices et ut sapien. Morbi lobortis consectetur ex vel accumsan. Curabitur a metus odio. Mauris dictum risus vel sem blandit sodales. Etiam pretium blandit purus, non rhoncus odio varius at. Donec consequat turpis vel nibh placerat tristique. Nullam et vulputate tellus, vel volutpat mauris. Cras et magna lacus. Donec ut tellus vel augue ultrices dignissim nec ac diam.\n\nSed mollis luctus felis interdum venenatis. Morbi ullamcorper ullamcorper lectus, placerat tincidunt libero sagittis a. Nullam ultrices facilisis dictum. Integer sed sapien justo. Duis quis odio mollis, vulputate libero elementum, rhoncus tortor. In lacus arcu, consectetur at nisl sit amet, aliquet ullamcorper diam. Proin eu mi vitae lacus lacinia ultrices sit amet eu sapien. Maecenas commodo luctus mauris, aliquam rutrum quam dapibus nec. Aenean nisi turpis, ullamcorper quis odio eget, molestie laoreet sapien. Nullam hendrerit sem ac metus pellentesque, in venenatis augue venenatis. Cras a felis cursus, mattis dui vel, tristique massa. Nam velit diam, dapibus non mauris vitae, porta volutpat risus. Maecenas est arcu, ullamcorper in nunc et, tristique dapibus erat. In eleifend dolor vitae arcu blandit commodo.\n\nNulla velit justo, mattis vitae ornare vel, sagittis ac mi. Nunc nisl ante, fringilla ullamcorper turpis at, lobortis pharetra orci. Cras gravida at odio a rutrum. Morbi at porttitor tortor. Donec consectetur condimentum orci id sollicitudin. Aenean eu dolor non dolor varius pellentesque sed accumsan neque. Etiam fermentum feugiat dolor, ac molestie ante lobortis viverra. Praesent lectus justo, viverra at rutrum vel, ultrices nec eros. Etiam ornare, mauris in aliquet aliquam, dolor metus iaculis magna, sed rutrum est tellus a lorem.','0000-00-00 00:00:00','capa1.png',1),(19,'titulo 1.0','<h2><span style=\"font-family:Comic Sans MS,cursive\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet auctor orci eget bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam luctus ex nec lectus imperdiet eleifend. Ut id velit lacinia, lobortis mauris a, eleifend augue. Nunc finibus, ligula at commodo finibus, dui quam tincidunt velit, a placerat ante risus quis enim. Duis vitae blandit mauris. Integer tincidunt leo non lorem rhoncus egestas. Nulla lacus odio, pulvinar ut leo nec, dictum ullamcorper leo. Donec lorem orci, sollicitudin vel commodo vitae, posuere et quam.</span></h2>\r\n\r\n<p><span class=\"marker\">Nunc gravida arcu non felis luctus faucibus. Proin dignissim metus et turpis dictum rhoncus. Integer lobortis lacinia metus, eu eleifend tellus rutrum quis. Duis erat justo, malesuada eu varius ut, interdum sed lorem. Donec facilisis purus nec ante elementum porta. Nunc purus ex, vulputate viverra vehicula sed, rhoncus ac nulla. Ut iaculis pharetra accumsan.<img alt=\"\" src=\"../assets/images//uploads/IMG_20180917_143039333.jpg\" style=\"float:right; height:96px; margin:5px; width:128px\" /></span></p>\r\n\r\n<p>Nam luctus malesuada hendrerit. Integer et congue turpis. Maecenas fringilla neque ut ante ultrices tristique. Sed suscipit magna ac elementum mattis. Mauris commodo sed enim tincidunt bibendum. Aenean hendrerit odio nec tincidunt pharetra. Sed luctus at dolor eu bibendum. Aenean tempor aliquet odio, venenatis vestibulum mi dignissim ac. Cras vel dolor ac velit ultrices suscipit venenatis ac odio.</p>\r\n\r\n<p>Vestibulum molestie faucibus dolor quis molestie. Donec quis dapibus arcu, ac gravida lacus. Vivamus ultricies enim vitae orci tempus, quis lacinia tellus sodales. Fusce cursus dignissim massa, nec dapibus nibh mattis et. Praesent pulvinar augue erat, ut finibus ligula condimentum at. Nam ut lorem ligula. Nulla vel vulputate odio, eu placerat massa. Aliquam metus enim, mollis in sapien id, luctus luctus massa. Integer porttitor sollicitudin enim, eu accumsan urna elementum fringilla. Nulla lobortis porta elit eget efficitur.</p>\r\n\r\n<p><span style=\"color:#3498db\"><u><em>ARQUIVO</em></u></span></p>\r\n\r\n<p>Etiam pretium pellentesque molestie. Suspendisse posuere leo at nisi blandit ultricies. Etiam fringilla accumsan magna, eu pellentesque augue porta vestibulum. Fusce fermentum auctor lectus eu pulvinar. Praesent sed viverra tellus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras eleifend mi eu orci dictum porta.</p>\r\n','2019-08-17 10:37:43','../assets/images/capas/IMG_20180827_14482711017082019103743.jpg',1),(102,'TEsteaaa','<p><a href=\"../assets/files/o-que-e-o-projeto-politico-pedagogico-ppppdf.pdf\" class=\"modalDoc\" onclick=\"return false;\">../assets/files/o-que-e-o-projeto-politico-pedagogico-ppppdf.pdf</a></p>\r\n\r\n<p><a href=\"../assets/files/orientaÃ§oes para o gestor entender, criar e revisar o ppp.pdf\" class=\"modalDoc\" onclick=\"return false;\">aaaaaaaaaa</a></p>\r\n','2019-09-09 20:59:22','../assets/images/capas/49a7a777eb6725f98971a0ed38b887d209092019205922.jpg',1),(103,'Teste funcional','<p><strong>ISSO</strong> <em>&Eacute;</em> <u>UM</u> <s>TESTE</s> <sub>FUNCIONAL</sub> <sup>DESSE</sup> <span style=\"font-family:Comic Sans MS,cursive\">SITE</span></p>\r\n\r\n<p><a href=\"../assets/files/_Colecao_Os_Pensadores__Vol_01.pdf\" class=\"modalDoc\" onclick=\"return false;\"><span style=\"font-family:Courier New,Courier,monospace\"><span style=\"font-size:48px\">ISSO &Eacute; UM LINK DE UM ARQUIVO</span></span><img alt=\"\" src=\"../assets/images//uploads/49a7a777eb6725f98971a0ed38b887d2.jpg\" style=\"float:left; height:480px; margin:7px; width:240px\" /></a></p>\r\n','2019-09-10 14:55:17','../assets/images/capas/e4103355ab7d2da9768ac9dad090518710092019145517.jpg',1),(136,'vamo ve se funciona','<p><em><strong>aaaaaaaaaaaaaaaaaaaa</strong></em></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h1 style=\"text-align:center\"><span style=\"font-family:Georgia,serif\">BBBBBBBBBBBBBBBBBBBBBB</span></h1>\r\n\r\n<p style=\"text-align:center\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">agasgasgagsaggasgsfsafsa asjgasgkjas s asjkghajsghjksah&nbsp; kjahsgjkas&nbsp; a as g sag as gas gskjgjak&nbsp; &nbsp;jha jkh jkhkjahg hadgkhdjg&nbsp; &nbsp;jkhgkdsjhgsk hfk&nbsp; hkkj hkj jkah kjashkjas&nbsp; kj hgasjkhgas gkashgkj haskj kjsh gsakh asjkhgkjshgkashgjkjsahkg saj haskjhkasghk gasjkhg akgsh kja gkajhg kjash gjkash gjakshg jsah kjashg ka jkash kajshg jk gakjg sk gaksjg haskj ghkjash&nbsp;agasgasgagsaggasgsfsafsa asjgasgkjas s asjkghajsghjksah&nbsp; kjahsgjkas&nbsp; a as g sag as gas gskjgjak&nbsp; &nbsp;jha jkh jkhkjahg hadgkhdjg&nbsp; &nbsp;jkhgkdsjhgsk hfk&nbsp; hkkj hkj jkah kjashkjas&nbsp; kj hgasjkhgas gkashgkj haskj kjsh gsakh asjkhgkjshgkashgjkjsahkg saj haskjhkasghk gasjkhg akgsh kja gkajhg kjash gjkash gjakshg jsah kjashg ka jkash kajshg jk gakjg sk gaksjg haskj ghkjash</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:center\"><span class=\"marker\"><span style=\"font-size:16px\"><span style=\"font-family:Times New Roman,Times,serif\"><a class=\"modalDoc\" href=\"../assets/files/declaracao_2017323145.pdf\" class=\"modalDoc\" onclick=\"return false;\" onclick=\"return false;\">DOCUMENTO</a></span></span></span></p>\r\n\r\n<p style=\"text-align:center\"><span class=\"marker\"><span style=\"font-size:16px\"><span style=\"font-family:Times New Roman,Times,serif\"><img alt=\"\" src=\"../assets/images//uploads/FB_IMG_1514837051053.jpg\" style=\"float:left; height:501px; width:512px\" /></span></span></span></p>\r\n','2019-11-01 16:02:05','../assets/images/capas/FB_IMG_151575917609605112019235924.jpg',1);
-/*!40000 ALTER TABLE `conteudo` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `conteudo` (`idConteudo`, `titulo`, `conteudo`, `dataPostagem`, `fotoCapa`, `fk_cont_idUsuario`) VALUES
+(144, 'Polímeros Naturais e o Meio Ambiente', '<p dir=\"ltr\" style=\"text-align:justify\">A borracha da seringueira, polissacar&iacute;deos como o amido da batata e a celulose das plantas verdes, prote&iacute;nas como a queratina das unhas e o col&aacute;geno da pele, e os &aacute;cidos nucleicos s&atilde;o exemplos de pol&iacute;meros naturais org&acirc;nicos. Pol&iacute;meros formados durante o ciclo de crescimento de organismos vivos s&atilde;o, ent&atilde;o, denominados pol&iacute;meros naturais.&nbsp;Estes pol&iacute;meros n&atilde;o causam dano ao meio ambiente por serem biodegrad&aacute;veis. Pesquisas mais recentes indicam, inclusive, que esses pol&iacute;meros podem minimizar ou solucionar os problemas ambientais causados pelos pol&iacute;meros sint&eacute;ticos, que podem demorar at&eacute; 400 anos para se decompor. Ainda, determinados tipos de pol&iacute;meros sint&eacute;ticos podem causar disfun&ccedil;&otilde;es na sa&uacute;de humana e causar at&eacute; mesmo c&acirc;ncer.</p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:justify\">Sua s&iacute;ntese envolve, geralmente, rea&ccedil;&otilde;es catalisadas por enzimas e rea&ccedil;&otilde;es de crescimento de cadeia a partir de mon&ocirc;meros ativados, que s&atilde;o formados dentro das c&eacute;lulas por processos metab&oacute;licos complexos.&nbsp;O amido, um polissacar&iacute;deo, por exemplo tem sido utilizado disperso em uma matriz polim&eacute;rica n&atilde;o-biodegrad&aacute;vel, usualmente polietileno (PE), para facilitar a acessibilidade dos microrganismos ao pol&iacute;mero sint&eacute;tico. Sendo assim, ele pode ser adicionado como aditivo, sendo degradado facilmente por microrganismos, provocando a degrada&ccedil;&atilde;o parcial da matriz.</p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:justify\">Poli&eacute;steres naturais, que s&atilde;o produzidos por uma grande variedade de bact&eacute;rias, como materiais de reserva intracelular, t&ecirc;m sido alvo de muita aten&ccedil;&atilde;o para aplica&ccedil;&otilde;es comerciais, como pol&iacute;meros biodegrad&aacute;veis, vantajosamente produzidos por fontes renov&aacute;veis.</p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:center\"><iframe frameborder=\"0\" height=\"300\" scrolling=\"no\" src=\"https://www.youtube.com/embed/_3euIEYZHa0\" width=\"500\"></iframe></p>\r\n', '2019-11-22 17:00:44', '../assets/images/capas/images(2)22112019170044.jpg', 2017312160),
+(145, 'Arquitetura Barroca', '<p>&nbsp;</p>\r\n\r\n<p>A&nbsp;arquitetura barroca&nbsp;est&aacute; entre as principais formas de manifesta&ccedil;&atilde;o da contrarreforma religiosa cat&oacute;lica por meio da arte. Esta manifesta&ccedil;&atilde;o integra o movimento barroco, que come&ccedil;ou em Roma em 1600 e espalhou-se por toda a Europa e Am&eacute;rica Latina. Al&eacute;m de sua contribui&ccedil;&atilde;o para a arte, a arquitetura barroca representou uma verdadeira revolu&ccedil;&atilde;o urban&iacute;stica.</p>\r\n\r\n<p>A arquitetura barroca integrava o movimento de contrarreforma da Igreja Cat&oacute;lica na arte. Entre os objetivos do movimento estava o transporte do observador para a cena demonstrada. &Eacute; por isso que a arquitetura barroca &eacute; observada principalmente em igrejas, catedrais e monast&eacute;rios. Isso ocorria para demonstrar a impon&ecirc;ncia da arte crist&atilde;. H&aacute; exemplos tamb&eacute;m em edif&iacute;cios particulares, especialmente mans&otilde;es urbanas ou rurais em uma clara demonstra&ccedil;&atilde;o do pensamento religioso. Tamb&eacute;m nesta &eacute;poca h&aacute; a cria&ccedil;&atilde;o de parques e jardins a circundar pr&eacute;dios residenciais importantes.</p>\r\n\r\n<p>Em consequ&ecirc;ncia da disposi&ccedil;&atilde;o desses edif&iacute;cios, o reordenamento urbano come&ccedil;a a exigir um planeamento ainda n&atilde;o existente. Para os arquitetos barrocos, os edif&iacute;cios eram uma esp&eacute;cie de escultura.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Caracter&iacute;sticas:</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n	<li>Extravag&acirc;ncia</li>\r\n	<li>\r\n	<p>Incomum e irregular</p>\r\n	</li>\r\n	<li>\r\n	<p>Uso do movimento</p>\r\n	</li>\r\n	<li>\r\n	<p>Proximidade do real</p>\r\n	</li>\r\n	<li>\r\n	<p>Aplica&ccedil;&atilde;o da curva em oposi&ccedil;&atilde;o &agrave; ideia est&aacute;tica dos pr&eacute;dios</p>\r\n	</li>\r\n	<li>\r\n	<p>As igrejas do per&iacute;odo barroco s&atilde;o marcadas por ab&oacute;badas, arcos e contrafortes</p>\r\n	</li>\r\n	<li>\r\n	<p>Tentativa de levar o observador a se imaginar no infinito</p>\r\n	</li>\r\n	<li>\r\n	<p>Efeitos cenogr&aacute;ficos teatrais</p>\r\n	</li>\r\n	<li>\r\n	<p>Mistura da pintura e da escultura</p>\r\n	</li>\r\n	<li>\r\n	<p>Manipula&ccedil;&atilde;o da luz</p>\r\n	</li>\r\n</ul>\r\n', '2019-11-22 17:06:15', '../assets/images/capas/basilica22112019170615.jpg', 2017312160),
+(146, 'A Ditadura Militar no Brasil', '<p style=\"text-align:justify\">A&nbsp;ditadura militar no Brasil&nbsp;durou 21 anos, teve 5 mandatos&nbsp;militares&nbsp;e instituiu 16 atos institucionais &ndash; mecanismos legais que se sobrepunham &agrave;&nbsp;constitui&ccedil;&atilde;o. Nesse per&iacute;odo houve restri&ccedil;&atilde;o &agrave; liberdade, repress&atilde;o aos opositores do regime e censura. Antes de entender o per&iacute;odo militar brasileiro, &eacute; preciso compreender os eventos que levaram at&eacute; ele &ndash; os antecedentes do golpe militar de 1964.&nbsp;O primeiro momento &eacute; marcado por&nbsp;J&acirc;nio Quadro<a href=\"https://www.politize.com.br/presidentes-brasileiros-renunciaram/\" rel=\"noopener\" target=\"_blank\">s</a>&nbsp;&ndash; que assumiu a presid&ecirc;ncia em 1961 e nesse mesmo ano&nbsp;<strong>renunciou</strong>&nbsp;ao cargo. A partir disso, seu vice &ndash;&nbsp;<strong>Jo&atilde;o Goulart</strong>&nbsp;&ndash; foi quem assumiu seu lugar. A quest&atilde;o &eacute; que&nbsp;<strong>J&acirc;nio Quadros e Jo&atilde;o Goulart</strong>&nbsp;eram de partidos pol&iacute;ticos diferentes e tinham&nbsp;<strong>projetos opostos para o pa&iacute;s.&nbsp;</strong>O projeto de Jango &ndash; apelido por qual era conhecido o novo presidente &ndash; estava apoiado em&nbsp;<strong>&ldquo;reformas de base&rdquo;</strong>&nbsp;&ndash; como fiscal, administrativa, universit&aacute;ria e, principalmente, agr&aacute;ria. Al&eacute;m disso, o presidente era um representante&nbsp;trabalhista, do legado de&nbsp;Get&uacute;lio Vargas.</p>\r\n\r\n<p style=\"text-align:justify\">Assim, como mencionado, a&nbsp;<strong>reforma agr&aacute;ria</strong>&nbsp;era uma das principais propostas do governo Jango e tamb&eacute;m a que mais gerava pol&ecirc;mica. Afinal, era combatida pelos&nbsp;<strong>grandes latifundi&aacute;rios</strong>&nbsp;e por grande parte dos&nbsp;<strong>parlamentares&nbsp;</strong>no&nbsp;Congresso Nacional.</p>\r\n\r\n<p style=\"text-align:justify\">Assim, esse foi um momento de bastante efervesc&ecirc;ncia e&nbsp;<strong>polariza&ccedil;&atilde;o pol&iacute;tica</strong>&nbsp;entre a popula&ccedil;&atilde;o. Houve apoio de parte da popula&ccedil;&atilde;o para a derrubada do governo &ndash; principalmente dos setores mais&nbsp;conservadores&nbsp;da sociedade e de partes da classe m&eacute;dia. &Eacute; por esse motivo, inclusive, que muitas vezes o termo&nbsp;<strong>ditadura civil-militar</strong>&nbsp;&eacute; utilizado.</p>\r\n\r\n<p style=\"text-align:justify\">Vale lembrar ainda que eram tempos de&nbsp;Guerra Fria&nbsp;e havia medo de um suposto &ldquo;perigo&nbsp;comunista&rdquo;. Assim, no conflito que&nbsp;come&ccedil;ou logo ap&oacute;s o final da&nbsp;Segunda Guerra Mundial&nbsp;e foi respons&aacute;vel pela bipolariza&ccedil;&atilde;o ideol&oacute;gica &ndash; em que os&nbsp;<strong>Estados Unidos</strong>&nbsp;&ndash; defensores do capitalismo &ndash; e a&nbsp;<strong>Uni&atilde;o Sovi&eacute;tica</strong>&nbsp;&ndash; defensora do socialismo &ndash; disputavam hegemonia econ&ocirc;mica, pol&iacute;tica e militar no mundo.</p>\r\n\r\n<p style=\"text-align:justify\">Nesse cen&aacute;rio, os Estados Unidos, com medo da expans&atilde;o socialista &ndash; principalmente depois da Revolu&ccedil;&atilde;o Cubana &ndash; passou a intervir ativamente nos pa&iacute;ses da Am&eacute;rica Latina para impedir o crescimento das ideias consideradas comunistas. As&nbsp;ditaduras&nbsp;militares na regi&atilde;o foram ent&atilde;o mecanismos para frear esses movimentos e tanto no Brasil, quanto em outros pa&iacute;ses latino americanos, foram&nbsp;<strong>apoiadas pelos Estados Unidos.</strong></p>\r\n\r\n<p style=\"text-align:justify\">Em 2014,&nbsp;documentos liberados pelos Estados Unidos&nbsp;&ndash; e investigados pela Comiss&atilde;o Nacional da Verdade &ndash; revelaram que mais de 300 militares passaram uma temporada na Escola das Am&eacute;ricas (o instituto de guerra dos Estados Unidos no Panam&aacute;). L&aacute;, entre 1954 e 1996, os militares brasileiros tiveram aulas te&oacute;ricas e pr&aacute;ticas sobre tortura.</p>\r\n\r\n<p style=\"text-align:justify\">Al&eacute;m disso,&nbsp;grava&ccedil;&otilde;es liberadas pela Casa Branca&nbsp;das conversas entre o ex-presidente John Kennedy e o embaixador do Brasil no momento &ndash; Lincoln Gordon &ndash; comprovam o envolvimento estadunidense na ditadura militar brasileira.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"modalDoc\" href=\"../assets/files/Constitucionalismo sob a ditadura.pdf\" class=\"modalDoc\" onclick=\"return false;\" onclick=\"return false;\"><strong><u>LEIA O LIVRO: &quot;CONSTITUCIONALISMO SOB A DITADURA</u><u>&quot; CLICANDO NESTE LINK</u></strong></a></p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n', '2019-11-22 17:24:14', '../assets/images/capas/ditadura22112019172414.jpg', 2017312160),
+(147, 'História e Significado do Flamenco', '<p style=\"text-align:justify\">Roupas chamativas, m&uacute;sica, dan&ccedil;a atraente,&nbsp;<strong>castanhola</strong>,&nbsp;<strong>Espanha</strong>. Com essas palavras pode-se resumir&nbsp;<strong>o flamenco</strong>. Por tr&aacute;s desse pequeno resumo, essa t&iacute;pica&nbsp;<strong>dan&ccedil;a espanhola</strong>&nbsp;esconde uma hist&oacute;ria e um significado, n&atilde;o s&oacute; para o povo espanhol, mas tamb&eacute;m para os mouras, judeus e, principalmente, ciganos. O passado do flamenco &eacute; regado de dor, persegui&ccedil;&atilde;o e sofrimento. Fortemente influenciado pela cultura cigana, e com ra&iacute;zes na cultura mourisca e &aacute;rabe, o flamenco surgiu em uma fus&atilde;o dessas culturas em um momento hist&oacute;rico dif&iacute;cil para eles. Para aliviarem o seu sofrimento, refletiam na&nbsp;<strong>m&uacute;sica flamenca</strong>&nbsp;o esp&iacute;rito desesperado das lutas, esperan&ccedil;a, orgulho e festas daquela &eacute;poca.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">Essa, at&eacute; ent&atilde;o, m&uacute;sica espanhola, consistia apenas no canto. Somente depois que os outros elementos, como a guitarra, palmas, sapateado, inclusive a castanhola e dan&ccedil;a, foram acrescentados, transformando-o tamb&eacute;m em uma dan&ccedil;a muito t&iacute;pica e apreciada por todos. Atualmente, diferente do passado, pode-se at&eacute; t&ecirc;-lo somente com dan&ccedil;a e toque (guitarra), sendo tudo muito marcante: express&atilde;o facial, m&atilde;os e sapateado. A&nbsp;<strong>roupa flamenca</strong>&nbsp;era composta por um vestido modesto, de maneira parecida como se vestiam as camponesas, al&eacute;m de usarem bijouterias ou pulseiras vistosas e uma flor no cabelo. Hoje, com a moderniza&ccedil;&atilde;o e a influ&ecirc;ncia francesa, pode-se perceber acess&oacute;rios e vestidos com cores bem vivas e atraentes. Muito se v&ecirc; do vermelho. Os vestidos s&atilde;o muito justos e com grandes babados nas pontas. O penteado tamb&eacute;m &eacute; fundamental para a composi&ccedil;&atilde;o do todo, deixando o conjunto mais completo.</p>\r\n\r\n<p style=\"text-align:justify\">Com seus altos e baixos, ele viveu sua &eacute;poca de ouro nos anos de 1869 e 1910, em que foram criados &quot;caf&eacute;s cantantes&quot;, onde as pessoas cantavam e dan&ccedil;avam ao som da&nbsp;<strong>m&uacute;sica flamenca</strong>. Com a fama destes locais, os guitarristas se solidificaram nesse meio, e tornaram-se essenciais na composi&ccedil;&atilde;o do mesmo, criando assim a atual&nbsp;<strong>guitarra flamenca</strong>. A sua hist&oacute;ria foi perdida com o tempo, j&aacute; que os ciganos tinham uma cultura bastante oral e, para completar, a persegui&ccedil;&atilde;o era muito intensa. Sendo assim, fica dif&iacute;cil dizer ao certo, qual a origem da palavra, que at&eacute; hoje ainda &eacute; meio confusa e sem uma defini&ccedil;&atilde;o concreta. Da mesma maneira, o local da sua dissemina&ccedil;&atilde;o tamb&eacute;m ainda &eacute; contestado. Por&eacute;m, a maioria afirma ter sido nos arredores de Sevilha, Jerez e C&aacute;diz. Outra curiosidade &eacute; que&nbsp;<strong>o flamenco espanhol</strong>&nbsp;n&atilde;o &eacute; considerado uma arte por todos. Alguns alegam que, por n&atilde;o conter uma raiz &uacute;nica, n&atilde;o pode ser considerado, por exemplo, uma dan&ccedil;a folcl&oacute;rica.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">O flamenco espanhol se divide em 3 categorias:&nbsp;<strong>Flamenco</strong>&nbsp;<strong>Jondo</strong>&nbsp;ou Antigo, que &eacute; o mais tradicional;&nbsp;<strong>Flamenco</strong>&nbsp;<strong>Cl&aacute;ssico</strong>, o mais moderno e que utiliza novas t&eacute;cnicas; e&nbsp;<strong>o Flamenco Contempor&acirc;neo</strong>, uma mistura dos outros dois j&aacute; citados , adicionando a eles o jazz e o fusion. Essas categorias se subdividem&nbsp;em palos. Os&nbsp;palos s&atilde;o estruturas r&iacute;tmicas caracter&iacute;sticas do flamenco.&nbsp;<strong>O flamenco no Brasil</strong>&nbsp;surgiu nos anos 50, quando os imigrantes espanh&oacute;is come&ccedil;aram a chegar no pa&iacute;s. Com mais de 4 gera&ccedil;&otilde;es de artistas de origem brasileira, ele ainda busca seu espa&ccedil;o no territ&oacute;rio, tendo ainda pouca visibilidade e apoio, mas com uma crescente aceita&ccedil;&atilde;o e dissemina&ccedil;&atilde;o. Fica evidente que o flamenco &eacute; a mais verdadeira e harm&ocirc;nica integra&ccedil;&atilde;o entre arte, cultura e teatralidade na Espanha. Ela, por si s&oacute;, contagia e faz lembrar de um passado distante, por&eacute;m marcante, de um povo que, para aliviar a dor, usou a m&uacute;sica como a mais bela forma de arte e desabafo.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p style=\"text-align:center\"><iframe frameborder=\"0\" height=\"300\" scrolling=\"no\" src=\"https://www.youtube.com/embed/cm9IYSDxagc\" width=\"500\"></iframe></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p style=\"text-align:center\">Hoje o flamengo consegue sobreviver atrav&eacute;s de adapta&ccedil;&otilde;es art&iacute;sticas que o modernizaram para os dias atuais:</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p style=\"text-align:center\"><iframe align=\"middle\" frameborder=\"0\" height=\"300\" scrolling=\"no\" src=\"https://www.youtube.com/embed/p_4coiRG_BI\" width=\"500\"></iframe></p>\r\n', '2019-11-24 11:19:48', '../assets/images/capas/flamenco24112019111948.jpg', 2017312160),
+(148, 'Tudo sobre a Revolução Industrial: Causas, Impactos, Etapas, Marcos e Avanços. Trabalho Artesanal X Manufatura', '<p style=\"text-align:justify\">A&nbsp;<strong>Revolu&ccedil;&atilde;o industrial</strong>&nbsp;foi um conjunto de mudan&ccedil;as que aconteceram na Europa nos s&eacute;culos XVIII e XIX. A principal particularidade dessa revolu&ccedil;&atilde;o foi a substitui&ccedil;&atilde;o do trabalho artesanal pelo assalariado e com o uso das m&aacute;quinas. At&eacute; o final do s&eacute;culo XVIII a maioria da popula&ccedil;&atilde;o europeia vivia no campo e produzia o que consumia. De maneira artesanal o produtor dominava todo o processo produtivo. Apesar de a produ&ccedil;&atilde;o ser predominantemente artesanal, pa&iacute;ses como a Fran&ccedil;a e a Inglaterra, possu&iacute;am manufaturas. As&nbsp;<strong>manufaturas</strong>&nbsp;eram grandes oficinas onde diversos artes&atilde;os realizavam as tarefas manualmente, entretanto subordinados ao propriet&aacute;rio da manufatura.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">A Inglaterra foi precursora na Revolu&ccedil;&atilde;o Industrial devido a diversos fatores, entre eles: possuir uma rica burguesia, o fato do pa&iacute;s possuir a mais importante zona de livre com&eacute;rcio da Europa, o &ecirc;xodo rural e a localiza&ccedil;&atilde;o privilegiada junto ao mar o que facilitava a explora&ccedil;&atilde;o dos mercados ultramarinos. Como muitos empres&aacute;rios ambicionavam lucrar mais, o oper&aacute;rio era explorado sendo for&ccedil;ado a trabalhar at&eacute; 15 horas por dia em troca de um sal&aacute;rio baixo. Al&eacute;m disso, mulheres e crian&ccedil;as tamb&eacute;m eram obrigadas a trabalhar para sustentarem suas fam&iacute;lias. Diante disso, alguns trabalhadores se revoltaram com as p&eacute;ssimas condi&ccedil;&otilde;es de trabalho oferecidas, e come&ccedil;aram a sabotar as m&aacute;quinas, ficando conhecidos como &ldquo;<strong>os quebradores de m&aacute;quinas</strong>&ldquo;. Outros movimentos tamb&eacute;m surgiram nessa &eacute;poca com o objetivo de defender o trabalhador.<br />\r\nO trabalhador em raz&atilde;o deste processo perdeu o conhecimento de todo a t&eacute;cnica de fabrica&ccedil;&atilde;o passando a executar apenas uma etapa.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<h2 style=\"text-align:justify\"><strong>A Primeira etapa da Revolu&ccedil;&atilde;o Industrial</strong></h2>\r\n\r\n<p style=\"text-align:justify\">Entre 1760 a 1860, a&nbsp;<strong>Revolu&ccedil;&atilde;o Industrial</strong>&nbsp;ficou limitada, primeiramente, &agrave; Inglaterra. Houve o aparecimento de ind&uacute;strias de tecidos de algod&atilde;o, com o uso do tear mec&acirc;nico. Nessa &eacute;poca o aprimoramento das m&aacute;quinas a vapor contribuiu para a continua&ccedil;&atilde;o da Revolu&ccedil;&atilde;o.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<h2 style=\"text-align:justify\"><strong>A Segunda Etapa da Revolu&ccedil;&atilde;o Industrial</strong></h2>\r\n\r\n<p style=\"text-align:justify\">A segunda etapa ocorreu no per&iacute;odo de 1860 a 1900, ao contr&aacute;rio da primeira fase, pa&iacute;ses como Alemanha, Fran&ccedil;a, R&uacute;ssia e It&aacute;lia tamb&eacute;m se industrializaram. O emprego do a&ccedil;o, a utiliza&ccedil;&atilde;o da energia el&eacute;trica e dos combust&iacute;veis derivados do petr&oacute;leo, a inven&ccedil;&atilde;o do motor a explos&atilde;o, da locomotiva a vapor e o desenvolvimento de produtos qu&iacute;micos foram as principais inova&ccedil;&otilde;es desse per&iacute;odo.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<h2 style=\"text-align:justify\"><strong>A Terceira Etapa da Revolu&ccedil;&atilde;o Industrial</strong></h2>\r\n\r\n<p style=\"text-align:justify\">Alguns historiadores t&ecirc;m considerado os avan&ccedil;os tecnol&oacute;gicos do s&eacute;culo XX e XXI como a terceira etapa da Revolu&ccedil;&atilde;o Industrial. O computador, o fax, a engenharia gen&eacute;tica, o celular seriam algumas das inova&ccedil;&otilde;es dessa &eacute;poca.</p>\r\n', '2019-11-24 11:53:11', '../assets/images/capas/063_original_7035-jpg24112019115311.jpg', 1517527),
+(150, 'A Origem dos Esportes', '<p style=\"text-align:justify\">Voc&ecirc; tem alguma no&ccedil;&atilde;o de quando o Esporte surgiu? Pois &eacute;, realmente &eacute; dif&iacute;cil relatar uma data exata sobre tal surgimento. Dizem que o Esporte surgiu h&aacute; muitos e muitos anos, o que n&atilde;o nos permite apontar uma data t&atilde;o precisa para esse acontecimento. H&aacute; quem diz que desde a era dos seres primitivos j&aacute; ocorria &agrave; pr&aacute;tica do esporte, quando para sobreviver precisavam lutar, correr, saltar, lan&ccedil;ar objetos, praticar o arco e flecha, nadar, entre outras atividades as quais hoje possuem modalidades esportivas espec&iacute;ficas. Nessa mesma &eacute;poca relacionavam-se os esportes aos rituais e pr&aacute;ticas religiosas, os cultos aos deuses.<br />\r\n<br />\r\n<strong>Alguns ind&iacute;cios sobre o in&iacute;cio da realiza&ccedil;&atilde;o de algumas pr&aacute;ticas esportivas:</strong><br />\r\n<br />\r\nPor volta de 1850 a.C., foi descoberto no Egito, na Necr&oacute;pole de Beni-Hassan, um mural com imagens que mostravam a luta em v&aacute;rios movimentos. Na Irlanda ocorreram arremessos em 1830 a.C. e salto em altura em 1160 a.C. Vest&iacute;gios dos primeiros esquiadores s&atilde;o apontados na Noruega e dos primeiros remadores e pescadores na R&uacute;ssia.<br />\r\n<br />\r\n<strong>Outros importantes ind&iacute;cios s&atilde;o retratados por Duarte (2003, p. 13):</strong><br />\r\n<br />\r\nEm 1500 a.C., em Creta, praticava-se o pugilismo. Em 1300 a.C. a 800 a.C. j&aacute; havia o jogo da pelota. Homero, em 1200 a.C., faz versos para retratar os Jogos F&uacute;nebres, no Canto XXIII da Il&iacute;ada [&hellip;] Em 776 a.C. temos os Jogos Ol&iacute;mpicos gregos, com import&acirc;ncia local e regional, que depois passam a ser o pr&oacute;prio calend&aacute;rio, pois eram disputados de quatro em quatro anos. As primeiras &lsquo;corridas de fundo&rsquo;, com 4 mil metros e 164 cent&iacute;metros, s&atilde;o disputadas em 720 a.C. A luta e o pentatlo (corrida, disco, luta, salto em dist&acirc;ncia e dardo) est&atilde;o nos Jogos de 708 a.C. Em 648 a.C. entra o puligismo, e em 632 a.C. ocorrem as competi&ccedil;&otilde;es para juniores (16 a 18 anos) e as corridas de quadrigas.<br />\r\n<br />\r\nData-se que o profissionalismo no esporte foi considerado a partir de 580 a.C., onde ocorreu a institui&ccedil;&atilde;o de pr&ecirc;mios em dinheiro aos campe&otilde;es, tais campe&otilde;es recebiam premia&ccedil;&otilde;es de 500 dracmas e &acirc;nforas de &oacute;leo.<br />\r\n<br />\r\n&ldquo;De 75 d.C. a 83 d.C., o esporte ganhou mais destaque, e novas competi&ccedil;&otilde;es ocorreram na Gr&eacute;cia e em Roma&rdquo; (DUARTE, 2003, p. 14).<br />\r\n<br />\r\nEm 1336 e 1492 apresentam-se as not&iacute;cias iniciais sobre o alpinismo. Praticavam-se o sum&ocirc;, por volta de 754 a.D., nos templos Shinto. Em 1684 &eacute; conhecida a arena circular.<br />\r\n<br />\r\nAponta-se que o esqui surgiu na Finl&acirc;ndia e na Su&eacute;cia em 1771. Em 1603 a nata&ccedil;&atilde;o torna-se obrigat&oacute;ria no Jap&atilde;o.<br />\r\n<br />\r\nE finalmente, n&atilde;o deixar&iacute;amos de comentar sobre um dos esportes mais inspiradores para os brasileiros. N&atilde;o &eacute; t&atilde;o dif&iacute;cil adivinhar a que estamos nos referindo! Sim, isso mesmo, a nossa paix&atilde;o nacional, o Futebol. Veja alguns relatos que j&aacute; d&atilde;o in&iacute;cio a esse esporte.</p>\r\n\r\n<p style=\"text-align:justify\">Na China, em 2600 a.C. surge o kemari, uma inven&ccedil;&atilde;o do sr. Yang-Ts&eacute;. O kemari era composto por oito jogadores de cada lado em um campo quadrado de 14m separado por um fio de seda amarrado em duas estacas fincadas no ch&atilde;o. Os jogadores deviam passar a bola de 22 cm de di&acirc;metro, al&eacute;m das estacas, com os p&eacute;s, sem deixar a bola cair. A bola era preenchida com cabelos para que ficasse cheia. Pensa-se que o futebol surgiu a partir desse acontecimento, mas h&aacute; muitas d&uacute;vidas e pol&ecirc;micas.<br />\r\n<br />\r\nNa Gr&eacute;cia antiga havia um jogo disputado com bola, a bola era feita de bexiga de boi e revestida por uma capa de couro. Surgiu em 1488 o esporte chamado c&aacute;lcio florentino, considerado por muitos como o &ldquo;pai do futebol&rdquo;. Seu surgimento deu-se precisamente em 15 de fevereiro de 1488, na Pra&ccedil;a Santa Croce, de Floren&ccedil;a. Era composto por duas equipes, Brancos X Verdes, e cada equipe possu&iacute;a mais de 25 jogadores, com defensores, passadores e corredores. H&aacute; relatos de que em 1660 iniciaram os regulamentos no futebol, como o n&uacute;mero de participantes no jogo e o tamanho do terreno (80 m x 120 m). Tamb&eacute;m surgem os gols, inicialmente chamados de arcos. O pioneirismo do futebol &eacute; disputado entre Franceses e Ingleses, mas h&aacute; quem afirma que a organiza&ccedil;&atilde;o &eacute; inglesa.<br />\r\n<br />\r\nDe acordo com Duarte (2003, p. 214 &ndash; 215) &ldquo;O jogo come&ccedil;ou a ser organizado h&aacute; 150 anos [&hellip;] Em 1868 surge a figura do &aacute;rbitro [&hellip;] Em 1891 aparecem as redes&rdquo;.<br />\r\n<br />\r\n&ldquo;Em 1907 temos a lei do impedimento, alterada em 1926.O futebol como &eacute; hoje conhecido chegou &agrave; Fran&ccedil;a em 1872, &agrave; Su&iacute;&ccedil;a, em 1879, &agrave; B&eacute;lgica, em 1880; &agrave; Alemanha, Dinamarca e Holanda, em 1889; &agrave; It&aacute;lia em 1893; aos pa&iacute;ses da Europa Central, em 1900. Em 1904, surge a Federa&ccedil;&atilde;o de Futebol Association (FIFA)&rdquo;. (DUARTE, 2003, p. 215).<br />\r\n<br />\r\nHistoriadores relatam que o futebol surgiu no Brasil atrav&eacute;s dos marinheiros de navios ingleses, holandeses e franceses que na segunda metade do s&eacute;culo XIX vinham ao nosso pa&iacute;s. &ldquo;Eles jogavam em nossas praias, durante as paradas dos seus navios, iam embora e levavam a bola&rdquo;. (DUARTE, 2003, p. 215). Outros historiadores informam que foi em Jundia&iacute;, em 1882, que o futebol come&ccedil;ou a ser jogado no Brasil, mais precisamente pelos funcion&aacute;rios da S&atilde;o Paulo Railway, e na mesma &eacute;poca funcion&aacute;rios da Estrada de Ferro Leopoldina come&ccedil;am a jogar o futebol no Rio de Janeiro.<br />\r\n<br />\r\n<strong>Mas ent&atilde;o surge uma d&uacute;vida, no Brasil, qual foi o primeiro esporte moderno praticado?</strong><br />\r\n<br />\r\nH&aacute; relatos de que o primeiro esporte moderno praticado em nosso pa&iacute;s foi o turfe, na cidade do Rio de Janeiro. Podemos considerar o turfe, basicamente, como as corridas de cavalos. O turfe data seu in&iacute;cio em meados de 1810, e era organizado pelos comerciantes ingleses, na Praia de Botafogo.<br />\r\n<br />\r\nPor&eacute;m, antes disso, bem antes disso, esportes diversos j&aacute; eram praticados pelos povos ind&iacute;genas, como arco e flecha, canoagem, nata&ccedil;&atilde;o, corridas, entre v&aacute;rios outros. &Eacute; not&oacute;rio que na &eacute;poca n&atilde;o eram considerados atividades esportivas, visto que sua utiliza&ccedil;&atilde;o era pela necessidade e utilitarismo.</p>\r\n\r\n<p style=\"text-align:justify\"><strong>No Brasil Imperial (1822 &ndash; 1889) surge a pr&aacute;tica da capoeira, atividade trazida pelos africanos</strong><br />\r\n<br />\r\nNa segunda metade do s&eacute;culo XIX, os alem&atilde;es, n&atilde;o s&oacute; apresentaram, mas trouxeram a gin&aacute;stica ao nosso pa&iacute;s. Fundaram sociedades de gin&aacute;stica, em 1888 a Uni&atilde;o de Gin&aacute;stica Alem&atilde;, em S&atilde;o Paulo e em 1892 a Sociedade Turnerbund, em Porto Alegre. A Miss&atilde;o Militar Francesa participou, em 1909, na forma&ccedil;&atilde;o da primeira escola de Educa&ccedil;&atilde;o F&iacute;sica no Brasil, a For&ccedil;a P&uacute;blica de S&atilde;o Paulo.<br />\r\n<br />\r\nEm 1955, o Tiro com Arco chegou ao Brasil trazido pelo comiss&aacute;rio de Voo da Panair do Brasil, Sr. Adolpho Porta, quando em Lisboa, Portugal, conheceu o marceneiro Arlindo, que possu&iacute;a um stand de tiro com arco. Arlindo, vendo Sr. Adolpho interessado no esporte, convidou-o a ser s&oacute;cio do Gl&oacute;ria Atl&eacute;tico Clube, local onde praticava o Tiro. Em 1991, foi criada a Confedera&ccedil;&atilde;o Brasileira de Tiro com Arco.<br />\r\n<br />\r\nO remo foi considerado o principal esporte brasileiro na segunda metade do s&eacute;culo XIX at&eacute; o in&iacute;cio do s&eacute;culo XX, surgindo a cria&ccedil;&atilde;o de diversos clubes no Rio de Janeiro, em S&atilde;o Paulo e no Rio Grande do Sul.<br />\r\n<br />\r\nTamb&eacute;m nessa mesma &eacute;poca introduziram no Brasil a nata&ccedil;&atilde;o competitiva, o basquete, o t&ecirc;nis, a esgrima, e o j&aacute; citado futebol. Interessante citar um dos marcos do futebol: a ruptura do futebol elitizado visto o alcance da primeira divis&atilde;o do futebol carioca pelo Vasco da Gama com uma equipe formada por alguns jogadores negros.<br />\r\n<br />\r\nInstitucionalmente falando, a hist&oacute;ria do esporte brasileiro iniciou em 1937, pela cria&ccedil;&atilde;o, atrav&eacute;s da Lei n&ordm; 378 de 13/03/1937, da Divis&atilde;o de Educa&ccedil;&atilde;o F&iacute;sica do Minist&eacute;rio da Educa&ccedil;&atilde;o e Cultura, onde teve como diretores: Major Jo&atilde;o Barbosa Leite, Coronel Caio M&aacute;rio de Noronha Miranda, Professor Alfredo Colombo, General Ant&ocirc;nio Pires de Castro Filho, Coronel Genival de Freitas e Coronel Arthur Orlando da Costa Ferreira.<br />\r\n<br />\r\nNo ano de 1970, tal divis&atilde;o foi transformada no Departamento de Educa&ccedil;&atilde;o F&iacute;sica e Desportos do Minist&eacute;rio da Educa&ccedil;&atilde;o e Cultura, compondo sua dire&ccedil;&atilde;o o Coronel Eric Tinoco Marques e o Coronel Osny Vasconcellos.<br />\r\n<br />\r\nEm 1978 o departamento transformou-se em Secretaria de Educa&ccedil;&atilde;o F&iacute;sica e Desporto, ainda pertencente ao Minist&eacute;rio da Educa&ccedil;&atilde;o. Permaneceu assim at&eacute; 1989, quando ent&atilde;o ocorreu, em 1990 sob presid&ecirc;ncia de Fernando Collor de Melo, a extin&ccedil;&atilde;o da Secretaria ligada ao Minist&eacute;rio da Educa&ccedil;&atilde;o e cria&ccedil;&atilde;o da Secretaria de Desportos da Presid&ecirc;ncia da Rep&uacute;blica. Esta secretaria teve como secret&aacute;rios Arthur Antunes Coimbra &ndash; Zico, de mar&ccedil;o de 1991 a abril de 1991 e Bernad Rajzman, de abril de 1991 a outubro de 1992.<br />\r\n<br />\r\nEm 1992, ap&oacute;s a sa&iacute;da de Collor da presid&ecirc;ncia, o v&iacute;nculo do esporte voltou ao Minist&eacute;rio da Educa&ccedil;&atilde;o, com a Secretaria de Desportos, possuindo os seguintes secret&aacute;rios: M&aacute;rcio Baroukel de Souza, de 1992 a 1994, e Marcos Andr&eacute; da Costa Berenguer, de 1994 a 1995.<br />\r\n<br />\r\nEm 1955 foi criado o Minist&eacute;rio de Estado Extraordin&aacute;rio do Esporte, pelo ent&atilde;o presidente Fernando Henrique Cardoso, e &agrave; Secretaria de Desporto do Minist&eacute;rio da Educa&ccedil;&atilde;o coube a presta&ccedil;&atilde;o do apoio t&eacute;cnico administrativo.<br />\r\n<br />\r\nNo m&ecirc;s de mar&ccedil;o de 1955, a secretaria transforma-se no Instituto Nacional de Desenvolvimento do Desporto (INDESP), passando a ser subordinado ao Minist&eacute;rio Extraordin&aacute;rio do Esporte.<br />\r\n<br />\r\nEm 31 de dezembro de 1988 cria-se o Minist&eacute;rio do Esporte e Turismo, ainda por Fernando Henrique Cardoso, atrav&eacute;s da Medida Provis&oacute;ria n&ordm; 1.794-8. O INDESP passa ent&atilde;o a subordinar-se a esse novo Minist&eacute;rio.<br />\r\n<br />\r\nEm 2000 surge a Secretaria Nacional de Esporte, promovendo a extin&ccedil;&atilde;o do INDESP. Em 2003, o presidente Luiz In&aacute;cio Lula da Silva separa o Minist&eacute;rio do Esporte e Turismo, o esporte passa a ter um minist&eacute;rio pr&oacute;prio, assumido pelo deputado federal Agnelo Queiroz, que posteriormente foi substitu&iacute;do, em 2006, pelo secret&aacute;rio executivo, Orlando Silva Junior. Em 2011 quem toma a posse &eacute; o ministro Aldo Rebelo.</p>\r\n', '2019-11-24 12:02:21', '../assets/images/capas/139052-004-B14ACD7624112019120221.jpg', 1517527),
+(151, 'Future Continuous', '<p style=\"text-align:justify\">O&nbsp;<em>Future Continuous or Progressive</em>&nbsp;(Futuro Cont&iacute;nuo ou Progressivo) &eacute; um tempo verbal usado para&nbsp;<strong>indicar a&ccedil;&otilde;es que estar&atilde;o ocorrendo no futuro</strong>. Ou seja, ele descreve um fato que acontecer&aacute; num momento espec&iacute;fico no futuro. O future continuous &eacute; comumente usado nas suposi&ccedil;&otilde;es, avisos, perguntas ou falas sobre planos para o futuro e ainda, para indicar promessas. Por ser um tempo verbal que expressa a&ccedil;&otilde;es futuras, muitas vezes &eacute; acompanhado por express&otilde;es de tempo.</p>\r\n\r\n<p style=\"text-align:justify\">As mais utilizadas s&atilde;o: tomorrow (amanh&atilde;); tomorrow morning (amanh&atilde; de manh&atilde;); next week (pr&oacute;xima semana); next month (pr&oacute;ximo m&ecirc;s); next year (pr&oacute;ximo ano), etc.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<h3>Forma&ccedil;&atilde;o do Future Continuous</h3>\r\n\r\n<p>O Future Continuous &eacute; formado pelo simple future do verbo to be (will be) + ger&uacute;ndio (-ing) do verbo principal.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3>Forma Afirmativa (<em>Affirmative</em>&nbsp;<em>Form</em>)</h3>\r\n\r\n<p>Para a forma&ccedil;&atilde;o de frases afirmativas no future continuous segue-se o padr&atilde;o de constru&ccedil;&atilde;o abaixo:</p>\r\n\r\n<p style=\"text-align:center\"><strong>Sujeito+simple future do verbo to be (will be)+verbo principal com &ndash;ing+ complemento</strong></p>\r\n\r\n<p><strong>Exemplo</strong>: You will be reading in the library. (Voc&ecirc; estar&aacute; lendo na biblioteca)</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3>Forma Negativa (<em>Negative</em>&nbsp;<em>Form</em>)</h3>\r\n\r\n<p>Para construir frases negativas no future continuous acrescenta-se o &ldquo;not&rdquo; ap&oacute;s o auxiliar &ldquo;will&rdquo;:</p>\r\n\r\n<p style=\"text-align:center\"><strong>Sujeito+ verbo auxiliar will + not+to be+verbo principal com &ndash;ing+ complemento</strong></p>\r\n\r\n<p><strong>Exemplo</strong>: You will not be reading in the library. (Voc&ecirc; n&atilde;o estar&aacute; lendo na biblioteca)</p>\r\n\r\n<p><strong>Obs</strong>: Lembre-se que o verbo auxiliar e o not podem aparecer na forma contra&iacute;da:</p>\r\n\r\n<p style=\"text-align:center\">Will+not: W&rsquo;ont</p>\r\n\r\n<p style=\"text-align:center\">&nbsp;</p>\r\n\r\n<h3>Forma Interrogativa (<em>Interrogative</em>&nbsp;<em>Form</em>)</h3>\r\n\r\n<p>Para construir perguntas com o future continuous o verbo auxiliar will vem antes do sujeito e no in&iacute;cio da frase:</p>\r\n\r\n<p style=\"text-align:center\"><strong>Verbo auxiliar will+sujeito+verbo to be+verbo principal com &ndash;ing+complemento</strong></p>\r\n\r\n<p><strong>Exemplo</strong>: Will you be reading in the library? (Voc&ecirc; estar&aacute; lendo na biblioteca?)</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Future Continuous x Future Perfect</h2>\r\n\r\n<p>O uso dos tempos futuros no ingl&ecirc;s pode gerar muita confus&atilde;o. Confira abaixo as diferen&ccedil;as entre eles:</p>\r\n\r\n<p><strong>Future Continuous</strong>: &eacute; usado para indicar uma a&ccedil;&atilde;o ou evento que vai acontecer num momento do futuro. &Eacute; formado pelo simple future do verbo to be (will be) + ger&uacute;ndio (-ing) do verbo principal.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Exemplos:</p>\r\n\r\n<ul>\r\n	<li><strong>Affirmative Form</strong>: I will be running in the lake. (Eu estarei correndo no lago)</li>\r\n	<li><strong>Negative Form</strong>: I will not be running in the lake. (Eu n&atilde;o estarei correndo no lago)</li>\r\n	<li><strong>Interrogative Form</strong>: Will I be running in the lake? (Eu estarei correndo no lago?)</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Future Perfect</strong>: &eacute; usado para indicar que algo vai ter terminado num momento do futuro. &Eacute; formado pelo verbo auxiliar to have no simple future (will have) + o partic&iacute;pio do verbo principal.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Exemplos:</p>\r\n\r\n<ul>\r\n	<li><strong>Affirmative Form</strong>: I will have run in the lake. (Eu correrei no lago)</li>\r\n	<li><strong>Negative Form</strong>: I will not have run in the lake (Eu n&atilde;o correrei no lago)</li>\r\n	<li><strong>Interrogative Form</strong>: Will I have run in the lake? (Eu correrei no lago?)</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Future Perfect Continuous</h2>\r\n\r\n<p>Al&eacute;m do Future Perfect, h&aacute; o&nbsp;Future Perfect Continuous&nbsp;(Futuro Perfeito Cont&iacute;nuo). Esse tempo verbal, expressa a continua&ccedil;&atilde;o de a&ccedil;&otilde;es que ser&atilde;o terminadas em determinado tempo no futuro.</p>\r\n\r\n<p>&Eacute; formado pelo verbo to have (will have) + verbo to be (been) conjugado no past perfect (passado perfeito) + ger&uacute;ndio (-ing) do verbo principal.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Exemplos:</p>\r\n\r\n<ul>\r\n	<li><strong>Affirmative Form</strong>: She will have been running in the lake. (Ela estar&aacute; correndo no lago)</li>\r\n	<li><strong>Negative Form</strong>: She will not have been running in the lake. (Ela n&atilde;o estar&aacute; correndo no lago)</li>\r\n	<li><strong>Interrogative Form</strong>: Will she have been running in the lake. (Ela estar&aacute; correndo no lago?)</li>\r\n</ul>\r\n', '2019-11-24 12:08:36', '../assets/images/capas/AdobeStock_113126262-Converted_800x53324112019120836.jpg', 1517527),
+(152, 'Romantismo: O que foi?', '<p style=\"text-align:justify\">O&nbsp;<strong>Romantismo&nbsp;</strong>foi um movimento art&iacute;stico que surgiu na Europa no s&eacute;culo XVIII e durou at&eacute; meados do s&eacute;culo XIX. Ele influenciou a literatura, a pintura, a m&uacute;sica e a arquitetura. Oposto ao classicismo, racionalismo e Iluminismo, esse movimento chegou ao Brasil em finais do s&eacute;culo XVIII.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<h3 style=\"text-align:justify\">Contexto Hist&oacute;rico</h3>\r\n\r\n<p style=\"text-align:justify\">Como escola liter&aacute;ria, as bases do sentimentalismo rom&acirc;ntico e do escapismo pelo suic&iacute;dio foram estabelecidas pelo romance &quot;<em>Os sofrimentos do jovem Werther</em>&quot;, de Goethe, publicado na Alemanha em 1774.</p>\r\n\r\n<p style=\"text-align:justify\">Na Inglaterra, o Romantismo se manifesta nos primeiros anos do s&eacute;culo XIX, com destaque para a poesia ultra-rom&acirc;ntica de&nbsp;Lord&nbsp;Byron&nbsp;e para o romance hist&oacute;rico&nbsp;<em>Ivanho&eacute;</em>, de Walter Scott. Tamb&eacute;m figuram entre as primeiras obras do in&iacute;cio da revolu&ccedil;&atilde;o rom&acirc;ntica na Europa os livros&nbsp;<em>Manon Lescut</em>, do &aacute;rabe Pr&eacute;vost (1731), e a&nbsp;<em>Hist&oacute;ria de Tom Joses</em>, de Henry Fielding (1749).</p>\r\n\r\n<p style=\"text-align:justify\">O romance, contudo, j&aacute; era utilizado no Imp&eacute;rio Romano, cuja palavra&nbsp;<em>romano&nbsp;</em>era aplicada para designar as l&iacute;nguas usadas pelos povos sob o seu dom&iacute;nio. Tais idiomas eram, na verdade, uma forma popular do latim. As composi&ccedil;&otilde;es de cunho popular e folcl&oacute;rico escritas em latim vulgar, em prosa ou em verso e que relatavam fantasias e aventuras, tamb&eacute;m eram chamadas de romance. E foi no s&eacute;culo XVIII, que tomou o sentido atual, ap&oacute;s passar pelas formas de &quot;romance de cavalaria, romance sentimental, romance pastoral&quot;, na Europa. O romance pode ser considerado o sucessor da&nbsp;epopeia.</p>\r\n\r\n<h3 style=\"text-align:justify\">&nbsp;</h3>\r\n\r\n<h3 style=\"text-align:justify\">Principais Caracter&iacute;sticas</h3>\r\n\r\n<p style=\"text-align:justify\">Na literatura, as principais caracter&iacute;sticas do romantismo s&atilde;o:</p>\r\n\r\n<ul>\r\n	<li style=\"text-align: justify;\">Oposi&ccedil;&atilde;o ao modelo cl&aacute;ssico;</li>\r\n	<li style=\"text-align: justify;\">Estrutura do texto em prosa, longo;</li>\r\n	<li style=\"text-align: justify;\">Desenvolvimento de um n&uacute;cleo central;</li>\r\n	<li style=\"text-align: justify;\">Narrativa ampla refletindo uma sequ&ecirc;ncia de tempo;</li>\r\n	<li style=\"text-align: justify;\">O indiv&iacute;duo passa a ser o centro das aten&ccedil;&otilde;es;</li>\r\n	<li style=\"text-align: justify;\">Surgimento de um p&uacute;blico consumidor (folhetim);</li>\r\n	<li style=\"text-align: justify;\">Uso de versos livres e versos brancos;</li>\r\n	<li style=\"text-align: justify;\">Exalta&ccedil;&atilde;o do nacionalismo, da natureza e da p&aacute;tria;</li>\r\n	<li style=\"text-align: justify;\">Idealiza&ccedil;&atilde;o da sociedade, do amor e da mulher;</li>\r\n	<li style=\"text-align: justify;\">Cria&ccedil;&atilde;o de um her&oacute;i nacional;</li>\r\n	<li style=\"text-align: justify;\">Sentimentalismo e supervaloriza&ccedil;&atilde;o das emo&ccedil;&otilde;es pessoais;</li>\r\n	<li style=\"text-align: justify;\">Subjetivismo e egocentrismo;</li>\r\n	<li style=\"text-align: justify;\">Saudades da inf&acirc;ncia;</li>\r\n	<li style=\"text-align: justify;\">Fuga da realidade.</li>\r\n</ul>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<h3 style=\"text-align:justify\">Oposi&ccedil;&atilde;o ao Cl&aacute;ssico</h3>\r\n\r\n<p style=\"text-align:justify\">No in&iacute;cio, todos os movimentos em oposi&ccedil;&atilde;o ao cl&aacute;ssico eram considerados rom&acirc;nticos. Dessa maneira, os modelos da Antiguidade Cl&aacute;ssica foram substitu&iacute;dos pelos da Idade M&eacute;dia quando surgiu a burguesia.&nbsp;A arte, que antes era de car&aacute;ter nobre e erudita, passa a valorizar o folcl&oacute;rico e o nacional. Ela extrapola as barreiras impostas pela Corte e come&ccedil;a a ganhar a aten&ccedil;&atilde;o do povo. A arte rom&acirc;ntica, ao romper as muralhas da Corte e ganhar as ruas, liberta-se das exig&ecirc;ncias dos nobres que pagavam sua produ&ccedil;&atilde;o e passa a ter um p&uacute;blico an&ocirc;nimo. &Eacute; o surgimento do p&uacute;blico consumidor, impulsionado no Brasil pelo&nbsp;<em>folhetim</em>, uma literatura mais acess&iacute;vel. Na prosa, o aspecto formal do Classicismo &eacute; deixado de lado. O mesmo ocorre com a poesia, com os&nbsp;<a href=\"https://www.todamateria.com.br/o-que-sao-versos-livres/\">versos livres</a>, sem m&eacute;trica e sem estrofa&ccedil;&atilde;o. A poesia tamb&eacute;m &eacute; caracterizada pelo&nbsp;verso branco, sem rima.</p>\r\n', '2019-11-24 12:15:14', '../assets/images/capas/img_romantismo_o_que_e_e_como_surgiu_20059_60024112019121514.jpg', 1517527),
+(153, 'Recursividade em PHP', '<p style=\"text-align:justify\">Ainda falando de fun&ccedil;&otilde;es, existe um recurso chamado recursividade, este nome &eacute; dado quando ocorre uma chamada de determinada fun&ccedil;&atilde;o a ela mesma, isso ocorre at&eacute; que determinada condi&ccedil;&atilde;o seja atingida. Antes de continuarmos, a sugest&atilde;o de solu&ccedil;&atilde;o para o exerc&iacute;cio proposto no post anterior:</p>\r\n\r\n<p style=\"text-align:center\"><a href=\"https://gist.github.com/RodriAndreotti/7601ac3092062413af55c83442e2365b\" rel=\"noopener\" target=\"_blank\">https://gist.github.com/RodriAndreotti/7601ac3092062413af55c83442e2365b</a></p>\r\n\r\n<p style=\"text-align:justify\">Funciona de forma semelhante a um la&ccedil;o de repeti&ccedil;&atilde;o, por&eacute;m a recurs&atilde;o tem um custo computacional mais elevado, ou seja, utiliza mais processamento e gasta mais tempo para ser executado, que um la&ccedil;o&nbsp;<em>while</em>&nbsp;(itera&ccedil;&atilde;o ou la&ccedil;o de repeti&ccedil;&atilde;o), isso ocorre devido a necessidade de a fun&ccedil;&atilde;o manter seu estado anterior para poder continuar de onde parou quando chamou novamente a fun&ccedil;&atilde;o.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">Todo problema computacional que fa&ccedil;a uso de uma fun&ccedil;&atilde;o recursiva pode ser substitu&iacute;do por um la&ccedil;o de repeti&ccedil;&atilde;o, por&eacute;m existem problemas computacionais que s&atilde;o basicamente recursivos por defini&ccedil;&atilde;o, por exemplo, uma &aacute;rvore de dados (que &eacute; uma estrutura de dados muito importante em programa&ccedil;&atilde;o). Vale a pena uma an&aacute;lise mais aprofundada do problema em foco para chegar a uma conclus&atilde;o se o uso de uma fun&ccedil;&atilde;o recursiva seria mais vi&aacute;vel que uma itera&ccedil;&atilde;o,&nbsp;este post&nbsp;do Stackoverflow Brasil tr&aacute;s uma discuss&atilde;o muito interessante sobre o tema.</p>\r\n\r\n<p style=\"text-align:justify\">Existem rotinas mais corriqueiras, onde a recursividade pode ser &uacute;til, a constru&ccedil;&atilde;o de um menu com n&iacute;veis infinitos vindo do banco de dados, por exemplo, a ordena&ccedil;&atilde;o de dados dentro de um array com subarrays ou objetos ou at&eacute; mesmo o c&aacute;lculo de um fatorial. Tomando o exemplo do c&aacute;lculo de um fatorial, este &eacute; por defini&ccedil;&atilde;o recursivo, veja a regra de neg&oacute;cio:</p>\r\n\r\n<p style=\"text-align:justify\">Suponhamos que precisemos do valor fatorial de 4!</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<h3 style=\"text-align:justify\">Condi&ccedil;&atilde;o de parada</h3>\r\n\r\n<p style=\"text-align:justify\">&Eacute; importante tamb&eacute;m ter definido de forma bem clara a condi&ccedil;&atilde;o para que esta fun&ccedil;&atilde;o deixe de ser executada, caso contr&aacute;rio &eacute; poss&iacute;vel que entremos em um loop infinito e causemos uma parada do sistema com um erro fatal, ou, dependendo das configura&ccedil;&otilde;es do servidor web, travemos o servidor. No exemplo acima, conseguimos notar que a fun&ccedil;&atilde;o s&oacute; chama a si mesma novamente caso a vari&aacute;vel $numFatorial seja maior que 1, ent&atilde;o, quando a vari&aacute;vel atinge o valor 1, a fun&ccedil;&atilde;o para de ser executada e o valor &eacute; retornado.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<h3 style=\"text-align:justify\">Considera&ccedil;&otilde;es finais</h3>\r\n\r\n<p style=\"text-align:justify\">Outra coisa a se levar em considera&ccedil;&atilde;o &eacute; o custo computacional para a execu&ccedil;&atilde;o tanto das itera&ccedil;&otilde;es quanto das fun&ccedil;&otilde;es recursivas, pois apesar de ambos conseguirem atingir o mesmo resultado, em determinados casos &eacute; mais vi&aacute;vel o uso de uma fun&ccedil;&atilde;o recursiva, e em outros &eacute; mais vi&aacute;vel a itera&ccedil;&atilde;o.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">Este conceito tamb&eacute;m poder&aacute; sem aplicado mais adiante quando estivermos trabalhando com orienta&ccedil;&atilde;o a objetos. Espero que este post tenha esclarecido um pouco o uso da recursividade.</p>\r\n', '2019-11-24 12:23:11', '../assets/images/capas/1_appBwh6_RtvocVxwqpplHA24112019122311.jpeg', 5547982);
+INSERT INTO `conteudo` (`idConteudo`, `titulo`, `conteudo`, `dataPostagem`, `fotoCapa`, `fk_cont_idUsuario`) VALUES
+(154, 'Condutores e Isolantes', '<p>Condutores e isolantes s&atilde;o materiais el&eacute;tricos que se comportam de maneiras opostas no que respeita &agrave; passagem de corrente el&eacute;trica. Enquanto os condutores permitem a movimenta&ccedil;&atilde;o dos el&eacute;trons, os isolante dificultam essa movimenta&ccedil;&atilde;o, ou seja, a passagem da eletricidade. &Eacute; o mesmo que dizer que os condutores conduzem as cargas, ou facilitam, a sua passagem e que os isolantes a isolam. Isso acontece em decorr&ecirc;ncia da estrutura at&ocirc;mica das subst&acirc;ncias, ou melhor, dos el&eacute;trons que os materiais apresentam na sua&nbsp;camada de val&ecirc;ncia. A camada de val&ecirc;ncia &eacute; aquela que fica mais distante do n&uacute;cleo at&ocirc;mico.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3>Condutores</h3>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Nos materiais condutores, as cargas el&eacute;tricas se movimentam com mais liberdade em fun&ccedil;&atilde;o dos el&eacute;trons livres presentes na sua camada de val&ecirc;ncia.</p>\r\n\r\n<p>A liga&ccedil;&atilde;o dos el&eacute;trons livres com o n&uacute;cleo at&ocirc;mico &eacute; bastante fraca. Assim, esses el&eacute;trons t&ecirc;m tend&ecirc;ncia para serem doados, movimentam-se e espalham-se facilitando a passagem da eletricidade.</p>\r\n\r\n<p>S&atilde;o exemplos de condutores el&eacute;tricos os metais em geral, tais como cobre, ferro, ouro e prata.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3 style=\"text-align:center\"><strong>Tipos de condutores</strong></h3>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n	<li><strong>S&oacute;lidos</strong>&nbsp;- tamb&eacute;m chamados de condutores met&aacute;licos, caracterizam-se pelo movimento dos el&eacute;trons livres e pela forte tend&ecirc;ncia de doar el&eacute;trons;</li>\r\n	<li><strong>L&iacute;quidos</strong>&nbsp;- tamb&eacute;m chamados de condutores eletrol&iacute;ticos, caracterizam-se pelo movimento de cargas positivas (c&aacute;tions) e negativas (&acirc;nions). Essa movimenta&ccedil;&atilde;o, em sentidos opostos, cria a corrente el&eacute;trica;</li>\r\n	<li><strong>Gasosos</strong>&nbsp;- tamb&eacute;m chamados de condutores de terceira classe, caracterizam-se pelo movimento de c&aacute;tions e &acirc;nions. Mas, ao contr&aacute;rio dos condutores l&iacute;quidos, a energia &eacute; produzida atrav&eacute;s do choque entre as cargas e n&atilde;o de forma isolada.</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Isolantes</h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Nos materiais isolantes, tamb&eacute;m chamados de diel&eacute;tricos, verifica-se a aus&ecirc;ncia ou pouca presen&ccedil;a de el&eacute;trons livres. Isso faz com que os el&eacute;trons dos isolantes estejam fortemente ligados ao n&uacute;cleo, o que inibe a sua movimenta&ccedil;&atilde;o. S&atilde;o exemplos de isolante el&eacute;tricos: borracha, isopor, l&atilde;, madeira, pl&aacute;stico e papel, v&aacute;cuo, vidro.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Semicondutores</h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Os materiais semicondutores s&atilde;o aqueles que podem se comportam como um condutor ou como um isolante mediante as condi&ccedil;&otilde;es f&iacute;sicas. Os exemplos mais comuns de semicondutores s&atilde;o sil&iacute;cio e o germ&acirc;nio.</p>\r\n', '2019-11-24 12:35:58', '../assets/images/capas/images24112019123558.jpg', 5547982),
+(155, 'Classificação dos Triângulos', '<p>Tri&acirc;ngulo &eacute; um pol&iacute;gono de tr&ecirc;s lados e tr&ecirc;s &acirc;ngulos. H&aacute; sete tipos de tri&acirc;ngulos e sua classifica&ccedil;&atilde;o depende da disposi&ccedil;&atilde;o dos &acirc;ngulos podendo ser: is&oacute;sceles, equil&aacute;tero, escaleno, ret&acirc;ngulo, obtuso, agudo ou equi&acirc;ngulo.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Propriedades do Tri&acirc;ngulo</h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n	<li>Os tri&acirc;ngulos s&atilde;o compostos por tr&ecirc;s v&eacute;rtices;</li>\r\n	<li>A base pode ser qualquer um dos lados para o c&aacute;lculo da &aacute;rea do tri&acirc;ngulo. Quando &eacute; um tri&acirc;ngulo is&oacute;sceles, a base pode ser considerada o lado desigual;</li>\r\n	<li>A altura representa a perpendicular a partir do v&eacute;rtice oposto;</li>\r\n	<li>Como existem tr&ecirc;s bases poss&iacute;veis, existem tamb&eacute;m tr&ecirc;s alturas poss&iacute;veis;</li>\r\n	<li>A mediana de um tri&acirc;ngulo &eacute; a linha a partir do v&eacute;rtice para o ponto m&eacute;dio do lado oposto;</li>\r\n	<li>As tr&ecirc;s medianas intersectam-se em um &uacute;nico ponto denominado centro do tri&acirc;ngulo;</li>\r\n	<li>O lado mais curto &eacute; sempre o oposto ao menor &acirc;ngulo interior;</li>\r\n	<li>O lado mais longo &eacute; sempre oposto ao maior &acirc;ngulo interior.</li>\r\n</ul>\r\n\r\n<h2>&nbsp;</h2>\r\n\r\n<h2>Propriedades comuns a todos os tri&acirc;ngulos</h2>\r\n\r\n<ul>\r\n	<li>A soma dos &acirc;ngulos internos de um tri&acirc;ngulo sempre somam 180&ordm;;</li>\r\n	<li>A soma dos &acirc;ngulos externos sempre resultam em 360&ordm;;</li>\r\n	<li>As v&eacute;rtices do tri&acirc;ngulo s&atilde;o representadas por letras mai&uacute;sculas, A, B, e C. J&aacute; os lados s&atilde;o representados por letras min&uacute;sculas, a, b, c.</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Tipos de Tri&acirc;ngulo</h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Os tri&acirc;ngulos podem ser classificados de duas formas: pelos lados e pelos &acirc;ngulos internos. Independente da classifica&ccedil;&atilde;o, os tri&acirc;ngulos podem ser mais de um tipo ao mesmo tempo. Por exemplo, um tri&acirc;ngulo escaleno cujo &acirc;ngulo reto interior mede 90&ordm; pode ser chamado de tri&acirc;ngulo ret&acirc;ngulo.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h4 style=\"text-align:center\"><strong>Tri&acirc;ngulo Is&oacute;sceles</strong></h4>\r\n\r\n<p style=\"text-align:center\"><img alt=\"Classificação dos Triângulos\" src=\"https://static.todamateria.com.br/upload/56/f4/56f46ad181195-classificacao-dos-triangulos.jpg\" style=\"height:139px; width:105px\" /></p>\r\n\r\n<p style=\"text-align:center\">Tem dois lados iguais e um diferente. O lado desigual &eacute;, em geral, utilizado como refer&ecirc;ncia de base.</p>\r\n\r\n<p style=\"text-align:center\">&nbsp;</p>\r\n\r\n<h4 style=\"text-align:center\"><strong>Tri&acirc;ngulo Equil&aacute;tero</strong></h4>\r\n\r\n<p style=\"text-align:center\"><img alt=\"Classificação dos Triângulos\" src=\"https://static.todamateria.com.br/upload/56/f4/56f46aeca0ae8-classificacao-dos-triangulos.jpg\" style=\"height:139px; width:125px\" /></p>\r\n\r\n<p style=\"text-align:center\">Todos os lados s&atilde;o iguais.</p>\r\n\r\n<p style=\"text-align:center\">&nbsp;</p>\r\n\r\n<h4 style=\"text-align:center\"><strong>Tri&acirc;ngulo Escaleno</strong></h4>\r\n\r\n<p style=\"text-align:center\"><img alt=\"Classificação dos Triângulos\" src=\"https://static.todamateria.com.br/upload/56/f4/56f46b1323dcd-classificacao-dos-triangulos.jpg\" style=\"height:139px; width:145px\" /></p>\r\n\r\n<p style=\"text-align:center\">Nenhum dos lados &eacute; igual</p>\r\n\r\n<p style=\"text-align:center\">&nbsp;</p>\r\n\r\n<h4 style=\"text-align:center\"><strong>Tri&acirc;ngulo Ret&acirc;ngulo</strong></h4>\r\n\r\n<p style=\"text-align:center\"><img alt=\"Classificação dos Triângulos\" src=\"https://static.todamateria.com.br/upload/56/f4/56f46b316d6ae-classificacao-dos-triangulos.jpg\" style=\"height:85px; width:125px\" /></p>\r\n\r\n<p style=\"text-align:center\">Um dos &acirc;ngulos forma 90&ordm;</p>\r\n\r\n<p style=\"text-align:center\">&nbsp;</p>\r\n\r\n<h4 style=\"text-align:center\"><strong>Tri&acirc;ngulo Obtuso</strong></h4>\r\n\r\n<p style=\"text-align:center\"><img alt=\"Classificação dos Triângulos\" src=\"https://static.todamateria.com.br/upload/56/f4/56f46b4b97b02-classificacao-dos-triangulos.jpg\" style=\"height:85px; width:125px\" /></p>\r\n\r\n<p style=\"text-align:center\">Um dos &acirc;ngulos &eacute; maior que 90&ordm;</p>\r\n', '2019-11-24 12:42:00', '../assets/images/capas/abstract_texture_various_colorful_triangles_design_682617724112019124200.jpg', 5547982);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `conteudodisciplina`
+-- Estrutura da tabela `conteudodisciplina`
 --
 
-DROP TABLE IF EXISTS `conteudodisciplina`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `conteudodisciplina` (
   `fk_cd_idDisciplina` int(11) NOT NULL,
-  `fk_cd_idConteudo` int(11) NOT NULL,
-  KEY `fk_cd_idDisciplina` (`fk_cd_idDisciplina`),
-  KEY `fk_cd_idConteudo` (`fk_cd_idConteudo`),
-  CONSTRAINT `conteudodisciplina_ibfk_1` FOREIGN KEY (`fk_cd_idDisciplina`) REFERENCES `disciplina` (`idDisciplina`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `conteudodisciplina_ibfk_2` FOREIGN KEY (`fk_cd_idConteudo`) REFERENCES `conteudo` (`idConteudo`) ON DELETE CASCADE ON UPDATE CASCADE
+  `fk_cd_idConteudo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `conteudodisciplina`
+-- Extraindo dados da tabela `conteudodisciplina`
 --
 
-LOCK TABLES `conteudodisciplina` WRITE;
-/*!40000 ALTER TABLE `conteudodisciplina` DISABLE KEYS */;
-/*!40000 ALTER TABLE `conteudodisciplina` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `conteudodisciplina` (`fk_cd_idDisciplina`, `fk_cd_idConteudo`) VALUES
+(8, 144),
+(13, 144),
+(21, 147),
+(10, 147),
+(21, 145),
+(20, 148),
+(15, 148),
+(15, 146),
+(22, 146),
+(9, 151),
+(22, 152),
+(2, 153),
+(1, 153),
+(18, 154),
+(17, 155),
+(12, 150);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `conteudosalvo`
+-- Estrutura da tabela `conteudosalvo`
 --
 
-DROP TABLE IF EXISTS `conteudosalvo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `conteudosalvo` (
   `salvoEm` datetime NOT NULL,
   `fk_cs_idConteudo` int(11) NOT NULL,
-  `fk_cs_idUsuario` int(11) NOT NULL,
-  KEY `fk_cs_idConteudo` (`fk_cs_idConteudo`),
-  KEY `fk_cs_idUsuario` (`fk_cs_idUsuario`),
-  CONSTRAINT `conteudosalvo_ibfk_1` FOREIGN KEY (`fk_cs_idConteudo`) REFERENCES `conteudo` (`idConteudo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `conteudosalvo_ibfk_2` FOREIGN KEY (`fk_cs_idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE
+  `fk_cs_idUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `conteudosalvo`
+-- Extraindo dados da tabela `conteudosalvo`
 --
 
-LOCK TABLES `conteudosalvo` WRITE;
-/*!40000 ALTER TABLE `conteudosalvo` DISABLE KEYS */;
-INSERT INTO `conteudosalvo` VALUES ('2019-11-14 20:00:00',19,20133145);
-/*!40000 ALTER TABLE `conteudosalvo` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `conteudosalvo` (`salvoEm`, `fk_cs_idConteudo`, `fk_cs_idUsuario`) VALUES
+('2019-11-24 15:42:42', 150, 5547982),
+('2019-11-24 15:42:56', 148, 5547982),
+('2019-11-24 15:43:08', 146, 5547982),
+('2019-11-25 02:51:47', 154, 2017312160),
+('2019-11-25 02:51:54', 153, 2017312160),
+('2019-11-25 19:59:39', 155, 2017312160),
+('2019-11-25 20:00:51', 150, 2017312160),
+('2019-11-26 01:47:56', 154, 2018752185),
+('2019-11-26 01:48:17', 147, 2018752185);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `conteudotag`
+-- Estrutura da tabela `conteudotag`
 --
 
-DROP TABLE IF EXISTS `conteudotag`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `conteudotag` (
   `fk_ct_idTag` int(11) NOT NULL,
-  `fk_ct_idConteudo` int(11) NOT NULL,
-  KEY `fk_ct_idTag` (`fk_ct_idTag`),
-  KEY `fk_ct_idConteudo` (`fk_ct_idConteudo`),
-  CONSTRAINT `conteudotag_ibfk_1` FOREIGN KEY (`fk_ct_idTag`) REFERENCES `tag` (`idTag`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `conteudotag_ibfk_2` FOREIGN KEY (`fk_ct_idConteudo`) REFERENCES `conteudo` (`idConteudo`) ON DELETE CASCADE ON UPDATE CASCADE
+  `fk_ct_idConteudo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `conteudotag`
+-- Extraindo dados da tabela `conteudotag`
 --
 
-LOCK TABLES `conteudotag` WRITE;
-/*!40000 ALTER TABLE `conteudotag` DISABLE KEYS */;
-INSERT INTO `conteudotag` VALUES (2,136),(49,136);
-/*!40000 ALTER TABLE `conteudotag` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `conteudotag` (`fk_ct_idTag`, `fk_ct_idConteudo`) VALUES
+(62, 144),
+(63, 144),
+(64, 144),
+(65, 145),
+(66, 145),
+(67, 145),
+(68, 146),
+(69, 146),
+(70, 146),
+(71, 146),
+(72, 147),
+(73, 147),
+(74, 147),
+(75, 147),
+(76, 147),
+(77, 148),
+(78, 148),
+(79, 148),
+(80, 150),
+(81, 151),
+(82, 151),
+(83, 152),
+(84, 152),
+(85, 152),
+(86, 153),
+(87, 153),
+(88, 154),
+(89, 154),
+(90, 154),
+(91, 155),
+(92, 155),
+(93, 155);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `disciplina`
+-- Estrutura da tabela `disciplina`
 --
 
-DROP TABLE IF EXISTS `disciplina`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `disciplina` (
-  `idDisciplina` int(11) NOT NULL AUTO_INCREMENT,
-  `disciplina` varchar(128) NOT NULL,
-  PRIMARY KEY (`idDisciplina`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `idDisciplina` int(11) NOT NULL,
+  `disciplina` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `disciplina`
+-- Extraindo dados da tabela `disciplina`
 --
 
-LOCK TABLES `disciplina` WRITE;
-/*!40000 ALTER TABLE `disciplina` DISABLE KEYS */;
-INSERT INTO `disciplina` VALUES (1,'Programação'),(2,'Lógica de Programação'),(3,'Hardware e Sistemas Operacionais'),(4,'Fundamentos da Informática'),(5,'Engenharia de Software'),(6,'Multimídia'),(7,'Banco de Dados'),(8,'Biologia'),(9,'Língua Inglesa'),(10,'Língua Espanhola'),(11,'Projeto Integrador'),(12,'Educação Física'),(13,'Química'),(14,'Sociologia'),(15,'História'),(16,'Filosofia'),(17,'Matemática'),(18,'Física'),(19,'Desenvolvimento Web'),(20,'Geografia'),(21,'Artes'),(22,'Português');
-/*!40000 ALTER TABLE `disciplina` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `disciplina` (`idDisciplina`, `disciplina`) VALUES
+(1, 'Programação'),
+(2, 'Lógica de Programação'),
+(3, 'Hardware e Sistemas Operacionais'),
+(4, 'Fundamentos da Informática'),
+(5, 'Engenharia de Software'),
+(6, 'Multimídia'),
+(7, 'Banco de Dados'),
+(8, 'Biologia'),
+(9, 'Língua Inglesa'),
+(10, 'Língua Espanhola'),
+(11, 'Projeto Integrador'),
+(12, 'Educação Física'),
+(13, 'Química'),
+(14, 'Sociologia'),
+(15, 'História'),
+(16, 'Filosofia'),
+(17, 'Matemática'),
+(18, 'Física'),
+(19, 'Desenvolvimento Web'),
+(20, 'Geografia'),
+(21, 'Artes'),
+(22, 'Português');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `duvida`
+-- Estrutura da tabela `duvida`
 --
 
-DROP TABLE IF EXISTS `duvida`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `duvida` (
-  `idDuvida` int(11) NOT NULL AUTO_INCREMENT,
+  `idDuvida` int(11) NOT NULL,
   `duvida` text NOT NULL,
   `adendo` tinyint(1) NOT NULL,
   `respondido` tinyint(1) NOT NULL,
   `dataDuvida` datetime NOT NULL,
   `fk_duv_idUsuario` int(11) NOT NULL,
-  `fk_duv_idConteudo` int(11) NOT NULL,
-  PRIMARY KEY (`idDuvida`),
-  KEY `fk_duv_idUsuario` (`fk_duv_idUsuario`),
-  KEY `fk_duv_idConteudo` (`fk_duv_idConteudo`),
-  CONSTRAINT `duvida_ibfk_1` FOREIGN KEY (`fk_duv_idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `duvida_ibfk_2` FOREIGN KEY (`fk_duv_idConteudo`) REFERENCES `conteudo` (`idConteudo`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `fk_duv_idConteudo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `duvida`
+-- Estrutura da tabela `resposta`
 --
 
-LOCK TABLES `duvida` WRITE;
-/*!40000 ALTER TABLE `duvida` DISABLE KEYS */;
-INSERT INTO `duvida` VALUES (7,'não aconteceu bem dessa maneira',0,0,'2020-05-19 16:15:09',1,7),(14,'yo necessito de comentarios\r\n',0,0,'2019-11-19 16:45:26',20133145,136),(15,'acaba logo tcc desgraçado',0,0,'2019-11-19 16:45:52',20133145,136),(16,'eu só quero me formaaaaar',0,0,'2019-11-19 16:46:05',20133145,136),(17,'chega do técnico, chegaaaaaaa',1,0,'2019-11-19 16:46:32',20133145,136),(18,'como q um trabalhador tem a capacidade de trabalhar a semana inteira, todo dia o dia inteiro com isso cara???\r\ndesumano ',1,0,'2019-11-19 16:47:16',20133145,136),(19,'adendo, preciso de adendos',1,0,'2019-11-19 16:47:27',20133145,136);
-/*!40000 ALTER TABLE `duvida` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `resposta`
---
-
-DROP TABLE IF EXISTS `resposta`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `resposta` (
   `resposta` text NOT NULL,
   `dataResposta` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `idResposta` int(11) NOT NULL AUTO_INCREMENT,
-  `fk_resp_idDuvida` int(11) NOT NULL,
-  PRIMARY KEY (`idResposta`),
-  KEY `fk_resp_idDuvida` (`fk_resp_idDuvida`),
-  CONSTRAINT `resposta_ibfk_1` FOREIGN KEY (`fk_resp_idDuvida`) REFERENCES `duvida` (`idDuvida`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `idResposta` int(11) NOT NULL,
+  `fk_resp_idDuvida` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `resposta`
+-- Estrutura da tabela `tag`
 --
 
-LOCK TABLES `resposta` WRITE;
-/*!40000 ALTER TABLE `resposta` DISABLE KEYS */;
-INSERT INTO `resposta` VALUES ('respostaostaosta','2019-11-19 17:08:33',1,19),('quem trabalha com TI só toma no cu, essa é a grande realidade','2019-11-19 17:09:07',2,18),('totototortura','2019-11-19 17:12:55',3,17),('vendem o sonho de ser o picudo do google mas a única pika é a do PA, com tendinite e os caralho do corpo tudo fudido','2019-11-19 17:13:51',4,18);
-/*!40000 ALTER TABLE `resposta` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tag`
---
-
-DROP TABLE IF EXISTS `tag`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tag` (
   `tag` varchar(128) NOT NULL,
-  `idTag` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`idTag`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `idTag` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tag`
+-- Extraindo dados da tabela `tag`
 --
 
-LOCK TABLES `tag` WRITE;
-/*!40000 ALTER TABLE `tag` DISABLE KEYS */;
-INSERT INTO `tag` VALUES ('Igreja Católica',1),('Arte Moderna',2),('Calorimetria',3),('Genética',4),('Fundamentos das Redes de Computadores',5),('PHP',6),('Figuras de Linguageml',7),('Matemática Básica',8),('Marxismo',9),('Idade Média',10),('Cinemática',11),('askjaslkgjas',46),('askjg',47),('aaaaaaaaaaaaaaaaaaaa',48),('cafe',49),('ai deus',50),('Igreja Lutherana',51),('aleluia',52),('foi porra',53),('ai mano',54);
-/*!40000 ALTER TABLE `tag` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `tag` (`tag`, `idTag`) VALUES
+('Meio Ambiente', 62),
+('Polímeros', 63),
+('Polímeros Naturais', 64),
+('Arquitetura', 65),
+('Movimento Barroco', 66),
+('Urbanismo', 67),
+('Ditadura Militar', 68),
+('Brasil', 69),
+('Totalitarismo', 70),
+('Brasil República', 71),
+('Flamenco', 72),
+('Cultura', 73),
+('Dança', 74),
+('Música', 75),
+('Espanha', 76),
+('Revolução Industrial', 77),
+('Inglaterra', 78),
+('Revolução', 79),
+('Esportes', 80),
+('Gramática do Inglês', 81),
+('Grammar', 82),
+('Romantismo', 83),
+('Literatura', 84),
+('Movimento Literário', 85),
+('PHP', 86),
+('Recursividade', 87),
+('Condutores', 88),
+('Isolantes', 89),
+('Eletrodinâmica', 90),
+('Triângulos', 91),
+('Classificação', 92),
+('Geometria', 93);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `tipousuario`
+-- Estrutura da tabela `tipousuario`
 --
 
-DROP TABLE IF EXISTS `tipousuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tipousuario` (
-  `idTipoUsuario` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo` varchar(256) NOT NULL,
-  PRIMARY KEY (`idTipoUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `idTipoUsuario` int(11) NOT NULL,
+  `tipo` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tipousuario`
+-- Extraindo dados da tabela `tipousuario`
 --
 
-LOCK TABLES `tipousuario` WRITE;
-/*!40000 ALTER TABLE `tipousuario` DISABLE KEYS */;
-INSERT INTO `tipousuario` VALUES (1,'usuario'),(2,'professor'),(4,'administrador');
-/*!40000 ALTER TABLE `tipousuario` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `tipousuario` (`idTipoUsuario`, `tipo`) VALUES
+(1, 'usuario'),
+(2, 'professor'),
+(4, 'administrador');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estrutura da tabela `usuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
   `fotoPerfil` varchar(320) DEFAULT NULL,
   `senha` varchar(256) NOT NULL,
   `email` varchar(320) NOT NULL,
   `nome` varchar(256) NOT NULL,
-  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
-  `fk_usu_idTipoUsuario` int(11) NOT NULL,
-  PRIMARY KEY (`idUsuario`),
-  KEY `fk_usu_idTipoUsuario` (`fk_usu_idTipoUsuario`),
-  CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`fk_usu_idTipoUsuario`) REFERENCES `tipousuario` (`idTipoUsuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2019101011 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `idUsuario` int(11) NOT NULL,
+  `fk_usu_idTipoUsuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `usuario`
+-- Extraindo dados da tabela `usuario`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES ('../assets/images/usuarios/vitao.png','$2y$10$MXsDvEmVf1dSAquQoBWjL.aWNiRwQZJ0d9HJLLszTwC9aA95Mv9ea','vitao@gmail.com','Vitao',1,2),('../assets/fotoPerfil/vitao.png','0','victorhugonass@gmail.com','Victor Hugo',11,2),('../assets/images/usuarios/FB_IMG_151773482907717112019161029.jpg','$2y$10$MXsDvEmVf1dSAquQoBWjL.aWNiRwQZJ0d9HJLLszTwC9aA95Mv9ea','profNormal@gmail.com','professor normal',7654321,2),('../assets/images/usuarios/IMG-20180129-WA001413082019212932.jpg','$2y$10$MXsDvEmVf1dSAquQoBWjL.aWNiRwQZJ0d9HJLLszTwC9aA95Mv9ea','odeioprog@gmail.com','Admin Não Tão Normal',20133145,2),('../assets/images/usuarios/FB_IMG_151550896301501112019204806.jpg','$2y$10$MXsDvEmVf1dSAquQoBWjL.aWNiRwQZJ0d9HJLLszTwC9aA95Mv9ea','fodas@fodas.com','Galo De Calça',20178559,1),('../assets/images/usuarios/FB_IMG_151575917609607112019024608.jpg','$2y$10$MXsDvEmVf1dSAquQoBWjL.aWNiRwQZJ0d9HJLLszTwC9aA95Mv9ea','aluno@gmail.com','aluno',1234567890,1),('../assets/images/usuarios/FB_IMG_151456944453717112019160525.jpg','$2y$10$MXsDvEmVf1dSAquQoBWjL.aWNiRwQZJ0d9HJLLszTwC9aA95Mv9ea','usu@gmail.com','usuario normal',2019101010,1);
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `usuario` (`fotoPerfil`, `senha`, `email`, `nome`, `idUsuario`, `fk_usu_idTipoUsuario`) VALUES
+('../assets/images/usuarios/brown-haired-girl-in-white-sleeveless-dress-standing-beside-756453(1)24112019144806.jpg', '$2y$10$55YtGeDFBcuKeDK/0yeFnefahVXmcxSK5gLWpCBQYGV/urx9nsk4O', 'vanessa_professora@gmail.com', 'Vanessa', 1517527, 2),
+('../assets/images/usuarios/man-wearing-knit-hat-and-collared-shirt-120540524112019151750.jpg', '$2y$10$3eN6FSXkEXDrbqYNVF57vOWl4Rgj.eztUd5xeLayOZs6kGXKjS.Gi', 'marcio_professor@gmail.com', 'Marcio da Silva Campos', 5547982, 2),
+('../assets/images/usuarios/62250900_1529075780560610_8847370202963247104_n22112019173057.jpg', '$2y$10$SM3mx0YeRoExVxFcJ4ZsXuKu4rTN43Fx7qkAeZ5akwjER9IVMXqnG', 'pedro.canteli2001@gmail.com', 'Pedro A.', 2017312160, 4),
+('../assets/images/usuarios/close-up-photography-of-a-man-1081188(1)25112019161533.jpg', '$2y$10$LWRLd8jaccI9uS9OnfnwT.kmdA50cpv8u/pcQjiY4X0TXo29poFM2', 'lucas_aluno@gmail.com', 'Lucas', 2018752185, 1);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `conteudo`
+--
+ALTER TABLE `conteudo`
+  ADD PRIMARY KEY (`idConteudo`),
+  ADD KEY `fk_cont_idUsuario` (`fk_cont_idUsuario`);
+
+--
+-- Indexes for table `conteudodisciplina`
+--
+ALTER TABLE `conteudodisciplina`
+  ADD KEY `fk_cd_idDisciplina` (`fk_cd_idDisciplina`),
+  ADD KEY `fk_cd_idConteudo` (`fk_cd_idConteudo`);
+
+--
+-- Indexes for table `conteudosalvo`
+--
+ALTER TABLE `conteudosalvo`
+  ADD KEY `fk_cs_idConteudo` (`fk_cs_idConteudo`),
+  ADD KEY `fk_cs_idUsuario` (`fk_cs_idUsuario`);
+
+--
+-- Indexes for table `conteudotag`
+--
+ALTER TABLE `conteudotag`
+  ADD KEY `fk_ct_idTag` (`fk_ct_idTag`),
+  ADD KEY `fk_ct_idConteudo` (`fk_ct_idConteudo`);
+
+--
+-- Indexes for table `disciplina`
+--
+ALTER TABLE `disciplina`
+  ADD PRIMARY KEY (`idDisciplina`);
+
+--
+-- Indexes for table `duvida`
+--
+ALTER TABLE `duvida`
+  ADD PRIMARY KEY (`idDuvida`),
+  ADD KEY `fk_duv_idUsuario` (`fk_duv_idUsuario`),
+  ADD KEY `fk_duv_idConteudo` (`fk_duv_idConteudo`);
+
+--
+-- Indexes for table `resposta`
+--
+ALTER TABLE `resposta`
+  ADD PRIMARY KEY (`idResposta`),
+  ADD KEY `fk_resp_idDuvida` (`fk_resp_idDuvida`);
+
+--
+-- Indexes for table `tag`
+--
+ALTER TABLE `tag`
+  ADD PRIMARY KEY (`idTag`);
+
+--
+-- Indexes for table `tipousuario`
+--
+ALTER TABLE `tipousuario`
+  ADD PRIMARY KEY (`idTipoUsuario`);
+
+--
+-- Indexes for table `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`idUsuario`),
+  ADD KEY `fk_usu_idTipoUsuario` (`fk_usu_idTipoUsuario`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `conteudo`
+--
+ALTER TABLE `conteudo`
+  MODIFY `idConteudo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+
+--
+-- AUTO_INCREMENT for table `disciplina`
+--
+ALTER TABLE `disciplina`
+  MODIFY `idDisciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `duvida`
+--
+ALTER TABLE `duvida`
+  MODIFY `idDuvida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `resposta`
+--
+ALTER TABLE `resposta`
+  MODIFY `idResposta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `tag`
+--
+ALTER TABLE `tag`
+  MODIFY `idTag` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+
+--
+-- AUTO_INCREMENT for table `tipousuario`
+--
+ALTER TABLE `tipousuario`
+  MODIFY `idTipoUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2018752186;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `conteudo`
+--
+ALTER TABLE `conteudo`
+  ADD CONSTRAINT `conteudo_ibfk_1` FOREIGN KEY (`fk_cont_idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `conteudodisciplina`
+--
+ALTER TABLE `conteudodisciplina`
+  ADD CONSTRAINT `conteudodisciplina_ibfk_1` FOREIGN KEY (`fk_cd_idDisciplina`) REFERENCES `disciplina` (`idDisciplina`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `conteudodisciplina_ibfk_2` FOREIGN KEY (`fk_cd_idConteudo`) REFERENCES `conteudo` (`idConteudo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `conteudosalvo`
+--
+ALTER TABLE `conteudosalvo`
+  ADD CONSTRAINT `conteudosalvo_ibfk_1` FOREIGN KEY (`fk_cs_idConteudo`) REFERENCES `conteudo` (`idConteudo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `conteudosalvo_ibfk_2` FOREIGN KEY (`fk_cs_idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `conteudotag`
+--
+ALTER TABLE `conteudotag`
+  ADD CONSTRAINT `conteudotag_ibfk_1` FOREIGN KEY (`fk_ct_idTag`) REFERENCES `tag` (`idTag`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `conteudotag_ibfk_2` FOREIGN KEY (`fk_ct_idConteudo`) REFERENCES `conteudo` (`idConteudo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `duvida`
+--
+ALTER TABLE `duvida`
+  ADD CONSTRAINT `duvida_ibfk_1` FOREIGN KEY (`fk_duv_idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `duvida_ibfk_2` FOREIGN KEY (`fk_duv_idConteudo`) REFERENCES `conteudo` (`idConteudo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `resposta`
+--
+ALTER TABLE `resposta`
+  ADD CONSTRAINT `resposta_ibfk_1` FOREIGN KEY (`fk_resp_idDuvida`) REFERENCES `duvida` (`idDuvida`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`fk_usu_idTipoUsuario`) REFERENCES `tipousuario` (`idTipoUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2019-11-21 17:10:24
