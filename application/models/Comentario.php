@@ -108,19 +108,21 @@ class Comentario {
 
     public function cadastrarResposta($poste){
         $query = "INSERT INTO resposta(resposta, fk_resp_idDuvida) VALUES ('{$poste['resposta']}',{$poste['idDuvida']});";
-
+        $queryUpdate = "UPDATE duvida SET respondido = 1 WHERE idDuvida = {$poste['idDuvida']}";
         try {
             $this->conexao->exec($query);
+            $this->conexao->exec($queryUpdate);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
-    public function deletarResposta($idDuvida){
-        $query = "delete from resposta where idResposta = {$idDuvida}";
-
+    public function deletarResposta($idResposta,$idDuvida){
+        $query = "delete from resposta where idResposta = {$idResposta};";
+        $queryUpdate = "UPDATE duvida SET respondido = 0 WHERE idDuvida = {$idDuvida};";
         try {
             $this->conexao->exec($query);
+            $this->conexao->exec($queryUpdate);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

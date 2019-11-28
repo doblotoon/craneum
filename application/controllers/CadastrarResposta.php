@@ -11,5 +11,9 @@
     }
     $cadastro = new cadastrarResposta();
     $cadastro->cadastroResposta($comentarioObj);
-    
-    header("Location: ../views/conteudo.php?idConteudo=".$_POST['idConteudo']."&abre=true#someDuvida");
+    if (isset($_GET['adendo']) and $_GET['adendo']==1) {
+        $redirect = "adendos";
+    }else{
+        $redirect = "someDuvida";
+    }
+    header("Location: ../views/conteudo.php?idConteudo=".$_POST['idConteudo']."&abre=true#{$redirect}");

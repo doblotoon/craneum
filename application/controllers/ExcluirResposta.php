@@ -8,13 +8,16 @@
     class deletarResposta{
         public function excluidaResposta($comentarioObj){
 
-            $dados = $_POST['idResposta'];
+            $idResposta = $_POST['idResposta'];
+            $idDuvida = $_POST['idDuvida'];
             //print_r($dados);
-            $comentarioObj->deletarResposta($dados);
+            //echo $idDuvida;
+            $comentarioObj->deletarResposta($idResposta,$idDuvida);
+            //$comentarioObj->mudaRespondido($idDuvida);
         }
     }
 
     $cadastro = new deletarResposta();
     $cadastro->excluidaResposta($comentarioObj);
     
-   header("Location: ../views/conteudo.php?idConteudo=".$_POST['id']."&abre=true#someDuvida");
+    header("Location: ../views/conteudo.php?idConteudo=".$_POST['id']."&abre=true#someDuvida");

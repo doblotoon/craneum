@@ -15,5 +15,10 @@
     $cadastro = new editarResposta();
     $cadastro->editadaResposta($comentarioObj);
     
-    header("Location: ../views/conteudo.php?idConteudo=".$_POST['id']."&abre=true#someDuvida");
+    if (isset($_GET['tipo']) and $_GET['tipo']=="adendo") {
+        $redirect = "adendos";
+    }else{
+        $redirect = "someDuvida";
+    }
+    header("Location: ../views/conteudo.php?idConteudo=".$_POST['id']."&abre=true#{$redirect}");
 
