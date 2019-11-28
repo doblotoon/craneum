@@ -237,6 +237,22 @@
                         }
                     }
 
+                    if(isset($_SESSION['id']) and isset($_GET['acao']) and $_GET['acao']=='editar'){
+                        if($duvida['idUsuario']==$_SESSION['id'] and isset($_GET['tipo']) and $_GET['idDuvida']==$duvida['idDuvida']) {
+?>
+                                <form action="../controllers/EditarComentario.php" method="post">
+                                    <textarea class="form-control" name="duvidaAtual" id="" rows="4"><?php print($duvida['duvida']);?></textarea>
+                                    <button class="btn btn-primary espacoSuperiorComentarDuvida" type="submit">Comentar Dúvida Editada</button>
+                                    <input type="hidden" name="id" value="<?=$_GET['idConteudo']?>">
+                                    <input type="hidden" name="idDuvida" value="<?=$_GET['idDuvida']?>">
+                                    
+                                </form>
+<?php
+                        }
+                    }
+
+                    
+
                 foreach ($respostas as $resposta ){  
                     if ($duvida['idDuvida']==$resposta['fk_resp_idDuvida']) { #resposta
 
@@ -555,6 +571,8 @@ if (isset($_GET['acao']) and $_GET['acao'] == 'editarResp' and $_GET['idResposta
             }  
             //$ex = ;
         }
+
+            if(!isset($_GET['tipo'])){
         
 ?>
 
@@ -568,7 +586,7 @@ if (isset($_GET['acao']) and $_GET['acao'] == 'editarResp' and $_GET['idResposta
                                 </form>
 
     <?php
-
+        }
     } else {
         if(isset($_SESSION['id'])){
     ?>

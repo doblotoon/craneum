@@ -50,6 +50,12 @@
     if($URLAtual!='conteudo'){
         echo '</body>
               </html>';
+    } else {
+        echo '<style>
+                .footerConteudo{
+                    margin-top:3%;
+                    padding-bottom: 0% !important;
+            </style>';
     }
 ?>
 
