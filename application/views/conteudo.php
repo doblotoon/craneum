@@ -10,6 +10,12 @@
     $idConteudo = (int) $_GET['idConteudo'];
     $conteudo = new Conteudo();
     $conteudoSelecionado = $conteudo->getConteudo($idConteudo);
+    if (empty($conteudoSelecionado)) {
+        require_once "menu.php";
+        echo "</br></br></br>";
+        echo "<div class='container'><div class='alert alert-warning'>Conteudo Não Encontrado! Para voltar para a home <a href='../index.php'><strong>Clique Aqui!</strong></a></div></div>";
+        exit;
+    }
     //print_r($conteudoSelecionado['fk_cont_idUsuario']);
     //print_r($_SESSION['id']);
     $conteudoSelecionado['dataPostagem'] = date("d/m/Y", strtotime($conteudoSelecionado['dataPostagem']));
@@ -636,11 +642,11 @@ if (isset($_GET['acao']) and $_GET['acao'] == 'editarResp' and $_GET['idResposta
         
             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id='modalDocs'>
                 <div class="modal-dialog modal-lg">
-                    <div>
+                    <!--<div>
                         <h3 id='tituloModal'></h3>
-                    </div>
+                    </div>-->
                     <div class="modal-content">
-                        <embed src="" id='embedDoc' name='embedDoc' style="height:85vh; width:65vw; margin-left:-5vw;">
+                        <embed src="" id='embedDoc' name='embedDoc' style="height:85vh; width:85vw; margin-left:-15vw;">
                     </div>
                 </div>                
             </div>
@@ -704,11 +710,11 @@ echo  "	<script>
                     $(".modalDoc").click(function(){
                         //console.log($(this).attr('href'));
                         var doc = $(this).attr('href');
-                        var titulo = $(this).text();
+                        //var titulo = $(this).text();
                         //$("#embedDoc").attr("src",$(this).attr("href"));
                         $('#modalDocs').modal();
                         $("#embedDoc").attr("src",doc);
-                        $("#tituloModal").text(titulo);
+                        //$("#tituloModal").text(titulo);
                     })
 <?php
                 if (isset($_GET['abre']) and $_GET['abre']=='true') {
