@@ -17,9 +17,11 @@
     
     if ((int) $_POST['funcao']==0) {
         $redirect = "someDuvida";
+        $abre = "true";
     }else{
         $redirect = "adendos";
+        $abre = "false";
     }
 
-    header("Location: ../views/conteudo.php?idConteudo=".$_POST['id']."&abre=true#{$redirect}");
+    header("Location: ../views/conteudo.php?idConteudo=".$_POST['id']."&abre={$abre}#{$redirect}");
 
