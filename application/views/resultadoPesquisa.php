@@ -181,7 +181,7 @@
 															
 														?>
 															<h6 class='aEsquerda'>
-																<a href='resultadoPesquisa.php?'>
+																<a href='resultadoPesquisa.php?termo=<?=$disciplina['disciplina']?>&ft=2'>
 																	<span class='badge badge-secondary aEsquerda espacoDireita disciplina'>
 																		<?=$disciplina['disciplina']?>
 																	</span>
@@ -196,7 +196,9 @@
 
 
 													<td class='text-center'>
-														<?=$conteudo['nome']?>
+														<a href='resultadoPesquisa.php?termo=<?=$conteudo['nome']?>&ft=4' class="linkPesquisaProfessor">
+															<?=$conteudo['nome']?>
+														</a>
 													</td>
 
 												</tr>

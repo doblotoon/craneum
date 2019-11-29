@@ -559,3 +559,8 @@ height: 50px;
   color: #E34724 !important;
   font-weight: 450;
 }
+
+.linkPesquisaProfessor{
+  color: #666666 !important;
+  float: right;
+}
