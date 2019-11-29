@@ -386,7 +386,7 @@
                         $comentarioCont++;
                     }
                 }
-                    if ($adendoCont>0 and $comentarioCont==0) {
+                    if ($adendoCont>0 and $comentarioCont==0 or empty($comentarios)) {
                         echo "<div class='alert alert-warning'><h5> Não há nenhuma dúvida cadastrada</h5></div>";
                         echo "<hr>";
                         //echo $adendoCont;

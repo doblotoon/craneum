@@ -12,9 +12,7 @@
 
                 <!-- logo -->
                 <h2 class="logo2 text-center">
-                    <a href="index.html">
                         Craneum
-                    </a>
                 </h2>
                 <!-- //logo -->
 
